@@ -4,12 +4,12 @@ import os.path
 import sys
 from math import sqrt
 
-from bracketClassDefinitions import Bracket
-from bracketClassDefinitions import Region
-from bracketClassDefinitions import buildBracketFromJson
-from bracketUtils import writeBracket
+from Utils.bracketClassDefinitions import Bracket
+from Utils.bracketClassDefinitions import Region
+from Utils.bracketClassDefinitions import buildBracketFromJson
+from Utils.bracketUtils import writeBracket
 
-# This script runs a chi-squared goodness of fit test for the
+# This script runs a chi-squared test of independence for the
 # two given bit positions in every region.
 
 formats = ['TTT', 'TTF', 'TFT', 'TFF', 'FTT', 'FTF', 'FFT', 'FFF']

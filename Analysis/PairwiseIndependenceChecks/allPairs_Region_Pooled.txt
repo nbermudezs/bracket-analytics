@@ -1,0 +1,184 @@
+TTT: Game 1 (left) vs. Game 8 (top)
+c^2: 3.8419
+
+
+TTF: Game 1 (left) vs. Game 8 (top)
+c^2: 3.8419
+
+
+TFT: Game 1 (left) vs. Game 8 (top)
+c^2: 3.8419
+
+
+TFF: Game 1 (left) vs. Game 8 (top)
+c^2: 3.8419
+
+
+FTT: Game 1 (left) vs. Game 8 (top)
+c^2: 3.8419
+
+
+FTF: Game 1 (left) vs. Game 8 (top)
+c^2: 3.8419
+
+
+FFT: Game 1 (left) vs. Game 8 (top)
+c^2: 3.8419
+
+
+FFF: Game 1 (left) vs. Game 8 (top)
+c^2: 3.8419
+
+
+TTT: Game 3 (left) vs. Game 9 (top)
+c^2: 11.0622
+
+
+TTF: Game 3 (left) vs. Game 9 (top)
+c^2: 11.0622
+
+
+TFT: Game 3 (left) vs. Game 9 (top)
+c^2: 11.0622
+
+
+TFF: Game 3 (left) vs. Game 9 (top)
+c^2: 11.0622
+
+
+TTT: Game 5 (left) vs. Game 10 (top)
+c^2: 18.9774
+
+
+TTF: Game 5 (left) vs. Game 10 (top)
+c^2: 18.9774
+
+
+TFT: Game 5 (left) vs. Game 10 (top)
+c^2: 18.9774
+
+
+TFF: Game 5 (left) vs. Game 10 (top)
+c^2: 18.9774
+
+
+FTT: Game 5 (left) vs. Game 10 (top)
+c^2: 6.7080
+
+
+FTF: Game 5 (left) vs. Game 10 (top)
+c^2: 6.7080
+
+
+FFT: Game 5 (left) vs. Game 10 (top)
+c^2: 6.7080
+
+
+FFF: Game 5 (left) vs. Game 10 (top)
+c^2: 6.7080
+
+
+TTT: Game 7 (left) vs. Game 11 (top)
+c^2: 9.6234
+
+
+TTF: Game 7 (left) vs. Game 11 (top)
+c^2: 9.6234
+
+
+TFT: Game 7 (left) vs. Game 11 (top)
+c^2: 9.6234
+
+
+TFF: Game 7 (left) vs. Game 11 (top)
+c^2: 9.6234
+
+
+TTT: Game 8 (left) vs. Game 12 (top)
+c^2: 5.5972
+
+
+TTF: Game 8 (left) vs. Game 12 (top)
+c^2: 5.5972
+
+
+TFT: Game 8 (left) vs. Game 12 (top)
+c^2: 8.1544
+
+
+TFF: Game 8 (left) vs. Game 12 (top)
+c^2: 8.1544
+
+
+FTT: Game 8 (left) vs. Game 12 (top)
+c^2: 5.5972
+
+
+FTF: Game 8 (left) vs. Game 12 (top)
+c^2: 5.5972
+
+
+FFT: Game 8 (left) vs. Game 12 (top)
+c^2: 8.1544
+
+
+FFF: Game 8 (left) vs. Game 12 (top)
+c^2: 8.1544
+
+
+TTT: Game 9 (left) vs. Game 12 (top)
+c^2: 4.8903
+
+
+TTF: Game 9 (left) vs. Game 12 (top)
+c^2: 4.8903
+
+
+FTT: Game 9 (left) vs. Game 12 (top)
+c^2: 9.4120
+
+
+FTF: Game 9 (left) vs. Game 12 (top)
+c^2: 9.4120
+
+
+FFT: Game 9 (left) vs. Game 12 (top)
+c^2: 7.6490
+
+
+FFF: Game 9 (left) vs. Game 12 (top)
+c^2: 7.6490
+
+
+FTF: Game 9 (left) vs. Game 14 (top)
+c^2: 4.5730
+
+
+FFF: Game 9 (left) vs. Game 14 (top)
+c^2: 4.5730
+
+
+TTT: Game 11 (left) vs. Game 13 (top)
+c^2: 15.6775
+
+
+TTF: Game 11 (left) vs. Game 13 (top)
+c^2: 15.6775
+
+
+FTT: Game 11 (left) vs. Game 13 (top)
+c^2: 18.0225
+
+
+FTF: Game 11 (left) vs. Game 13 (top)
+c^2: 18.0225
+
+
+TTF: Game 11 (left) vs. Game 14 (top)
+c^2: 3.9404
+
+
+TFF: Game 11 (left) vs. Game 14 (top)
+c^2: 3.9404
+
+

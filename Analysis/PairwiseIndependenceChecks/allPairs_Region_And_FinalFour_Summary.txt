@@ -1,0 +1,54 @@
+Summary of Pairwise Independence Test Results
+----------------------------------------------------------------------
+Many of the detected "dependencies" in the test were irrelevant, as
+they were between games that could not possible affect one another. 
+For example, the 4 vs. 13 game in the first region (bit 3) and the 
+6/11 vs. 3/14 game in the first region (bit 10) had a chi-square 
+value of 4.3421, which meets the 3.841 cutoff for significance.
+
+However, the following relationships look meaningful (test suggests
+dependence, and 2nd game follows 1st in bracket):
+
+Region 1
+3, 9
+3, 14
+5, 10
+8, 12
+9, 12
+9, 14
+11, 13
+
+Region 2
+18, 24
+20, 25
+22, 26
+25, 29
+26, 28
+26, 29
+28, 29
+
+Region 3
+34, 44
+38, 44
+39, 42
+39, 62
+42, 44
+43, 61
+44, 61
+
+Region 4
+46, 53
+46, 61
+47, 54
+47, 57
+48, 54
+51, 56
+52, 56
+52, 61
+53, 57
+54, 61
+55, 58
+56, 58
+58, 62
+
+
