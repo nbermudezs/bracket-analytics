@@ -1,0 +1,53 @@
+{"brackets": [{
+	"bracket": {
+		"year": "1986",
+		"regions": [
+			{"name": "Southeast", "vector": "111101011110110"},
+			{"name": "West", "vector": "111111110000101"},
+			{"name": "East", "vector": "110110111101101"},
+			{"name": "Midwest", "vector": "101110111111111"}
+		],
+		"finalfour": "011",
+		"fullvector": "111101011110110111111110000101110110111101101101110111111111011"
+	}
+}
+,{
+	"bracket": {
+		"year": "1990",
+		"regions": [
+			{"name": "Southeast", "vector": "101110111010011"},
+			{"name": "West", "vector": "110101111111111"},
+			{"name": "East", "vector": "101111111101110"},
+			{"name": "Midwest", "vector": "110111010011001"}
+		],
+		"finalfour": "011",
+		"fullvector": "101110111010011110101111111111101111111101110110111010011001011"
+	}
+}
+,{
+	"bracket": {
+		"year": "2000",
+		"regions": [
+			{"name": "West", "vector": "111111010011110"},
+			{"name": "Midwest", "vector": "111111111010101"},
+			{"name": "East", "vector": "111101011101010"},
+			{"name": "South", "vector": "111111110011100"}
+		],
+		"finalfour": "011",
+		"fullvector": "111111010011110111111111010101111101011101010111111110011100011"
+	}
+}
+,{
+	"bracket": {
+		"year": "2008",
+		"regions": [
+			{"name": "East", "vector": "101111111000111"},
+			{"name": "Midwest", "vector": "110001011101101"},
+			{"name": "South", "vector": "111111111100101"},
+			{"name": "West", "vector": "100011111101111"}
+		],
+		"finalfour": "011",
+		"fullvector": "101111111000111110001011101101111111111100101100011111101111011"
+	}
+}
+]}

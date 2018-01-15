@@ -1,0 +1,27 @@
+{"brackets": [{
+	"bracket": {
+		"year": "1992",
+		"regions": [
+			{"name": "Midwest", "vector": "101111110011011"},
+			{"name": "Southeast", "vector": "101110011010110"},
+			{"name": "East", "vector": "101111011000101"},
+			{"name": "West", "vector": "110011111100100"}
+		],
+		"finalfour": "010",
+		"fullvector": "101111110011011101110011010110101111011000101110011111100100010"
+	}
+}
+,{
+	"bracket": {
+		"year": "1993",
+		"regions": [
+			{"name": "Southeast", "vector": "111101111101111"},
+			{"name": "West", "vector": "100011101101101"},
+			{"name": "East", "vector": "111111111010101"},
+			{"name": "Midwest", "vector": "101111111010100"}
+		],
+		"finalfour": "010",
+		"fullvector": "111101111101111100011101101101111111111010101101111111010100010"
+	}
+}
+]}
