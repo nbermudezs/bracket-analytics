@@ -252,3 +252,146 @@ def countWinsPerRound(bracket):
 	champTeam = finalTeamLeft * finalFourVector[2] + finalTeamRight * (1 - finalFourVector[2])
 	winCounts[5][champTeam - 1] = winCounts[5][champTeam - 1] + 1
 	return winCounts
+
+
+# This function runs a chi-squared test of independence for the
+# two given bit positions in every representation.
+
+def testPairwiseIndependence(pos1, pos2, outputFile):
+	import json
+	from bracketClassDefinitions import Bracket
+	from bracketClassDefinitions import Region
+	from bracketClassDefinitions import buildBracketFromJson
+
+	DEBUG = True
+	formats = ['TTT', 'TTF', 'TFT', 'TFF', 'FTT', 'FTF', 'FFT', 'FFF']
+	patterns = ['00', '01', '10', '11']
+
+	for formatType in formats:
+		patternFreqs = [0 for i in range(4)]
+		filename = 'Brackets/{0}/allBrackets{0}.json'.format(formatType)
+		with open(filename, 'r') as inputFile:
+			jsonData = inputFile.read().replace('\n', '')
+		jsonToPython = json.loads(jsonData)
+		bracketList = jsonToPython['brackets']
+		numBrackets = len(bracketList)
+
+		for i in range(numBrackets):
+			bracketDict = bracketList[i]['bracket']
+			bracket = buildBracketFromJson(bracketDict)
+			pos1Result = int(bracket.fullVector[pos1])
+			pos2Result = int(bracket.fullVector[pos2])
+			index = pos1Result * 2 + pos2Result
+			patternFreqs[index] = patternFreqs[index] + 1
+
+		rowSums = [patternFreqs[0] + patternFreqs[1], patternFreqs[2] + patternFreqs[3]]
+		colSums = [patternFreqs[0] + patternFreqs[2], patternFreqs[1] + patternFreqs[3]]
+
+		# The chi-square critical value for 1 degree of freedom and alpha = 0.05
+		# is 3.841. (Source: http://www.itl.nist.gov/div898/handbook/eda/section3/eda3674.htm)
+		# We print the result only if it is deemed significant.
+
+		chiSquare = 0
+		nObservations = numBrackets
+		for r in range(len(rowSums)):
+			for c in range(len(colSums)):
+				expFreq = rowSums[r] * colSums[c] * 1.0 / nObservations
+
+				if expFreq > 0:
+					obsFreq = patternFreqs[2 * r + c] * 1.0
+					chiSquare += (obsFreq - expFreq) ** 2 / expFreq
+				else:
+					print '{0}: Game {1} (left) vs. Game {2} (top)'.format(formatType, pos1, pos2)
+					print 'Cannot perform chi-square test of independence: expected frequency is 0.'
+					return
+
+		header = '{0}: Game {1} (left) vs. Game {2} (top)'.format(formatType, pos1, pos2)
+		chiSquareLine = 'c^2: {:<6.4f}\n\n'.format(chiSquare)
+
+		if chiSquare >= 3.841:
+			outputFile.write(header)
+			outputFile.write('\n')
+			outputFile.write(chiSquareLine)
+
+		if DEBUG:
+			print header
+			print '      |  0  |  1  || Total'
+			print '--------------------------'
+			print '   0  | {:<3} | {:<3} || {:<3}'.format(patternFreqs[0], patternFreqs[1], rowSums[0])
+			print '--------------------------'
+			print '   1  | {:<3} | {:<3} || {:<3}'.format(patternFreqs[2], patternFreqs[3], rowSums[1])
+			print '--------------------------'
+			print '--------------------------'
+			print 'Total | {:<3} | {:<3} || {:<3}\n'.format(colSums[0], colSums[1], numBrackets * 4)
+			print chiSquareLine
+
+
+# This function performs a chi-square goodness-of-fit (GOF)
+# test of the three given positions against a uniform distribution.
+# If isPooled == True, then the four regions are pooled together.
+
+def testGofToUniform(pos1, pos2, pos3, isPooled, outputFile):
+	import json
+	from bracketClassDefinitions import Bracket
+	from bracketClassDefinitions import Region
+	from bracketClassDefinitions import buildBracketFromJson
+
+	DEBUG = True
+	formats = ['TTT', 'TTF', 'TFT', 'TFF', 'FTT', 'FTF', 'FFT', 'FFF']
+	patterns = ['000', '001', '010', '011', '100', '101', '110', '111']
+	if pos3 == -1:
+		patterns = ['00', '01', '10', '11']
+
+	for formatType in formats:
+		patternFreqs = [0 for i in range(len(patterns))]
+		filename = 'Brackets/{0}/allBrackets{0}.json'.format(formatType)
+		with open(filename, 'r') as inputFile:
+			jsonData = inputFile.read().replace('\n', '')
+		jsonToPython = json.loads(jsonData)
+		bracketList = jsonToPython['brackets']
+		numBrackets = len(bracketList)
+
+		for i in range(numBrackets):
+			bracketDict = bracketList[i]['bracket']
+			bracket = buildBracketFromJson(bracketDict)
+
+			numRegions = 1
+			if isPooled:
+				numRegions = 4
+			for region in range(numRegions):
+				offset = region * 15
+				pos1Result = int(bracket.fullVector[pos1 + offset])
+				pos2Result = int(bracket.fullVector[pos2 + offset])
+				if pos3 == -1:
+					pos3Result = 0
+				else:
+					pos3Result = int(bracket.fullVector[pos3 + offset])
+				nPatterns = len(patterns)
+				index = pos1Result * nPatterns / 2 + pos2Result * nPatterns / 4 + pos3Result
+				patternFreqs[index] = patternFreqs[index] + 1
+
+		numBrackets = 33 * numRegions
+		expFreq = numBrackets * 1.0 / nPatterns
+
+		chiSquare = 0
+		for i in range(nPatterns):
+			chiSquare += (patternFreqs[i] - expFreq) ** 2 / expFreq
+		
+		chiSquareLine = 'chi-square value = {0}'.format(chiSquare)
+
+		print formatType
+		print patterns
+		print patternFreqs
+		print chiSquareLine
+		print ''
+
+		if not outputFile is None:
+			header = '{3}: GOF Test vs. Uniform For Positions {0}, {1}, and {2}:\n'.format(pos1, pos2, pos3, formatType)
+			if pos3 == -1:
+				header = '{0}: GOF Test vs. Uniform For Positions {1} and {2}:\n'.format(formatType, pos1, pos2)
+			
+			outputFile.write(header)
+			outputFile.write(patterns)
+			outputFile.write('\n')
+			outputFile.write(patternFreqs)
+			outputFile.write('\n{0}\n\n'.format(chiSquareLine))

@@ -1,0 +1,720 @@
+TTT: Game 3 (left) vs. Game 9 (top)
+c^2: 7.0714
+
+TTF: Game 3 (left) vs. Game 9 (top)
+c^2: 7.0714
+
+TFT: Game 3 (left) vs. Game 9 (top)
+c^2: 7.0714
+
+TFF: Game 3 (left) vs. Game 9 (top)
+c^2: 7.0714
+
+TTT: Game 3 (left) vs. Game 10 (top)
+c^2: 4.3421
+
+TTF: Game 3 (left) vs. Game 10 (top)
+c^2: 4.3421
+
+TFT: Game 3 (left) vs. Game 10 (top)
+c^2: 4.3421
+
+TFF: Game 3 (left) vs. Game 10 (top)
+c^2: 4.3421
+
+TTF: Game 3 (left) vs. Game 14 (top)
+c^2: 4.8490
+
+TFF: Game 3 (left) vs. Game 14 (top)
+c^2: 4.8490
+
+FTF: Game 3 (left) vs. Game 14 (top)
+c^2: 4.8490
+
+FFF: Game 3 (left) vs. Game 14 (top)
+c^2: 4.8490
+
+TTT: Game 5 (left) vs. Game 10 (top)
+c^2: 7.9974
+
+TTF: Game 5 (left) vs. Game 10 (top)
+c^2: 7.9974
+
+TFT: Game 5 (left) vs. Game 10 (top)
+c^2: 7.9974
+
+TFF: Game 5 (left) vs. Game 10 (top)
+c^2: 7.9974
+
+TTT: Game 5 (left) vs. Game 12 (top)
+c^2: 5.7750
+
+TTF: Game 5 (left) vs. Game 12 (top)
+c^2: 5.7750
+
+TFT: Game 5 (left) vs. Game 12 (top)
+c^2: 4.1026
+
+TFF: Game 5 (left) vs. Game 12 (top)
+c^2: 4.1026
+
+FTT: Game 5 (left) vs. Game 12 (top)
+c^2: 5.7750
+
+FTF: Game 5 (left) vs. Game 12 (top)
+c^2: 5.7750
+
+FFT: Game 5 (left) vs. Game 12 (top)
+c^2: 4.1026
+
+FFF: Game 5 (left) vs. Game 12 (top)
+c^2: 4.1026
+
+TTT: Game 8 (left) vs. Game 11 (top)
+c^2: 4.0697
+
+TTF: Game 8 (left) vs. Game 11 (top)
+c^2: 4.0697
+
+TFT: Game 8 (left) vs. Game 11 (top)
+c^2: 4.0697
+
+TFF: Game 8 (left) vs. Game 11 (top)
+c^2: 4.0697
+
+FTT: Game 8 (left) vs. Game 11 (top)
+c^2: 4.8490
+
+FTF: Game 8 (left) vs. Game 11 (top)
+c^2: 4.8490
+
+FFT: Game 8 (left) vs. Game 11 (top)
+c^2: 4.8490
+
+FFF: Game 8 (left) vs. Game 11 (top)
+c^2: 4.8490
+
+TTT: Game 8 (left) vs. Game 12 (top)
+c^2: 5.7750
+
+TTF: Game 8 (left) vs. Game 12 (top)
+c^2: 5.7750
+
+FTT: Game 8 (left) vs. Game 12 (top)
+c^2: 5.7750
+
+FTF: Game 8 (left) vs. Game 12 (top)
+c^2: 5.7750
+
+FFT: Game 9 (left) vs. Game 12 (top)
+c^2: 4.5913
+
+FFF: Game 9 (left) vs. Game 12 (top)
+c^2: 4.5913
+
+FTF: Game 9 (left) vs. Game 14 (top)
+c^2: 4.3095
+
+FFF: Game 9 (left) vs. Game 14 (top)
+c^2: 4.3095
+
+TFT: Game 10 (left) vs. Game 12 (top)
+c^2: 4.5877
+
+TFF: Game 10 (left) vs. Game 12 (top)
+c^2: 4.5877
+
+TTT: Game 11 (left) vs. Game 13 (top)
+c^2: 7.8227
+
+TTF: Game 11 (left) vs. Game 13 (top)
+c^2: 7.8227
+
+FTT: Game 11 (left) vs. Game 13 (top)
+c^2: 6.3032
+
+FTF: Game 11 (left) vs. Game 13 (top)
+c^2: 6.3032
+
+TTT: Game 16 (left) vs. Game 28 (top)
+c^2: 4.4667
+
+TTF: Game 16 (left) vs. Game 28 (top)
+c^2: 4.4667
+
+FTT: Game 16 (left) vs. Game 28 (top)
+c^2: 4.4667
+
+FTF: Game 16 (left) vs. Game 28 (top)
+c^2: 4.4667
+
+TTT: Game 17 (left) vs. Game 61 (top)
+c^2: 6.8182
+
+TTF: Game 17 (left) vs. Game 61 (top)
+c^2: 6.8182
+
+TFT: Game 17 (left) vs. Game 61 (top)
+c^2: 6.8182
+
+TFF: Game 17 (left) vs. Game 61 (top)
+c^2: 6.8182
+
+FTT: Game 17 (left) vs. Game 61 (top)
+c^2: 6.8182
+
+FTF: Game 17 (left) vs. Game 61 (top)
+c^2: 6.8182
+
+FFT: Game 17 (left) vs. Game 61 (top)
+c^2: 6.8182
+
+FFF: Game 17 (left) vs. Game 61 (top)
+c^2: 6.8182
+
+TTT: Game 18 (left) vs. Game 24 (top)
+c^2: 4.0615
+
+TTF: Game 18 (left) vs. Game 24 (top)
+c^2: 4.0615
+
+TFT: Game 18 (left) vs. Game 24 (top)
+c^2: 4.0615
+
+TFF: Game 18 (left) vs. Game 24 (top)
+c^2: 4.0615
+
+TTT: Game 20 (left) vs. Game 25 (top)
+c^2: 9.0659
+
+TTF: Game 20 (left) vs. Game 25 (top)
+c^2: 9.0659
+
+TFT: Game 20 (left) vs. Game 25 (top)
+c^2: 9.0659
+
+TFF: Game 20 (left) vs. Game 25 (top)
+c^2: 9.0659
+
+FTT: Game 21 (left) vs. Game 25 (top)
+c^2: 6.8640
+
+FTF: Game 21 (left) vs. Game 25 (top)
+c^2: 6.8640
+
+FFT: Game 21 (left) vs. Game 25 (top)
+c^2: 6.8640
+
+FFF: Game 21 (left) vs. Game 25 (top)
+c^2: 6.8640
+
+TTT: Game 21 (left) vs. Game 27 (top)
+c^2: 4.1462
+
+TTF: Game 21 (left) vs. Game 27 (top)
+c^2: 4.1462
+
+TFT: Game 21 (left) vs. Game 27 (top)
+c^2: 8.0437
+
+TFF: Game 21 (left) vs. Game 27 (top)
+c^2: 8.0437
+
+FTT: Game 21 (left) vs. Game 27 (top)
+c^2: 4.1462
+
+FTF: Game 21 (left) vs. Game 27 (top)
+c^2: 4.1462
+
+FFT: Game 21 (left) vs. Game 27 (top)
+c^2: 8.0437
+
+FFF: Game 21 (left) vs. Game 27 (top)
+c^2: 8.0437
+
+TTT: Game 22 (left) vs. Game 26 (top)
+c^2: 4.2581
+
+TTF: Game 22 (left) vs. Game 26 (top)
+c^2: 4.2581
+
+TFT: Game 22 (left) vs. Game 26 (top)
+c^2: 4.2581
+
+TFF: Game 22 (left) vs. Game 26 (top)
+c^2: 4.2581
+
+TFT: Game 24 (left) vs. Game 28 (top)
+c^2: 4.4057
+
+TFF: Game 24 (left) vs. Game 28 (top)
+c^2: 4.4057
+
+FTT: Game 25 (left) vs. Game 29 (top)
+c^2: 4.6255
+
+FFT: Game 25 (left) vs. Game 29 (top)
+c^2: 4.6255
+
+TFT: Game 26 (left) vs. Game 28 (top)
+c^2: 7.6788
+
+TFF: Game 26 (left) vs. Game 28 (top)
+c^2: 7.6788
+
+FFT: Game 26 (left) vs. Game 28 (top)
+c^2: 3.8553
+
+FFF: Game 26 (left) vs. Game 28 (top)
+c^2: 3.8553
+
+TTT: Game 26 (left) vs. Game 29 (top)
+c^2: 4.9500
+
+TFT: Game 26 (left) vs. Game 29 (top)
+c^2: 4.9500
+
+TFF: Game 28 (left) vs. Game 29 (top)
+c^2: 5.1789
+
+FFF: Game 28 (left) vs. Game 29 (top)
+c^2: 5.1789
+
+TFT: Game 33 (left) vs. Game 43 (top)
+c^2: 7.9655
+
+TFF: Game 33 (left) vs. Game 43 (top)
+c^2: 7.9655
+
+FFT: Game 33 (left) vs. Game 43 (top)
+c^2: 7.9655
+
+FFF: Game 33 (left) vs. Game 43 (top)
+c^2: 7.9655
+
+TTT: Game 34 (left) vs. Game 38 (top)
+c^2: 5.7750
+
+TTF: Game 34 (left) vs. Game 38 (top)
+c^2: 5.7750
+
+TFT: Game 34 (left) vs. Game 38 (top)
+c^2: 5.7750
+
+TFF: Game 34 (left) vs. Game 38 (top)
+c^2: 5.7750
+
+FTT: Game 34 (left) vs. Game 38 (top)
+c^2: 5.7750
+
+FTF: Game 34 (left) vs. Game 38 (top)
+c^2: 5.7750
+
+FFT: Game 34 (left) vs. Game 38 (top)
+c^2: 5.7750
+
+FFF: Game 34 (left) vs. Game 38 (top)
+c^2: 5.7750
+
+TTT: Game 34 (left) vs. Game 44 (top)
+c^2: 6.6393
+
+TTF: Game 34 (left) vs. Game 44 (top)
+c^2: 4.1640
+
+TFT: Game 34 (left) vs. Game 44 (top)
+c^2: 6.6393
+
+TFF: Game 34 (left) vs. Game 44 (top)
+c^2: 4.1640
+
+FTT: Game 34 (left) vs. Game 44 (top)
+c^2: 6.6393
+
+FTF: Game 34 (left) vs. Game 44 (top)
+c^2: 4.1640
+
+FFT: Game 34 (left) vs. Game 44 (top)
+c^2: 6.6393
+
+FFF: Game 34 (left) vs. Game 44 (top)
+c^2: 4.1640
+
+TTT: Game 34 (left) vs. Game 60 (top)
+c^2: 4.0797
+
+TTF: Game 34 (left) vs. Game 60 (top)
+c^2: 4.0797
+
+TFT: Game 34 (left) vs. Game 60 (top)
+c^2: 4.0797
+
+TFF: Game 34 (left) vs. Game 60 (top)
+c^2: 4.0797
+
+FTT: Game 34 (left) vs. Game 60 (top)
+c^2: 4.0797
+
+FTF: Game 34 (left) vs. Game 60 (top)
+c^2: 4.0797
+
+FFT: Game 34 (left) vs. Game 60 (top)
+c^2: 4.0797
+
+FFF: Game 34 (left) vs. Game 60 (top)
+c^2: 4.0797
+
+TFT: Game 36 (left) vs. Game 42 (top)
+c^2: 4.8490
+
+TFF: Game 36 (left) vs. Game 42 (top)
+c^2: 4.8490
+
+FFT: Game 36 (left) vs. Game 42 (top)
+c^2: 4.8490
+
+FFF: Game 36 (left) vs. Game 42 (top)
+c^2: 4.8490
+
+TFT: Game 38 (left) vs. Game 43 (top)
+c^2: 5.7750
+
+TFF: Game 38 (left) vs. Game 43 (top)
+c^2: 5.7750
+
+FFT: Game 38 (left) vs. Game 43 (top)
+c^2: 5.7750
+
+FFF: Game 38 (left) vs. Game 43 (top)
+c^2: 5.7750
+
+TTT: Game 38 (left) vs. Game 44 (top)
+c^2: 3.9600
+
+TFT: Game 38 (left) vs. Game 44 (top)
+c^2: 3.9600
+
+FTT: Game 38 (left) vs. Game 44 (top)
+c^2: 3.9600
+
+FFT: Game 38 (left) vs. Game 44 (top)
+c^2: 3.9600
+
+TTT: Game 39 (left) vs. Game 41 (top)
+c^2: 5.1789
+
+TTF: Game 39 (left) vs. Game 41 (top)
+c^2: 5.1789
+
+TFT: Game 39 (left) vs. Game 41 (top)
+c^2: 5.1789
+
+TFF: Game 39 (left) vs. Game 41 (top)
+c^2: 5.1789
+
+TTT: Game 39 (left) vs. Game 42 (top)
+c^2: 4.0697
+
+TTF: Game 39 (left) vs. Game 42 (top)
+c^2: 4.0697
+
+TTT: Game 39 (left) vs. Game 62 (top)
+c^2: 4.3323
+
+TTF: Game 39 (left) vs. Game 62 (top)
+c^2: 4.3323
+
+TFT: Game 39 (left) vs. Game 62 (top)
+c^2: 4.3323
+
+TFF: Game 39 (left) vs. Game 62 (top)
+c^2: 4.3323
+
+TTF: Game 42 (left) vs. Game 44 (top)
+c^2: 5.5462
+
+FTF: Game 42 (left) vs. Game 44 (top)
+c^2: 5.5462
+
+TFT: Game 43 (left) vs. Game 61 (top)
+c^2: 5.3036
+
+TFF: Game 43 (left) vs. Game 61 (top)
+c^2: 5.3036
+
+FFT: Game 43 (left) vs. Game 61 (top)
+c^2: 5.3036
+
+FFF: Game 43 (left) vs. Game 61 (top)
+c^2: 5.3036
+
+TTT: Game 44 (left) vs. Game 60 (top)
+c^2: 4.3323
+
+TFT: Game 44 (left) vs. Game 60 (top)
+c^2: 4.3323
+
+FTT: Game 44 (left) vs. Game 60 (top)
+c^2: 4.3323
+
+FFT: Game 44 (left) vs. Game 60 (top)
+c^2: 4.3323
+
+TTT: Game 44 (left) vs. Game 61 (top)
+c^2: 8.8000
+
+TTF: Game 44 (left) vs. Game 61 (top)
+c^2: 3.8824
+
+TFT: Game 44 (left) vs. Game 61 (top)
+c^2: 8.8000
+
+TFF: Game 44 (left) vs. Game 61 (top)
+c^2: 3.8824
+
+FTT: Game 44 (left) vs. Game 61 (top)
+c^2: 8.8000
+
+FTF: Game 44 (left) vs. Game 61 (top)
+c^2: 3.8824
+
+FFT: Game 44 (left) vs. Game 61 (top)
+c^2: 8.8000
+
+FFF: Game 44 (left) vs. Game 61 (top)
+c^2: 3.8824
+
+TTT: Game 46 (left) vs. Game 53 (top)
+c^2: 4.7667
+
+TTF: Game 46 (left) vs. Game 53 (top)
+c^2: 4.7667
+
+TFT: Game 46 (left) vs. Game 53 (top)
+c^2: 4.7667
+
+TFF: Game 46 (left) vs. Game 53 (top)
+c^2: 4.7667
+
+FTT: Game 46 (left) vs. Game 53 (top)
+c^2: 4.7667
+
+FTF: Game 46 (left) vs. Game 53 (top)
+c^2: 4.7667
+
+FFT: Game 46 (left) vs. Game 53 (top)
+c^2: 4.7667
+
+FFF: Game 46 (left) vs. Game 53 (top)
+c^2: 4.7667
+
+TTT: Game 46 (left) vs. Game 61 (top)
+c^2: 4.0615
+
+TTF: Game 46 (left) vs. Game 61 (top)
+c^2: 4.0615
+
+TFT: Game 46 (left) vs. Game 61 (top)
+c^2: 4.0615
+
+TFF: Game 46 (left) vs. Game 61 (top)
+c^2: 4.0615
+
+FTT: Game 46 (left) vs. Game 61 (top)
+c^2: 4.0615
+
+FTF: Game 46 (left) vs. Game 61 (top)
+c^2: 4.0615
+
+FFT: Game 46 (left) vs. Game 61 (top)
+c^2: 4.0615
+
+FFF: Game 46 (left) vs. Game 61 (top)
+c^2: 4.0615
+
+TTT: Game 47 (left) vs. Game 54 (top)
+c^2: 4.3323
+
+TTF: Game 47 (left) vs. Game 54 (top)
+c^2: 4.3323
+
+TFT: Game 47 (left) vs. Game 54 (top)
+c^2: 4.3323
+
+TFF: Game 47 (left) vs. Game 54 (top)
+c^2: 4.3323
+
+TTT: Game 47 (left) vs. Game 55 (top)
+c^2: 4.8908
+
+TTF: Game 47 (left) vs. Game 55 (top)
+c^2: 4.8908
+
+TFT: Game 47 (left) vs. Game 55 (top)
+c^2: 4.8908
+
+TFF: Game 47 (left) vs. Game 55 (top)
+c^2: 4.8908
+
+TTT: Game 47 (left) vs. Game 57 (top)
+c^2: 4.0697
+
+TTF: Game 47 (left) vs. Game 57 (top)
+c^2: 4.0697
+
+FTT: Game 47 (left) vs. Game 57 (top)
+c^2: 4.0697
+
+FTF: Game 47 (left) vs. Game 57 (top)
+c^2: 4.0697
+
+TTT: Game 48 (left) vs. Game 54 (top)
+c^2: 4.2438
+
+TTF: Game 48 (left) vs. Game 54 (top)
+c^2: 4.2438
+
+TFT: Game 48 (left) vs. Game 54 (top)
+c^2: 4.2438
+
+TFF: Game 48 (left) vs. Game 54 (top)
+c^2: 4.2438
+
+TTT: Game 49 (left) vs. Game 52 (top)
+c^2: 4.2581
+
+TTF: Game 49 (left) vs. Game 52 (top)
+c^2: 4.2581
+
+TFT: Game 49 (left) vs. Game 52 (top)
+c^2: 4.2581
+
+TFF: Game 49 (left) vs. Game 52 (top)
+c^2: 4.2581
+
+FTT: Game 49 (left) vs. Game 52 (top)
+c^2: 4.2581
+
+FTF: Game 49 (left) vs. Game 52 (top)
+c^2: 4.2581
+
+FFT: Game 49 (left) vs. Game 52 (top)
+c^2: 4.2581
+
+FFF: Game 49 (left) vs. Game 52 (top)
+c^2: 4.2581
+
+TTT: Game 51 (left) vs. Game 56 (top)
+c^2: 4.0615
+
+TTF: Game 51 (left) vs. Game 56 (top)
+c^2: 4.0615
+
+TFT: Game 51 (left) vs. Game 56 (top)
+c^2: 4.0615
+
+TFF: Game 51 (left) vs. Game 56 (top)
+c^2: 4.0615
+
+TFT: Game 51 (left) vs. Game 57 (top)
+c^2: 4.1462
+
+TFF: Game 51 (left) vs. Game 57 (top)
+c^2: 4.1462
+
+FFT: Game 51 (left) vs. Game 57 (top)
+c^2: 4.1462
+
+FFF: Game 51 (left) vs. Game 57 (top)
+c^2: 4.1462
+
+TTT: Game 52 (left) vs. Game 56 (top)
+c^2: 4.2581
+
+TTF: Game 52 (left) vs. Game 56 (top)
+c^2: 4.2581
+
+TFT: Game 52 (left) vs. Game 56 (top)
+c^2: 4.2581
+
+TFF: Game 52 (left) vs. Game 56 (top)
+c^2: 4.2581
+
+TTT: Game 52 (left) vs. Game 61 (top)
+c^2: 4.2581
+
+TTF: Game 52 (left) vs. Game 61 (top)
+c^2: 4.2581
+
+TFT: Game 52 (left) vs. Game 61 (top)
+c^2: 4.2581
+
+TFF: Game 52 (left) vs. Game 61 (top)
+c^2: 4.2581
+
+FTT: Game 52 (left) vs. Game 61 (top)
+c^2: 4.2581
+
+FTF: Game 52 (left) vs. Game 61 (top)
+c^2: 4.2581
+
+FFT: Game 52 (left) vs. Game 61 (top)
+c^2: 4.2581
+
+FFF: Game 52 (left) vs. Game 61 (top)
+c^2: 4.2581
+
+TFT: Game 53 (left) vs. Game 57 (top)
+c^2: 11.6196
+
+TFF: Game 53 (left) vs. Game 57 (top)
+c^2: 11.6196
+
+FFT: Game 53 (left) vs. Game 57 (top)
+c^2: 11.6196
+
+FFF: Game 53 (left) vs. Game 57 (top)
+c^2: 11.6196
+
+FTT: Game 54 (left) vs. Game 61 (top)
+c^2: 4.3636
+
+FTF: Game 54 (left) vs. Game 61 (top)
+c^2: 4.3636
+
+FFT: Game 54 (left) vs. Game 61 (top)
+c^2: 4.3636
+
+FFF: Game 54 (left) vs. Game 61 (top)
+c^2: 4.3636
+
+TTT: Game 55 (left) vs. Game 58 (top)
+c^2: 6.9061
+
+TTF: Game 55 (left) vs. Game 58 (top)
+c^2: 6.9061
+
+FTT: Game 55 (left) vs. Game 58 (top)
+c^2: 7.2743
+
+FTF: Game 55 (left) vs. Game 58 (top)
+c^2: 7.2743
+
+TTT: Game 56 (left) vs. Game 58 (top)
+c^2: 4.5913
+
+TTF: Game 56 (left) vs. Game 58 (top)
+c^2: 4.5913
+
+TFT: Game 58 (left) vs. Game 62 (top)
+c^2: 5.8082
+
+TFF: Game 58 (left) vs. Game 62 (top)
+c^2: 5.8082
+
+FFT: Game 58 (left) vs. Game 62 (top)
+c^2: 5.8082
+
+FFF: Game 58 (left) vs. Game 62 (top)
+c^2: 5.8082
+

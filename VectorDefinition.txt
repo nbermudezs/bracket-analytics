@@ -15,6 +15,15 @@ Second round is next 4 bits
 Regional semifinals are next 2 bits
 Regional final: last bit
 
+The first round is always:
+1 vs. 16
+8 vs. 9
+5 vs. 12
+4 vs. 13
+6 vs. 11
+3 vs. 14
+7 vs. 10
+2 vs. 15
 _______________________________________________________________
 
 Example: 2017 Bracket, 1 means higher seed won

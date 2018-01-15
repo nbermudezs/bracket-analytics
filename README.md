@@ -17,3 +17,4 @@ http://bracketodds.cs.illinois.edu/seedadv.html.
 Some Python scripts use relative paths to access the brackets, so execute
 them from the parent directory (e.g. "./Python/countWinsPerSeed.py"). 
 
+Source for chi-square critical values: http://www.itl.nist.gov/div898/handbook/eda/section3/eda3674.htm.

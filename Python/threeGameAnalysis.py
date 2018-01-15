@@ -18,14 +18,12 @@ patterns = ['000', '001', '010', '011', '100', '101', '110', '111']
 pos1 = int(sys.argv[1])
 pos2 = int(sys.argv[2])
 pos3 = int(sys.argv[3])
-pooled = True
-
-if len(sys.argv) > 4:
-	pooled = bool(sys.argv[4])
+pooled = sys.argv[4] == 'True'
 
 numRegions = 4
 if not pooled:
 	numRegions = 1
+	print 'Not pooled.'
 
 for formatType in formats:
 	patternFreqs = dict(zip(patterns, [0 for i in range(8)]))
@@ -49,6 +47,7 @@ for formatType in formats:
 
 	rowSums = [patternFreqs['000'] + patternFreqs['001'], patternFreqs['010'] + patternFreqs['011'], patternFreqs['100'] + patternFreqs['101'], patternFreqs['110'] + patternFreqs['111']]
 	colSums = [patternFreqs['000'] + patternFreqs['010'] + patternFreqs['100'] + patternFreqs['110'], patternFreqs['001'] + patternFreqs['011'] + patternFreqs['101'] + patternFreqs['111']]
+	nObservations = numBrackets * numRegions
 
 	print '{0}: Bits {1} and {2} vs. Bit {3}'.format(formatType, pos1, pos2, pos3)
 	print '      |  0  |  1  || Total'
@@ -62,13 +61,14 @@ for formatType in formats:
 	print '   11 | {:<3} | {:<3} || {:<3}'.format(patternFreqs['110'], patternFreqs['111'], rowSums[3])
 	print '--------------------------'
 	print '--------------------------'
-	print 'Total | {:<3} | {:<3} || {:<3}\n'.format(colSums[0], colSums[1], numBrackets * 4)
+	print 'Total | {:<3} | {:<3} || {:<3}\n'.format(colSums[0], colSums[1], nObservations)
 
 	chiSquare = 0
-	nObservations = numBrackets * 4
 	for r in range(len(rowSums)):
 		for c in range(len(colSums)):
 			expFreq = rowSums[r] * colSums[c] * 1.0 / nObservations
+			# if expFreq == 0: # This hack dodges division by zero
+			# 	expFreq = 0.00000001
 			obsFreq = patternFreqs[patterns[2 * r + c]] * 1.0
 			chiSquare += (obsFreq - expFreq) ** 2 / expFreq
 
