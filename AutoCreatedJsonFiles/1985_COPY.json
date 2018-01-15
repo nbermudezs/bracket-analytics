@@ -1,0 +1,1 @@
+{"bracket": {"regions": [{"vector": "100101111101111", "name": "West"}, {"vector": "111111111000101", "name": "East"}, {"vector": "101101111110100", "name": "Midwest"}, {"vector": "111001110110101", "name": "Southeast"}], "fullvector": "100101111101111111111111000101101101111110100111001110110101000", "finalfour": "000", "year": "1985"}}

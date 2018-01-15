@@ -1,0 +1,79 @@
+{"brackets": [{
+	"bracket": {
+		"year": "1987",
+		"regions": [
+			{"name": "West", "vector": "100111111110101"},
+			{"name": "Midwest", "vector": "111011011101101"},
+			{"name": "Southeast", "vector": "101010111110110"},
+			{"name": "East", "vector": "101111011110100"}
+		],
+		"finalfour": "001",
+		"fullvector": "100111111110101111011011101101101010111110110101111011110100001"
+	}
+}
+,{
+	"bracket": {
+		"year": "1989",
+		"regions": [
+			{"name": "Midwest", "vector": "101101011000101"},
+			{"name": "Southeast", "vector": "101001111100010"},
+			{"name": "East", "vector": "101100111110100"},
+			{"name": "West", "vector": "100101111000010"}
+		],
+		"finalfour": "001",
+		"fullvector": "101101011000101101001111100010101100111110100100101111000010001"
+	}
+}
+,{
+	"bracket": {
+		"year": "1991",
+		"regions": [
+			{"name": "West", "vector": "111101011000111"},
+			{"name": "Midwest", "vector": "111100111010000"},
+			{"name": "East", "vector": "100011001101101"},
+			{"name": "Southeast", "vector": "111111111000110"}
+		],
+		"finalfour": "001",
+		"fullvector": "111101011000111111100111010000100011001101101111111111000110001"
+	}
+}
+,{
+	"bracket": {
+		"year": "1994",
+		"regions": [
+			{"name": "West", "vector": "100111111000100"},
+			{"name": "Midwest", "vector": "100111011101111"},
+			{"name": "East", "vector": "101101010100110"},
+			{"name": "Southeast", "vector": "101111111010100"}
+		],
+		"finalfour": "001",
+		"fullvector": "100111111000100100111011101111101101010100110101111111010100001"
+	}
+}
+,{
+	"bracket": {
+		"year": "2011",
+		"regions": [
+			{"name": "East", "vector": "111101111010001"},
+			{"name": "West", "vector": "111111111100010"},
+			{"name": "Southwest", "vector": "100001011111110"},
+			{"name": "Southeast", "vector": "111101110000101"}
+		],
+		"finalfour": "001",
+		"fullvector": "111101111010001111111111100010100001011111110111101110000101001"
+	}
+}
+,{
+	"bracket": {
+		"year": "2014",
+		"regions": [
+			{"name": "South", "vector": "100101011011111"},
+			{"name": "East", "vector": "110111111001000"},
+			{"name": "West", "vector": "110111111010100"},
+			{"name": "Midwest", "vector": "111100110010101"}
+		],
+		"finalfour": "001",
+		"fullvector": "100101011011111110111111001000110111111010100111100110010101001"
+	}
+}
+]}

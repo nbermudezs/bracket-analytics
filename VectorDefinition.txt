@@ -1,0 +1,73 @@
+Vector definition:
+Bits 00-14: West
+Bits 15-29: East
+Bits 30-44: Midwest
+Bits 45-59: South(east)
+Bit 60: West vs. East Final Four game (1 if West wins)
+Bit 61: Midwest vs. South(east) Final Four game (1 if Midwest wins)
+Bit 62: Championship game (1 if West/East wins)
+
+Within each region's group of 15 bits:
+(all are top to bottom)
+
+First round is first 8 bits
+Second round is next 4 bits
+Regional semifinals are next 2 bits
+Regional final: last bit
+
+The first round is always:
+1 vs. 16
+8 vs. 9
+5 vs. 12
+4 vs. 13
+6 vs. 11
+3 vs. 14
+7 vs. 10
+2 vs. 15
+_______________________________________________________________
+
+Example: 2017 Bracket, 1 means higher seed won
+
+East:
+               |       |   | 
+1 1 1 1 0 1 1 1 0 1 1 0 1 0 0
+
+West:
+               |       |   | 
+1 1 1 1 0 1 1 1 1 1 0 1 1 0 1
+
+Midwest:
+               |       |   | 
+1 0 1 1 0 1 1 1 1 1 1 0 1 1 0
+
+South:
+               |       |   | 
+1 1 0 1 1 1 0 1 1 1 1 1 1 1 1
+
+Final Four:
+0 0 0
+
+All together:
+111101110110100111101111101101101101111110110110111011111111000
+
+_______________________________________________________________
+
+Example: 2017 Bracket, 1 means "top" team won
+
+East:
+111101110001000
+
+West:
+111101111010111
+
+Midwest:
+101101111001110
+
+South:
+110111011000101
+
+Final Four:
+000
+
+All together:
+111101110001000111101111010111101101111001110110111011000101000
