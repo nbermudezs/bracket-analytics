@@ -1,0 +1,1572 @@
+./Python/testAllPairsIndependence.py outAll.txt
+Summary:
+TTT: count = 106
+TTF: count = 106
+TFT: count = 103
+TFF: count = 102
+FTT: count = 87
+FTF: count = 89
+FFT: count = 92
+FFF: count = 93
+Total = 778
+Expected # if all independent:
+1953 * 0.05 = 97.65
+
+
+
+TTT: Bits 1 and 31: c^2 = 4.7577
+
+TTT: Bits 1 and 34: c^2 = 4.5371
+
+TTT: Bits 1 and 37: c^2 = 4.4786
+
+TTT: Bits 2 and 19: c^2 = 9.4286
+
+TTT: Bits 3 and 9: c^2 = 7.0714
+
+TTT: Bits 3 and 10: c^2 = 4.3421
+
+TTT: Bits 3 and 21: c^2 = 4.0697
+
+TTT: Bits 3 and 23: c^2 = 4.2998
+
+TTT: Bits 3 and 47: c^2 = 4.0697
+
+TTT: Bits 3 and 51: c^2 = 4.0697
+
+TTT: Bits 4 and 18: c^2 = 4.9500
+
+TTT: Bits 4 and 25: c^2 = 4.3323
+
+TTT: Bits 4 and 27: c^2 = 5.2148
+
+TTT: Bits 4 and 42: c^2 = 4.9107
+
+TTT: Bits 4 and 56: c^2 = 4.9500
+
+TTT: Bits 5 and 10: c^2 = 7.9974
+
+TTT: Bits 5 and 12: c^2 = 5.7750
+
+TTT: Bits 6 and 27: c^2 = 3.8553
+
+TTT: Bits 6 and 32: c^2 = 7.6788
+
+TTT: Bits 7 and 22: c^2 = 15.9844
+
+TTT: Bits 7 and 48: c^2 = 4.6406
+
+TTT: Bits 8 and 11: c^2 = 4.0697
+
+TTT: Bits 8 and 12: c^2 = 5.7750
+
+TTT: Bits 8 and 25: c^2 = 4.0697
+
+TTT: Bits 9 and 23: c^2 = 5.4621
+
+TTT: Bits 9 and 46: c^2 = 4.8908
+
+TTT: Bits 10 and 17: c^2 = 3.9699
+
+TTT: Bits 10 and 19: c^2 = 3.9699
+
+TTT: Bits 10 and 36: c^2 = 8.1924
+
+TTT: Bits 11 and 13: c^2 = 7.8227
+
+TTT: Bits 11 and 24: c^2 = 5.1789
+
+TTT: Bits 11 and 35: c^2 = 4.7667
+
+TTT: Bits 11 and 39: c^2 = 4.4057
+
+TTT: Bits 11 and 43: c^2 = 4.3323
+
+TTT: Bits 11 and 55: c^2 = 4.3323
+
+TTT: Bits 11 and 58: c^2 = 5.1923
+
+TTT: Bits 12 and 26: c^2 = 4.3636
+
+TTT: Bits 12 and 46: c^2 = 6.3462
+
+TTT: Bits 13 and 43: c^2 = 8.6207
+
+TTT: Bits 13 and 54: c^2 = 3.9152
+
+TTT: Bits 14 and 27: c^2 = 5.3804
+
+TTT: Bits 14 and 52: c^2 = 4.8968
+
+TTT: Bits 16 and 28: c^2 = 4.4667
+
+TTT: Bits 16 and 39: c^2 = 6.3104
+
+TTT: Bits 16 and 53: c^2 = 5.4035
+
+TTT: Bits 16 and 59: c^2 = 6.3104
+
+TTT: Bits 17 and 36: c^2 = 5.3036
+
+TTT: Bits 17 and 46: c^2 = 4.0615
+
+TTT: Bits 17 and 52: c^2 = 4.2581
+
+TTT: Bits 17 and 61: c^2 = 6.8182
+
+TTT: Bits 18 and 24: c^2 = 4.0615
+
+TTT: Bits 18 and 41: c^2 = 6.3462
+
+TTT: Bits 18 and 46: c^2 = 4.0615
+
+TTT: Bits 18 and 58: c^2 = 8.6804
+
+TTT: Bits 19 and 47: c^2 = 4.0615
+
+TTT: Bits 19 and 52: c^2 = 4.2581
+
+TTT: Bits 19 and 58: c^2 = 4.5913
+
+TTT: Bits 20 and 25: c^2 = 9.0659
+
+TTT: Bits 20 and 37: c^2 = 6.8121
+
+TTT: Bits 20 and 39: c^2 = 4.0697
+
+TTT: Bits 20 and 42: c^2 = 9.2198
+
+TTT: Bits 21 and 27: c^2 = 4.1462
+
+TTT: Bits 21 and 38: c^2 = 5.0769
+
+TTT: Bits 21 and 53: c^2 = 4.7667
+
+TTT: Bits 22 and 26: c^2 = 4.2581
+
+TTT: Bits 25 and 36: c^2 = 5.8747
+
+TTT: Bits 25 and 37: c^2 = 5.0769
+
+TTT: Bits 25 and 42: c^2 = 4.0697
+
+TTT: Bits 25 and 57: c^2 = 4.0697
+
+TTT: Bits 26 and 29: c^2 = 4.9500
+
+TTT: Bits 26 and 46: c^2 = 4.0615
+
+TTT: Bits 26 and 55: c^2 = 4.9500
+
+TTT: Bits 27 and 32: c^2 = 6.1875
+
+TTT: Bits 27 and 54: c^2 = 5.8870
+
+TTT: Bits 28 and 43: c^2 = 6.9061
+
+TTT: Bits 29 and 43: c^2 = 3.9152
+
+TTT: Bits 29 and 51: c^2 = 4.3323
+
+TTT: Bits 34 and 38: c^2 = 5.7750
+
+TTT: Bits 34 and 44: c^2 = 6.6393
+
+TTT: Bits 34 and 60: c^2 = 4.0797
+
+TTT: Bits 35 and 46: c^2 = 5.9301
+
+TTT: Bits 36 and 47: c^2 = 4.0797
+
+TTT: Bits 37 and 55: c^2 = 3.9600
+
+TTT: Bits 37 and 57: c^2 = 6.8121
+
+TTT: Bits 38 and 44: c^2 = 3.9600
+
+TTT: Bits 39 and 41: c^2 = 5.1789
+
+TTT: Bits 39 and 42: c^2 = 4.0697
+
+TTT: Bits 39 and 62: c^2 = 4.3323
+
+TTT: Bits 40 and 49: c^2 = 10.2518
+
+TTT: Bits 41 and 56: c^2 = 4.0615
+
+TTT: Bits 43 and 51: c^2 = 4.8908
+
+TTT: Bits 44 and 49: c^2 = 4.9500
+
+TTT: Bits 44 and 60: c^2 = 4.3323
+
+TTT: Bits 44 and 61: c^2 = 8.8000
+
+TTT: Bits 46 and 53: c^2 = 4.7667
+
+TTT: Bits 46 and 61: c^2 = 4.0615
+
+TTT: Bits 47 and 54: c^2 = 4.3323
+
+TTT: Bits 47 and 55: c^2 = 4.8908
+
+TTT: Bits 47 and 57: c^2 = 4.0697
+
+TTT: Bits 48 and 54: c^2 = 4.2438
+
+TTT: Bits 49 and 52: c^2 = 4.2581
+
+TTT: Bits 51 and 56: c^2 = 4.0615
+
+TTT: Bits 52 and 56: c^2 = 4.2581
+
+TTT: Bits 52 and 61: c^2 = 4.2581
+
+TTT: Bits 55 and 58: c^2 = 6.9061
+
+TTT: Bits 56 and 58: c^2 = 4.5913
+
+TTF: Bits 1 and 31: c^2 = 4.7577
+
+TTF: Bits 1 and 34: c^2 = 4.5371
+
+TTF: Bits 1 and 37: c^2 = 4.4786
+
+TTF: Bits 2 and 19: c^2 = 9.4286
+
+TTF: Bits 2 and 44: c^2 = 4.1640
+
+TTF: Bits 3 and 9: c^2 = 7.0714
+
+TTF: Bits 3 and 10: c^2 = 4.3421
+
+TTF: Bits 3 and 14: c^2 = 4.8490
+
+TTF: Bits 3 and 21: c^2 = 4.0697
+
+TTF: Bits 3 and 23: c^2 = 4.2998
+
+TTF: Bits 3 and 47: c^2 = 4.0697
+
+TTF: Bits 3 and 51: c^2 = 4.0697
+
+TTF: Bits 4 and 18: c^2 = 4.9500
+
+TTF: Bits 4 and 25: c^2 = 4.3323
+
+TTF: Bits 4 and 27: c^2 = 5.2148
+
+TTF: Bits 4 and 42: c^2 = 4.9107
+
+TTF: Bits 4 and 56: c^2 = 4.9500
+
+TTF: Bits 5 and 10: c^2 = 7.9974
+
+TTF: Bits 5 and 12: c^2 = 5.7750
+
+TTF: Bits 5 and 29: c^2 = 4.0697
+
+TTF: Bits 6 and 27: c^2 = 3.8553
+
+TTF: Bits 6 and 32: c^2 = 7.6788
+
+TTF: Bits 7 and 22: c^2 = 15.9844
+
+TTF: Bits 7 and 48: c^2 = 4.6406
+
+TTF: Bits 8 and 11: c^2 = 4.0697
+
+TTF: Bits 8 and 12: c^2 = 5.7750
+
+TTF: Bits 8 and 25: c^2 = 4.0697
+
+TTF: Bits 9 and 23: c^2 = 5.4621
+
+TTF: Bits 9 and 46: c^2 = 4.8908
+
+TTF: Bits 10 and 17: c^2 = 3.9699
+
+TTF: Bits 10 and 19: c^2 = 3.9699
+
+TTF: Bits 10 and 36: c^2 = 8.1924
+
+TTF: Bits 11 and 13: c^2 = 7.8227
+
+TTF: Bits 11 and 24: c^2 = 5.1789
+
+TTF: Bits 11 and 35: c^2 = 4.7667
+
+TTF: Bits 11 and 39: c^2 = 4.4057
+
+TTF: Bits 11 and 43: c^2 = 4.3323
+
+TTF: Bits 11 and 55: c^2 = 4.3323
+
+TTF: Bits 11 and 58: c^2 = 5.1923
+
+TTF: Bits 12 and 26: c^2 = 4.3636
+
+TTF: Bits 12 and 29: c^2 = 4.0615
+
+TTF: Bits 12 and 46: c^2 = 6.3462
+
+TTF: Bits 12 and 59: c^2 = 3.8824
+
+TTF: Bits 13 and 43: c^2 = 8.6207
+
+TTF: Bits 13 and 54: c^2 = 3.9152
+
+TTF: Bits 16 and 28: c^2 = 4.4667
+
+TTF: Bits 16 and 39: c^2 = 6.3104
+
+TTF: Bits 16 and 53: c^2 = 5.4035
+
+TTF: Bits 17 and 36: c^2 = 5.3036
+
+TTF: Bits 17 and 44: c^2 = 3.8824
+
+TTF: Bits 17 and 46: c^2 = 4.0615
+
+TTF: Bits 17 and 52: c^2 = 4.2581
+
+TTF: Bits 17 and 61: c^2 = 6.8182
+
+TTF: Bits 18 and 24: c^2 = 4.0615
+
+TTF: Bits 18 and 41: c^2 = 6.3462
+
+TTF: Bits 18 and 46: c^2 = 4.0615
+
+TTF: Bits 18 and 58: c^2 = 8.6804
+
+TTF: Bits 19 and 47: c^2 = 4.0615
+
+TTF: Bits 19 and 52: c^2 = 4.2581
+
+TTF: Bits 19 and 58: c^2 = 4.5913
+
+TTF: Bits 20 and 25: c^2 = 9.0659
+
+TTF: Bits 20 and 37: c^2 = 6.8121
+
+TTF: Bits 20 and 39: c^2 = 4.0697
+
+TTF: Bits 20 and 42: c^2 = 9.2198
+
+TTF: Bits 21 and 27: c^2 = 4.1462
+
+TTF: Bits 21 and 38: c^2 = 5.0769
+
+TTF: Bits 21 and 53: c^2 = 4.7667
+
+TTF: Bits 22 and 26: c^2 = 4.2581
+
+TTF: Bits 25 and 36: c^2 = 5.8747
+
+TTF: Bits 25 and 37: c^2 = 5.0769
+
+TTF: Bits 25 and 42: c^2 = 4.0697
+
+TTF: Bits 25 and 57: c^2 = 4.0697
+
+TTF: Bits 26 and 46: c^2 = 4.0615
+
+TTF: Bits 26 and 55: c^2 = 4.9500
+
+TTF: Bits 27 and 32: c^2 = 6.1875
+
+TTF: Bits 27 and 54: c^2 = 5.8870
+
+TTF: Bits 28 and 43: c^2 = 6.9061
+
+TTF: Bits 33 and 59: c^2 = 4.2840
+
+TTF: Bits 34 and 38: c^2 = 5.7750
+
+TTF: Bits 34 and 44: c^2 = 4.1640
+
+TTF: Bits 34 and 60: c^2 = 4.0797
+
+TTF: Bits 35 and 46: c^2 = 5.9301
+
+TTF: Bits 36 and 47: c^2 = 4.0797
+
+TTF: Bits 37 and 55: c^2 = 3.9600
+
+TTF: Bits 37 and 57: c^2 = 6.8121
+
+TTF: Bits 39 and 41: c^2 = 5.1789
+
+TTF: Bits 39 and 42: c^2 = 4.0697
+
+TTF: Bits 39 and 62: c^2 = 4.3323
+
+TTF: Bits 40 and 49: c^2 = 10.2518
+
+TTF: Bits 41 and 56: c^2 = 4.0615
+
+TTF: Bits 42 and 44: c^2 = 5.5462
+
+TTF: Bits 43 and 51: c^2 = 4.8908
+
+TTF: Bits 44 and 49: c^2 = 6.0662
+
+TTF: Bits 44 and 61: c^2 = 3.8824
+
+TTF: Bits 46 and 53: c^2 = 4.7667
+
+TTF: Bits 46 and 61: c^2 = 4.0615
+
+TTF: Bits 47 and 54: c^2 = 4.3323
+
+TTF: Bits 47 and 55: c^2 = 4.8908
+
+TTF: Bits 47 and 57: c^2 = 4.0697
+
+TTF: Bits 48 and 54: c^2 = 4.2438
+
+TTF: Bits 49 and 52: c^2 = 4.2581
+
+TTF: Bits 51 and 56: c^2 = 4.0615
+
+TTF: Bits 52 and 56: c^2 = 4.2581
+
+TTF: Bits 52 and 61: c^2 = 4.2581
+
+TTF: Bits 55 and 58: c^2 = 6.9061
+
+TTF: Bits 56 and 58: c^2 = 4.5913
+
+TFT: Bits 1 and 31: c^2 = 4.7577
+
+TFT: Bits 1 and 34: c^2 = 4.5371
+
+TFT: Bits 1 and 37: c^2 = 4.4786
+
+TFT: Bits 2 and 19: c^2 = 9.4286
+
+TFT: Bits 2 and 42: c^2 = 4.8490
+
+TFT: Bits 3 and 9: c^2 = 7.0714
+
+TFT: Bits 3 and 10: c^2 = 4.3421
+
+TFT: Bits 3 and 21: c^2 = 4.0697
+
+TFT: Bits 3 and 23: c^2 = 4.2998
+
+TFT: Bits 3 and 47: c^2 = 4.0697
+
+TFT: Bits 3 and 51: c^2 = 4.0697
+
+TFT: Bits 4 and 18: c^2 = 4.9500
+
+TFT: Bits 4 and 25: c^2 = 4.3323
+
+TFT: Bits 4 and 27: c^2 = 5.2148
+
+TFT: Bits 4 and 42: c^2 = 4.9107
+
+TFT: Bits 4 and 56: c^2 = 4.9500
+
+TFT: Bits 5 and 10: c^2 = 7.9974
+
+TFT: Bits 5 and 12: c^2 = 4.1026
+
+TFT: Bits 6 and 27: c^2 = 7.6365
+
+TFT: Bits 6 and 32: c^2 = 7.6788
+
+TFT: Bits 7 and 22: c^2 = 15.9844
+
+TFT: Bits 7 and 48: c^2 = 4.6406
+
+TFT: Bits 8 and 11: c^2 = 4.0697
+
+TFT: Bits 8 and 25: c^2 = 4.0697
+
+TFT: Bits 9 and 23: c^2 = 5.4621
+
+TFT: Bits 9 and 46: c^2 = 4.8908
+
+TFT: Bits 10 and 12: c^2 = 4.5877
+
+TFT: Bits 10 and 17: c^2 = 3.9699
+
+TFT: Bits 10 and 19: c^2 = 3.9699
+
+TFT: Bits 10 and 36: c^2 = 8.1924
+
+TFT: Bits 11 and 24: c^2 = 5.1789
+
+TFT: Bits 11 and 35: c^2 = 4.7667
+
+TFT: Bits 11 and 39: c^2 = 4.4057
+
+TFT: Bits 11 and 55: c^2 = 4.3323
+
+TFT: Bits 13 and 16: c^2 = 6.1755
+
+TFT: Bits 13 and 19: c^2 = 4.5913
+
+TFT: Bits 13 and 27: c^2 = 7.7478
+
+TFT: Bits 14 and 52: c^2 = 4.8968
+
+TFT: Bits 16 and 39: c^2 = 6.3104
+
+TFT: Bits 16 and 53: c^2 = 5.4035
+
+TFT: Bits 16 and 59: c^2 = 6.3104
+
+TFT: Bits 17 and 36: c^2 = 5.3036
+
+TFT: Bits 17 and 46: c^2 = 4.0615
+
+TFT: Bits 17 and 52: c^2 = 4.2581
+
+TFT: Bits 17 and 61: c^2 = 6.8182
+
+TFT: Bits 18 and 24: c^2 = 4.0615
+
+TFT: Bits 18 and 41: c^2 = 6.3462
+
+TFT: Bits 18 and 46: c^2 = 4.0615
+
+TFT: Bits 19 and 47: c^2 = 4.0615
+
+TFT: Bits 19 and 52: c^2 = 4.2581
+
+TFT: Bits 20 and 25: c^2 = 9.0659
+
+TFT: Bits 20 and 37: c^2 = 6.8121
+
+TFT: Bits 20 and 39: c^2 = 4.0697
+
+TFT: Bits 21 and 27: c^2 = 8.0437
+
+TFT: Bits 21 and 38: c^2 = 5.0769
+
+TFT: Bits 21 and 43: c^2 = 5.8747
+
+TFT: Bits 21 and 53: c^2 = 4.7667
+
+TFT: Bits 21 and 57: c^2 = 4.1462
+
+TFT: Bits 22 and 26: c^2 = 4.2581
+
+TFT: Bits 24 and 28: c^2 = 4.4057
+
+TFT: Bits 25 and 36: c^2 = 5.8747
+
+TFT: Bits 25 and 37: c^2 = 5.0769
+
+TFT: Bits 26 and 28: c^2 = 7.6788
+
+TFT: Bits 26 and 29: c^2 = 4.9500
+
+TFT: Bits 26 and 46: c^2 = 4.0615
+
+TFT: Bits 26 and 55: c^2 = 4.9500
+
+TFT: Bits 27 and 32: c^2 = 6.1875
+
+TFT: Bits 28 and 48: c^2 = 5.9301
+
+TFT: Bits 29 and 51: c^2 = 4.3323
+
+TFT: Bits 33 and 43: c^2 = 7.9655
+
+TFT: Bits 34 and 38: c^2 = 5.7750
+
+TFT: Bits 34 and 44: c^2 = 6.6393
+
+TFT: Bits 34 and 60: c^2 = 4.0797
+
+TFT: Bits 35 and 46: c^2 = 5.9301
+
+TFT: Bits 36 and 42: c^2 = 4.8490
+
+TFT: Bits 36 and 47: c^2 = 4.0797
+
+TFT: Bits 37 and 55: c^2 = 3.9600
+
+TFT: Bits 37 and 58: c^2 = 4.0797
+
+TFT: Bits 38 and 43: c^2 = 5.7750
+
+TFT: Bits 38 and 44: c^2 = 3.9600
+
+TFT: Bits 39 and 41: c^2 = 5.1789
+
+TFT: Bits 39 and 62: c^2 = 4.3323
+
+TFT: Bits 40 and 49: c^2 = 10.2518
+
+TFT: Bits 40 and 58: c^2 = 4.9303
+
+TFT: Bits 41 and 56: c^2 = 4.0615
+
+TFT: Bits 42 and 58: c^2 = 5.3049
+
+TFT: Bits 43 and 59: c^2 = 5.8747
+
+TFT: Bits 43 and 61: c^2 = 5.3036
+
+TFT: Bits 44 and 49: c^2 = 4.9500
+
+TFT: Bits 44 and 60: c^2 = 4.3323
+
+TFT: Bits 44 and 61: c^2 = 8.8000
+
+TFT: Bits 46 and 53: c^2 = 4.7667
+
+TFT: Bits 46 and 61: c^2 = 4.0615
+
+TFT: Bits 47 and 54: c^2 = 4.3323
+
+TFT: Bits 47 and 55: c^2 = 4.8908
+
+TFT: Bits 48 and 54: c^2 = 4.2438
+
+TFT: Bits 49 and 52: c^2 = 4.2581
+
+TFT: Bits 51 and 56: c^2 = 4.0615
+
+TFT: Bits 51 and 57: c^2 = 4.1462
+
+TFT: Bits 52 and 56: c^2 = 4.2581
+
+TFT: Bits 52 and 61: c^2 = 4.2581
+
+TFT: Bits 53 and 57: c^2 = 11.6196
+
+TFT: Bits 58 and 62: c^2 = 5.8082
+
+TFF: Bits 1 and 31: c^2 = 4.7577
+
+TFF: Bits 1 and 34: c^2 = 4.5371
+
+TFF: Bits 1 and 37: c^2 = 4.4786
+
+TFF: Bits 2 and 19: c^2 = 9.4286
+
+TFF: Bits 2 and 42: c^2 = 4.8490
+
+TFF: Bits 2 and 44: c^2 = 4.1640
+
+TFF: Bits 3 and 9: c^2 = 7.0714
+
+TFF: Bits 3 and 10: c^2 = 4.3421
+
+TFF: Bits 3 and 14: c^2 = 4.8490
+
+TFF: Bits 3 and 21: c^2 = 4.0697
+
+TFF: Bits 3 and 23: c^2 = 4.2998
+
+TFF: Bits 3 and 47: c^2 = 4.0697
+
+TFF: Bits 3 and 51: c^2 = 4.0697
+
+TFF: Bits 4 and 18: c^2 = 4.9500
+
+TFF: Bits 4 and 25: c^2 = 4.3323
+
+TFF: Bits 4 and 27: c^2 = 5.2148
+
+TFF: Bits 4 and 42: c^2 = 4.9107
+
+TFF: Bits 4 and 56: c^2 = 4.9500
+
+TFF: Bits 5 and 10: c^2 = 7.9974
+
+TFF: Bits 5 and 12: c^2 = 4.1026
+
+TFF: Bits 5 and 29: c^2 = 4.0697
+
+TFF: Bits 6 and 27: c^2 = 7.6365
+
+TFF: Bits 6 and 32: c^2 = 7.6788
+
+TFF: Bits 7 and 22: c^2 = 15.9844
+
+TFF: Bits 7 and 48: c^2 = 4.6406
+
+TFF: Bits 8 and 11: c^2 = 4.0697
+
+TFF: Bits 8 and 25: c^2 = 4.0697
+
+TFF: Bits 9 and 23: c^2 = 5.4621
+
+TFF: Bits 9 and 46: c^2 = 4.8908
+
+TFF: Bits 10 and 12: c^2 = 4.5877
+
+TFF: Bits 10 and 17: c^2 = 3.9699
+
+TFF: Bits 10 and 19: c^2 = 3.9699
+
+TFF: Bits 10 and 36: c^2 = 8.1924
+
+TFF: Bits 11 and 24: c^2 = 5.1789
+
+TFF: Bits 11 and 35: c^2 = 4.7667
+
+TFF: Bits 11 and 39: c^2 = 4.4057
+
+TFF: Bits 11 and 55: c^2 = 4.3323
+
+TFF: Bits 13 and 16: c^2 = 6.1755
+
+TFF: Bits 13 and 19: c^2 = 4.5913
+
+TFF: Bits 13 and 27: c^2 = 7.7478
+
+TFF: Bits 16 and 39: c^2 = 6.3104
+
+TFF: Bits 16 and 53: c^2 = 5.4035
+
+TFF: Bits 17 and 36: c^2 = 5.3036
+
+TFF: Bits 17 and 44: c^2 = 3.8824
+
+TFF: Bits 17 and 46: c^2 = 4.0615
+
+TFF: Bits 17 and 52: c^2 = 4.2581
+
+TFF: Bits 17 and 61: c^2 = 6.8182
+
+TFF: Bits 18 and 24: c^2 = 4.0615
+
+TFF: Bits 18 and 41: c^2 = 6.3462
+
+TFF: Bits 18 and 46: c^2 = 4.0615
+
+TFF: Bits 19 and 47: c^2 = 4.0615
+
+TFF: Bits 19 and 52: c^2 = 4.2581
+
+TFF: Bits 20 and 25: c^2 = 9.0659
+
+TFF: Bits 20 and 37: c^2 = 6.8121
+
+TFF: Bits 20 and 39: c^2 = 4.0697
+
+TFF: Bits 21 and 27: c^2 = 8.0437
+
+TFF: Bits 21 and 38: c^2 = 5.0769
+
+TFF: Bits 21 and 43: c^2 = 5.8747
+
+TFF: Bits 21 and 53: c^2 = 4.7667
+
+TFF: Bits 21 and 57: c^2 = 4.1462
+
+TFF: Bits 22 and 26: c^2 = 4.2581
+
+TFF: Bits 24 and 28: c^2 = 4.4057
+
+TFF: Bits 25 and 36: c^2 = 5.8747
+
+TFF: Bits 25 and 37: c^2 = 5.0769
+
+TFF: Bits 26 and 28: c^2 = 7.6788
+
+TFF: Bits 26 and 46: c^2 = 4.0615
+
+TFF: Bits 26 and 55: c^2 = 4.9500
+
+TFF: Bits 27 and 32: c^2 = 6.1875
+
+TFF: Bits 28 and 29: c^2 = 5.1789
+
+TFF: Bits 28 and 48: c^2 = 5.9301
+
+TFF: Bits 33 and 43: c^2 = 7.9655
+
+TFF: Bits 33 and 59: c^2 = 4.2840
+
+TFF: Bits 34 and 38: c^2 = 5.7750
+
+TFF: Bits 34 and 44: c^2 = 4.1640
+
+TFF: Bits 34 and 60: c^2 = 4.0797
+
+TFF: Bits 35 and 46: c^2 = 5.9301
+
+TFF: Bits 36 and 42: c^2 = 4.8490
+
+TFF: Bits 36 and 47: c^2 = 4.0797
+
+TFF: Bits 37 and 55: c^2 = 3.9600
+
+TFF: Bits 37 and 58: c^2 = 4.0797
+
+TFF: Bits 38 and 43: c^2 = 5.7750
+
+TFF: Bits 39 and 41: c^2 = 5.1789
+
+TFF: Bits 39 and 62: c^2 = 4.3323
+
+TFF: Bits 40 and 49: c^2 = 10.2518
+
+TFF: Bits 40 and 58: c^2 = 4.9303
+
+TFF: Bits 41 and 56: c^2 = 4.0615
+
+TFF: Bits 42 and 58: c^2 = 5.3049
+
+TFF: Bits 43 and 61: c^2 = 5.3036
+
+TFF: Bits 44 and 49: c^2 = 6.0662
+
+TFF: Bits 44 and 61: c^2 = 3.8824
+
+TFF: Bits 46 and 53: c^2 = 4.7667
+
+TFF: Bits 46 and 61: c^2 = 4.0615
+
+TFF: Bits 47 and 54: c^2 = 4.3323
+
+TFF: Bits 47 and 55: c^2 = 4.8908
+
+TFF: Bits 48 and 54: c^2 = 4.2438
+
+TFF: Bits 49 and 52: c^2 = 4.2581
+
+TFF: Bits 51 and 56: c^2 = 4.0615
+
+TFF: Bits 51 and 57: c^2 = 4.1462
+
+TFF: Bits 52 and 56: c^2 = 4.2581
+
+TFF: Bits 52 and 61: c^2 = 4.2581
+
+TFF: Bits 53 and 57: c^2 = 11.6196
+
+TFF: Bits 58 and 62: c^2 = 5.8082
+
+FTT: Bits 1 and 26: c^2 = 4.9676
+
+FTT: Bits 1 and 31: c^2 = 4.7577
+
+FTT: Bits 1 and 34: c^2 = 4.5371
+
+FTT: Bits 1 and 37: c^2 = 4.4786
+
+FTT: Bits 2 and 19: c^2 = 9.4286
+
+FTT: Bits 3 and 21: c^2 = 4.0697
+
+FTT: Bits 3 and 23: c^2 = 4.2998
+
+FTT: Bits 3 and 47: c^2 = 4.0697
+
+FTT: Bits 3 and 51: c^2 = 4.0697
+
+FTT: Bits 4 and 18: c^2 = 4.9500
+
+FTT: Bits 4 and 27: c^2 = 5.2148
+
+FTT: Bits 4 and 42: c^2 = 4.9107
+
+FTT: Bits 4 and 56: c^2 = 5.8870
+
+FTT: Bits 5 and 12: c^2 = 5.7750
+
+FTT: Bits 5 and 25: c^2 = 4.1026
+
+FTT: Bits 5 and 39: c^2 = 4.9107
+
+FTT: Bits 6 and 27: c^2 = 3.8553
+
+FTT: Bits 6 and 32: c^2 = 7.6788
+
+FTT: Bits 7 and 22: c^2 = 15.9844
+
+FTT: Bits 7 and 48: c^2 = 4.6406
+
+FTT: Bits 8 and 11: c^2 = 4.8490
+
+FTT: Bits 8 and 12: c^2 = 5.7750
+
+FTT: Bits 8 and 25: c^2 = 4.1026
+
+FTT: Bits 9 and 46: c^2 = 5.6293
+
+FTT: Bits 9 and 47: c^2 = 5.1923
+
+FTT: Bits 10 and 19: c^2 = 6.1875
+
+FTT: Bits 10 and 36: c^2 = 4.9107
+
+FTT: Bits 10 and 50: c^2 = 8.2598
+
+FTT: Bits 11 and 13: c^2 = 6.3032
+
+FTT: Bits 11 and 35: c^2 = 4.1905
+
+FTT: Bits 11 and 51: c^2 = 4.0797
+
+FTT: Bits 11 and 58: c^2 = 4.3095
+
+FTT: Bits 12 and 46: c^2 = 6.3462
+
+FTT: Bits 13 and 43: c^2 = 8.6207
+
+FTT: Bits 14 and 27: c^2 = 5.3804
+
+FTT: Bits 14 and 52: c^2 = 4.8968
+
+FTT: Bits 16 and 28: c^2 = 4.4667
+
+FTT: Bits 16 and 53: c^2 = 5.4035
+
+FTT: Bits 16 and 59: c^2 = 6.3104
+
+FTT: Bits 17 and 36: c^2 = 5.3036
+
+FTT: Bits 17 and 46: c^2 = 4.0615
+
+FTT: Bits 17 and 52: c^2 = 4.2581
+
+FTT: Bits 17 and 54: c^2 = 4.3636
+
+FTT: Bits 17 and 61: c^2 = 6.8182
+
+FTT: Bits 18 and 46: c^2 = 4.0615
+
+FTT: Bits 18 and 58: c^2 = 8.6804
+
+FTT: Bits 19 and 47: c^2 = 4.0615
+
+FTT: Bits 19 and 52: c^2 = 4.2581
+
+FTT: Bits 19 and 58: c^2 = 4.5913
+
+FTT: Bits 20 and 37: c^2 = 6.8121
+
+FTT: Bits 20 and 39: c^2 = 7.0714
+
+FTT: Bits 20 and 42: c^2 = 9.2198
+
+FTT: Bits 20 and 55: c^2 = 4.9107
+
+FTT: Bits 21 and 25: c^2 = 6.8640
+
+FTT: Bits 21 and 27: c^2 = 4.1462
+
+FTT: Bits 21 and 38: c^2 = 5.0769
+
+FTT: Bits 21 and 40: c^2 = 5.1789
+
+FTT: Bits 21 and 53: c^2 = 4.7667
+
+FTT: Bits 25 and 29: c^2 = 4.6255
+
+FTT: Bits 25 and 57: c^2 = 4.1026
+
+FTT: Bits 26 and 43: c^2 = 5.2148
+
+FTT: Bits 26 and 46: c^2 = 3.8553
+
+FTT: Bits 27 and 32: c^2 = 6.1875
+
+FTT: Bits 28 and 43: c^2 = 6.9061
+
+FTT: Bits 29 and 43: c^2 = 3.9152
+
+FTT: Bits 29 and 51: c^2 = 4.3323
+
+FTT: Bits 34 and 38: c^2 = 5.7750
+
+FTT: Bits 34 and 44: c^2 = 6.6393
+
+FTT: Bits 34 and 60: c^2 = 4.0797
+
+FTT: Bits 35 and 46: c^2 = 5.9301
+
+FTT: Bits 36 and 47: c^2 = 4.0797
+
+FTT: Bits 37 and 57: c^2 = 6.8121
+
+FTT: Bits 38 and 44: c^2 = 3.9600
+
+FTT: Bits 39 and 55: c^2 = 3.9152
+
+FTT: Bits 39 and 56: c^2 = 5.8870
+
+FTT: Bits 40 and 49: c^2 = 4.0615
+
+FTT: Bits 43 and 51: c^2 = 4.8908
+
+FTT: Bits 44 and 49: c^2 = 4.9500
+
+FTT: Bits 44 and 60: c^2 = 4.3323
+
+FTT: Bits 44 and 61: c^2 = 8.8000
+
+FTT: Bits 46 and 53: c^2 = 4.7667
+
+FTT: Bits 46 and 61: c^2 = 4.0615
+
+FTT: Bits 47 and 57: c^2 = 4.0697
+
+FTT: Bits 49 and 52: c^2 = 4.2581
+
+FTT: Bits 52 and 61: c^2 = 4.2581
+
+FTT: Bits 54 and 61: c^2 = 4.3636
+
+FTT: Bits 55 and 58: c^2 = 7.2743
+
+FTF: Bits 1 and 26: c^2 = 4.9676
+
+FTF: Bits 1 and 31: c^2 = 4.7577
+
+FTF: Bits 1 and 34: c^2 = 4.5371
+
+FTF: Bits 1 and 37: c^2 = 4.4786
+
+FTF: Bits 2 and 19: c^2 = 9.4286
+
+FTF: Bits 2 and 44: c^2 = 4.1640
+
+FTF: Bits 3 and 14: c^2 = 4.8490
+
+FTF: Bits 3 and 21: c^2 = 4.0697
+
+FTF: Bits 3 and 23: c^2 = 4.2998
+
+FTF: Bits 3 and 47: c^2 = 4.0697
+
+FTF: Bits 3 and 51: c^2 = 4.0697
+
+FTF: Bits 4 and 18: c^2 = 4.9500
+
+FTF: Bits 4 and 27: c^2 = 5.2148
+
+FTF: Bits 4 and 42: c^2 = 4.9107
+
+FTF: Bits 4 and 56: c^2 = 5.8870
+
+FTF: Bits 5 and 12: c^2 = 5.7750
+
+FTF: Bits 5 and 25: c^2 = 4.1026
+
+FTF: Bits 5 and 29: c^2 = 4.0697
+
+FTF: Bits 5 and 39: c^2 = 4.9107
+
+FTF: Bits 6 and 27: c^2 = 3.8553
+
+FTF: Bits 6 and 32: c^2 = 7.6788
+
+FTF: Bits 7 and 22: c^2 = 15.9844
+
+FTF: Bits 7 and 48: c^2 = 4.6406
+
+FTF: Bits 8 and 11: c^2 = 4.8490
+
+FTF: Bits 8 and 12: c^2 = 5.7750
+
+FTF: Bits 8 and 25: c^2 = 4.1026
+
+FTF: Bits 9 and 14: c^2 = 4.3095
+
+FTF: Bits 9 and 46: c^2 = 5.6293
+
+FTF: Bits 9 and 47: c^2 = 5.1923
+
+FTF: Bits 10 and 19: c^2 = 6.1875
+
+FTF: Bits 10 and 36: c^2 = 4.9107
+
+FTF: Bits 10 and 50: c^2 = 8.2598
+
+FTF: Bits 11 and 13: c^2 = 6.3032
+
+FTF: Bits 11 and 35: c^2 = 4.1905
+
+FTF: Bits 11 and 51: c^2 = 4.0797
+
+FTF: Bits 11 and 58: c^2 = 4.3095
+
+FTF: Bits 12 and 29: c^2 = 4.0615
+
+FTF: Bits 12 and 46: c^2 = 6.3462
+
+FTF: Bits 12 and 59: c^2 = 3.8824
+
+FTF: Bits 13 and 43: c^2 = 8.6207
+
+FTF: Bits 14 and 41: c^2 = 3.9332
+
+FTF: Bits 16 and 28: c^2 = 4.4667
+
+FTF: Bits 16 and 53: c^2 = 5.4035
+
+FTF: Bits 17 and 36: c^2 = 5.3036
+
+FTF: Bits 17 and 44: c^2 = 3.8824
+
+FTF: Bits 17 and 46: c^2 = 4.0615
+
+FTF: Bits 17 and 52: c^2 = 4.2581
+
+FTF: Bits 17 and 54: c^2 = 4.3636
+
+FTF: Bits 17 and 61: c^2 = 6.8182
+
+FTF: Bits 18 and 46: c^2 = 4.0615
+
+FTF: Bits 18 and 58: c^2 = 8.6804
+
+FTF: Bits 19 and 47: c^2 = 4.0615
+
+FTF: Bits 19 and 52: c^2 = 4.2581
+
+FTF: Bits 19 and 58: c^2 = 4.5913
+
+FTF: Bits 20 and 37: c^2 = 6.8121
+
+FTF: Bits 20 and 39: c^2 = 7.0714
+
+FTF: Bits 20 and 42: c^2 = 9.2198
+
+FTF: Bits 20 and 55: c^2 = 4.9107
+
+FTF: Bits 21 and 25: c^2 = 6.8640
+
+FTF: Bits 21 and 27: c^2 = 4.1462
+
+FTF: Bits 21 and 38: c^2 = 5.0769
+
+FTF: Bits 21 and 40: c^2 = 5.1789
+
+FTF: Bits 21 and 53: c^2 = 4.7667
+
+FTF: Bits 25 and 57: c^2 = 4.1026
+
+FTF: Bits 26 and 43: c^2 = 5.2148
+
+FTF: Bits 26 and 46: c^2 = 3.8553
+
+FTF: Bits 27 and 32: c^2 = 6.1875
+
+FTF: Bits 28 and 43: c^2 = 6.9061
+
+FTF: Bits 33 and 59: c^2 = 4.2840
+
+FTF: Bits 34 and 38: c^2 = 5.7750
+
+FTF: Bits 34 and 44: c^2 = 4.1640
+
+FTF: Bits 34 and 60: c^2 = 4.0797
+
+FTF: Bits 35 and 46: c^2 = 5.9301
+
+FTF: Bits 36 and 47: c^2 = 4.0797
+
+FTF: Bits 37 and 57: c^2 = 6.8121
+
+FTF: Bits 39 and 55: c^2 = 3.9152
+
+FTF: Bits 39 and 56: c^2 = 5.8870
+
+FTF: Bits 40 and 49: c^2 = 4.0615
+
+FTF: Bits 42 and 44: c^2 = 5.5462
+
+FTF: Bits 43 and 51: c^2 = 4.8908
+
+FTF: Bits 44 and 49: c^2 = 6.0662
+
+FTF: Bits 44 and 61: c^2 = 3.8824
+
+FTF: Bits 46 and 53: c^2 = 4.7667
+
+FTF: Bits 46 and 61: c^2 = 4.0615
+
+FTF: Bits 47 and 57: c^2 = 4.0697
+
+FTF: Bits 49 and 52: c^2 = 4.2581
+
+FTF: Bits 52 and 61: c^2 = 4.2581
+
+FTF: Bits 54 and 61: c^2 = 4.3636
+
+FTF: Bits 55 and 58: c^2 = 7.2743
+
+FFT: Bits 1 and 26: c^2 = 4.9676
+
+FFT: Bits 1 and 31: c^2 = 4.7577
+
+FFT: Bits 1 and 34: c^2 = 4.5371
+
+FFT: Bits 1 and 37: c^2 = 4.4786
+
+FFT: Bits 2 and 19: c^2 = 9.4286
+
+FFT: Bits 2 and 42: c^2 = 4.8490
+
+FFT: Bits 3 and 21: c^2 = 4.0697
+
+FFT: Bits 3 and 23: c^2 = 4.2998
+
+FFT: Bits 3 and 47: c^2 = 4.0697
+
+FFT: Bits 3 and 51: c^2 = 4.0697
+
+FFT: Bits 4 and 18: c^2 = 4.9500
+
+FFT: Bits 4 and 27: c^2 = 5.2148
+
+FFT: Bits 4 and 42: c^2 = 4.9107
+
+FFT: Bits 4 and 56: c^2 = 5.8870
+
+FFT: Bits 5 and 12: c^2 = 4.1026
+
+FFT: Bits 5 and 25: c^2 = 4.1026
+
+FFT: Bits 5 and 39: c^2 = 4.9107
+
+FFT: Bits 6 and 27: c^2 = 7.6365
+
+FFT: Bits 6 and 32: c^2 = 7.6788
+
+FFT: Bits 7 and 22: c^2 = 15.9844
+
+FFT: Bits 7 and 48: c^2 = 4.6406
+
+FFT: Bits 8 and 11: c^2 = 4.8490
+
+FFT: Bits 8 and 25: c^2 = 4.1026
+
+FFT: Bits 9 and 12: c^2 = 4.5913
+
+FFT: Bits 9 and 46: c^2 = 5.6293
+
+FFT: Bits 9 and 47: c^2 = 5.1923
+
+FFT: Bits 10 and 19: c^2 = 6.1875
+
+FFT: Bits 10 and 36: c^2 = 4.9107
+
+FFT: Bits 10 and 50: c^2 = 8.2598
+
+FFT: Bits 11 and 35: c^2 = 4.1905
+
+FFT: Bits 11 and 51: c^2 = 4.0797
+
+FFT: Bits 12 and 24: c^2 = 5.1832
+
+FFT: Bits 13 and 16: c^2 = 6.1755
+
+FFT: Bits 13 and 19: c^2 = 4.5913
+
+FFT: Bits 13 and 27: c^2 = 7.7478
+
+FFT: Bits 14 and 52: c^2 = 4.8968
+
+FFT: Bits 16 and 53: c^2 = 5.4035
+
+FFT: Bits 16 and 59: c^2 = 6.3104
+
+FFT: Bits 17 and 36: c^2 = 5.3036
+
+FFT: Bits 17 and 46: c^2 = 4.0615
+
+FFT: Bits 17 and 52: c^2 = 4.2581
+
+FFT: Bits 17 and 54: c^2 = 4.3636
+
+FFT: Bits 17 and 61: c^2 = 6.8182
+
+FFT: Bits 18 and 46: c^2 = 4.0615
+
+FFT: Bits 19 and 47: c^2 = 4.0615
+
+FFT: Bits 19 and 52: c^2 = 4.2581
+
+FFT: Bits 20 and 37: c^2 = 6.8121
+
+FFT: Bits 20 and 39: c^2 = 7.0714
+
+FFT: Bits 20 and 55: c^2 = 4.9107
+
+FFT: Bits 21 and 25: c^2 = 6.8640
+
+FFT: Bits 21 and 27: c^2 = 8.0437
+
+FFT: Bits 21 and 38: c^2 = 5.0769
+
+FFT: Bits 21 and 40: c^2 = 5.1789
+
+FFT: Bits 21 and 43: c^2 = 5.8747
+
+FFT: Bits 21 and 53: c^2 = 4.7667
+
+FFT: Bits 21 and 57: c^2 = 4.1462
+
+FFT: Bits 25 and 29: c^2 = 4.6255
+
+FFT: Bits 26 and 28: c^2 = 3.8553
+
+FFT: Bits 26 and 46: c^2 = 3.8553
+
+FFT: Bits 27 and 32: c^2 = 6.1875
+
+FFT: Bits 27 and 40: c^2 = 3.8553
+
+FFT: Bits 28 and 39: c^2 = 4.8908
+
+FFT: Bits 28 and 48: c^2 = 5.9301
+
+FFT: Bits 29 and 51: c^2 = 4.3323
+
+FFT: Bits 33 and 43: c^2 = 7.9655
+
+FFT: Bits 34 and 38: c^2 = 5.7750
+
+FFT: Bits 34 and 44: c^2 = 6.6393
+
+FFT: Bits 34 and 60: c^2 = 4.0797
+
+FFT: Bits 35 and 46: c^2 = 5.9301
+
+FFT: Bits 36 and 42: c^2 = 4.8490
+
+FFT: Bits 36 and 47: c^2 = 4.0797
+
+FFT: Bits 37 and 58: c^2 = 4.0797
+
+FFT: Bits 38 and 43: c^2 = 5.7750
+
+FFT: Bits 38 and 44: c^2 = 3.9600
+
+FFT: Bits 39 and 55: c^2 = 3.9152
+
+FFT: Bits 39 and 56: c^2 = 5.8870
+
+FFT: Bits 40 and 49: c^2 = 4.0615
+
+FFT: Bits 40 and 58: c^2 = 5.7750
+
+FFT: Bits 42 and 58: c^2 = 5.3049
+
+FFT: Bits 43 and 59: c^2 = 5.8747
+
+FFT: Bits 43 and 61: c^2 = 5.3036
+
+FFT: Bits 44 and 49: c^2 = 4.9500
+
+FFT: Bits 44 and 60: c^2 = 4.3323
+
+FFT: Bits 44 and 61: c^2 = 8.8000
+
+FFT: Bits 46 and 53: c^2 = 4.7667
+
+FFT: Bits 46 and 61: c^2 = 4.0615
+
+FFT: Bits 49 and 52: c^2 = 4.2581
+
+FFT: Bits 51 and 57: c^2 = 4.1462
+
+FFT: Bits 52 and 61: c^2 = 4.2581
+
+FFT: Bits 53 and 57: c^2 = 11.6196
+
+FFT: Bits 54 and 61: c^2 = 4.3636
+
+FFT: Bits 58 and 62: c^2 = 5.8082
+
+FFF: Bits 1 and 26: c^2 = 4.9676
+
+FFF: Bits 1 and 31: c^2 = 4.7577
+
+FFF: Bits 1 and 34: c^2 = 4.5371
+
+FFF: Bits 1 and 37: c^2 = 4.4786
+
+FFF: Bits 2 and 19: c^2 = 9.4286
+
+FFF: Bits 2 and 42: c^2 = 4.8490
+
+FFF: Bits 2 and 44: c^2 = 4.1640
+
+FFF: Bits 3 and 14: c^2 = 4.8490
+
+FFF: Bits 3 and 21: c^2 = 4.0697
+
+FFF: Bits 3 and 23: c^2 = 4.2998
+
+FFF: Bits 3 and 47: c^2 = 4.0697
+
+FFF: Bits 3 and 51: c^2 = 4.0697
+
+FFF: Bits 4 and 18: c^2 = 4.9500
+
+FFF: Bits 4 and 27: c^2 = 5.2148
+
+FFF: Bits 4 and 42: c^2 = 4.9107
+
+FFF: Bits 4 and 56: c^2 = 5.8870
+
+FFF: Bits 5 and 12: c^2 = 4.1026
+
+FFF: Bits 5 and 25: c^2 = 4.1026
+
+FFF: Bits 5 and 29: c^2 = 4.0697
+
+FFF: Bits 5 and 39: c^2 = 4.9107
+
+FFF: Bits 6 and 27: c^2 = 7.6365
+
+FFF: Bits 6 and 32: c^2 = 7.6788
+
+FFF: Bits 7 and 22: c^2 = 15.9844
+
+FFF: Bits 7 and 48: c^2 = 4.6406
+
+FFF: Bits 8 and 11: c^2 = 4.8490
+
+FFF: Bits 8 and 25: c^2 = 4.1026
+
+FFF: Bits 9 and 12: c^2 = 4.5913
+
+FFF: Bits 9 and 14: c^2 = 4.3095
+
+FFF: Bits 9 and 46: c^2 = 5.6293
+
+FFF: Bits 9 and 47: c^2 = 5.1923
+
+FFF: Bits 10 and 19: c^2 = 6.1875
+
+FFF: Bits 10 and 36: c^2 = 4.9107
+
+FFF: Bits 10 and 50: c^2 = 8.2598
+
+FFF: Bits 11 and 35: c^2 = 4.1905
+
+FFF: Bits 11 and 51: c^2 = 4.0797
+
+FFF: Bits 12 and 24: c^2 = 5.1832
+
+FFF: Bits 13 and 16: c^2 = 6.1755
+
+FFF: Bits 13 and 19: c^2 = 4.5913
+
+FFF: Bits 13 and 27: c^2 = 7.7478
+
+FFF: Bits 14 and 41: c^2 = 3.9332
+
+FFF: Bits 16 and 53: c^2 = 5.4035
+
+FFF: Bits 17 and 36: c^2 = 5.3036
+
+FFF: Bits 17 and 44: c^2 = 3.8824
+
+FFF: Bits 17 and 46: c^2 = 4.0615
+
+FFF: Bits 17 and 52: c^2 = 4.2581
+
+FFF: Bits 17 and 54: c^2 = 4.3636
+
+FFF: Bits 17 and 61: c^2 = 6.8182
+
+FFF: Bits 18 and 46: c^2 = 4.0615
+
+FFF: Bits 19 and 47: c^2 = 4.0615
+
+FFF: Bits 19 and 52: c^2 = 4.2581
+
+FFF: Bits 20 and 37: c^2 = 6.8121
+
+FFF: Bits 20 and 39: c^2 = 7.0714
+
+FFF: Bits 20 and 55: c^2 = 4.9107
+
+FFF: Bits 21 and 25: c^2 = 6.8640
+
+FFF: Bits 21 and 27: c^2 = 8.0437
+
+FFF: Bits 21 and 38: c^2 = 5.0769
+
+FFF: Bits 21 and 40: c^2 = 5.1789
+
+FFF: Bits 21 and 43: c^2 = 5.8747
+
+FFF: Bits 21 and 53: c^2 = 4.7667
+
+FFF: Bits 21 and 57: c^2 = 4.1462
+
+FFF: Bits 26 and 28: c^2 = 3.8553
+
+FFF: Bits 26 and 46: c^2 = 3.8553
+
+FFF: Bits 27 and 32: c^2 = 6.1875
+
+FFF: Bits 27 and 40: c^2 = 3.8553
+
+FFF: Bits 28 and 29: c^2 = 5.1789
+
+FFF: Bits 28 and 39: c^2 = 4.8908
+
+FFF: Bits 28 and 48: c^2 = 5.9301
+
+FFF: Bits 33 and 43: c^2 = 7.9655
+
+FFF: Bits 33 and 59: c^2 = 4.2840
+
+FFF: Bits 34 and 38: c^2 = 5.7750
+
+FFF: Bits 34 and 44: c^2 = 4.1640
+
+FFF: Bits 34 and 60: c^2 = 4.0797
+
+FFF: Bits 35 and 46: c^2 = 5.9301
+
+FFF: Bits 36 and 42: c^2 = 4.8490
+
+FFF: Bits 36 and 47: c^2 = 4.0797
+
+FFF: Bits 37 and 58: c^2 = 4.0797
+
+FFF: Bits 38 and 43: c^2 = 5.7750
+
+FFF: Bits 39 and 55: c^2 = 3.9152
+
+FFF: Bits 39 and 56: c^2 = 5.8870
+
+FFF: Bits 40 and 49: c^2 = 4.0615
+
+FFF: Bits 40 and 58: c^2 = 5.7750
+
+FFF: Bits 42 and 58: c^2 = 5.3049
+
+FFF: Bits 43 and 61: c^2 = 5.3036
+
+FFF: Bits 44 and 49: c^2 = 6.0662
+
+FFF: Bits 44 and 61: c^2 = 3.8824
+
+FFF: Bits 46 and 53: c^2 = 4.7667
+
+FFF: Bits 46 and 61: c^2 = 4.0615
+
+FFF: Bits 49 and 52: c^2 = 4.2581
+
+FFF: Bits 51 and 57: c^2 = 4.1462
+
+FFF: Bits 52 and 61: c^2 = 4.2581
+
+FFF: Bits 53 and 57: c^2 = 11.6196
+
+FFF: Bits 54 and 61: c^2 = 4.3636
+
+FFF: Bits 58 and 62: c^2 = 5.8082
+

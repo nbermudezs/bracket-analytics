@@ -1,0 +1,246 @@
+./Python/testPairsRegionPooled.py AllPairsRegionPooled.txt
+Summary:
+TTT: count = 9
+TTF: count = 10
+TFT: count = 6
+TFF: count = 7
+FTT: count = 6
+FTF: count = 7
+FFT: count = 4
+FFF: count = 5
+Total = 54
+
+Expected # if all independent:
+105 * 0.05 = 5.25
+
+
+TTT: Bits 1 and 8: c^2 = 3.8419
+
+TTT: Bits 1 and 9: c^2 = 5.9145
+
+TTT: Bits 1 and 13: c^2 = 7.8750
+
+TTT: Bits 3 and 9: c^2 = 11.0622
+
+TTT: Bits 5 and 10: c^2 = 18.9774
+
+TTT: Bits 7 and 11: c^2 = 9.6234
+
+TTT: Bits 8 and 12: c^2 = 5.5972
+
+TTT: Bits 9 and 12: c^2 = 4.8903
+
+TTT: Bits 11 and 13: c^2 = 15.6775
+
+
+
+TTT Summary
+---------------
+Expected:
+1, 8
+3, 9
+5, 10
+7, 11
+8, 12
+9, 12
+11, 13
+
+Unexpected:
+1, 9
+1, 13
+
+
+
+TTF: Bits 1 and 8: c^2 = 3.8419
+
+TTF: Bits 1 and 9: c^2 = 5.9145
+
+TTF: Bits 1 and 13: c^2 = 7.8750
+
+TTF: Bits 3 and 9: c^2 = 11.0622
+
+TTF: Bits 5 and 10: c^2 = 18.9774
+
+TTF: Bits 7 and 11: c^2 = 9.6234
+
+TTF: Bits 8 and 12: c^2 = 5.5972
+
+TTF: Bits 9 and 12: c^2 = 4.8903
+
+TTF: Bits 11 and 13: c^2 = 15.6775
+
+TTF: Bits 11 and 14: c^2 = 3.9404
+
+
+TTF Summary
+---------------
+Expected:
+1, 8
+3, 9
+5, 10
+7, 11
+8, 12
+9, 12
+11, 13
+11, 14
+
+Unexpected:
+1, 9
+1, 13
+
+
+
+TFT: Bits 1 and 8: c^2 = 3.8419
+
+TFT: Bits 1 and 9: c^2 = 5.9145
+
+TFT: Bits 3 and 9: c^2 = 11.0622
+
+TFT: Bits 5 and 10: c^2 = 18.9774
+
+TFT: Bits 7 and 11: c^2 = 9.6234
+
+TFT: Bits 8 and 12: c^2 = 8.1544
+
+
+TFT Summary
+---------------
+Expected:
+1, 8
+3, 9
+5, 10
+7, 11
+8, 12
+
+Unexpected:
+1, 9
+
+
+
+TFF: Bits 1 and 8: c^2 = 3.8419
+
+TFF: Bits 1 and 9: c^2 = 5.9145
+
+TFF: Bits 3 and 9: c^2 = 11.0622
+
+TFF: Bits 5 and 10: c^2 = 18.9774
+
+TFF: Bits 7 and 11: c^2 = 9.6234
+
+TFF: Bits 8 and 12: c^2 = 8.1544
+
+TFF: Bits 11 and 14: c^2 = 3.9404
+
+
+TFF Summary
+---------------
+Expected:
+1, 8
+3, 9
+5, 10
+7, 11
+8, 12
+11, 14
+
+Unexpected:
+1, 9
+
+
+FTT: Bits 1 and 8: c^2 = 3.8419
+
+FTT: Bits 1 and 13: c^2 = 7.8750
+
+FTT: Bits 5 and 10: c^2 = 6.7080
+
+FTT: Bits 8 and 12: c^2 = 5.5972
+
+FTT: Bits 9 and 12: c^2 = 9.4120
+
+FTT: Bits 11 and 13: c^2 = 18.0225
+
+
+FTT Summary
+---------------
+Expected:
+1, 8
+5, 10
+8, 12
+9, 12
+11, 13
+
+Unexpected:
+1, 13
+
+
+FTF: Bits 1 and 8: c^2 = 3.8419
+
+FTF: Bits 1 and 13: c^2 = 7.8750
+
+FTF: Bits 5 and 10: c^2 = 6.7080
+
+FTF: Bits 8 and 12: c^2 = 5.5972
+
+FTF: Bits 9 and 12: c^2 = 9.4120
+
+FTF: Bits 9 and 14: c^2 = 4.5730
+
+FTF: Bits 11 and 13: c^2 = 18.0225
+
+
+FTF Summary
+---------------
+Expected:
+1, 8
+5, 10
+8, 12
+9, 12
+9, 14
+11, 13
+
+Unexpected:
+1, 13
+
+
+FFT: Bits 1 and 8: c^2 = 3.8419
+
+FFT: Bits 5 and 10: c^2 = 6.7080
+
+FFT: Bits 8 and 12: c^2 = 8.1544
+
+FFT: Bits 9 and 12: c^2 = 7.6490
+
+
+FFT Summary
+---------------
+Expected:
+1, 8
+5, 10
+8, 12
+9, 12
+
+Unexpected:
+None
+
+
+FFF: Bits 1 and 8: c^2 = 3.8419
+
+FFF: Bits 5 and 10: c^2 = 6.7080
+
+FFF: Bits 8 and 12: c^2 = 8.1544
+
+FFF: Bits 9 and 12: c^2 = 7.6490
+
+FFF: Bits 9 and 14: c^2 = 4.5730
+
+
+FFF Summary
+---------------
+Expected:
+1, 8
+5, 10
+8, 12
+9, 12
+9, 14
+
+Unexpected:
+None
