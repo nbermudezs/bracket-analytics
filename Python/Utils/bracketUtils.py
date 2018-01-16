@@ -257,7 +257,7 @@ def countWinsPerRound(bracket):
 # This function runs a chi-squared test of independence for the
 # two given bit positions in every representation.
 
-def testPairwiseIndependence(pos1, pos2, outputFile):
+def testPairwiseIndependenceAllFormats(pos1, pos2, outputFile):
 	import json
 	from bracketClassDefinitions import Bracket
 	from bracketClassDefinitions import Region
@@ -324,6 +324,92 @@ def testPairwiseIndependence(pos1, pos2, outputFile):
 			print '--------------------------'
 			print 'Total | {:<3} | {:<3} || {:<3}\n'.format(colSums[0], colSums[1], numBrackets * 4)
 			print chiSquareLine
+
+
+# This function runs a chi-squared test of independence for the
+# two given bit positions in the given representation. It returns
+# 1 if the test indicates significant dependence, and 0 otherwise.
+#
+# If isPooled = True, then the positions are treated as positions
+# within the region and are pooled across all four regions.
+# In this case, pos1 and pos2 should be between 0 and 14, inclusive. 
+
+def testPairwiseIndependence(pos1, pos2, formatType, outputFile, isPooled=False):
+	import json
+	from bracketClassDefinitions import Bracket
+	from bracketClassDefinitions import Region
+	from bracketClassDefinitions import buildBracketFromJson
+
+	DEBUG = False
+	patterns = ['00', '01', '10', '11']
+	patternFreqs = [0 for i in range(4)]
+	filename = 'Brackets/{0}/allBrackets{0}.json'.format(formatType)
+	with open(filename, 'r') as inputFile:
+		jsonData = inputFile.read().replace('\n', '')
+	jsonToPython = json.loads(jsonData)
+	bracketList = jsonToPython['brackets']
+	numBrackets = len(bracketList)
+
+	for i in range(numBrackets):
+		bracketDict = bracketList[i]['bracket']
+		bracket = buildBracketFromJson(bracketDict)
+
+		nRegions = 1
+		if isPooled:
+			nRegions = 4
+
+		for region in range(nRegions):
+			offset = region * 15
+			pos1Result = int(bracket.fullVector[pos1 + offset])
+			pos2Result = int(bracket.fullVector[pos2 + offset])
+			index = pos1Result * 2 + pos2Result
+			patternFreqs[index] = patternFreqs[index] + 1
+
+	rowSums = [patternFreqs[0] + patternFreqs[1], patternFreqs[2] + patternFreqs[3]]
+	colSums = [patternFreqs[0] + patternFreqs[2], patternFreqs[1] + patternFreqs[3]]
+
+	# The chi-square critical value for 1 degree of freedom and alpha = 0.05
+	# is 3.841. (Source: http://www.itl.nist.gov/div898/handbook/eda/section3/eda3674.htm)
+	# We print the result only if it is deemed significant.
+
+	isSignificant = 0
+	chiSquare = 0
+	nObservations = numBrackets * nRegions
+
+	for r in range(len(rowSums)):
+		for c in range(len(colSums)):
+			expFreq = rowSums[r] * colSums[c] * 1.0 / nObservations
+
+			if expFreq > 0:
+				obsFreq = patternFreqs[2 * r + c] * 1.0
+				chiSquare += (obsFreq - expFreq) ** 2 / expFreq
+			else:
+				if DEBUG:
+					print '{0}: Game {1} (left) vs. Game {2} (top)'.format(formatType, pos1, pos2)
+					print 'Cannot perform chi-square test of independence: expected frequency is 0.'
+				return isSignificant
+
+	header = '{0}: Bits {1} and {2}'.format(formatType, pos1, pos2)
+	chiSquareLine = 'c^2 = {:<6.4f}\n\n'.format(chiSquare)
+
+	if chiSquare >= 3.841:
+		# outputFile.write('{0}: {1}'.format(header, chiSquareLine))
+		outputFile.write('{0:02d} {1:02d} --- {2:>7.4f}\n'.format(pos1, pos2, chiSquare))
+		isSignificant = 1
+
+	if DEBUG:
+		print header
+		print '      |  0  |  1  || Total'
+		print '--------------------------'
+		print '   0  | {:<3} | {:<3} || {:<3}'.format(patternFreqs[0], patternFreqs[1], rowSums[0])
+		print '--------------------------'
+		print '   1  | {:<3} | {:<3} || {:<3}'.format(patternFreqs[2], patternFreqs[3], rowSums[1])
+		print '--------------------------'
+		print '--------------------------'
+		print 'Total | {:<3} | {:<3} || {:<3}\n'.format(colSums[0], colSums[1], numBrackets * 4)
+		print chiSquareLine
+
+	return isSignificant
 
 
 # This function performs a chi-square goodness-of-fit (GOF)

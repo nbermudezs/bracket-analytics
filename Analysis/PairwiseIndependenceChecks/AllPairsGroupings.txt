@@ -1,0 +1,32 @@
+There are 1770 (60 choose 2) total pairs of bits if we
+exclude the final four.
+
+
+Each region has (8 * 3) + (4 * 2) + (2 * 1) = 34 direct pairs, 
+so there are 4 * 34 = 136 total direct pairs.
+
+
+There are (15 choose 2) - 34 = 71 indirect pairs within a given
+region, so there are 4 * 71 = 284 total indirect pairs. 
+Alternative computation: 
+7 + 6 + 5 + 4 + 3 + 2 + 1  (1st round)
++ (8 * 3)  		(1st round to 2nd)
++ 8				(1st round to 3rd)
++ 3 + 2 + 1 	(2nd round)
++ (4 * 1) 		(2nd to 3rd)
++ 1 			(3rd round)
+
+
+There are 6 (4 choose 2) ways to pick two regions, and there are
+15 positions per region, so there are a total of 90 pairs in the
+category of different region, same position.
+
+The remaining pairs all fall in the category of different region,
+different position. There are:
+1770 - (136 + 284 + 90) = 1260 such pairs. 
+
+Summary:
+totalSD = 136
+totalSI = 284
+totalDS = 90
+totalDD = 1260
