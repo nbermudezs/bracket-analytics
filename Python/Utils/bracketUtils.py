@@ -322,7 +322,7 @@ def testPairwiseIndependenceAllFormats(pos1, pos2, outputFile):
 			print '   1  | {:<3} | {:<3} || {:<3}'.format(patternFreqs[2], patternFreqs[3], rowSums[1])
 			print '--------------------------'
 			print '--------------------------'
-			print 'Total | {:<3} | {:<3} || {:<3}\n'.format(colSums[0], colSums[1], numBrackets * 4)
+			print 'Total | {:<3} | {:<3} || {:<3}\n'.format(colSums[0], colSums[1], numBrackets)
 			print chiSquareLine
 
 

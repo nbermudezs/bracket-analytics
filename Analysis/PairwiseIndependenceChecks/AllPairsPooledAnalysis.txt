@@ -1,0 +1,34 @@
+All Pooled Pairwise Independence Tests - Analysis
+(./Python/summarizePairwiseTestsPooled.py Analysis/PairwiseIndependenceChecks/AllPairsPooledNoFinalFour.txt)
+TTT Summary:
+	   7 Direct                    (20.59%)
+	   2 Indirect                  ( 2.82%)
+
+TTF Summary:
+	   8 Direct                    (23.53%)
+	   2 Indirect                  ( 2.82%)
+
+TFT Summary:
+	   5 Direct                    (14.71%)
+	   1 Indirect                  ( 1.41%)
+
+TFF Summary:
+	   6 Direct                    (17.65%)
+	   1 Indirect                  ( 1.41%)
+
+FTT Summary:
+	   5 Direct                    (14.71%)
+	   1 Indirect                  ( 1.41%)
+
+FTF Summary:
+	   6 Direct                    (17.65%)
+	   1 Indirect                  ( 1.41%)
+
+FFT Summary:
+	   4 Direct                    (11.76%)
+	   0 Indirect                  ( 0.00%)
+
+FFF Summary:
+	   5 Direct                    (14.71%)
+	   0 Indirect                  ( 0.00%)
+
