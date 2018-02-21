@@ -74,7 +74,8 @@ def testPairwiseIndependence(pos1, pos2, formatType, isPooled=False):
 
 	if chiSquare >= 3.841:
 		isSignificant = 1
-		print summaryString
+
+	print summaryString
 
 	return isSignificant
 
