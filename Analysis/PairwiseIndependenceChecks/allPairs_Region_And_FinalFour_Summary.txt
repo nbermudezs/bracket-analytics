@@ -1,7 +1,7 @@
 Summary of Pairwise Independence Test Results
 ----------------------------------------------------------------------
 Many of the detected "dependencies" in the test were irrelevant, as
-they were between games that could not possible affect one another. 
+they were between games that could not possibly affect one another. 
 For example, the 4 vs. 13 game in the first region (bit 3) and the 
 6/11 vs. 3/14 game in the first region (bit 10) had a chi-square 
 value of 4.3421, which meets the 3.841 cutoff for significance.
