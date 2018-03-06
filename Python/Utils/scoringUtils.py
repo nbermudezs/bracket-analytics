@@ -55,16 +55,16 @@ def scoreBracket(bracketVector, actualResultsVector, isPickFavorite = False):
 	if isPickFavorite:
 		finalFourVector = actualFinalFourVector
 
-	isCorrectFirstSemifinal = (finalFourVector[0] == actualFinalFourVector[0]) and (finalFourVector[0] == 1 and (regionWinners[0] == actualRegionWinners[0])) or (finalFourVector[0] == 0 and (regionWinners[1] == actualRegionWinners[1]))
+	isCorrectFirstSemifinal = (finalFourVector[0] == actualFinalFourVector[0]) and ((finalFourVector[0] == 1 and (regionWinners[0] == actualRegionWinners[0])) or (finalFourVector[0] == 0 and (regionWinners[1] == actualRegionWinners[1])))
 	if isCorrectFirstSemifinal:
 		roundScores[5] += 160
 
-	isCorrectSecondSemifinal = (finalFourVector[1] == actualFinalFourVector[1]) and (finalFourVector[1] == 1 and (regionWinners[2] == actualRegionWinners[2])) or (finalFourVector[1] == 0 and (regionWinners[3] == actualRegionWinners[3]))
+	isCorrectSecondSemifinal = (finalFourVector[1] == actualFinalFourVector[1]) and ((finalFourVector[1] == 1 and (regionWinners[2] == actualRegionWinners[2])) or (finalFourVector[1] == 0 and (regionWinners[3] == actualRegionWinners[3])))
 
 	if isCorrectSecondSemifinal:
 		roundScores[5] += 160
 
-	isCorrectChampion = (finalFourVector[2] == actualFinalFourVector[2]) and (finalFourVector[2] == 1 and isCorrectFirstSemifinal) or (finalFourVector[2] == 0 and isCorrectSecondSemifinal)
+	isCorrectChampion = (finalFourVector[2] == actualFinalFourVector[2]) and ((finalFourVector[2] == 1 and isCorrectFirstSemifinal) or (finalFourVector[2] == 0 and isCorrectSecondSemifinal))
 	if isCorrectChampion:
 		roundScores[6] += 320
 
