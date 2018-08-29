@@ -1,0 +1,46 @@
+{
+    "models": [
+    {
+        "modelDesc": "Reverse model for all Final Four; R1 matchup-specific, R2-R6 wt avg",
+        "modelName": "model15",
+        "isReverseModel": "True",
+        "isFFReverseModel": "True",
+        "r1ScalingPercent": "0",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    }]
+}
