@@ -1,0 +1,93 @@
+{
+    "models": [
+    {
+        "modelDesc": "Sample Final Four seeds (Model 1); R1 matchup-specific in groups, R2-R6 wt avg",
+        "modelName": "model16",
+        "isFinalFourSampleModel1": "True",
+        "isFinalFourSampleModel2": "False",
+        "isReverseModel": "False",
+        "isFFReverseModel": "False",
+        "r1ScalingPercent": "0",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    },
+    {
+        "modelDesc": "Sample Final Four seeds (Model 2); R1 matchup-specific in groups, R2-R6 wt avg",
+        "modelName": "model17",
+        "isFinalFourSampleModel1": "False",
+        "isFinalFourSampleModel2": "True",
+        "isReverseModel": "False",
+        "isFFReverseModel": "False",
+        "r1ScalingPercent": "0",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    }]
+}

@@ -1,0 +1,48 @@
+{
+    "models": [
+    {
+        "modelDesc": "R1 matchup-specific in groups, R2-R6 wt avg",
+        "modelName": "model19",
+        "isFinalFourSampleModel1": "False",
+        "isFinalFourSampleModel2": "False",
+        "isEliteEightSampleModel": "False",
+        "isReverseModel": "False",
+        "isFFReverseModel": "False",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    }]
+}

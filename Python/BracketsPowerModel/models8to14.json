@@ -1,0 +1,297 @@
+{
+    "models": [
+    {
+        "modelDesc": "Reverse model; R1 matchup-specific, R2-R6 wt avg; no R1 scaling",
+        "modelName": "model8",
+        "isReverseModel": "True",
+        "r1ScalingPercent": "0",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    },
+    {
+        "modelDesc": "Reverse model; R1 matchup-specific, R2-R6 wt avg; 5% R1 scaling",
+        "modelName": "model9",
+        "isReverseModel": "True",
+        "r1ScalingPercent": "5",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    },
+    {
+        "modelDesc": "Reverse model; R1 matchup-specific, R2-R6 wt avg; 10% R1 scaling",
+        "modelName": "model10",
+        "isReverseModel": "True",
+        "r1ScalingPercent": "10",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    },
+    {
+        "modelDesc": "Reverse model; R1 matchup-specific, R2-R6 wt avg; 15% R1 scaling",
+        "modelName": "model11",
+        "isReverseModel": "True",
+        "r1ScalingPercent": "15",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    },
+    {
+        "modelDesc": "Reverse model; R1 matchup-specific, R2-R6 wt avg; 20% R1 scaling",
+        "modelName": "model12",
+        "isReverseModel": "True",
+        "r1ScalingPercent": "20",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    },
+    {
+        "modelDesc": "Reverse model; R1 matchup-specific, R2-R6 wt avg; 25% R1 scaling",
+        "modelName": "model13",
+        "isReverseModel": "True",
+        "r1ScalingPercent": "25",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    },
+    {
+        "modelDesc": "Reverse model; R1 matchup-specific, R2-R6 wt avg; 30% R1 scaling",
+        "modelName": "model14",
+        "isReverseModel": "True",
+        "r1ScalingPercent": "30",
+        "round1":
+        {
+            "isMatchupSpecific": "True",
+            "isWeightedAverage": "False",
+            "fixedAlpha": 0
+        },
+        "round2":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round3":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round4":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round5":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        },
+        "round6":
+        {
+            "isMatchupSpecific": "False",
+            "isWeightedAverage": "True",
+            "fixedAlpha": 0
+        }
+    }]
+}

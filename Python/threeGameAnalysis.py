@@ -12,6 +12,8 @@ from Utils.bracketUtils import writeBracket
 # This script runs a chi-squared test of independence for the
 # first two game positions given vs. the third game position.
 
+
+
 formats = ['TTT', 'TTF', 'TFT', 'TFF', 'FTT', 'FTF', 'FFT', 'FFF']
 patterns = ['000', '001', '010', '011', '100', '101', '110', '111']
 

@@ -1,0 +1,89 @@
+{
+    "models": [
+    {
+        "modelDesc": "F4 Model 1, R1 grouped",
+        "modelName": "model20",
+        "isR1Grouped": "True",
+        "endModel": "F4_1"
+    },
+    {
+        "modelDesc": "F4 Model 1, R1 separate",
+        "modelName": "model21",
+        "isR1Grouped": "False",
+        "endModel": "F4_1"
+    },
+    {
+        "modelDesc": "F4 Model 2, R1 grouped",
+        "modelName": "model22",
+        "isR1Grouped": "True",
+        "endModel": "F4_2"
+    },
+    {
+        "modelDesc": "F4 Model 2, R1 separate",
+        "modelName": "model23",
+        "isR1Grouped": "False",
+        "endModel": "F4_2"
+    },
+    {
+        "modelDesc": "E8 Model, R1 grouped",
+        "modelName": "model24",
+        "isR1Grouped": "True",
+        "endModel": "E8"
+    },
+    {
+        "modelDesc": "E8 Model, R1 separate",
+        "modelName": "model25",
+        "isR1Grouped": "False",
+        "endModel": "E8"
+    },
+    {
+        "modelDesc": "Reverse Model (top 2), R1 grouped",
+        "modelName": "model26",
+        "isR1Grouped": "True",
+        "endModel": "Rev_2"
+    },
+    {
+        "modelDesc": "Reverse Model (top 2), R1 separate",
+        "modelName": "model27",
+        "isR1Grouped": "False",
+        "endModel": "Rev_2"
+    },
+    {
+        "modelDesc": "Reverse Model (top 4), R1 grouped",
+        "modelName": "model28",
+        "isR1Grouped": "True",
+        "endModel": "Rev_4"
+    },
+    {
+        "modelDesc": "Reverse Model (top 4), R1 separate",
+        "modelName": "model29",
+        "isR1Grouped": "False",
+        "endModel": "Rev_4"
+    },
+    {
+        "modelDesc": "Forward Model, R1 grouped",
+        "modelName": "model30",
+        "isR1Grouped": "True",
+        "endModel": "None"
+    },
+    {
+        "modelDesc": "Forward Model, R1 separate",
+        "modelName": "model31",
+        "isR1Grouped": "False",
+        "endModel": "None"
+    },
+    {
+        "modelDesc": "Forward Model, R1 grouped, weighted seeds",
+        "modelName": "model32",
+        "isR1Grouped": "True",
+        "isSeedWeighted": "True",
+        "endModel": "None"
+    },
+    {
+        "modelDesc": "Forward Model, R1 separate, weighted seeds",
+        "modelName": "model33",
+        "isR1Grouped": "False",
+        "isSeedWeighted": "True",
+        "endModel": "None"
+    }]
+}

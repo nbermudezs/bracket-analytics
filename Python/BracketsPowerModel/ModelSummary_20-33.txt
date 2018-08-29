@@ -1,0 +1,39 @@
+model 20: F4_1 with R1 grouped
+model 21: F4_1 with R1 separate
+model 22: F4_2 with R1 grouped
+model 23: F4_2 with R1 separate
+model 24: E8 with R1 grouped
+model 25: E8 with R1 separate
+model 26: Reverse model (top 2) with R1 grouped
+model 27: Reverse model (top 2) with R1 separate
+model 28: Reverse model (top 4) with R1 grouped
+model 29: Reverse model (top 4) with R1 separate
+model 30: Forward model with R1 grouped
+model 31: Forward model with R1 separate
+model 32: Forward model with R1 grouped, seed-weighted alpha values
+model 33: Forward model with R1 separate, seed-weighted alpha values
+
+
+"endModel": "F4_1"
+
+Options for endModel:
+F4_1
+F4_2
+E8
+Rev_2
+Rev_4 (uses F4 Model 1 to pick remaining F4 seeds)
+None
+
+
+Expand computational section, report all models we tried.
+- Explain finite number of adjustments, and explain how we combined them in the different models. 
+
+Add to slides: what it takes to be able to report some of the power model results (the ones that produced good results).
+
+Alternative test when 0 in a conting. table?
+http://www.physics.csbsju.edu/stats/contingency.problem.html
+
+Perhaps generate 1-seed and 2-seed paths as single entity
+
+Same analyses, pooled across regions
+
