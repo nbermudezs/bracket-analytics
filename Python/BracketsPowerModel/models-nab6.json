@@ -1,0 +1,408 @@
+{
+    "models": [
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model110",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "model111",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "model112",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_2",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model113",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_2",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "model114",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "model115",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "model116",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_2",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "model117",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_2",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model120",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_1",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "model121",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_1",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "model122",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_2",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model123",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_2",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "model124",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_1",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "model125",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_2",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "model126",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_1",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "model127",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_2",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model10",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "model11",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_4",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "model12",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_2",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model13",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_2",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "model14",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "model15",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_4",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "model16",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_2",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "model17",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_2",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model20",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_1",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "model21",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_1",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "model22",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_2",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model23",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_2",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "model24",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_1",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "model25",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_2",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "model26",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_1",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "model27",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_2",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "IID 5 Triplets/region. F4 triplet. Unpooled",
+          "modelName": "model00",
+          "generator": "IID_AllTriplets",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 IID. Unpooled",
+          "modelName": "model01",
+          "generator": "IID_2TripletsPerRegion",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "IID 5 Triplets/region. F4 triplet. Pooled",
+          "modelName": "model02",
+          "generator": "IID_AllTriplets",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 IID. Pooled",
+          "modelName": "model03",
+          "generator": "IID_2TripletsPerRegion",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 triplet. Unpooled",
+          "modelName": "model31",
+          "generator": "IID_2TripletsPerRegion_F4Triplet",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 triplet. Pooled",
+          "modelName": "model32",
+          "generator": "IID_2TripletsPerRegion_F4Triplet",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "All IID triplets. Unpooled",
+          "modelName": "model41",
+          "generator": "IID_AllTriplets",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "All IID triplets. Pooled",
+          "modelName": "model42",
+          "generator": "IID_AllTriplets",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "R1 bit IID, R2-R3 triplets, R4-R6 bit IID. Unpooled",
+          "modelName": "model43",
+          "generator": "IID_2TripletsPerRegion",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "R1 bit IID, R2-R3 triplets, R4-R6 bit IID. Pooled",
+          "modelName": "model44",
+          "generator": "IID_2TripletsPerRegion",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 triplet. Unpooled",
+          "modelName": "model45",
+          "generator": "IID_2TripletsPerRegion_F4Triplet",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 triplet. Pooled",
+          "modelName": "model46",
+          "generator": "IID_2TripletsPerRegion_F4Triplet",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "E8 with triplets",
+          "modelName": "model84",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "E8 with triplets",
+          "modelName": "model85",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "E8 with triplets",
+          "modelName": "model86",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "E8 with triplets",
+          "modelName": "model87",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "FFF"
+      }
+    ]
+}
