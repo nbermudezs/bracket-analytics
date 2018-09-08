@@ -6,7 +6,6 @@ __status__ = "Development"
 
 import numpy as np
 import sys; sys.path.append("..")
-import tensorflow as tf
 
 from triplets.Constant import UNPOOLED, POOLED, regions
 from triplets.priors.PriorDistributions import read_data
