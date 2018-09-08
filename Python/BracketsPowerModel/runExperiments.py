@@ -182,7 +182,7 @@ def generateBracket(model, year):
             f4Seeds[region] = seeds[0]
         bracket = bracket + [-1, -1, -1]
     elif generator == 'AllTripletsRev':
-		override_f4 = model.get('overrideF4', False)
+        override_f4 = model.get('overrideF4', False)
         bracket = AllTripletsRev.generateSingleBracket(
             fmt,
             year,
@@ -191,8 +191,8 @@ def generateBracket(model, year):
             ruRegion,
             is_pooled=pooled,
             override_f4=override_f4)
-		if override_f4:
-			return bracket
+        if override_f4:
+            return bracket
 
     # Round 5:
     for gameNum in range(2):
@@ -233,7 +233,7 @@ def generateBracket(model, year):
     else:
         bracket[-1] = 0
 
-	# assert len(bracket) == 63
+    # assert len(bracket) == 63
     # assert np.count_nonzero(np.array(bracket) == -1) == 0
     return bracket
 
