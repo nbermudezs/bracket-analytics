@@ -173,15 +173,16 @@ def generateBracket(model, year):
                         p = getP(s1, s2, model, year, roundNum)
 
                     if random.random() <= p:
-                        bracket.append(1)
+                        bracket.append(1 if fmt == 'TTT' else (1 if s1 < s2 else 0))
                         newSeeds.append(s1)
                     else:
-                        bracket.append(0)
+                        bracket.append(0 if fmt == 'TTT' else (1 if s2 < s1 else 0))
                         newSeeds.append(s2)
                 seeds = newSeeds
             f4Seeds[region] = seeds[0]
         bracket = bracket + [-1, -1, -1]
     elif generator == 'AllTripletsRev':
+		override_f4 = model.get('overrideF4', False)
         bracket = AllTripletsRev.generateSingleBracket(
             fmt,
             year,
@@ -189,7 +190,9 @@ def generateBracket(model, year):
             champRegion,
             ruRegion,
             is_pooled=pooled,
-            override_f4=model.get('overrideF4', False))
+            override_f4=override_f4)
+		if override_f4:
+			return bracket
 
     # Round 5:
     for gameNum in range(2):

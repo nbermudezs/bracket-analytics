@@ -51,7 +51,7 @@ def getTriplet(s1, s2, s1Wins, s2Wins, matchPosition, roundNum):
     if s2Wins:
         triplet[1] = 1
 
-def generate(data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, override_f4=False):
+def generate(fmt, data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, override_f4=False):
     regions_a = regions if pool_type == UNPOOLED else [0, 0, 0, 0]
 
     vector = -np.ones(63, dtype=int)
@@ -79,10 +79,10 @@ def generate(data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, override
                 s2Wins = s2 == f4Seeds[region]
 
                 if s1Wins:
-                    vector[matchPosition] = 1
+                    vector[matchPosition] = 1 if fmt == 'TTT' else (1 if s1 < s2 else 0)
                     newSeeds.append(s1)
                 elif s2Wins:
-                    vector[matchPosition] = 0
+                    vector[matchPosition] = 0 if fmt == 'TTT' else (1 if s2 < s1 else 0)
                     newSeeds.append(s2)
                 else:
                     newSeeds.append(dummy)
@@ -158,4 +158,4 @@ def generateSingleBracket(fmt, max_year, f4Seeds, champRegion, ruRegion, is_pool
             data = unpooled.astype(int)
         last_state = new_state
 
-    return generate(data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, override_f4).tolist()
+    return generate(fmt, data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, override_f4).tolist()
