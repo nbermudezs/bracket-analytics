@@ -15,6 +15,10 @@ from scoringUtils import applyRoundResults
 from scoringUtils import getActualBracketVector
 from scoringUtils import scoreBracket
 
+import triplets.generators.IID_AllTriplets as IID_AllTriplets
+import triplets.generators.IID_2TripletsPerRegion as IID_2TripletsPerRegion
+import triplets.generators.IID_2TripletsPerRegion_F4Triplet as IID_2TripletsPerRegion_F4Triplet
+
 ######################################################################
 # Author:
 #     Ian Ludden
@@ -25,38 +29,38 @@ from scoringUtils import scoreBracket
 # Last modified:
 #     16 Apr 2018
 #
-# This general version handles all parameters previously implemented 
-# separately in runExperimentsFixedAlpha.py, 
-# runExperimentsSampleF4.py, and runExperimentsSampleE8.py. 
-# 
+# This general version handles all parameters previously implemented
+# separately in runExperimentsFixedAlpha.py,
+# runExperimentsSampleF4.py, and runExperimentsSampleE8.py.
+#
 # Specifically, this version supports:
 # - "Forward" Power Model
 # - "Reverse" Power Model (generate champ and runner-up, then forward)
 # - "Reverse" Power Model with F4 (also generate other two F4 seeds)
-# - F4 Model 1, where F4 seeds are generated using "Model 1," 
+# - F4 Model 1, where F4 seeds are generated using "Model 1,"
 #   then power model is applied to games before and after
-# - F4 Model 2, where F4 seeds are generated using "Model 2," 
+# - F4 Model 2, where F4 seeds are generated using "Model 2,"
 #   then power model is applied to games before and after
-# - E8 Model, where E8 seeds are generated,  
+# - E8 Model, where E8 seeds are generated,
 #   then power model is applied to games before and after
-# 
+#
 # Also, the Round 1 alpha values are optionally grouped as:
 # (1, 16) alone
 # (2, 15) alone
-# (3, 14), (4, 13) 
+# (3, 14), (4, 13)
 # (5, 12), (6, 11), (7, 10)
 # (8, 9) alone and fixed at 0.5 probability (alpha = 0)
-# 
-# By default, all weighted alpha values are computed using the 
+#
+# By default, all weighted alpha values are computed using the
 # standard weighting (multiply each alpha by [# matchups]).
 #
 # If "isSeedWeighted" is set to "True", then the seed-weighted
-# average alpha values are used. 
+# average alpha values are used.
 #
 # This version no longer requires models to specify the alpha value
-# parameters for each round. Round 1 is always matchup-specific 
-# (with optional grouping), and Rounds 2-6 always use a 
-# weighted average. 
+# parameters for each round. Round 1 is always matchup-specific
+# (with optional grouping), and Rounds 2-6 always use a
+# weighted average.
 ######################################################################
 
 # Returns the estimated probability that s1 beats s2
@@ -69,8 +73,19 @@ def getP(s1, s2, model, year, roundNum):
 
 # This function generates a 63-element list of 0s and 1s
 # to represent game outcomes in a bracket. The model specifies
-# which alpha value(s) to use for each round. 
+# which alpha value(s) to use for each round.
 def generateBracket(model, year):
+	pooled = model.get('pooled', False)
+	generator = model.get('generator', 'None')
+	fmt = model.get('format', 'TTT')
+	
+	if generator == 'IID_AllTriplets':
+		return IID_AllTriplets.generateSingleBracket(fmt, year, is_pooled=pooled)
+	elif generator == 'IID_2TripletsPerRegion':
+		return IID_2TripletsPerRegion.generateSingleBracket(fmt, year, is_pooled=pooled)
+	elif generator == 'IID_2TripletsPerRegion_F4Triplet':
+		return IID_2TripletsPerRegion_F4Triplet.generateSingleBracket(fmt, year, is_pooled=pooled)
+
 	bracket = []
 
 	random.seed()
@@ -121,7 +136,7 @@ def generateBracket(model, year):
 
 		f4Seeds[champRegion] = champion
 		f4Seeds[ruRegion] = runnerUp
-	
+
 	if endModel == 'Rev_4':
 		f4Seeds[ffcRegion] = getF4SeedTogether(year)
 		f4Seeds[ffrRegion] = getF4SeedTogether(year)
@@ -198,12 +213,12 @@ def generateBracket(model, year):
 	return bracket
 
 
-# This function returns the alpha value to use for 
+# This function returns the alpha value to use for
 # predicting the outcome of a game in the given round
-# between the given seeds s1, s2. 
+# between the given seeds s1, s2.
 def getAlpha(s1, s2, model, year, roundNum):
 	# Round 1 grouped alpha values for predicting 2013-2019,
-	# where the first index is the better seed and the 
+	# where the first index is the better seed and the
 	# second index is [year - 2013]. The grouping is:
 	# 1, 2, 3-4, 5-7, 8
 	r1GroupedAlphas = [
@@ -229,8 +244,8 @@ def getAlpha(s1, s2, model, year, roundNum):
 		[0,0,0,0,0,0,0]]
 
 	# Round 1 separated alpha values for predicting 2013-2019,
-	# where the first index is the better seed and the 
-	# second index is [year - 2013]. 
+	# where the first index is the better seed and the
+	# second index is [year - 2013].
 	r1SeparateAlphas = [
 		[],
 		[2,2,2,2,2,2,1.7692038993],
@@ -243,7 +258,7 @@ def getAlpha(s1, s2, model, year, roundNum):
 		[0,0,0,0,0,0,0]]
 
 	# Rounds 2-6 weighted average alpha values for predicting
-	# 2013-2019, where the first index is [roundNum - 2] and 
+	# 2013-2019, where the first index is [roundNum - 2] and
 	# the second index is [year - 2013].
 	r2to6Alphas = [
 		[1.0960226368,1.0255184405,1.0280047853,1.0169015383,1.0085075325,1.0517190671,1.0349243918],
@@ -283,8 +298,8 @@ def getAlpha(s1, s2, model, year, roundNum):
 	return alpha
 
 
-# Unused: if we want to measure this later, we can. 
-# 
+# Unused: if we want to measure this later, we can.
+#
 # # This function computes how many picks a bracket
 # # got correct given the bracket's score vector.
 # def calcCorrectPicks(scoreVector):
@@ -325,12 +340,15 @@ def performExperiments(numTrials, year, batchNumber, model):
 
 
 ######################################################################
-# This script runs experiments with the given models, 
-# number of trials, and number of batches for 2013 through 2018. 
+# This script runs experiments with the given models,
+# number of trials, and number of batches for 2013 through 2018.
 ######################################################################
 
 # Load models
-modelFilename = 'models.json'
+if len(sys.argv) > 3:
+	modelFilename = sys.argv[3]
+else:
+	modelFilename = 'models.json'
 with open(modelFilename, 'r') as modelFile:
 	modelsDataJson = modelFile.read().replace('\n', '')
 
@@ -360,4 +378,3 @@ for modelDict in modelsList:
 
 		for year in range(2013, 2019):
 			performExperiments(numTrials, year, batchNumber, modelDict)
-
