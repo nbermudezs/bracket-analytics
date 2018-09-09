@@ -12,12 +12,18 @@ from triplets.Constant import UNPOOLED, POOLED, regions
 from triplets.priors.PriorDistributions import read_data
 from time import time
 
-triplets = [
-    np.array([0, 1, 8]),
-    np.array([2, 3, 9]),
-    np.array([4, 5, 10]),
-    np.array([6, 7, 11]),
-    np.array([12, 13, 14])
+bit_groups = [
+    np.array([8, 9, 12]),
+    np.array([10, 11, 13]),
+    np.array([0]),
+    np.array([1]),
+    np.array([2]),
+    np.array([3]),
+    np.array([4]),
+    np.array([5]),
+    np.array([6]),
+    np.array([7]),
+    np.array([14])
 ]
 
 cdf_cache = {}
@@ -88,20 +94,21 @@ def generate(fmt, data, unpooled, pool_type, e8Seeds, override_f4=True):
                     dummy -= 1
             seeds = newSeeds
 
-    for region_id, region in enumerate(regions_a):
-        for idx, triplet in enumerate(triplets):
-            bits = triplet + region * 15
-            vector_bits = triplet + region_id * 15
+    for region_idx, region in enumerate(regions_a):
+        for idx, bit_group in enumerate(bit_groups):
+            bits = bit_group + region * 15
+            vector_bits = bit_group + region_idx * 15
 
             if np.all(vector[vector_bits] == -1):
-                cdf = build_cdf(data, bits, idx + region * 5)
-
-                # not fixed bits on the triplet
+                bits = bit_group + region * 15
+                cdf = build_cdf(data, bits, idx + region * len(bit_groups))
                 rn = np.random.rand()
-                row = np.nonzero(cdf[:, 3] - rn > 0)[0][0]
-                values = cdf[row][:3]
-                vector[vector_bits] = values
+                row = np.nonzero(cdf[:, len(bits)] - rn > 0)[0][0]
+                values = cdf[row][:len(bits)]
+                vector[bit_group + region_idx * 15] = values
             else:
+                if vector_bits.size == 1:
+                    continue
                 key = hash(tuple(bits.tolist() + vector[vector_bits].tolist()))
                 tmp_data = data
                 others, vector_others = [], []
@@ -120,19 +127,17 @@ def generate(fmt, data, unpooled, pool_type, e8Seeds, override_f4=True):
                 row = np.nonzero(cdf[:, -1] - rn > 0)[0][0]
                 values = cdf[row][:-1]
                 vector[vector_others] = values
-                # either use conditional p or independent
 
     # import pdb; pdb.set_trace()
     f4Seeds = [-1, -1, -1, -1]
     if override_f4:
         triplet = np.array([60, 61, 62])
-        cdf = build_cdf(unpooled, triplet, 21)
+        cdf = build_cdf(unpooled, triplet, 'f4_triplet')
         rn = np.random.rand()
         row = np.nonzero(cdf[:, 3] - rn > 0)[0][0]
         values = cdf[row][:3]
         for i, bit_id in enumerate(triplet):
             vector[bit_id] = values[i]
-        # assert np.count_nonzero(vector == -1) == 0
     else:
         for region in range(4):
             regionOffset = region * 15
@@ -158,6 +163,7 @@ def generate(fmt, data, unpooled, pool_type, e8Seeds, override_f4=True):
                             newSeeds.append(max(s1, s2))
                 seeds = newSeeds
             f4Seeds[region] = seeds[0]
+    # assert np.count_nonzero(vector == -1) == 0
     return vector, f4Seeds
 
 
