@@ -3,14 +3,14 @@
 # This function takes in a list of seeds that competed
 # in a round within a region, listed from top to bottom
 # in the official bracket format. It also takes a list
-# of results, where a 1 (0) indicates the top (bottom) 
+# of results, where a 1 (0) indicates the top (bottom)
 # team won. It outputs a list of the seeds in the next
 # round, i.e., the winners of the given round.
 def applyRoundResults(seeds, results):
 	nGames = len(results)
 	return [seeds[2*i] * results[i] + seeds[2*i+1] * (1 - results[i]) for i in range(nGames)]
 
-# This function scores a bracket vector according to the 
+# This function scores a bracket vector according to the
 # ESPN Bracket Challenge scoring system. The isPickFavorite
 # flag indicates whether the bracket being scored is from the
 # Pick Favorite model, in which case we assume that it correctly
@@ -70,3 +70,26 @@ def scoreBracket(bracketVector, actualResultsVector, isPickFavorite = False):
 
 	roundScores[0] = sum(roundScores)
 	return roundScores
+
+def string_to_vector(vectStr):
+	return [int(c) for c in vectStr]
+
+if __name__ == '__main__':
+	import json
+	with open('../BracketsPowerModel/allBracketsFFF.json') as f:
+		brackets = json.load(f)['brackets']
+		data = [
+			(
+				int(x['bracket']['year']),
+				string_to_vector(x['bracket']['fullvector'])
+			)
+			for x in brackets]
+
+	with open('all-years-score-FFF.csv', 'w') as f:
+		f.write('year,' + ','.join([str(x) for x in range(1985, 2019)]) + '\n')
+		for ref_year, ref_vector in data:
+			f.write(str(ref_year))
+			for year, vector in data:
+				res = scoreBracket(vector, ref_vector)
+				f.write(',' + str(res[0]))
+			f.write('\n')
