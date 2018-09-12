@@ -7,6 +7,7 @@ __status__ = "Development"
 import numpy as np
 import sys; sys.path.append("..")
 
+from samplingUtils import addNoiseToCdf
 from triplets.Constant import UNPOOLED, POOLED, regions
 from triplets.priors.PriorDistributions import read_data
 from time import time
@@ -29,7 +30,7 @@ bit_groups = [
 cdf_cache = {}
 
 
-def build_cdf(data, bits, idx):
+def build_cdf(data, bits, idx, add_noise=False):
     if idx not in cdf_cache:
         group = data[bits].groupby(bits.tolist()).size().reset_index(name='count')
 
@@ -39,7 +40,9 @@ def build_cdf(data, bits, idx):
         group = group.apply(agg, axis=1)
         group['count'] = group['count'] / (1. * group['count'].values[-1])
         cdf_cache[idx] = group.values.astype(float)
-    return cdf_cache[idx]
+    if not add_noise:
+        return cdf_cache[idx]
+    return addNoiseToCdf(cdf_cache[idx])
 
 
 def generate(data, unpooled, pool_type):
@@ -72,7 +75,7 @@ unpooled, pooled = None, None
 data = None
 last_state = (None, None, None) # fmt, year, is_pooled
 
-def generateSingleBracket(fmt, max_year, is_pooled=False):
+def generateSingleBracket(fmt, max_year, is_pooled=False, model=None):
     global unpooled
     global pooled
     global data

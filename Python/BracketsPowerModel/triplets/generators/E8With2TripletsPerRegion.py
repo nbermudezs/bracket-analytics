@@ -8,6 +8,7 @@ import numpy as np
 import random
 import sys; sys.path.append("..")
 
+from samplingUtils import addNoiseToCdf
 from triplets.Constant import UNPOOLED, POOLED, regions
 from triplets.priors.PriorDistributions import read_data
 from time import time
@@ -29,7 +30,7 @@ bit_groups = [
 cdf_cache = {}
 
 
-def build_cdf(data, bits, idx):
+def build_cdf(data, bits, idx, add_noise=False):
     if idx not in cdf_cache:
         group = data[bits].groupby(bits.tolist()).size().reset_index(name='count')
 
@@ -42,7 +43,9 @@ def build_cdf(data, bits, idx):
         except IndexError:
             import pdb; pdb.set_trace()
         cdf_cache[idx] = group.values.astype(float)
-    return cdf_cache[idx]
+    if not add_noise:
+        return cdf_cache[idx]
+    return addNoiseToCdf(cdf_cache[idx])
 
 
 def getP(s1, s2, matchPosition, roundNum):
@@ -171,7 +174,7 @@ unpooled, pooled = None, None
 data = None
 last_state = (None, None, None) # fmt, year, is_pooled
 
-def generateSingleBracket(fmt, max_year, e8Seeds, is_pooled=False, override_f4=True):
+def generateSingleBracket(fmt, max_year, e8Seeds, is_pooled=False, override_f4=True, model=None):
     global unpooled
     global pooled
     global data

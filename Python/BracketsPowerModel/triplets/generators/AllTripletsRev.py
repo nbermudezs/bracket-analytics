@@ -8,6 +8,7 @@ import numpy as np
 import random
 import sys; sys.path.append("..")
 
+from samplingUtils import toDistribution, cdfToPdf, addNoiseToCdf
 from triplets.Constant import UNPOOLED, POOLED, regions
 from triplets.priors.PriorDistributions import read_data
 from time import time
@@ -23,7 +24,7 @@ triplets = [
 cdf_cache = {}
 
 
-def build_cdf(data, bits, idx):
+def build_cdf(data, bits, idx, add_noise=False):
     if idx not in cdf_cache:
         group = data[bits].groupby(bits.tolist()).size().reset_index(name='count')
 
@@ -36,7 +37,13 @@ def build_cdf(data, bits, idx):
         except IndexError:
             import pdb; pdb.set_trace()
         cdf_cache[idx] = group.values.astype(float)
-    return cdf_cache[idx]
+        # print('==== TRUE PDF ====')
+        # print(cdfToPdf(cdf_cache[idx][:, -1]))
+    if not add_noise:
+        return cdf_cache[idx]
+
+    return addNoiseToCdf(cdf_cache[idx])
+
 
 
 def getP(s1, s2, matchPosition, roundNum):
@@ -140,7 +147,7 @@ unpooled, pooled = None, None
 data = None
 last_state = (None, None, None) # fmt, year, is_pooled
 
-def generateSingleBracket(fmt, max_year, f4Seeds, champRegion, ruRegion, is_pooled=False, override_f4=False):
+def generateSingleBracket(fmt, max_year, f4Seeds, champRegion, ruRegion, is_pooled=False, override_f4=False, model=None):
     global unpooled
     global pooled
     global data
@@ -158,3 +165,26 @@ def generateSingleBracket(fmt, max_year, f4Seeds, champRegion, ruRegion, is_pool
         last_state = new_state
 
     return generate(fmt, data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, override_f4).tolist()
+
+
+if __name__ == '__main__':
+    unpooled, pooled = read_data('TTT', 2017)
+    data = pooled
+
+    ref_cdf = build_cdf(data, bits=np.array([8, 9, 12]), idx='dummy', add_noise=False)
+
+    print('==== TRUE CDF ====')
+    print(ref_cdf)
+    cdfs = []
+    for i in range(100000):
+        cdf = build_cdf(data, bits=np.array([8, 9, 12]), idx='dummy', add_noise=True)
+        cdf = cdf[:, -1]
+        valid = np.all([(cdf[i] <= cdf[i+1]) for i in range(len(cdf) - 1)])
+        if not valid:
+            import pdb; pdb.set_trace()
+            continue
+        cdfs.append(cdf)
+    print('==== AVG CDF ====')
+    print(np.mean(cdfs, axis=0).round(6))
+    print('==== AVG PDF FROM CDF ====')
+    print(cdfToPdf(np.mean(cdfs, axis=0)))
