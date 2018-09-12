@@ -1,0 +1,520 @@
+{
+    "models": [
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled",
+          "modelName": "modelNoisy110",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "modelNoisy111",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "modelNoisy112",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_2",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Pooled",
+          "modelName": "modelNoisy113",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_2",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "modelNoisy114",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "modelNoisy115",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "modelNoisy116",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_2",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "modelNoisy117",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_2",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Pooled",
+          "modelName": "modelNoisy120",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_1",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "modelNoisy121",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_1",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "modelNoisy122",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_2",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Pooled",
+          "modelName": "modelNoisy123",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_2",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "modelNoisy124",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_1",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "modelNoisy125",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_2",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "modelNoisy126",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_1",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "modelNoisy127",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "F4_2",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled",
+          "modelName": "modelNoisy10",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "modelNoisy11",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_4",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "modelNoisy12",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_2",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Pooled",
+          "modelName": "modelNoisy13",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_2",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "modelNoisy14",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "modelNoisy15",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_4",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "modelNoisy16",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_2",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Rev_2 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "modelNoisy17",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "Rev_2",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Pooled",
+          "modelName": "modelNoisy20",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_1",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "modelNoisy21",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_1",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Unpooled",
+          "modelName": "modelNoisy22",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_2",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Pooled",
+          "modelName": "modelNoisy23",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_2",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "modelNoisy24",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_1",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "modelNoisy25",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_2",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_1 then all IID 5 Triplets/region. Unpooled - FFF",
+          "modelName": "modelNoisy26",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_1",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4_2 then all IID 5 Triplets/region. Pooled - FFF",
+          "modelName": "modelNoisy27",
+          "generator": "AllTripletsRev",
+          "overrideF4": true,
+          "endModel": "F4_2",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "IID 5 Triplets/region. F4 triplet. Unpooled",
+          "modelName": "modelNoisy00",
+          "generator": "IID_AllTriplets",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 IID. Unpooled",
+          "modelName": "modelNoisy01",
+          "generator": "IID_2TripletsPerRegion",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "IID 5 Triplets/region. F4 triplet. Pooled",
+          "modelName": "modelNoisy02",
+          "generator": "IID_AllTriplets",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 IID. Pooled",
+          "modelName": "modelNoisy03",
+          "generator": "IID_2TripletsPerRegion",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 triplet. Unpooled",
+          "modelName": "modelNoisy31",
+          "generator": "IID_2TripletsPerRegion_F4Triplet",
+          "pooled": false,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 triplet. Pooled",
+          "modelName": "modelNoisy32",
+          "generator": "IID_2TripletsPerRegion_F4Triplet",
+          "pooled": true,
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "All IID triplets. Unpooled",
+          "modelName": "modelNoisy41",
+          "generator": "IID_AllTriplets",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "All IID triplets. Pooled",
+          "modelName": "modelNoisy42",
+          "generator": "IID_AllTriplets",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "R1 bit IID, R2-R3 triplets, R4-R6 bit IID. Unpooled",
+          "modelName": "modelNoisy43",
+          "generator": "IID_2TripletsPerRegion",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "R1 bit IID, R2-R3 triplets, R4-R6 bit IID. Pooled",
+          "modelName": "modelNoisy44",
+          "generator": "IID_2TripletsPerRegion",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 triplet. Unpooled",
+          "modelName": "modelNoisy45",
+          "generator": "IID_2TripletsPerRegion_F4Triplet",
+          "pooled": false,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "R1 IID, R2-R3 triplets, R4-R6 triplet. Pooled",
+          "modelName": "modelNoisy46",
+          "generator": "IID_2TripletsPerRegion_F4Triplet",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
+          "modelDesc": "E8 with 5 triplets/region",
+          "modelName": "modelNoisy84",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "TTT",
+          "override_f4": true
+      },
+      {
+          "modelDesc": "E8 with 5 triplets/region",
+          "modelName": "modelNoisy85",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "FFF",
+          "override_f4": true
+      },
+      {
+          "modelDesc": "E8 with 5 triplets/region",
+          "modelName": "modelNoisy86",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "TTT",
+          "override_f4": true
+      },
+      {
+          "modelDesc": "E8 with 5 triplets/region",
+          "modelName": "modelNoisy87",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "FFF",
+          "override_f4": true
+      },
+      {
+          "modelDesc": "E8 with 5 triplets/region",
+          "modelName": "modelNoisy88",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "TTT",
+          "override_f4": false
+      },
+      {
+          "modelDesc": "E8 with 5 triplets/region",
+          "modelName": "modelNoisy89",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "FFF",
+          "override_f4": false
+      },
+      {
+          "modelDesc": "E8 with 5 triplets/region",
+          "modelName": "modelNoisy90",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "TTT",
+          "override_f4": false
+      },
+      {
+          "modelDesc": "E8 with 5 triplets/region",
+          "modelName": "modelNoisy91",
+          "generator": "E8With5TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "FFF",
+          "override_f4": false
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "modelNoisy92",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "TTT",
+          "override_f4": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "modelNoisy93",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "FFF",
+          "override_f4": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "modelNoisy94",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "TTT",
+          "override_f4": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "modelNoisy95",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "FFF",
+          "override_f4": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "modelNoisy96",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "TTT",
+          "override_f4": false
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "modelNoisy97",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "FFF",
+          "override_f4": false
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "modelNoisy98",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "TTT",
+          "override_f4": false
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "modelNoisy99",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "FFF",
+          "override_f4": false
+      }
+    ]
+}
