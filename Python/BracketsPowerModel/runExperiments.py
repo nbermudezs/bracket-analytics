@@ -85,11 +85,11 @@ def generateBracket(model, year):
     override_f4 = model.get('overrideF4', False)
 
     if generator == 'IID_AllTriplets':
-        return IID_AllTriplets.generateSingleBracket(fmt, year, is_pooled=pooled)
+        return IID_AllTriplets.generateSingleBracket(fmt, year, is_pooled=pooled, model=model)
     elif generator == 'IID_2TripletsPerRegion':
-        return IID_2TripletsPerRegion.generateSingleBracket(fmt, year, is_pooled=pooled)
+        return IID_2TripletsPerRegion.generateSingleBracket(fmt, year, is_pooled=pooled, model=model)
     elif generator == 'IID_2TripletsPerRegion_F4Triplet':
-        return IID_2TripletsPerRegion_F4Triplet.generateSingleBracket(fmt, year, is_pooled=pooled)
+        return IID_2TripletsPerRegion_F4Triplet.generateSingleBracket(fmt, year, is_pooled=pooled, model=model)
 
     bracket = []
 
@@ -188,7 +188,8 @@ def generateBracket(model, year):
             champRegion,
             ruRegion,
             is_pooled=pooled,
-            override_f4=override_f4)
+            override_f4=override_f4,
+            model=model)
         if override_f4:
             return bracket
     elif generator == 'E8With2TripletsPerRegion' and endModel == 'E8':
@@ -197,7 +198,8 @@ def generateBracket(model, year):
             year,
             e8Seeds,
             is_pooled=pooled,
-            override_f4=override_f4)
+            override_f4=override_f4,
+            model=model)
         if override_f4:
             return bracket
     elif generator == 'E8With5TripletsPerRegion' and endModel == 'E8':
@@ -206,7 +208,8 @@ def generateBracket(model, year):
             year,
             e8Seeds,
             is_pooled=pooled,
-            override_f4=override_f4)
+            override_f4=override_f4,
+            model=model)
         if override_f4:
             return bracket
 
