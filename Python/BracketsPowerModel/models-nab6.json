@@ -1,6 +1,71 @@
 {
     "models": [
       {
+          "modelDesc": "F4 Model 1, R1 separate",
+          "modelName": "ian-model21",
+          "isR1Grouped": "False",
+          "endModel": "F4_1"
+      },
+      {
+          "modelDesc": "F4 Model 2, R1 separate",
+          "modelName": "ian-model23",
+          "isR1Grouped": "False",
+          "endModel": "F4_2"
+      },
+      {
+          "modelDesc": "E8 Model, R1 separate",
+          "modelName": "ian-model25",
+          "isR1Grouped": "False",
+          "endModel": "E8"
+      },
+      {
+          "modelDesc": "Reverse Model (top 2), R1 separate",
+          "modelName": "ian-model27",
+          "isR1Grouped": "False",
+          "endModel": "Rev_2"
+      },
+      {
+          "modelDesc": "Forward Model, R1 separate",
+          "modelName": "ian-model31",
+          "isR1Grouped": "False",
+          "endModel": "None"
+      },
+      {
+          "modelDesc": "F4 Model 1, R1 separate",
+          "modelName": "ian-model121",
+          "isR1Grouped": "False",
+          "endModel": "F4_1",
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "F4 Model 2, R1 separate",
+          "modelName": "ian-model123",
+          "isR1Grouped": "False",
+          "endModel": "F4_2",
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "E8 Model, R1 separate",
+          "modelName": "ian-model125",
+          "isR1Grouped": "False",
+          "endModel": "E8",
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Reverse Model (top 2), R1 separate",
+          "modelName": "ian-model127",
+          "isR1Grouped": "False",
+          "endModel": "Rev_2",
+          "format": "FFF"
+      },
+      {
+          "modelDesc": "Forward Model, R1 separate",
+          "modelName": "ian-model131",
+          "isR1Grouped": "False",
+          "endModel": "None",
+          "format": "FFF"
+      },
+      {
           "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled",
           "modelName": "model110",
           "generator": "AllTripletsRev",
