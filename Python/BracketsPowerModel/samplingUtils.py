@@ -180,6 +180,8 @@ def minMaxNormalization(x, new_min=0., new_max=1.):
 
 
 def addNoiseToCdf(cdf):
+    if cdf.shape[0] == 1:
+        return cdf
     noise = np.random.normal(0, NOISE_STD, size=cdf[:, -1].shape)
     dist = minMaxNormalization(cdfToPdf(cdf[:, -1]) + noise, 0, 1)
     dist = dist / dist.sum()
