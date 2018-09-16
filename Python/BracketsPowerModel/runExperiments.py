@@ -15,6 +15,7 @@ from samplingUtils import getChampion, getRunnerUp
 from scoringUtils import applyRoundResults
 from scoringUtils import getActualBracketVector
 from scoringUtils import scoreBracket
+from triplets.Constant import DEFAULT_FORMAT
 
 import triplets.generators.AllTripletsRev as AllTripletsRev
 import triplets.generators.IID_AllTriplets as IID_AllTriplets
@@ -82,14 +83,14 @@ def generateBracket(model, year):
     pooled = model.get('pooled', False)
     generator = model.get('generator', None)
     fmt = model.get('format', 'TTT')
-    override_f4 = model.get('overrideF4', False)
+    override_f4 = model.get('overrideF4', DEFAULT_FORMAT)
 
     if generator == 'IID_AllTriplets':
-        return IID_AllTriplets.generateSingleBracket(fmt, year, is_pooled=pooled, model=model)
+        return IID_AllTriplets.generateSingleBracket(year, is_pooled=pooled, model=model)
     elif generator == 'IID_2TripletsPerRegion':
-        return IID_2TripletsPerRegion.generateSingleBracket(fmt, year, is_pooled=pooled, model=model)
+        return IID_2TripletsPerRegion.generateSingleBracket(year, is_pooled=pooled, model=model)
     elif generator == 'IID_2TripletsPerRegion_F4Triplet':
-        return IID_2TripletsPerRegion_F4Triplet.generateSingleBracket(fmt, year, is_pooled=pooled, model=model)
+        return IID_2TripletsPerRegion_F4Triplet.generateSingleBracket(year, is_pooled=pooled, model=model)
 
     bracket = []
 
@@ -182,33 +183,27 @@ def generateBracket(model, year):
         bracket = bracket + [-1, -1, -1]
     elif generator == 'AllTripletsRev':
         bracket = AllTripletsRev.generateSingleBracket(
-            fmt,
             year,
             f4Seeds,
             champRegion,
             ruRegion,
             is_pooled=pooled,
-            override_f4=override_f4,
             model=model)
         if override_f4:
             return bracket
     elif generator == 'E8With2TripletsPerRegion' and endModel == 'E8':
         bracket, f4Seeds = E8With2TripletsPerRegion.generateSingleBracket(
-            fmt,
             year,
             e8Seeds,
             is_pooled=pooled,
-            override_f4=override_f4,
             model=model)
         if override_f4:
             return bracket
     elif generator == 'E8With5TripletsPerRegion' and endModel == 'E8':
         bracket, f4Seeds = E8With5TripletsPerRegion.generateSingleBracket(
-            fmt,
             year,
             e8Seeds,
             is_pooled=pooled,
-            override_f4=override_f4,
             model=model)
         if override_f4:
             return bracket

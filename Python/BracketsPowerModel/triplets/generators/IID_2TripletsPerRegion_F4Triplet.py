@@ -8,7 +8,7 @@ import numpy as np
 import sys; sys.path.append("..")
 
 from samplingUtils import addNoiseToCdf
-from triplets.Constant import UNPOOLED, POOLED, regions
+from triplets.Constant import UNPOOLED, POOLED, regions, DEFAULT_FORMAT, DEFAULT_ADD_NOISE
 from triplets.priors.PriorDistributions import read_data
 from time import time
 
@@ -45,15 +45,16 @@ def build_cdf(data, bits, idx, add_noise=False):
     return addNoiseToCdf(cdf_cache[idx])
 
 
-def generate(data, unpooled, pool_type):
+def generate(data, unpooled, pool_type, model):
     regions_a = regions if pool_type == UNPOOLED else [0, 0, 0, 0]
     vector = -np.ones(63, dtype=int)
+    add_noise = model.get('addNoise', DEFAULT_ADD_NOISE)
 
     # fill up the 4 regions
     for region_idx, region in enumerate(regions_a):
         for idx, bit_group in enumerate(bit_groups):
             bits = bit_group + region * 15
-            cdf = build_cdf(data, bits, idx + region * len(bit_groups))
+            cdf = build_cdf(data, bits, idx + region * len(bit_groups), add_noise=add_noise)
             rn = np.random.rand()
             row = np.nonzero(cdf[:, len(bits)] - rn > 0)[0][0]
             values = cdf[row][:len(bits)]
@@ -61,7 +62,7 @@ def generate(data, unpooled, pool_type):
 
     # fill up the last 2 rounds
     triplet = np.array([60, 61, 62])
-    cdf = build_cdf(unpooled, triplet, 'f4')
+    cdf = build_cdf(unpooled, triplet, 'f4', add_noise=add_noise)
     rn = np.random.rand()
     row = np.nonzero(cdf[:,3] - rn > 0)[0][0]
     values = cdf[row][:3]
@@ -75,11 +76,13 @@ unpooled, pooled = None, None
 data = None
 last_state = (None, None, None) # fmt, year, is_pooled
 
-def generateSingleBracket(fmt, max_year, is_pooled=False, model=None):
+
+def generateSingleBracket(max_year, is_pooled=False, model=None):
     global unpooled
     global pooled
     global data
     global last_state
+    fmt = model.get('format', DEFAULT_FORMAT)
 
     pool_type = POOLED if is_pooled else UNPOOLED
     new_state = (fmt, max_year, is_pooled)
@@ -93,4 +96,4 @@ def generateSingleBracket(fmt, max_year, is_pooled=False, model=None):
             data = unpooled
         last_state = new_state
 
-    return generate(data, unpooled, pool_type).tolist()
+    return generate(data, unpooled, pool_type, model).tolist()

@@ -9,7 +9,7 @@ import random
 import sys; sys.path.append("..")
 
 from samplingUtils import addNoiseToCdf
-from triplets.Constant import UNPOOLED, POOLED, regions
+from triplets.Constant import UNPOOLED, POOLED, regions, DEFAULT_FORMAT, DEFAULT_ADD_NOISE
 from triplets.priors.PriorDistributions import read_data
 from time import time
 
@@ -53,8 +53,12 @@ def getTriplet(s1, s2, s1Wins, s2Wins, matchPosition, roundNum):
     if s2Wins:
         triplet[1] = 1
 
-def generate(fmt, data, unpooled, pool_type, e8Seeds, override_f4=True):
+
+def generate(data, unpooled, pool_type, e8Seeds, model: dict):
+    fmt = model.get('format', DEFAULT_FORMAT)
+    override_f4 = model.get('overrideF4', False)
     regions_a = regions if pool_type == UNPOOLED else [0, 0, 0, 0]
+    add_noise = model.get('addNoise', DEFAULT_ADD_NOISE)
 
     vector = -np.ones(63, dtype=int)
 
@@ -97,7 +101,7 @@ def generate(fmt, data, unpooled, pool_type, e8Seeds, override_f4=True):
             vector_bits = triplet + region_id * 15
 
             if np.all(vector[vector_bits] == -1):
-                cdf = build_cdf(data, bits, idx + region * 5)
+                cdf = build_cdf(data, bits, idx + region * 5, add_noise=add_noise)
 
                 # not fixed bits on the triplet
                 rn = np.random.rand()
@@ -118,7 +122,7 @@ def generate(fmt, data, unpooled, pool_type, e8Seeds, override_f4=True):
                 if tmp_data.size == 0:
                     tmp_data = data
 
-                cdf = build_cdf(tmp_data, np.array(others), key)
+                cdf = build_cdf(tmp_data, np.array(others), key, add_noise=add_noise)
                 rn = np.random.rand()
                 row = np.nonzero(cdf[:, -1] - rn > 0)[0][0]
                 values = cdf[row][:-1]
@@ -129,7 +133,7 @@ def generate(fmt, data, unpooled, pool_type, e8Seeds, override_f4=True):
     f4Seeds = [-1, -1, -1, -1]
     if override_f4:
         triplet = np.array([60, 61, 62])
-        cdf = build_cdf(unpooled, triplet, 21)
+        cdf = build_cdf(unpooled, triplet, 21, add_noise=add_noise)
         rn = np.random.rand()
         row = np.nonzero(cdf[:, 3] - rn > 0)[0][0]
         values = cdf[row][:3]
@@ -168,11 +172,13 @@ unpooled, pooled = None, None
 data = None
 last_state = (None, None, None) # fmt, year, is_pooled
 
-def generateSingleBracket(fmt, max_year, e8Seeds, is_pooled=False, override_f4=True, model=None):
+
+def generateSingleBracket(max_year, e8Seeds, is_pooled=False, model=None):
     global unpooled
     global pooled
     global data
     global last_state
+    fmt = model.get('format', DEFAULT_FORMAT)
 
     pool_type = POOLED if is_pooled else UNPOOLED
     new_state = (fmt, max_year, is_pooled)
@@ -185,5 +191,5 @@ def generateSingleBracket(fmt, max_year, e8Seeds, is_pooled=False, override_f4=T
             data = unpooled.astype(int)
         last_state = new_state
 
-    bracket, f4Seeds = generate(fmt, data, unpooled, pool_type, e8Seeds, override_f4)
+    bracket, f4Seeds = generate(data, unpooled, pool_type, e8Seeds, model)
     return bracket.tolist(), f4Seeds

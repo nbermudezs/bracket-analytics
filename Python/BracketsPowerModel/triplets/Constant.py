@@ -26,6 +26,8 @@ triplets = [
 UNPOOLED = 0
 POOLED = 1
 NOISE_STD = 0.0001
+DEFAULT_FORMAT = 'TTT'
+DEFAULT_ADD_NOISE = False
 
 # using strings to match the reading type from pandas
 years = ['2013', '2014', '2015', '2016', '2017', '2018']

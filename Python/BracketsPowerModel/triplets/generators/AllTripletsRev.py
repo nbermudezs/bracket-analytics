@@ -9,7 +9,7 @@ import random
 import sys; sys.path.append("..")
 
 from samplingUtils import toDistribution, cdfToPdf, addNoiseToCdf
-from triplets.Constant import UNPOOLED, POOLED, regions
+from triplets.Constant import UNPOOLED, POOLED, regions, DEFAULT_FORMAT, DEFAULT_ADD_NOISE
 from triplets.priors.PriorDistributions import read_data
 from time import time
 
@@ -31,6 +31,7 @@ def build_cdf(data, bits, idx, add_noise=False):
         def agg(row):
             row['count'] = group.iloc[0:row.name + 1]['count'].sum()
             return row
+
         group = group.apply(agg, axis=1)
         try:
             group['count'] = group['count'] / (1. * group['count'].values[-1])
@@ -57,8 +58,11 @@ def getTriplet(s1, s2, s1Wins, s2Wins, matchPosition, roundNum):
     if s2Wins:
         triplet[1] = 1
 
-def generate(fmt, data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, override_f4=False):
+def generate(data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, model):
+    fmt = model.get('format', DEFAULT_FORMAT)
+    override_f4 = model.get('overrideF4', False)
     regions_a = regions if pool_type == UNPOOLED else [0, 0, 0, 0]
+    add_noise = model.get('addNoise', DEFAULT_ADD_NOISE)
 
     vector = -np.ones(63, dtype=int)
 
@@ -101,7 +105,7 @@ def generate(fmt, data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, ove
             vector_bits = triplet + region_id * 15
 
             if np.all(vector[vector_bits] == -1):
-                cdf = build_cdf(data, bits, idx + region * 5)
+                cdf = build_cdf(data, bits, idx + region * 5, add_noise=add_noise)
 
                 # not fixed bits on the triplet
                 rn = np.random.rand()
@@ -125,16 +129,19 @@ def generate(fmt, data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, ove
                     # all bits are already filled (possible with Rev_4)
                     continue
 
-                cdf = build_cdf(tmp_data, np.array(others), key)
+                cdf = build_cdf(tmp_data, np.array(others), key, add_noise=add_noise)
                 rn = np.random.rand()
-                row = np.nonzero(cdf[:, -1] - rn > 0)[0][0]
+                try:
+                    row = np.nonzero(cdf[:, -1] - rn > 0)[0][0]
+                except Exception as err:
+                    import pdb; pdb.set_trace()
                 values = cdf[row][:-1]
                 vector[vector_others] = values
                 # either use conditional p or independent
 
     if override_f4:
         triplet = np.array([60, 61, 62])
-        cdf = build_cdf(unpooled, triplet, 21)
+        cdf = build_cdf(unpooled, triplet, 21, add_noise=add_noise)
         rn = np.random.rand()
         row = np.nonzero(cdf[:, 3] - rn > 0)[0][0]
         values = cdf[row][:3]
@@ -147,11 +154,13 @@ unpooled, pooled = None, None
 data = None
 last_state = (None, None, None) # fmt, year, is_pooled
 
-def generateSingleBracket(fmt, max_year, f4Seeds, champRegion, ruRegion, is_pooled=False, override_f4=False, model=None):
+
+def generateSingleBracket(max_year, f4Seeds, champRegion, ruRegion, is_pooled=False, model=None):
     global unpooled
     global pooled
     global data
     global last_state
+    fmt = model.get('format', DEFAULT_FORMAT)
 
     pool_type = POOLED if is_pooled else UNPOOLED
     new_state = (fmt, max_year, is_pooled)
@@ -164,7 +173,7 @@ def generateSingleBracket(fmt, max_year, f4Seeds, champRegion, ruRegion, is_pool
             data = unpooled.astype(int)
         last_state = new_state
 
-    return generate(fmt, data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, override_f4).tolist()
+    return generate(data, unpooled, pool_type, f4Seeds, champRegion, ruRegion, model).tolist()
 
 
 if __name__ == '__main__':
