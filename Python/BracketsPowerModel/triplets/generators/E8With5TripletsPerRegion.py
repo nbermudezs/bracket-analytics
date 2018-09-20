@@ -54,7 +54,7 @@ def getTriplet(s1, s2, s1Wins, s2Wins, matchPosition, roundNum):
         triplet[1] = 1
 
 
-def generate(data, unpooled, pool_type, e8Seeds, model: dict):
+def generate(data, unpooled, pool_type, e8Seeds, model):
     fmt = model.get('format', DEFAULT_FORMAT)
     override_f4 = model.get('overrideF4', False)
     regions_a = regions if pool_type == UNPOOLED else [0, 0, 0, 0]
