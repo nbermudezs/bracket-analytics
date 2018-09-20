@@ -100,7 +100,10 @@ def store_plot_and_csv(df, year, name):
 def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
     # print('Using data until year {}'.format(year))
     if add_noise:
-        idx = np.random.choice(indices)
+        if model.get('annealed_bit'):
+            idx = model['annealed_bit']
+        else:
+            idx = np.random.choice(indices)
         zeros = np.zeros_like(P)
         if type(model['std']) == str:
             scale = std_functions[model['std']](current_temp, initial_temp)
@@ -194,9 +197,15 @@ def run_annealing(model, stop_year):
 if __name__ == '__main__':
     model_filepath = sys.argv[1]
     stop_year = int(sys.argv[2])
+    if len(sys.argv) == 4:
+        selected_model = sys.argv[3]
+    else:
+        selected_model = None
 
     with open(model_filepath, 'r') as f:
         models = json.load(f)['models']
 
     for model in models:
+        if selected_model is not None and selected_model != model['name']:
+            continue
         run_annealing(model, stop_year)
