@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "name": "model0",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": 0.01,
+      "initial_temp": 6,
+      "format": "TTT"
+    },
+    {
+      "name": "model1",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT"
+    }
+  ]
+}
