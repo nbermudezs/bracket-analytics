@@ -145,7 +145,7 @@ def run_annealing(model, start_year, stop_year):
         P = np.mean(pooled, axis=0)
         # P = np.array([1.0, 0.4231184017779921, 0.7522862656332272, 0.9491817654669973, 0.721206790987267, 1.0, 0.7345229047483148, 1.0, 0.0, 1.0, 1.0, 1.0, 0.8031569810310453, 0.9244015862122775, 1.0])
 
-        print('=' * 50 + 'Baseline for data up to {}'.format(year - 1) + '=' * 50)
+        print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
         prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=100000, model=model)
         store_plot_and_csv(count_df, year - 1, 'Baseline')
 
@@ -161,8 +161,10 @@ def run_annealing(model, start_year, stop_year):
         T_0 = model.get('initial_temp', 6.)
         t = T_0 - 1.
 
-        f = open(LOG_TEMPLATE.format(model['name'], year - 1), 'w')
-        best_log = open(LOG_BESTS_TEMPLATE.format(model['name'], year - 1), 'w')
+        print('Logs: ' + LOG_TEMPLATE.format(model['name'], year))
+        print('Best P Logs: ' + LOG_BESTS_TEMPLATE.format(model['name'], year))
+        f = open(LOG_TEMPLATE.format(model['name'], year), 'w')
+        best_log = open(LOG_BESTS_TEMPLATE.format(model['name'], year), 'w')
         counter = 0
         while t >= 0:
             print('=' * 50 + 'Temperature: {}'.format(t) + '=' * 50)
