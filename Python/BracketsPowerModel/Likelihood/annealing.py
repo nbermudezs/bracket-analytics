@@ -137,9 +137,9 @@ def print_setup(bit_P, score_P, old_score_P=None):
     print('=' * 150)
 
 
-def run_annealing(model, stop_year):
+def run_annealing(model, start_year, stop_year):
     # pr = Pr(M_i >= 29)
-    for year in np.arange(start=2015, stop=stop_year + 1, step=1):
+    for year in np.arange(start=start_year, stop=stop_year + 1, step=1):
         unpooled, pooled = read_data(model['format'], year)
         pooled = pooled.astype(int).values
         P = np.mean(pooled, axis=0)
@@ -196,9 +196,10 @@ def run_annealing(model, stop_year):
 
 if __name__ == '__main__':
     model_filepath = sys.argv[1]
-    stop_year = int(sys.argv[2])
-    if len(sys.argv) == 4:
-        selected_model = sys.argv[3]
+    start_year = int(sys.argv[2])
+    stop_year = int(sys.argv[3])
+    if len(sys.argv) == 5:
+        selected_model = sys.argv[4]
     else:
         selected_model = None
 
@@ -208,4 +209,4 @@ if __name__ == '__main__':
     for model in models:
         if selected_model is not None and selected_model != model['name']:
             continue
-        run_annealing(model, stop_year)
+        run_annealing(model, start_year, stop_year)
