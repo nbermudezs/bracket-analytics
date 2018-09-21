@@ -1,0 +1,110 @@
+==================Analysis for baseline using data up to 2009==================
+Work to transform Baseline into optimal: 18720.882352941175
+Work to transform Baseline into optimal-bit0: 1129.7058823529412
+Work to transform Baseline into optimal-bit1: 2519.941176470588
+Work to transform Baseline into optimal-bit2: 4454.35294117647
+Work to transform Baseline into optimal-bit3: 9272.823529411764
+Work to transform Baseline into optimal-bit4: 2298.352941176471
+Work to transform Baseline into optimal-bit5: 9462.529411764704
+Work to transform Baseline into optimal-bit6: 4936.1176470588225
+Work to transform Baseline into optimal-bit7: 4551.588235294117
+===============================================================================
+==================Analysis for baseline using data up to 2010==================
+Work to transform Baseline into optimal: 19003.58823529412
+Work to transform Baseline into optimal-bit0: 1233.3529411764703
+Work to transform Baseline into optimal-bit1: 2770.117647058823
+Work to transform Baseline into optimal-bit2: 4649.117647058823
+Work to transform Baseline into optimal-bit3: 9161.117647058823
+Work to transform Baseline into optimal-bit4: 2607.6470588235297
+Work to transform Baseline into optimal-bit5: 9396.058823529413
+Work to transform Baseline into optimal-bit6: 5392.705882352941
+Work to transform Baseline into optimal-bit7: 4651.941176470587
+===============================================================================
+==================Analysis for baseline using data up to 2011==================
+Work to transform Baseline into optimal: 19028.94117647059
+Work to transform Baseline into optimal-bit0: 1070.9999999999998
+Work to transform Baseline into optimal-bit1: 3103.294117647059
+Work to transform Baseline into optimal-bit2: 4374.823529411763
+Work to transform Baseline into optimal-bit3: 9278.647058823528
+Work to transform Baseline into optimal-bit4: 3156.176470588235
+Work to transform Baseline into optimal-bit5: 9134.529411764706
+Work to transform Baseline into optimal-bit6: 5412.235294117647
+Work to transform Baseline into optimal-bit7: 4309.411764705884
+===============================================================================
+==================Analysis for baseline using data up to 2012==================
+Work to transform Baseline into optimal: 19868.588235294115
+Work to transform Baseline into optimal-bit0: 1174.2941176470586
+Work to transform Baseline into optimal-bit1: 3313.8235294117644
+Work to transform Baseline into optimal-bit2: 4963.823529411765
+Work to transform Baseline into optimal-bit3: 9283.882352941177
+Work to transform Baseline into optimal-bit4: 3838.4117647058815
+Work to transform Baseline into optimal-bit5: 9412.29411764706
+Work to transform Baseline into optimal-bit6: 5905.588235294118
+Work to transform Baseline into optimal-bit7: 6166.529411764704
+===============================================================================
+==================Analysis for baseline using data up to 2013==================
+Work to transform Baseline into optimal: 20220.88235294118
+Work to transform Baseline into optimal-bit0: 1068.9999999999998
+Work to transform Baseline into optimal-bit1: 3240.8235294117644
+Work to transform Baseline into optimal-bit2: 5222.294117647058
+Work to transform Baseline into optimal-bit3: 9006.411764705881
+Work to transform Baseline into optimal-bit4: 3573.117647058822
+Work to transform Baseline into optimal-bit5: 9325.176470588236
+Work to transform Baseline into optimal-bit6: 5697.941176470589
+Work to transform Baseline into optimal-bit7: 6675.294117647058
+===============================================================================
+==================Analysis for baseline using data up to 2014==================
+Work to transform Baseline into optimal: 20332.29411764706
+Work to transform Baseline into optimal-bit0: 1102.4117647058824
+Work to transform Baseline into optimal-bit1: 3138.176470588234
+Work to transform Baseline into optimal-bit2: 5334.470588235293
+Work to transform Baseline into optimal-bit3: 8299.117647058823
+Work to transform Baseline into optimal-bit4: 3682.8823529411766
+Work to transform Baseline into optimal-bit5: 9084.941176470587
+Work to transform Baseline into optimal-bit6: 5348.529411764705
+Work to transform Baseline into optimal-bit7: 6298.352941176469
+===============================================================================
+==================Analysis for baseline using data up to 2015==================
+Work to transform Baseline into optimal: 20136.82352941177
+Work to transform Baseline into optimal-bit0: 1123.0588235294115
+Work to transform Baseline into optimal-bit1: 4176.823529411764
+Work to transform Baseline into optimal-bit2: 4821.882352941176
+Work to transform Baseline into optimal-bit3: 8378.35294117647
+Work to transform Baseline into optimal-bit4: 3908.529411764706
+Work to transform Baseline into optimal-bit5: 9248.235294117649
+Work to transform Baseline into optimal-bit6: 4976.35294117647
+Work to transform Baseline into optimal-bit7: 5931.117647058824
+===============================================================================
+==================Analysis for baseline using data up to 2016==================
+Work to transform Baseline into optimal: 20628.58823529411
+Work to transform Baseline into optimal-bit0: 1125.941176470588
+Work to transform Baseline into optimal-bit1: 3901.0588235294117
+Work to transform Baseline into optimal-bit2: 5301.8823529411775
+Work to transform Baseline into optimal-bit3: 8073.882352941177
+Work to transform Baseline into optimal-bit4: 4603.470588235294
+Work to transform Baseline into optimal-bit5: 9291.117647058823
+Work to transform Baseline into optimal-bit6: 5155.176470588233
+Work to transform Baseline into optimal-bit7: 6581.117647058823
+===============================================================================
+==================Analysis for baseline using data up to 2017==================
+Work to transform Baseline into optimal: 20413.94117647059
+Work to transform Baseline into optimal-bit0: 1080.4117647058824
+Work to transform Baseline into optimal-bit1: 4488.0
+Work to transform Baseline into optimal-bit2: 5434.941176470587
+Work to transform Baseline into optimal-bit3: 8075.70588235294
+Work to transform Baseline into optimal-bit4: 4872.529411764705
+Work to transform Baseline into optimal-bit5: 9432.058823529413
+Work to transform Baseline into optimal-bit6: 5255.058823529411
+Work to transform Baseline into optimal-bit7: 6572.35294117647
+===============================================================================
+==================Analysis for baseline using data up to 2018==================
+Work to transform Baseline into optimal: 20350.470588235294
+Work to transform Baseline into optimal-bit0: 1404.6470588235293
+Work to transform Baseline into optimal-bit1: 4027.058823529411
+Work to transform Baseline into optimal-bit2: 5045.470588235294
+Work to transform Baseline into optimal-bit3: 8198.882352941177
+Work to transform Baseline into optimal-bit4: 4985.529411764706
+Work to transform Baseline into optimal-bit5: 9281.999999999996
+Work to transform Baseline into optimal-bit6: 5304.999999999999
+Work to transform Baseline into optimal-bit7: 6272.35294117647
+===============================================================================
