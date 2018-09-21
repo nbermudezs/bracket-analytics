@@ -143,6 +143,16 @@ def run_annealing(model, start_year, stop_year):
         unpooled, pooled = read_data(model['format'], year)
         pooled = pooled.astype(int).values
         P = np.mean(pooled, axis=0)
+
+        # this is used to set a single bit to the optimal value we found so far
+        # P[0] = 1.0
+        # P[1] = 0.4231184017779921
+        # P[2] = 0.752286265633227
+        # P[3] = 0.9491817654669973
+        # P[4] = 0.721206790987267
+        # P[5] = 1.0
+        # P[6] = 0.7345229047483148
+        # P[7] = 1.0
         # P = np.array([1.0, 0.4231184017779921, 0.7522862656332272, 0.9491817654669973, 0.721206790987267, 1.0, 0.7345229047483148, 1.0, 0.0, 1.0, 1.0, 1.0, 0.8031569810310453, 0.9244015862122775, 1.0])
 
         print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
