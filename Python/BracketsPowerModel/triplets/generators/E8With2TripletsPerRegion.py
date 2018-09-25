@@ -27,30 +27,40 @@ bit_groups = [
     np.array([14])
 ]
 
+p_star = np.array([
+    1.0,
+    0.4231184017779921,
+    0.7522862656332272,
+    0.9491817654669973,
+    0.721206790987267,
+    1.0,
+    0.7345229047483148,
+    1.0
+])
+
 cdf_cache = {}
 
 
-def build_cdf(data, bits, idx, add_noise=False):
+def build_cdf(data, bits, idx, add_noise=False, model=dict()):
     if idx not in cdf_cache:
-        group = data[bits].groupby(bits.tolist()).size().reset_index(name='count')
+        if bits.size == 1 and bits[0] < 60 and bits[0] % 15 < 8 and model.get('overrideR1Probs', False):
+            cdf_cache[idx] = np.array([[0, 1 - p_star[bits[0] % 15]], [1, 1.0]])
+        else:
+            group = data[bits].groupby(bits.tolist()).size().reset_index(name='count')
 
-        def agg(row):
-            row['count'] = group.iloc[0:row.name + 1]['count'].sum()
-            return row
-        group = group.apply(agg, axis=1)
-        try:
-            group['count'] = group['count'] / (1. * group['count'].values[-1])
-        except IndexError:
-            import pdb; pdb.set_trace()
-        cdf_cache[idx] = group.values.astype(float)
+            def agg(row):
+                row['count'] = group.iloc[0:row.name + 1]['count'].sum()
+                return row
+            group = group.apply(agg, axis=1)
+            try:
+                group['count'] = group['count'] / (1. * group['count'].values[-1])
+            except IndexError:
+                import pdb; pdb.set_trace()
+            cdf_cache[idx] = group.values.astype(float)
+    # import pdb; pdb.set_trace()
     if not add_noise:
         return cdf_cache[idx]
     return addNoiseToCdf(cdf_cache[idx])
-
-
-def getP(s1, s2, matchPosition, roundNum):
-    # import pdb; pdb.set_trace()
-    return 0
 
 
 def getTriplet(s1, s2, s1Wins, s2Wins, matchPosition, roundNum):
@@ -109,7 +119,7 @@ def generate(data, unpooled, pool_type, e8Seeds, model):
 
             if np.all(vector[vector_bits] == -1):
                 bits = bit_group + region * 15
-                cdf = build_cdf(data, bits, idx + region * len(bit_groups), add_noise=add_noise)
+                cdf = build_cdf(data, bits, idx + region * len(bit_groups), add_noise=add_noise, model=model)
                 rn = np.random.rand()
                 row = np.nonzero(cdf[:, len(bits)] - rn > 0)[0][0]
                 values = cdf[row][:len(bits)]
@@ -130,7 +140,7 @@ def generate(data, unpooled, pool_type, e8Seeds, model):
                 if tmp_data.size == 0:
                     tmp_data = data
 
-                cdf = build_cdf(tmp_data, np.array(others), key, add_noise=add_noise)
+                cdf = build_cdf(tmp_data, np.array(others), key, add_noise=add_noise, model=model)
                 rn = np.random.rand()
                 row = np.nonzero(cdf[:, -1] - rn > 0)[0][0]
                 values = cdf[row][:-1]
