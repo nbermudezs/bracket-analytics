@@ -7,15 +7,20 @@ import sys
 # Author: 	Ian Ludden
 # Date: 	05 Mar 2018
 # Modified: 10 Apr 2018
-# 
-# This script prepares multiple batches of treatments for 
-# multiple comparisons with the best (MCB) analysis. 
+#
+# This script prepares multiple batches of treatments for
+# multiple comparisons with the best (MCB) analysis.
 ######################################################################
 
 numTrials = int(sys.argv[1])
 metricName = sys.argv[2]
 minBatchNum = int(sys.argv[3])
 maxBatchNum = int(sys.argv[4])
+
+if len(sys.argv) > 5:
+	summaries_root = sys.argv[5]
+else:
+	summaries_root = 'Summaries'
 
 if numTrials < 1000:
 	trialsString = '{0}'.format(numTrials)
@@ -28,7 +33,8 @@ for year in range(2013, 2019):
 	print 'Batch,'
 
 	for batchNum in range(minBatchNum, maxBatchNum + 1):
-		batchFilename = 'Summaries/exp_{0}_batch_{1:02d}.csv'.format(trialsString, batchNum)
+		batchFilename = '{0}/exp_{1}_batch_{2:02d}.csv'.format(
+			summaries_root, trialsString, batchNum)
 
 		with open(batchFilename, 'rb') as csvfile:
 			reader = csv.reader(csvfile)
@@ -44,3 +50,5 @@ for year in range(2013, 2019):
 					sys.stdout.write(', , '.join(row[1:]))
 					print ''
 					break
+
+	print ''
