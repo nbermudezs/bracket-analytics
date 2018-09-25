@@ -95,6 +95,7 @@ def store_plot_and_csv(df, year, name):
     df[list(range(year, 2019))].drop('sum').plot.bar()
     plt.title(PLOT_TITLE_TEMPLATE.format(name, year))
     plt.savefig(PLOT_FILEPATH_TEMPLATE.format(year, name))
+    plt.close()
 
 
 def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
