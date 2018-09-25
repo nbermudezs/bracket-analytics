@@ -15,6 +15,7 @@ from Likelihood.annealing import CSV_FILEPATH_TEMPLATE
 to_compare = [
     'Baseline',
     'optimal',
+    'optimal-ensembled', # take the values from single bit simulated annealing and put them all together.
     'optimal-bit0',
     'optimal-bit1',
     'optimal-bit2',
