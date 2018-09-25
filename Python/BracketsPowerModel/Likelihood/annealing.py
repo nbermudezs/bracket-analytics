@@ -169,7 +169,7 @@ def run_annealing(model, start_year, stop_year):
         best_pr = prev_pr
 
         T_0 = model.get('initial_temp', 6.)
-        t = T_0 - 1.
+        t = T_0
 
         print('Logs: ' + LOG_TEMPLATE.format(model['name'], year))
         print('Best P Logs: ' + LOG_BESTS_TEMPLATE.format(model['name'], year))
