@@ -1,6 +1,15 @@
 {
     "models": [
       {
+          "modelDesc": "Rev_4 then all IID 5 Triplets/region. Pooled",
+          "modelName": "model110",
+          "generator": "AllTripletsRev",
+          "overrideF4": false,
+          "endModel": "Rev_4",
+          "pooled": true,
+          "format": "TTT"
+      },
+      {
           "modelDesc": "F4 Model 1, R1 separate",
           "modelName": "ian-model21",
           "isR1Grouped": "False",
@@ -580,6 +589,86 @@
           "pooled": false,
           "format": "FFF",
           "override_f4": false
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "model292",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "TTT",
+          "override_f4": true,
+          "overrideR1Probs": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "model293",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "FFF",
+          "override_f4": true,
+          "overrideR1Probs": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "model294",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "TTT",
+          "override_f4": true,
+          "overrideR1Probs": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "model295",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "FFF",
+          "override_f4": true,
+          "overrideR1Probs": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "model296",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "TTT",
+          "override_f4": false,
+          "overrideR1Probs": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "model297",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": true,
+          "format": "FFF",
+          "override_f4": false,
+          "overrideR1Probs": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "model298",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "TTT",
+          "override_f4": false,
+          "overrideR1Probs": true
+      },
+      {
+          "modelDesc": "E8 with 2 triplets/region",
+          "modelName": "model299",
+          "generator": "E8With2TripletsPerRegion",
+          "endModel": "E8",
+          "pooled": false,
+          "format": "FFF",
+          "override_f4": false,
+          "overrideR1Probs": true
       }
     ]
 }
