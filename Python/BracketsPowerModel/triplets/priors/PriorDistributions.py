@@ -67,7 +67,8 @@ data_cache = {}
 
 
 def read_data(fmt, limit=0):
-    if fmt not in data_cache:
+    key = hash((fmt, limit))
+    if key not in data_cache:
         with open(dirname + '/../../allBrackets%s.json' % fmt) as f:
             vectors = [a['bracket']['fullvector']
                        for a in json.load(f)['brackets']
@@ -80,8 +81,8 @@ def read_data(fmt, limit=0):
         pooled = pooled.append([list(a)[15:30] for a in vectors])
         pooled = pooled.append([list(a)[30:45] for a in vectors])
         pooled = pooled.append([list(a)[45:60] for a in vectors])
-        data_cache[fmt] = (unpooled, pooled)
-    return data_cache[fmt]
+        data_cache[key] = (unpooled, pooled)
+    return data_cache[key]
 
 
 def pooled_single_bit_distributions():
