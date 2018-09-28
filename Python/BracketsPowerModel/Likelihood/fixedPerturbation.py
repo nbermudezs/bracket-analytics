@@ -20,7 +20,7 @@ FMT = 'TTT'
 PLOT_TITLE_TEMPLATE = '{}: Dist. of # of matches using P_MLE until {}'
 PLOT_FILEPATH_TEMPLATE = 'Likelihood/FixedPerturbation/Plots/count_dist-p_mle-leq-{}-{}.png'
 CSV_FILEPATH_TEMPLATE = 'Likelihood/FixedPerturbation/Distributions/{}-p_mle-leq-{}-{}.csv'
-LOG_TEMPLATE = 'Likelihood/FixedPerturbation/Logs/energy-and-p_over_time-{}-{}.1.txt'
+LOG_TEMPLATE = 'Likelihood/FixedPerturbation/Logs/probabilities-{}-{}.1.txt'
 LOG_BESTS_TEMPLATE = 'Likelihood/FixedPerturbation/Logs/best_over_time-{}-{}.1.txt'
 
 
@@ -133,9 +133,11 @@ def run_experiments(start_year, stop_year):
             selector = np.array(list('{0:08b}'.format(i)), dtype=int)
             perturbed_P = P.copy()
             perturbed_P[indices] = np.clip(P[indices] + perturbation[selector], a_min=0., a_max=1.)
+            print('index: {}'.format(i))
             new_P, new_pr, count_df = experiment(perturbed_P, trials=100000)
             store_plot_and_csv(count_df, year - 1, 'perturbed-{}'.format(i))
             print_setup(new_P, new_pr, prev_pr)
+            print('')
 
 
 if __name__ == '__main__':
