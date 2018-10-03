@@ -8,7 +8,8 @@
       "mean": 0,
       "std": 0.01,
       "initial_temp": 6,
-      "format": "TTT"
+      "format": "TTT",
+      "alpha": 29
     },
     {
       "name": "model1",
@@ -18,7 +19,8 @@
       "mean": 0,
       "std": "std_fn_1",
       "initial_temp": 6,
-      "format": "TTT"
+      "format": "TTT",
+      "alpha": 29
     },
     {
       "name": "model2",
@@ -29,7 +31,8 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
-      "annealed_bit": 0
+      "annealed_bit": 0,
+      "alpha": 29
     },
     {
       "name": "model3",
@@ -40,7 +43,8 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
-      "annealed_bit": 1
+      "annealed_bit": 1,
+      "alpha": 29
     },
     {
       "name": "model4",
@@ -51,7 +55,8 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
-      "annealed_bit": 2
+      "annealed_bit": 2,
+      "alpha": 29
     },
     {
       "name": "model5",
@@ -62,7 +67,8 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
-      "annealed_bit": 3
+      "annealed_bit": 3,
+      "alpha": 29
     },
     {
       "name": "model6",
@@ -73,7 +79,8 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
-      "annealed_bit": 4
+      "annealed_bit": 4,
+      "alpha": 29
     },
     {
       "name": "model7",
@@ -84,7 +91,8 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
-      "annealed_bit": 5
+      "annealed_bit": 5,
+      "alpha": 29
     },
     {
       "name": "model8",
@@ -95,7 +103,8 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
-      "annealed_bit": 6
+      "annealed_bit": 6,
+      "alpha": 29
     },
     {
       "name": "model9",
@@ -106,7 +115,96 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
-      "annealed_bit": 7
+      "annealed_bit": 7,
+      "alpha": 29
+    },
+    {
+      "name": "round2-FFF",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "FFF",
+      "alpha": 29
+    },
+    {
+      "name": "model10",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "alpha": 25
+    },
+    {
+      "name": "model11",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "alpha": 26
+    },
+    {
+      "name": "model12",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "alpha": 27
+    },
+    {
+      "name": "model13",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "alpha": 28
+    },
+    {
+      "name": "model14",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "alpha": 30
+    },
+    {
+      "name": "model15",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "alpha": 31
+    },
+    {
+      "name": "model16",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "alpha": 32
     }
   ]
 }

@@ -9,6 +9,7 @@ __status__ = "Development"
 
 import json
 import numpy as np
+import os
 import pandas as pd
 import sys
 import time
@@ -18,11 +19,18 @@ import matplotlib.pyplot as plt
 
 
 FMT = 'TTT'
+BASE = 'Likelihood/OtherAlpha'
 PLOT_TITLE_TEMPLATE = '{}: Dist. of # of matches using P_MLE until {}'
-PLOT_FILEPATH_TEMPLATE = 'Likelihood/Plots/count_dist-p_mle-leq-{}-{}.png'
-CSV_FILEPATH_TEMPLATE = 'Likelihood/Distributions/{}-p_mle-leq-{}-{}.csv'
-LOG_TEMPLATE = 'Likelihood/Logs/energy-and-p_over_time-{}-{}.1.txt'
-LOG_BESTS_TEMPLATE = 'Likelihood/Logs/best_over_time-{}-{}.1.txt'
+PLOT_FILEPATH_TEMPLATE = BASE + '/Plots/count_dist-p_mle-leq-{}-{}.png'
+CSV_FILEPATH_TEMPLATE = BASE + '/Distributions/{}-p_mle-leq-{}-{}.csv'
+LOG_TEMPLATE = BASE + '/Logs/energy-and-p_over_time-{}-{}.1.txt'
+LOG_BESTS_TEMPLATE = BASE + '/Logs/best_over_time-{}-{}.1.txt'
+
+if not os.path.exists(BASE):
+    os.makedirs(BASE)
+    os.makedirs(BASE + '/Plots')
+    os.makedirs(BASE + '/Logs')
+    os.makedirs(BASE + '/Distributions')
 
 
 std_functions = {
@@ -99,9 +107,10 @@ def store_plot_and_csv(df, year, name):
 
 
 def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
+    horizon = 33 - model.get('alpha')
     # print('Using data until year {}'.format(year))
     if add_noise:
-        if model.get('annealed_bit'):
+        if model.get('annealed_bit') is not None:
             idx = model['annealed_bit']
         else:
             idx = np.random.choice(indices)
@@ -110,7 +119,10 @@ def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
             scale = std_functions[model['std']](current_temp, initial_temp)
         else:
             scale = model['std']
-        zeros[idx] = np.random.normal(scale=scale)
+        if model.get('noise') == 'normal':
+            zeros[idx] = np.random.normal(scale=scale)
+        elif model.get('noise') == 'uniform':
+            zeros[idx] = np.random.uniform(model.get('noise_low'), model.get('noise_high'))
         perturbed_P = np.clip(P + zeros, a_min=0, a_max=1)
     else:
         perturbed_P = P
@@ -126,7 +138,7 @@ def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
         distributions.append((df['count'] / df['count'].sum()).values)
         series.append(pd.Series(df['count'], name=ref_year))
 
-    mle = maximum_likelihood(distributions)[-4:]
+    mle = maximum_likelihood(distributions)[-horizon:]
     return perturbed_P, -np.log(sum(mle)), pd.concat(series, axis=1)
 
 
@@ -138,6 +150,18 @@ def print_setup(bit_P, score_P, old_score_P=None):
     print('=' * 150)
 
 
+single_bit_P = [
+    1.0,
+    0.5928450489751618,
+    0.6950938557087003,
+    0.9189491423484074,
+    0.7747201971300952,
+    1,
+    0.688728061242975,
+    1
+]
+
+
 def run_annealing(model, start_year, stop_year):
     # pr = Pr(M_i >= 29)
     for year in np.arange(start=start_year, stop=stop_year + 1, step=1):
@@ -145,6 +169,11 @@ def run_annealing(model, start_year, stop_year):
         pooled = pooled.astype(int).values
         P = np.mean(pooled, axis=0)
 
+        # P = np.array([1.0, 0.5928450489751618, 0.6950938557087003, 0.9189491423484074, 0.721206790987267, 1.0, 0.7345229047483148, 1.0, 0.0, 1.0, 1.0, 1.0, 0.8031569810310453, 0.9244015862122775, 1.0])
+
+        print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
+        prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=100000, model=model)
+        store_plot_and_csv(count_df, year - 1, 'Baseline')
         # this is used to set a single bit to the optimal value we found so far
         # P[0] = 1.0
         # P[1] = 0.4231184017779921
@@ -154,7 +183,6 @@ def run_annealing(model, start_year, stop_year):
         # P[5] = 1.0
         # P[6] = 0.7345229047483148
         # P[7] = 1.0
-        # P = np.array([1.0, 0.4231184017779921, 0.7522862656332272, 0.9491817654669973, 0.721206790987267, 1.0, 0.7345229047483148, 1.0, 0.0, 1.0, 1.0, 1.0, 0.8031569810310453, 0.9244015862122775, 1.0])
 
         print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
         prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=100000, model=model)
