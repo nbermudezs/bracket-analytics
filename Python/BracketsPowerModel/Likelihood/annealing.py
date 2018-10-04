@@ -89,7 +89,7 @@ np.random.seed(1991)
 SAVE_PLOTS = False
 
 
-def store_plot_and_csv(df, year, name):
+def store_plot_and_csv(df, year, name, optimized_years):
     df['sum'] = df.sum(axis=1)
     total = df.sum(axis=0)
     total.name = 'sum'
@@ -97,7 +97,7 @@ def store_plot_and_csv(df, year, name):
     df.to_csv(CSV_FILEPATH_TEMPLATE.format('count_dist', year, name))
 
     p_df = df / df.loc['sum']
-    p_df['sum'] = np.prod(p_df[list(range(1985, 2019))], axis=1)
+    p_df['sum'] = np.prod(p_df[optimized_years], axis=1)
     p_df.to_csv(CSV_FILEPATH_TEMPLATE.format('all_p_count_dist', year, name))
 
     df[list(range(year, 2019))].drop('sum').plot.bar()
@@ -163,6 +163,7 @@ single_bit_P = [
 
 
 def run_annealing(model, start_year, stop_year):
+    optimized_years = list(range(model.get('likelihood_start_year'), 2019))
     # pr = Pr(M_i >= 29)
     for year in np.arange(start=start_year, stop=stop_year + 1, step=1):
         unpooled, pooled = read_data(model['format'], year)
@@ -173,7 +174,7 @@ def run_annealing(model, start_year, stop_year):
 
         print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
         prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=100000, model=model)
-        store_plot_and_csv(count_df, year - 1, 'Baseline')
+        store_plot_and_csv(count_df, year - 1, 'Baseline', optimized_years=optimized_years)
         # this is used to set a single bit to the optimal value we found so far
         # P[0] = 1.0
         # P[1] = 0.4231184017779921
@@ -183,10 +184,6 @@ def run_annealing(model, start_year, stop_year):
         # P[5] = 1.0
         # P[6] = 0.7345229047483148
         # P[7] = 1.0
-
-        print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
-        prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=100000, model=model)
-        store_plot_and_csv(count_df, year - 1, 'Baseline')
 
         # prev_P = np.array([ 1.        ,  0.49166667,  0.63333333,  0.79166667,  0.65833333,
         #     0.85      ,  0.60833333,  0.94166667,  0.86666667,  0.49166667,
@@ -225,7 +222,7 @@ def run_annealing(model, start_year, stop_year):
                     if new_pr < best_pr:
                         print_setup(new_P, new_pr, pr_0)
                         best_pr = new_pr
-                        store_plot_and_csv(count_df, year - 1, model['name'])
+                        store_plot_and_csv(count_df, year - 1, model['name'], optimized_years=optimized_years)
                         best_log.write('{},{}: {}\n'.format(counter, new_pr, ','.join(new_P.astype(str))))
                     if favorable_count == 50:
                         break
