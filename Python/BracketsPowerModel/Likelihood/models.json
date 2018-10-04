@@ -235,6 +235,19 @@
       "format": "TTT",
       "likelihood_start_year": 2002,
       "alpha": 29
+    },
+    {
+      "name": "model30",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "objective": "sum",
+      "alpha": 29
     }
   ]
 }
