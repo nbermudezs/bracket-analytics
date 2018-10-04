@@ -9,6 +9,7 @@
       "std": 0.01,
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -20,6 +21,7 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -32,6 +34,7 @@
       "initial_temp": 6,
       "format": "TTT",
       "annealed_bit": 0,
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -44,6 +47,7 @@
       "initial_temp": 6,
       "format": "TTT",
       "annealed_bit": 1,
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -56,6 +60,7 @@
       "initial_temp": 6,
       "format": "TTT",
       "annealed_bit": 2,
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -68,6 +73,7 @@
       "initial_temp": 6,
       "format": "TTT",
       "annealed_bit": 3,
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -80,6 +86,7 @@
       "initial_temp": 6,
       "format": "TTT",
       "annealed_bit": 4,
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -92,6 +99,7 @@
       "initial_temp": 6,
       "format": "TTT",
       "annealed_bit": 5,
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -104,6 +112,7 @@
       "initial_temp": 6,
       "format": "TTT",
       "annealed_bit": 6,
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -116,6 +125,7 @@
       "initial_temp": 6,
       "format": "TTT",
       "annealed_bit": 7,
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -127,6 +137,7 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "FFF",
+      "likelihood_start_year": 1985,
       "alpha": 29
     },
     {
@@ -138,6 +149,7 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 25
     },
     {
@@ -149,6 +161,7 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 26
     },
     {
@@ -160,6 +173,7 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 27
     },
     {
@@ -171,6 +185,7 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 28
     },
     {
@@ -182,6 +197,7 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 30
     },
     {
@@ -193,6 +209,7 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 31
     },
     {
@@ -204,7 +221,20 @@
       "std": "std_fn_1",
       "initial_temp": 6,
       "format": "TTT",
+      "likelihood_start_year": 1985,
       "alpha": 32
+    },
+    {
+      "name": "model20",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 2002,
+      "alpha": 29
     }
   ]
 }

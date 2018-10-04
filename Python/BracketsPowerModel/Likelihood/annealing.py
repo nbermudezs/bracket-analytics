@@ -130,7 +130,7 @@ def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
 
     distributions = []
     series = []
-    for ref_year in range(1985, 2019):
+    for ref_year in range(model.get('likelihood_start_year'), 2019):
         dist = estimate_score_distribution(brackets[ref_year], B, indices, trials)
 
         df = pd.DataFrame.from_dict(dist, orient='index').rename({0: 'count'}, axis='columns')
