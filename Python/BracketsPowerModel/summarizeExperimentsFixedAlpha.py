@@ -164,7 +164,7 @@ numTrials = int(sys.argv[1])
 numBatches = int(sys.argv[2])
 
 # Load models
-if len(sys.argv) == 4:
+if len(sys.argv) >= 4:
 	modelFilename = sys.argv[3]
 else:
 	modelFilename = 'models.json'
