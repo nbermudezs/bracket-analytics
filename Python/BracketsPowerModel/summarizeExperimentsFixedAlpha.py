@@ -184,7 +184,10 @@ if numTrials < 1000:
 else:
 	trialsString = '{0}k'.format(int(numTrials / 1000))
 
+if not os.path.exists(outputDir):
+	os.makedirs(outputDir)
+
 for batchNumber in range(numBatches):
-	outputFilename = '{}/exp_{0}_batch_{1:02d}.csv'.format(outputDir, trialsString, batchNumber)
+	outputFilename = '{0}/exp_{1}_batch_{2:02d}.csv'.format(outputDir, trialsString, batchNumber)
 	with open(outputFilename, 'w') as outputFile:
 		summarizeBatch(numTrials, batchNumber, modelsList, outputFile)
