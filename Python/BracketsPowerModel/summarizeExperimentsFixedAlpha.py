@@ -171,6 +171,11 @@ else:
 with open(modelFilename, 'r') as modelFile:
 	modelsDataJson = modelFile.read().replace('\n', '')
 
+if len(sys.argv) == 5:
+	outputDir = sys.argv[4]
+else:
+	outputDir = 'Summaries'
+
 modelsDict = json.loads(modelsDataJson)
 modelsList = modelsDict['models']
 
@@ -180,6 +185,6 @@ else:
 	trialsString = '{0}k'.format(int(numTrials / 1000))
 
 for batchNumber in range(numBatches):
-	outputFilename = 'Summaries/exp_{0}_batch_{1:02d}.csv'.format(trialsString, batchNumber)
+	outputFilename = '{}/exp_{0}_batch_{1:02d}.csv'.format(outputDir, trialsString, batchNumber)
 	with open(outputFilename, 'w') as outputFile:
 		summarizeBatch(numTrials, batchNumber, modelsList, outputFile)
