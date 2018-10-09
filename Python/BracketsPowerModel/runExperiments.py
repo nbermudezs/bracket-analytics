@@ -68,8 +68,99 @@ import triplets.generators.E8With2TripletsPerRegion as E8With2TripletsPerRegion
 # weighted average.
 ######################################################################
 
+perturbed_ps = {
+    'model10': [
+        1.0,
+        0.4229103348680731,
+        0.8686253918935398,
+        1.0,
+        0.8123704992250859,
+        1.0,
+        0.7077991428824237,
+        1.0,
+    ],
+    'model11': [
+        1.0,
+        0.426407803982116,
+        0.8185896601561352,
+        1.0,
+        0.7023989582786588,
+        1.0,
+        0.6732989797077819,
+        1.0,
+    ],
+    'model12': [
+        1.0,
+        0.40952672906312887,
+        0.7854648378949232,
+        1.0,
+        0.7606474009097475,
+        1.0,
+        0.6539118110780404,
+        1.0,
+    ],
+    'model13': [
+        1.0,
+        0.47544408691902595,
+        0.7559601878920554,
+        0.9487586660088168,
+        0.7109945653089622,
+        1.0,
+        0.6877373278227099,
+        1.0,
+    ],
+    'model14': [
+        1.0,
+        0.6897381544845143,
+        0.6574444680210119,
+        0.9879908588573346,
+        0.6011024159891302,
+        0.9211618267386112,
+        0.8727621098790732,
+        1.0,
+    ],
+    'model15': [
+        0.9926470588235294,
+        0.5,
+        0.6544117647058824,
+        0.7941176470588235,
+        0.625,
+        0.8455882352941176,
+        0.5069725126093771,
+        0.9411764705882353,
+    ],
+    'model20': [
+        1.0,
+        0.7294731173878907,
+        0.6258223531539129,
+        0.9164091224773702,
+        0.5715239568648995,
+        1.0,
+        0.7069538395226441,
+        1.0,
+    ],
+    'model30': [
+        1.0,
+        0.0,
+        0.15639768832340517,
+        1.0,
+        1.0,
+        0.823616960019198,
+        0.5363817471415633,
+        1.0,
+    ]
+}
+
+newone = {}
+for key in perturbed_ps.keys():
+    sorted_p = np.array(perturbed_ps[key])[[0, 7, 5, 3, 2, 4, 6, 1]]
+    newone[key] = [None] + sorted_p.tolist()
+perturbed_ps = newone
+
 # Returns the estimated probability that s1 beats s2
 def getP(s1, s2, model, year, roundNum):
+    if model.get('annealing_model') is not None and roundNum == 1:
+        return perturbed_ps[model.get('annealing_model')][min(s1, s2)]
     alpha = getAlpha(s1, s2, model, year, roundNum)
     s1a = (s1 * 1.0) ** alpha
     s2a = (s2 * 1.0) ** alpha
@@ -417,3 +508,4 @@ for modelDict in modelsList:
 
         for year in range(2013, 2019):
             performExperiments(numTrials, year, batchNumber, modelDict)
+
