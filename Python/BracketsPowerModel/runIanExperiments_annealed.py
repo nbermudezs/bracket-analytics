@@ -508,5 +508,3 @@ for modelDict in modelsList:
 
         for year in range(2013, 2019):
             performExperiments(numTrials, year, batchNumber, modelDict)
-            break
-    break
