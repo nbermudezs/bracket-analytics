@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 
 
 FMT = 'TTT'
-BASE = 'Likelihood/OtherAlpha'
+BASE = 'Likelihood/SumObjective'
 PLOT_TITLE_TEMPLATE = '{}: Dist. of # of matches using P_MLE until {}'
 PLOT_FILEPATH_TEMPLATE = BASE + '/Plots/count_dist-p_mle-leq-{}-{}.png'
 CSV_FILEPATH_TEMPLATE = BASE + '/Distributions/{}-p_mle-leq-{}-{}.csv'
@@ -138,8 +138,15 @@ def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
         distributions.append((df['count'] / df['count'].sum()).values)
         series.append(pd.Series(df['count'], name=ref_year))
 
-    mle = maximum_likelihood(distributions)[-horizon:]
-    return perturbed_P, -np.log(sum(mle)), pd.concat(series, axis=1)
+    objective = model.get('objective', 'mle')
+    if objective == 'mle':
+        mle = maximum_likelihood(distributions)[-horizon:]
+        energy = -np.log(sum(mle))
+    elif objective == 'sum':
+        energy = -np.log(np.sum(distributions, axis=0)[-horizon:].sum())
+    else:
+        energy = 0
+    return perturbed_P, energy, pd.concat(series, axis=1)
 
 
 def print_setup(bit_P, score_P, old_score_P=None):
@@ -160,6 +167,99 @@ single_bit_P = [
     0.688728061242975,
     1
 ]
+
+perturbed_ps = {
+    'model10': [
+        1.0,
+        0.4229103348680731,
+        0.8686253918935398,
+        1.0,
+        0.8123704992250859,
+        1.0,
+        0.7077991428824237,
+        1.0,
+    ],
+    'model11': [
+        1.0,
+        0.426407803982116,
+        0.8185896601561352,
+        1.0,
+        0.7023989582786588,
+        1.0,
+        0.6732989797077819,
+        1.0,
+    ],
+    'model12': [
+        1.0,
+        0.40952672906312887,
+        0.7854648378949232,
+        1.0,
+        0.7606474009097475,
+        1.0,
+        0.6539118110780404,
+        1.0,
+    ],
+    'model13': [
+        1.0,
+        0.47544408691902595,
+        0.7559601878920554,
+        0.9487586660088168,
+        0.7109945653089622,
+        1.0,
+        0.6877373278227099,
+        1.0,
+    ],
+    'model14': [
+        1.0,
+        0.6897381544845143,
+        0.6574444680210119,
+        0.9879908588573346,
+        0.6011024159891302,
+        0.9211618267386112,
+        0.8727621098790732,
+        1.0,
+    ],
+    'model15': [
+        0.9926470588235294,
+        0.5,
+        0.6544117647058824,
+        0.7941176470588235,
+        0.625,
+        0.8455882352941176,
+        0.5069725126093771,
+        0.9411764705882353,
+    ],
+    'model20': [
+        1.0,
+        0.7294731173878907,
+        0.6258223531539129,
+        0.9164091224773702,
+        0.5715239568648995,
+        1.0,
+        0.7069538395226441,
+        1.0,
+    ],
+    'model21': [
+        1.0,
+        0.6810812994722260,
+        0.6782287991306060,
+        1.0,
+        0.6065824706992460,
+        0.9954042914277010,
+        0.6102388677298300,
+        1.0
+    ],
+    'model30': [
+        1.0,
+        0.0,
+        0.15639768832340517,
+        1.0,
+        1.0,
+        0.823616960019198,
+        0.5363817471415633,
+        1.0,
+    ]
+}
 
 
 def run_annealing(model, start_year, stop_year):
@@ -229,7 +329,7 @@ def run_annealing(model, start_year, stop_year):
                 counter += 1
             f.flush()
             if model['cooling'] == 'linear':
-                t -= model['cooling_delta']
+                t = (t - model['cooling_delta']) * model.get('cooling_decay', 1.)
 
 
 if __name__ == '__main__':
