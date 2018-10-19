@@ -1,0 +1,136 @@
+{
+  "models": [
+    {
+      "name": "model10",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 25
+    },
+    {
+      "name": "model11",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 26
+    },
+    {
+      "name": "model12",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 27
+    },
+    {
+      "name": "model13",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 28
+    },
+    {
+      "name": "model1",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 29
+    },
+    {
+      "name": "model14",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 30
+    },
+    {
+      "name": "model15",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 31
+    },
+    {
+      "name": "model16",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 32
+    },
+    {
+      "name": "model22",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 2002,
+      "alpha": 27
+    },
+    {
+      "name": "model21",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 2002,
+      "alpha": 28
+    },
+    {
+      "name": "model20",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 2002,
+      "alpha": 29
+    },
+    {
+      "name": "model23",
+      "cooling": "linear",
+      "noise": "uniform",
+      "cooling_decay": 0.98,
+      "noise_margin": 0.05,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 2002,
+      "alpha": 30
+    }
+  ]
+}

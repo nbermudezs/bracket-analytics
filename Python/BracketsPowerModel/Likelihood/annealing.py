@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 
 
 FMT = 'TTT'
-BASE = 'Likelihood/SumObjective'
+BASE = 'Likelihood/UniformEta_5'
 PLOT_TITLE_TEMPLATE = '{}: Dist. of # of matches using P_MLE until {}'
 PLOT_FILEPATH_TEMPLATE = BASE + '/Plots/count_dist-p_mle-leq-{}-{}.png'
 CSV_FILEPATH_TEMPLATE = BASE + '/Distributions/{}-p_mle-leq-{}-{}.csv'
@@ -115,14 +115,17 @@ def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
         else:
             idx = np.random.choice(indices)
         zeros = np.zeros_like(P)
-        if type(model['std']) == str:
-            scale = std_functions[model['std']](current_temp, initial_temp)
-        else:
-            scale = model['std']
         if model.get('noise') == 'normal':
+            if type(model['std']) == str:
+                scale = std_functions[model['std']](current_temp, initial_temp)
+            else:
+                scale = model['std']
             zeros[idx] = np.random.normal(scale=scale)
         elif model.get('noise') == 'uniform':
-            zeros[idx] = np.random.uniform(model.get('noise_low'), model.get('noise_high'))
+            margin = model.get('noise_margin')
+            low = max(0, -margin * P[idx])
+            high = min(1, margin * P[idx])
+            zeros[idx] = np.random.uniform(low, high)
         perturbed_P = np.clip(P + zeros, a_min=0, a_max=1)
     else:
         perturbed_P = P
@@ -313,7 +316,7 @@ def run_annealing(model, start_year, stop_year):
                 accept_p = 1 if new_pr < prev_pr else min(1., np.exp(-(new_pr - prev_pr) / t))
                 if np.random.rand() < accept_p:
                     f.write('{},{}: {}\n'.format(counter, new_pr,
-                                                 ','.join(new_P.astype(str))))
+                                                 ','.join(new_P[:8].astype(str))))
                     prev_P = new_P
                     prev_pr = new_pr
                     favorable_count += 1
@@ -323,13 +326,13 @@ def run_annealing(model, start_year, stop_year):
                         print_setup(new_P, new_pr, pr_0)
                         best_pr = new_pr
                         store_plot_and_csv(count_df, year - 1, model['name'], optimized_years=optimized_years)
-                        best_log.write('{},{}: {}\n'.format(counter, new_pr, ','.join(new_P.astype(str))))
+                        best_log.write('{},{}: {}\n'.format(counter, new_pr, ','.join(new_P[:8].astype(str))))
                     if favorable_count == 50:
                         break
                 counter += 1
             f.flush()
             if model['cooling'] == 'linear':
-                t = (t - model['cooling_delta']) * model.get('cooling_decay', 1.)
+                t = (t - model.get('cooling_delta', 0.)) * model.get('cooling_decay', 1.)
 
 
 if __name__ == '__main__':
