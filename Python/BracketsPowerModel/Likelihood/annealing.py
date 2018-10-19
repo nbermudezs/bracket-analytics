@@ -14,6 +14,7 @@ import pandas as pd
 import sys
 import time
 from collections import defaultdict
+from itertools import combinations
 from triplets.priors.PriorDistributions import read_data
 import matplotlib.pyplot as plt
 
@@ -25,6 +26,9 @@ PLOT_FILEPATH_TEMPLATE = BASE + '/Plots/count_dist-p_mle-leq-{}-{}.png'
 CSV_FILEPATH_TEMPLATE = BASE + '/Distributions/{}-p_mle-leq-{}-{}.csv'
 LOG_TEMPLATE = BASE + '/Logs/energy-and-p_over_time-{}-{}.1.txt'
 LOG_BESTS_TEMPLATE = BASE + '/Logs/best_over_time-{}-{}.1.txt'
+MIN_CLOSED_FORM_ALPHA = 29
+ALL_R1_GAMES = list(range(0, 32))
+ROUND_1_INDEXER = np.arange(0, 60) % 15 < 8
 
 if not os.path.exists(BASE):
     os.makedirs(BASE)
@@ -106,6 +110,26 @@ def store_plot_and_csv(df, year, name, optimized_years):
     plt.close()
 
 
+def closed_form_eval(omega, psi, alpha):
+    omega_R = np.repeat([omega], 4, axis=0).flatten()
+    all_p = np.vstack((1 - omega_R, omega_R))
+    energy = 0.
+    for ref_year in range(psi, 2019):
+        year_p = 0
+        bracket = brackets[ref_year]
+        X_y = bracket[:60][ROUND_1_INDEXER]
+        for k in range(alpha, 33):
+            for c_k in combinations(ALL_R1_GAMES, k):
+                q = 1.0
+                for m in c_k:
+                    q = q * all_p[X_y[m], m]
+                for n in list(set(ALL_R1_GAMES) - set(c_k)):
+                    q = q * all_p[1 - X_y[n], n]
+                year_p += q
+        energy += np.log(year_p + np.finfo(float).eps)
+    return -energy
+
+
 def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
     horizon = 33 - model.get('alpha')
     # print('Using data until year {}'.format(year))
@@ -123,12 +147,17 @@ def experiment(P, add_noise, trials, model, current_temp=0, initial_temp=0):
             zeros[idx] = np.random.normal(scale=scale)
         elif model.get('noise') == 'uniform':
             margin = model.get('noise_margin')
-            low = max(0, -margin * P[idx])
-            high = min(1, margin * P[idx])
+            low = -margin * P[idx]
+            high = margin * P[idx]
             zeros[idx] = np.random.uniform(low, high)
         perturbed_P = np.clip(P + zeros, a_min=0, a_max=1)
     else:
         perturbed_P = P
+
+    if model.get('closed_form', False) and model.get('alpha') >= MIN_CLOSED_FORM_ALPHA:
+        energy = closed_form_eval(perturbed_P, model.get('likelihood_start_year'), model.get('alpha'))
+        return perturbed_P, energy, None
+
     B = g(perturbed_P, trials)
 
     distributions = []
@@ -276,8 +305,9 @@ def run_annealing(model, start_year, stop_year):
         # P = np.array([1.0, 0.5928450489751618, 0.6950938557087003, 0.9189491423484074, 0.721206790987267, 1.0, 0.7345229047483148, 1.0, 0.0, 1.0, 1.0, 1.0, 0.8031569810310453, 0.9244015862122775, 1.0])
 
         print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
-        prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=100000, model=model)
-        store_plot_and_csv(count_df, year - 1, 'Baseline', optimized_years=optimized_years)
+        prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=10000, model=model)
+        if not model.get('closed_form', False):
+            store_plot_and_csv(count_df, year - 1, 'Baseline', optimized_years=optimized_years)
         # this is used to set a single bit to the optimal value we found so far
         # P[0] = 1.0
         # P[1] = 0.4231184017779921
@@ -325,7 +355,8 @@ def run_annealing(model, start_year, stop_year):
                     if new_pr < best_pr:
                         print_setup(new_P, new_pr, pr_0)
                         best_pr = new_pr
-                        store_plot_and_csv(count_df, year - 1, model['name'], optimized_years=optimized_years)
+                        if not model.get('closed_form', False):
+                            store_plot_and_csv(count_df, year - 1, model['name'], optimized_years=optimized_years)
                         best_log.write('{},{}: {}\n'.format(counter, new_pr, ','.join(new_P[:8].astype(str))))
                     if favorable_count == 50:
                         break

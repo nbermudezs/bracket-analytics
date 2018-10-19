@@ -1,0 +1,82 @@
+{
+  "models": [
+    {
+      "name": "model0",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": 0.01,
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 29,
+      "closed_form": true
+    },
+    {
+      "name": "model1",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 29,
+      "closed_form": true
+    },
+    {
+      "name": "model14",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 30,
+      "closed_form": true
+    },
+    {
+      "name": "model15",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 31,
+      "closed_form": true
+    },
+    {
+      "name": "model16",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 1985,
+      "alpha": 32,
+      "closed_form": true
+    },
+    {
+      "name": "model20",
+      "cooling": "linear",
+      "cooling_delta": 0.1,
+      "noise": "normal",
+      "mean": 0,
+      "std": "std_fn_1",
+      "initial_temp": 6,
+      "format": "TTT",
+      "likelihood_start_year": 2002,
+      "alpha": 29,
+      "closed_form": true
+    }
+  ]
+}
