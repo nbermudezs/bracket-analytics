@@ -305,7 +305,7 @@ def run_annealing(model, start_year, stop_year):
         # P = np.array([1.0, 0.5928450489751618, 0.6950938557087003, 0.9189491423484074, 0.721206790987267, 1.0, 0.7345229047483148, 1.0, 0.0, 1.0, 1.0, 1.0, 0.8031569810310453, 0.9244015862122775, 1.0])
 
         print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
-        prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=10000, model=model)
+        prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=100000, model=model)
         if not model.get('closed_form', False):
             store_plot_and_csv(count_df, year - 1, 'Baseline', optimized_years=optimized_years)
         # this is used to set a single bit to the optimal value we found so far
