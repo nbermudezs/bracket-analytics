@@ -29,6 +29,7 @@ LOG_BESTS_TEMPLATE = BASE + '/Logs/best_over_time-{}-{}.1.txt'
 MIN_CLOSED_FORM_ALPHA = 29
 ALL_R1_GAMES = list(range(0, 32))
 ROUND_1_INDEXER = np.arange(0, 60) % 15 < 8
+N_tau = 100000
 
 if not os.path.exists(BASE):
     os.makedirs(BASE)
@@ -364,6 +365,8 @@ def run_annealing(model, start_year, stop_year):
             f.flush()
             if model['cooling'] == 'linear':
                 t = (t - model.get('cooling_delta', 0.)) * model.get('cooling_decay', 1.)
+            if model.get('cooling_decay', 1) != 1 and counter >= N_tau:
+                break
 
 
 if __name__ == '__main__':
