@@ -29,7 +29,166 @@ LOG_BESTS_TEMPLATE = BASE + '/Logs/best_over_time-{}-{}.1.txt'
 MIN_CLOSED_FORM_ALPHA = 29
 ALL_R1_GAMES = list(range(0, 32))
 ROUND_1_INDEXER = np.arange(0, 60) % 15 < 8
-N_tau = 100000
+N_tau = 20000
+
+uniform_eta_5 = {
+    'model10': [ # 25_1985
+        1.0,
+        0.577924,
+        0.738162,
+        1.,
+        0.750773,
+        1.0,
+        0.789084,
+        1.0
+    ],
+    'model11': [ # 26_1985
+        1.,
+        0.492703,
+        0.865210,
+        1.,
+        0.792790,
+        1.,
+        0.735384,
+        1.
+    ],
+    'model12': [ # 27_1985
+        1.,
+        0.515851,
+        0.767134,
+        1.,
+        0.659071,
+        1.,
+        0.624253,
+        1.
+    ],
+    'model13': [ # 28_1985
+        1.,
+        0.503742,
+        0.744503,
+        0.985903,
+        0.589451,
+        0.983175,
+        0.629174,
+        1.
+    ],
+    'model1': [ # 29_1985
+        1.,
+        0.549093,
+        0.750055,
+        0.934562,
+        0.667669,
+        0.979045,
+        0.654386,
+        1.
+    ],
+    'model14': [ # 30_1985
+        1.,
+        0.702520,
+        0.607727,
+        0.955776,
+        0.527676,
+        0.914587,
+        0.731135,
+        1.
+    ],
+    'model15': [ # 31_1985
+        0.979950,
+        0.522624,
+        0.608672,
+        0.954450,
+        0.815560,
+        0.859511,
+        0.544364,
+        0.986404
+    ],
+    'model21': [ # 28_2002
+        1,
+        0.571343,
+        0.717079,
+        0.951833,
+        0.608841,
+        1.,
+        0.719049,
+        1.
+    ],
+    'model20': [ # 29_2002
+        1.0,
+        0.642990,
+        0.715042,
+        0.785525,
+        0.673557,
+        1.,
+        0.829395,
+        1.
+    ],
+    'model23': [ # 30_2002
+
+    ]
+}
+
+closed_form_ps = {
+    'model0': [
+        0.9237013504639907,
+        0.8495560921908135,
+        0.5311264293573632,
+        0.7965369548729775,
+        0.7288374967540105,
+        0.8054611355579138,
+        0.772612240923251,
+        0.858300402787333
+    ],
+    'model1': [
+        0.9197261243735679,
+        0.8508602315048152,
+        0.5332784523933183,
+        0.7963364084655133,
+        0.7279130141173678,
+        0.8164436317928461,
+        0.7721898512335448,
+        0.8635796079547514
+    ],
+    'model14': [
+        0.8908014837566403,
+        0.8253364760259677,
+        0.5322097910588279,
+        0.7792879559544097,
+        0.7144131914540977,
+        0.7904877527832495,
+        0.7525610649861302,
+        0.8369906841452863
+    ],
+    'model15': [
+        0.8656224326500999,
+        0.8034569069117807,
+        0.5305985899567973,
+        0.7640543019770105,
+        0.7023032709215519,
+        0.7684936066247227,
+        0.7355598873197952,
+        0.8139368364799848
+    ],
+    'model16': [
+        0.8432209155953801,
+        0.7844620548039365,
+        0.5294762630138414,
+        0.7500897507367827,
+        0.6913133469148858,
+        0.750016259137182,
+        0.720470211533205,
+        0.7940374143790992
+    ],
+    'model20': [
+        0.9109937322413584,
+        0.8503347302175364,
+        0.565933883741003,
+        0.7437863758074852,
+        0.706003652802423,
+        0.8049227953769291,
+        0.7862862784719382,
+        0.9230889044416283
+    ]
+}
 
 if not os.path.exists(BASE):
     os.makedirs(BASE)
@@ -120,14 +279,13 @@ def closed_form_eval(omega, psi, alpha):
         bracket = brackets[ref_year]
         X_y = bracket[:60][ROUND_1_INDEXER]
         for k in range(alpha, 33):
+            year_p += 1./100001
             for c_k in combinations(ALL_R1_GAMES, k):
-                q = 1.0
-                for m in c_k:
-                    q = q * all_p[X_y[m], m]
-                for n in list(set(ALL_R1_GAMES) - set(c_k)):
-                    q = q * all_p[1 - X_y[n], n]
-                year_p += q
-        energy += np.log(year_p + np.finfo(float).eps)
+                p_match = [all_p[X_y[m], m] for m in c_k]
+                p_mismatch = [all_p[1 - X_y[n], n]
+                              for n in list(set(ALL_R1_GAMES) - set(c_k))]
+                year_p += np.prod(p_match) * np.prod(p_mismatch)
+        energy += np.log(year_p)
     return -energy
 
 
@@ -307,6 +465,7 @@ def run_annealing(model, start_year, stop_year):
 
         print('=' * 50 + 'Baseline for data before {}'.format(year) + '=' * 50)
         prev_P, prev_pr, count_df = experiment(P, add_noise=False, trials=100000, model=model)
+
         if not model.get('closed_form', False):
             store_plot_and_csv(count_df, year - 1, 'Baseline', optimized_years=optimized_years)
         # this is used to set a single bit to the optimal value we found so far
@@ -362,6 +521,8 @@ def run_annealing(model, start_year, stop_year):
                     if favorable_count == 50:
                         break
                 counter += 1
+                if model.get('cooling_decay', 1) != 1 and counter >= N_tau:
+                    break
             f.flush()
             if model['cooling'] == 'linear':
                 t = (t - model.get('cooling_delta', 0.)) * model.get('cooling_decay', 1.)
@@ -370,6 +531,11 @@ def run_annealing(model, start_year, stop_year):
 
 
 if __name__ == '__main__':
+    # import cProfile, pstats
+    # from io import StringIO
+    # pr = cProfile.Profile()
+    # pr.enable()
+
     model_filepath = sys.argv[1]
     start_year = int(sys.argv[2])
     stop_year = int(sys.argv[3])
@@ -385,3 +551,8 @@ if __name__ == '__main__':
         if selected_model is not None and selected_model != model['name']:
             continue
         run_annealing(model, start_year, stop_year)
+
+    # pr.disable()
+    # s = StringIO()
+    # ps = pstats.Stats(pr).sort_stats('cumulative')
+    # ps.print_stats()
