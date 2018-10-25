@@ -68,6 +68,110 @@ import triplets.generators.E8With2TripletsPerRegion as E8With2TripletsPerRegion
 # weighted average.
 ######################################################################
 
+
+uniform_eta_5 = {
+    'model10': [ # 25_1985
+        1.0,
+        0.577924,
+        0.738162,
+        1.,
+        0.750773,
+        1.0,
+        0.789084,
+        1.0
+    ],
+    'model11': [ # 26_1985
+        1.,
+        0.492703,
+        0.865210,
+        1.,
+        0.792790,
+        1.,
+        0.735384,
+        1.
+    ],
+    'model12': [ # 27_1985
+        1.,
+        0.515851,
+        0.767134,
+        1.,
+        0.659071,
+        1.,
+        0.624253,
+        1.
+    ],
+    'model13': [ # 28_1985
+        1.,
+        0.503742,
+        0.744503,
+        0.985903,
+        0.589451,
+        0.983175,
+        0.629174,
+        1.
+    ],
+    'model1': [ # 29_1985
+        1.,
+        0.549093,
+        0.750055,
+        0.934562,
+        0.667669,
+        0.979045,
+        0.654386,
+        1.
+    ],
+    'model14': [ # 30_1985
+        1.,
+        0.702520,
+        0.607727,
+        0.955776,
+        0.527676,
+        0.914587,
+        0.731135,
+        1.
+    ],
+    'model15': [ # 31_1985
+        0.979950,
+        0.522624,
+        0.608672,
+        0.954450,
+        0.815560,
+        0.859511,
+        0.544364,
+        0.986404
+    ],
+    'model21': [ # 28_2002
+        1,
+        0.571343,
+        0.717079,
+        0.951833,
+        0.608841,
+        1.,
+        0.719049,
+        1.
+    ],
+    'model20': [ # 29_2002
+        1.0,
+        0.642990,
+        0.715042,
+        0.785525,
+        0.673557,
+        1.,
+        0.829395,
+        1.
+    ],
+    'model23': [ # 30_2002
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ]
+}
+
 perturbed_ps = {
     'model10': [
         1.0,
@@ -172,15 +276,15 @@ perturbed_ps = {
 }
 
 newone = {}
-for key in perturbed_ps.keys():
-    sorted_p = np.array(perturbed_ps[key])[[0, 7, 5, 3, 2, 4, 6, 1]]
+for key in uniform_eta_5.keys():
+    sorted_p = np.array(uniform_eta_5[key])[[0, 7, 5, 3, 2, 4, 6, 1]]
     newone[key] = [None] + sorted_p.tolist()
-perturbed_ps = newone
+uniform_eta_5 = newone
 
 # Returns the estimated probability that s1 beats s2
 def getP(s1, s2, model, year, roundNum):
     if model.get('annealing_model') is not None and roundNum == 1:
-        return perturbed_ps[model.get('annealing_model')][min(s1, s2)]
+        return uniform_eta_5[model.get('annealing_model')][min(s1, s2)]
     alpha = getAlpha(s1, s2, model, year, roundNum)
     s1a = (s1 * 1.0) ** alpha
     s2a = (s2 * 1.0) ** alpha
@@ -508,6 +612,11 @@ modelsList = modelsDict['models']
 numTrials = int(sys.argv[1])
 numBatches = int(sys.argv[2])
 
+# import cProfile, pstats
+# from io import StringIO
+# pr = cProfile.Profile()
+# pr.enable()
+
 for modelDict in modelsList:
     modelName = modelDict['modelName']
 
@@ -528,3 +637,9 @@ for modelDict in modelsList:
 
         for year in range(2013, 2019):
             performExperiments(numTrials, year, batchNumber, modelDict)
+
+#
+# pr.disable()
+# s = StringIO()
+# ps = pstats.Stats(pr).sort_stats('cumulative')
+# ps.print_stats()
