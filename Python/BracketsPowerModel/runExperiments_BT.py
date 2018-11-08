@@ -193,7 +193,7 @@ uniform_eta_5 = {
         0.986404
     ],
     '30_1985': [
-
+        0,0,0,0,0,0,0,0
     ]
 }
 
@@ -546,26 +546,9 @@ def getP(s1, s2, model, year, roundNum):
 # to represent game outcomes in a bracket. The model specifies
 # which alpha value(s) to use for each round.
 def generateBracket(model, year):
-    pooled = model.get('pooled', False)
-    generator = model.get('generator', None)
-    fmt = model.get('format', 'TTT')
-    override_f4 = model.get('overrideF4', DEFAULT_FORMAT)
-
-    if generator == 'IID_AllTriplets':
-        return IID_AllTriplets.generateSingleBracket(year, is_pooled=pooled,
-                                                     model=model)
-    elif generator == 'IID_2TripletsPerRegion':
-        return IID_2TripletsPerRegion.generateSingleBracket(year,
-                                                            is_pooled=pooled,
-                                                            model=model)
-    elif generator == 'IID_2TripletsPerRegion_F4Triplet':
-        return IID_2TripletsPerRegion_F4Triplet.generateSingleBracket(year,
-                                                                      is_pooled=pooled,
-                                                                      model=model)
-
     bracket = []
 
-    # random.seed()
+    random.seed()
 
     endModel = 'None'
     if 'endModel' in model:
@@ -613,77 +596,44 @@ def generateBracket(model, year):
 
         f4Seeds[champRegion] = champion
         f4Seeds[ruRegion] = runnerUp
-    else:
-        champRegion = -1
-        ruRegion = -1
 
     if endModel == 'Rev_4':
         f4Seeds[ffcRegion] = getF4SeedTogether(year)
         f4Seeds[ffrRegion] = getF4SeedTogether(year)
 
-    if not generator:
-        # Loop through regional rounds R64, R32, and S16
-        for region in range(4):
-            seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
-            for roundNum in range(1, 5):
-                numGames = int(len(seeds) / 2)
-                newSeeds = []
-                for gameNum in range(numGames):
-                    s1 = seeds[2 * gameNum]
-                    s2 = seeds[2 * gameNum + 1]
+    # Loop through regional rounds R64, R32, and S16
+    for region in range(4):
+        seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
+        for roundNum in range(1, 5):
+            numGames = int(len(seeds) / 2)
+            newSeeds = []
+            for gameNum in range(numGames):
+                s1 = seeds[2 * gameNum]
+                s2 = seeds[2 * gameNum + 1]
 
-                    # Force any fixed F4/E8 seeds to make it through
-                    s1Wins = (s1 == f4Seeds[region]) or ((roundNum < 4) and (
-                            (s1 == e8Seeds[2 * region]) or (
-                            s1 == e8Seeds[2 * region + 1])))
-                    s2Wins = (s2 == f4Seeds[region]) or ((roundNum < 4) and (
-                            (s2 == e8Seeds[2 * region]) or (
-                            s2 == e8Seeds[2 * region + 1])))
+                # Force any fixed F4/E8 seeds to make it through
+                s1Wins = (s1 == f4Seeds[region]) or ((roundNum < 4) and (
+                        (s1 == e8Seeds[2 * region]) or (
+                        s1 == e8Seeds[2 * region + 1])))
+                s2Wins = (s2 == f4Seeds[region]) or ((roundNum < 4) and (
+                        (s2 == e8Seeds[2 * region]) or (
+                        s2 == e8Seeds[2 * region + 1])))
 
-                    if s1Wins:
-                        p = 1
-                    elif s2Wins:
-                        p = 0
-                    else:
-                        p = getP(s1, s2, model, year, roundNum)
+                if s1Wins:
+                    p = 1
+                elif s2Wins:
+                    p = 0
+                else:
+                    p = getP(s1, s2, model, year, roundNum)
 
-                    if random.random() <= p:
-                        bracket.append(
-                            1 if fmt == 'TTT' else (1 if s1 < s2 else 0))
-                        newSeeds.append(s1)
-                    else:
-                        bracket.append(
-                            0 if fmt == 'TTT' else (1 if s2 < s1 else 0))
-                        newSeeds.append(s2)
-                seeds = newSeeds
-            f4Seeds[region] = seeds[0]
-        bracket = bracket + [-1, -1, -1]
-    elif generator == 'AllTripletsRev':
-        bracket = AllTripletsRev.generateSingleBracket(
-            year,
-            f4Seeds,
-            champRegion,
-            ruRegion,
-            is_pooled=pooled,
-            model=model)
-        if override_f4:
-            return bracket
-    elif generator == 'E8With2TripletsPerRegion' and endModel == 'E8':
-        bracket, f4Seeds = E8With2TripletsPerRegion.generateSingleBracket(
-            year,
-            e8Seeds,
-            is_pooled=pooled,
-            model=model)
-        if override_f4:
-            return bracket
-    elif generator == 'E8With5TripletsPerRegion' and endModel == 'E8':
-        bracket, f4Seeds = E8With5TripletsPerRegion.generateSingleBracket(
-            year,
-            e8Seeds,
-            is_pooled=pooled,
-            model=model)
-        if override_f4:
-            return bracket
+                if random.random() <= p:
+                    bracket.append(1)
+                    newSeeds.append(s1)
+                else:
+                    bracket.append(0)
+                    newSeeds.append(s2)
+            seeds = newSeeds
+        f4Seeds[region] = seeds[0]
 
     # Round 5:
     for gameNum in range(2):
@@ -702,10 +652,10 @@ def generateBracket(model, year):
             p = getP(s1, s2, model, year, 5)
 
         if random.random() <= p:
-            bracket[60 + gameNum] = 1
+            bracket.append(1)
             ncgSeeds[gameNum] = s1
         else:
-            bracket[60 + gameNum] = 0
+            bracket.append(0)
             ncgSeeds[gameNum] = s2
 
     # Round 6:
@@ -721,12 +671,10 @@ def generateBracket(model, year):
         p = getP(s1, s2, model, year, 6)
 
     if random.random() <= p:
-        bracket[-1] = 1
+        bracket.append(1)
     else:
-        bracket[-1] = 0
+        bracket.append(0)
 
-    # assert len(bracket) == 63
-    # assert np.count_nonzero(np.array(bracket) == -1) == 0
     return bracket
 
 
@@ -916,8 +864,7 @@ numBatches = int(sys.argv[2])
 for modelDict in modelsList:
     modelName = modelDict['modelName']
 
-    print
-    '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
+    print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
 
     for batchNumber in range(numBatches):
         if numTrials < 1000:
