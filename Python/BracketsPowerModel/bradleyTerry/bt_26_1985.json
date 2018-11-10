@@ -1,0 +1,44 @@
+{
+    "models": [
+    {
+        "modelDesc": "F4 Model 1, R1 separate",
+        "modelName": "bradley-terry-F4_1_26_1985",
+        "isR1Grouped": "False",
+        "endModel": "F4_1",
+        "bradleyTerry": true,
+        "annealing_model": "26_1985"
+    },
+    {
+        "modelDesc": "F4 Model 2, R1 separate",
+        "modelName": "bradley-terry-F4_2_26_1985",
+        "isR1Grouped": "False",
+        "endModel": "F4_2",
+        "bradleyTerry": true,
+        "annealing_model": "26_1985"
+    },
+    {
+        "modelDesc": "E8 Model, R1 separate",
+        "modelName": "bradley-terry-E8_26_1985",
+        "isR1Grouped": "False",
+        "endModel": "E8",
+        "bradleyTerry": true,
+        "annealing_model": "26_1985"
+    },
+    {
+        "modelDesc": "Reverse Model (top 2), R1 separate",
+        "modelName": "bradley-terry-NCG_26_1985",
+        "isR1Grouped": "False",
+        "endModel": "Rev_2",
+        "bradleyTerry": true,
+        "annealing_model": "26_1985"
+    },
+    {
+        "modelDesc": "Forward Model, R1 separate",
+        "modelName": "bradley-terry_26_1985",
+        "isR1Grouped": "False",
+        "endModel": "None",
+        "bradleyTerry": true,
+        "annealing_model": "26_1985"
+    }
+    ]
+}
