@@ -1,0 +1,71 @@
+{
+    "models": [
+        {
+            "modelDesc": "Reverse: Get the NC correct",
+            "modelName": "conditioning_NC",
+            "isR1Grouped": "False",
+            "endModel": "Rev_2",
+            "forceCorrect": {
+              "NC": true,
+              "RU": false,
+              "F4": 1
+            }
+        },
+        {
+            "modelDesc": "Reverse: Get the NC and RU correct",
+            "modelName": "conditioning_NC_RU",
+            "isR1Grouped": "False",
+            "endModel": "Rev_2",
+            "forceCorrect": {
+              "NC": true,
+              "RU": true,
+              "F4": 2
+            }
+        },
+        {
+            "modelDesc": "Reverse: Get the two RUs correct but not the NC",
+            "modelName": "conditioning_NC_RU_swapped",
+            "isR1Grouped": "False",
+            "endModel": "Rev_2",
+            "forceCorrect": {
+              "NC": true,
+              "RU": true,
+              "F4": 2,
+              "RU_Wins": true
+            }
+        },
+        {
+            "modelDesc": "Reverse: Get the RU correct but not the NC",
+            "modelName": "conditioning_RU_noNC",
+            "isR1Grouped": "False",
+            "endModel": "Rev_2",
+            "forceCorrect": {
+              "NC": false,
+              "RU": true,
+              "F4": 1
+            }
+        },
+        {
+            "modelDesc": "Reverse: Get the NC and RU correct, plus one the remaining F4 correct",
+            "modelName": "conditioning_NC_RU_oneF4",
+            "isR1Grouped": "False",
+            "endModel": "Rev_2",
+            "forceCorrect": {
+              "NC": true,
+              "RU": true,
+              "F4": 3
+            }
+        },
+        {
+            "modelDesc": "Reverse: Get the NC and RU correct, plus the F4 correct",
+            "modelName": "conditioning_NC_RU_allF4",
+            "isR1Grouped": "False",
+            "endModel": "Rev_2",
+            "forceCorrect": {
+              "NC": true,
+              "RU": true,
+              "F4": 4
+            }
+        }
+    ]
+}
