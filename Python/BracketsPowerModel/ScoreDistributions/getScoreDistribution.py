@@ -43,7 +43,7 @@ for model in models:
                 print('# brackets: ', len(brackets))
                 scores = [bracket['score'][0] for bracket in brackets]
                 l, u = np.min(scores), np.max(scores)
-                n_bins = (u - l) / 20
+                n_bins = int((u - l) / 20)
                 sns.distplot(scores, bins=n_bins, kde=False)
                 plt.title('Score distribution \n Model: `{}`, Year: {}'.format(desc, year))
                 plt.xlabel('ESPN Score')
