@@ -7,7 +7,7 @@
             "endModel": "Rev_2",
             "forceCorrect": {
               "NC": true,
-              "RU": false,
+              "RU": null,
               "F4": 1
             }
         },
@@ -19,6 +19,17 @@
             "forceCorrect": {
               "NC": true,
               "RU": true,
+              "F4": 2
+            }
+        },
+        {
+            "modelDesc": "Reverse: Get the NC but not RU correct",
+            "modelName": "conditioning_NC_noRU",
+            "isR1Grouped": "False",
+            "endModel": "Rev_2",
+            "forceCorrect": {
+              "NC": true,
+              "RU": false,
               "F4": 2
             }
         },

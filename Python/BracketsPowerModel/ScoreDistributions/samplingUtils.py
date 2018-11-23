@@ -112,8 +112,21 @@ def getChampionRegion(year, force_correct=None):
 
 # Returns a seed for the National Runner-Up.
 def getRunnerUp(year, force_correct=None):
-    if force_correct is not None and force_correct.get('RU'):
-        return sRU[year - 2013]
+    if 'RU' in force_correct:
+        if force_correct['RU'] is None:
+            pR = pRU[year - 2013]
+            rSum = ruSum[year - 2013]
+            return getTruncGeom(pR, rSum)
+        elif not force_correct['RU']:
+            real_RU = sRU[year - 2013]
+            while True:
+                pR = pRU[year - 2013]
+                rSum = ruSum[year - 2013]
+                seed = getTruncGeom(pR, rSum)
+                if real_RU != seed:
+                    return seed
+        else:
+            return sRU[year - 2013]
     pR = pRU[year - 2013]
     rSum = ruSum[year - 2013]
     return getTruncGeom(pR, rSum)
