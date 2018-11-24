@@ -36,9 +36,6 @@ reference_truth = {
 }
 #     7/8, 0.5, 7/8, 6/8, 3/8, 1., 6/8, 1.
 
-
-n_games = 3
-
 p = [
     0.9926470588235294, 0.5, 0.6544117647058824, 0.7941176470588235, 0.625, 0.8455882352941176, 0.6176470588235294, 0.9411764705882353,
     0.9926470588235294, 0.5, 0.6544117647058824, 0.7941176470588235, 0.625, 0.8455882352941176, 0.6176470588235294, 0.9411764705882353,
@@ -47,7 +44,7 @@ p = [
 ]
 
 
-def _full_form_objective_function_32(year, break_region=False, truth=None):
+def _full_form_objective_function_32(year, break_region, truth, n_games):
     all_factors = []
     if break_region:
         ctrl = 4
@@ -67,7 +64,7 @@ def _full_form_objective_function_32(year, break_region=False, truth=None):
     return '*'.join(all_factors)
 
 
-def _full_form_objective_function_31(year, break_region=False, truth=None):
+def _full_form_objective_function_31(year, break_region, truth, n_games):
     all_summands = []
     if break_region:
         ctrl = 4
@@ -119,16 +116,16 @@ objective_fns = {
 }
 
 
-def _full_form_objective_function(year, alpha, break_region, truth):
-    return objective_fns[str(alpha)](year, break_region, truth)
+def _full_form_objective_function(year, alpha, break_region, truth, n_games):
+    return objective_fns[str(alpha)](year, break_region, truth, n_games)
 
 
-def full_form_objective_fn(alpha=31, break_region=False, truth=None):
-    year_objs = [_full_form_objective_function(year, alpha, break_region, truth) for year in truth.keys()]
-    return '*'.join(year_objs)
+def full_form_objective_fn(alpha=31, break_region=False, truth=None, n_games=3, operator='*'):
+    year_objs = [_full_form_objective_function(year, alpha, break_region, truth, n_games) for year in truth.keys()]
+    return operator.join(year_objs)
 
 
-def get_subs(symbols, probs):
+def get_subs(symbols, probs, n_games):
     return [
         (symbols['p_{}'.format(i)], probs[i])
         for i in range(n_games)
@@ -175,23 +172,26 @@ def test_newtons_method():
 
 
 if __name__ == '__main__':
-    print('Usage: python toy.py <gamma> <output_dir>')
+    print('Usage: python toy.py <gamma> <output_dir> <operator>')
     import json
     import os
     import sys
     from itertools import permutations
 
+    if len(sys.argv) < 5:
+        exit(1)
+
     gamma = float(sys.argv[1])
-    if len(sys.argv) > 2:
-        output_dir = sys.argv[2]
-    else:
-        output_dir = 'Likelihood/analytical/logs'
+    output_dir = sys.argv[2]
+    operator = sys.argv[3]
+    n_games = int(sys.argv[4])
+
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     for config in permutations(range(8), n_games):
-        out = open('{}/out.{}-{}.txt'.format(output_dir, '_'.join([str(x) for x in config]), gamma), 'w')
+        out = open('{}/out.{}.{}.{}.txt'.format(output_dir, '_'.join([str(x) for x in config]), gamma, n_games), 'w')
         gt_data = select_columns(reference_truth, config)
         input_data = json.dumps(gt_data)
         # import pdb; pdb.set_trace()
@@ -215,11 +215,14 @@ if __name__ == '__main__':
         symbols = {k: v
                    for k, v in omega_symbols.items()
                    if int(k.split('_')[1]) < n_games}
-        objective_31 = parse_expr(full_form_objective_fn(break_region=True, truth=gt_data),
-                                  local_dict=symbols)
+        objective_31 = parse_expr(
+            full_form_objective_fn(
+                alpha=31, break_region=True,
+                truth=gt_data, n_games=n_games, operator=operator),
+            local_dict=symbols)
         print('Objective: ', objective_31)
         print('MLE probs: ', mle_probs(gt_data))
-        print('P(M_y >= {} | MLE) = {}'.format(n_games - 1, objective_31.subs(get_subs(symbols, mle_probs(gt_data)))))
+        print('P(M_y >= {} | MLE) = {}'.format(n_games - 1, objective_31.subs(get_subs(symbols, mle_probs(gt_data), n_games))))
         # import pdb; pdb.set_trace()
         H = hessian(objective_31, list(symbols.values()))
         grad = [sp.diff(objective_31, p_i) for p_i in symbols.values()]
@@ -233,8 +236,8 @@ if __name__ == '__main__':
         clipped_dim_counter = 0
         while True:
             history.append(omega)
-            H_eval = np.array([d2f.subs(get_subs(symbols, omega)) for d2f in H], dtype=float).reshape(n_games, n_games)
-            grad_eval = np.array([f_prime.subs(get_subs(symbols, omega)) for f_prime in grad], dtype=float)
+            H_eval = np.array([d2f.subs(get_subs(symbols, omega, n_games)) for d2f in H], dtype=float).reshape(n_games, n_games)
+            grad_eval = np.array([f_prime.subs(get_subs(symbols, omega, n_games)) for f_prime in grad], dtype=float)
             try:
                 raw_omega = omega + gamma * np.linalg.inv(H_eval).dot(grad_eval)
             except np.linalg.LinAlgError:
@@ -245,7 +248,7 @@ if __name__ == '__main__':
             out.write('Gradient: ' + str(grad_eval))
             out.write('\n')
 
-            p = objective_31.subs(get_subs(symbols, omega))
+            p = objective_31.subs(get_subs(symbols, omega, n_games))
             print('P(M_y >= {}) = {}. '.format(n_games - 1, p), 'New omega:', omega.tolist(), ' - L2 diff: ', np.linalg.norm(omega - omega_next))
             out.write('P(M_y >= {}) = {}. '.format(n_games - 1, p))
             out.write('New omega: [')
@@ -276,16 +279,16 @@ if __name__ == '__main__':
         out.write('Max P(.) = ' + str(np.max(probs)))
         out.write('\n')
 
-        print('Final Omega: ', get_subs(symbols, omega))
-        out.write('Final Omega: ' + str(get_subs(symbols, omega)))
+        print('Final Omega: ', get_subs(symbols, omega, n_games))
+        out.write('Final Omega: ' + str(get_subs(symbols, omega, n_games)))
         out.write('\n')
 
-        print('MLE probs: ', get_subs(symbols, mle_probs(gt_data)))
-        out.write('MLE probs:   ' + str(get_subs(symbols, mle_probs(gt_data))))
+        print('MLE probs: ', get_subs(symbols, mle_probs(gt_data), n_games))
+        out.write('MLE probs:   ' + str(get_subs(symbols, mle_probs(gt_data), n_games)))
         out.write('\n')
 
-        print('P(M_y >= {} | MLE) = {}'.format(n_games - 1, objective_31.subs(get_subs(symbols, mle_probs(gt_data)))))
-        out.write('P(M_y >= {} | MLE) = {}'.format(n_games - 1, objective_31.subs(get_subs(symbols, mle_probs(gt_data)))))
+        print('P(M_y >= {} | MLE) = {}'.format(n_games - 1, objective_31.subs(get_subs(symbols, mle_probs(gt_data), n_games))))
+        out.write('P(M_y >= {} | MLE) = {}'.format(n_games - 1, objective_31.subs(get_subs(symbols, mle_probs(gt_data), n_games))))
         out.write('\n')
 
         # import pdb; pdb.set_trace()
