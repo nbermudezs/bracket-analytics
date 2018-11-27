@@ -79,7 +79,6 @@ sRU = [4, 8, 1, 1, 1, 3]
 sNCG = [1, 7, 1, 2, 1, 1]
 rNC = [0, 1, 3, 0, 3, 2]
 rRU = [2, 3, 1, 2, 1, 1] # true RU region
-rIdRU = [0, 1, 1, 0, 1, 1] # index in the remaining two regions
 
 
 # Returns a sample of a truncated geometric r.v.
@@ -145,7 +144,12 @@ def getRunnerUp(year, model):
 def getRunnerUpInfo(year, model, NC_info):
     regions = [0, 1, 2, 3]
     NC_seed, NC_region = NC_info
-    regions.remove(NC_region)
+
+    # remove regions on the NC champion
+    half = NC_region // 2
+    regions.remove(half * 2)
+    regions.remove(half * 2 + 1)
+
     seed = getRunnerUp(year, model)
     if model['conditions'].get('RU_correct') == 1:
         return seed, rRU[year - 2013]
@@ -165,26 +169,23 @@ def getRunnerUpInfo(year, model, NC_info):
 
 def getAllF4Seeds(year, fn, model, NC_info, RU_info):
     f4Seeds = [fn(year) for _ in range(4)]
+    regions = [0, 1, 2, 3]
 
     NC_seed, NC_region = None, None
     RU_seed, RU_region = None, None
 
-    if NC_info:
+    if NC_info is not None:
         NC_seed, NC_region = NC_info
         f4Seeds[NC_region] = NC_seed
+        regions.remove(NC_region)
 
-    if RU_info:
+    if RU_info is not None:
         RU_seed, RU_region = RU_info
         f4Seeds[RU_region] = RU_seed
+        regions.remove(RU_region)
 
     if model['conditions'].get('F4_correct') == '*':
         return f4Seeds
-
-    regions = [0, 1, 2, 3]
-    if NC_region:
-        regions.remove(NC_region)
-    if RU_region:
-        regions.remove(RU_region)
 
     correct = model['conditions'].get('F4_correct')
     for _ in range(correct):
