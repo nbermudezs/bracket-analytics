@@ -90,76 +90,116 @@ def getTruncGeom(p, pSum):
 
 
 # Returns a seed for the National Champion.
-def getChampion(year, force_correct=None):
-    if force_correct is not None and force_correct.get('NC'):
-            return sNCG[year - 2013]
-    pC = pChamp[year - 2013]
-    cSum = champSum[year - 2013]
-    return getTruncGeom(pC, cSum)
+def getChampion(year, model):
+    if model['conditions'].get('NC_correct') == 1:
+        return sNCG[year - 2013]
+    elif model['conditions'].get('NC_correct') == '*':
+        pC = pChamp[year - 2013]
+        cSum = champSum[year - 2013]
+        return getTruncGeom(pC, cSum)
+    elif model['conditions'].get('NC_correct') == 0:
+        # we will allow the seed to be correct but if it happens
+        # the region will be ensured to be incorrect
+        pC = pChamp[year - 2013]
+        cSum = champSum[year - 2013]
+        return getTruncGeom(pC, cSum)
 
 
-def getChampionRegion(year, force_correct=None):
-    if force_correct is not None:
-        if force_correct.get('NC'):
-            return rNC[year - 2013]
-        elif force_correct.get('RU'):
-            if rRU[year - 2013] > 1:
-                return int(floor(random.random() * 2))
-            else:
-                return 2 + int(floor(random.random() * 2))
-    return int(floor(random.random() * 4))
+def getChampionInfo(year, model):
+    seed = getChampion(year, model)
+    regions = [0, 1, 2, 3]
+    if model['conditions'].get('RU_correct') == 1:
+        half = rRU[year - 2013] // 2
+        regions.remove(half * 2)
+        regions.remove(half * 2 + 1)
+    if model['conditions'].get('NC_correct') == 1:
+        return seed, rNC[year - 2013]
+    elif model['conditions'].get('NC_correct') == 0:
+        if seed == sNCG[year - 2013]:
+            while True:
+                region = np.random.choice(regions, 1)[0]
+                if region != rNC[year - 2013]:
+                    return seed, region
+        else:
+            region = np.random.choice(regions, 1)[0]
+            return seed, region
+    elif model['conditions'].get('NC_correct') == '*':
+        region = np.random.choice(regions, 1)[0]
+        return seed, region
 
 
 # Returns a seed for the National Runner-Up.
-def getRunnerUp(year, force_correct=None):
-    if 'RU' in force_correct:
-        if force_correct['RU'] is None:
-            pR = pRU[year - 2013]
-            rSum = ruSum[year - 2013]
-            return getTruncGeom(pR, rSum)
-        if force_correct['RU'] is False:
-            real_RU = sRU[year - 2013]
-            while True:
-                pR = pRU[year - 2013]
-                rSum = ruSum[year - 2013]
-                seed = getTruncGeom(pR, rSum)
-                if real_RU != seed:
-                    return seed
+def getRunnerUp(year, model):
+    if model['conditions'].get('RU_correct') == 1:
         return sRU[year - 2013]
-    pR = pRU[year - 2013]
-    rSum = ruSum[year - 2013]
-    return getTruncGeom(pR, rSum)
+    elif model['conditions'].get('RU_correct') == 0:
+        pR = pRU[year - 2013]
+        rSum = ruSum[year - 2013]
+        return getTruncGeom(pR, rSum)
+    elif model['conditions'].get('RU_correct') == '*':
+        pR = pRU[year - 2013]
+        rSum = ruSum[year - 2013]
+        return getTruncGeom(pR, rSum)
 
 
-def getRunnerUpRegion(year, force_correct=None):
-    if force_correct is not None and force_correct.get('RU'):
-        return rIdRU[year - 2013]
-    return int(floor(random.random() * 2))
+def getRunnerUpInfo(year, model, NC_info):
+    regions = [0, 1, 2, 3]
+    NC_seed, NC_region = NC_info
+    regions.remove(NC_region)
+    seed = getRunnerUp(year, model)
+    if model['conditions'].get('RU_correct') == 1:
+        return seed, rRU[year - 2013]
+    elif model['conditions'].get('RU_correct') == 0:
+        if seed == sRU[year - 2013]:
+            while True:
+                region = np.random.choice(regions, 1)[0]
+                if region != rRU[year - 2013]:
+                    return seed, region
+        else:
+            region = np.random.choice(regions, 1)[0]
+            return seed, region
+    elif model['conditions'].get('RU_correct') == '*':
+        region = np.random.choice(regions, 1)[0]
+        return seed, region
 
 
-def getAllF4Seeds(year, fn, force_correct=None, RU=(None, None), NC=(None, None)):
-    if force_correct is not None and force_correct.get('F4', 0) > 0:
-        f4Seeds = [fn(year) for _ in range(4)]
-        positions = set(range(4))
-        count = 0
-        if force_correct.get('NC'):
-            nc_pos, nc_seed = NC
-            count += 1
-            positions.remove(nc_pos)
-            f4Seeds[nc_pos] = nc_seed
-        if force_correct.get('RU') is None or force_correct.get('RU'):
-            ru_pos, ru_seed = RU
-            ru_pos = ru_pos + (2 if NC[0] < 2 else 0)
-            count += 1
-            positions.remove(ru_pos)
-            f4Seeds[ru_pos] = ru_seed
-        for i in range(force_correct.get('F4', 0) - count):
-            pos = np.random.choice(list(positions))
-            f4Seeds[pos] = sF4[year - 2013][pos]
-            positions.remove(pos)
+def getAllF4Seeds(year, fn, model, NC_info, RU_info):
+    f4Seeds = [fn(year) for _ in range(4)]
+
+    NC_seed, NC_region = None, None
+    RU_seed, RU_region = None, None
+
+    if NC_info:
+        NC_seed, NC_region = NC_info
+        f4Seeds[NC_region] = NC_seed
+
+    if RU_info:
+        RU_seed, RU_region = RU_info
+        f4Seeds[RU_region] = RU_seed
+
+    if model['conditions'].get('F4_correct') == '*':
         return f4Seeds
-    else:
-        return [fn(year) for _ in range(4)]
+
+    regions = [0, 1, 2, 3]
+    if NC_region:
+        regions.remove(NC_region)
+    if RU_region:
+        regions.remove(RU_region)
+
+    correct = model['conditions'].get('F4_correct')
+    for _ in range(correct):
+        region = np.random.choice(regions, 1)
+        f4Seeds[region] = sF4[year - 2013][region]
+        regions.remove(region)
+    for region in regions:
+        # in this configuration we ensure that EXACTLY the number of F4_correct
+        # games are indeed correct, forcing the others to be incorrect
+        while True:
+            seed = fn(year)
+            if seed != sF4[year - 2013][region]:
+                f4Seeds[region] = seed
+                break
+    return f4Seeds
 
 
 # Returns a seed for the Final Four, sampled 

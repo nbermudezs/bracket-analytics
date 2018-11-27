@@ -9,10 +9,9 @@ import sys
 from math import log, ceil, floor
 
 from collections import defaultdict
-from ScoreDistributions.samplingUtils import getE8SeedBottom, getE8SeedTop
-from ScoreDistributions.samplingUtils import getF4SeedSplit, getF4SeedTogether, getAllF4Seeds
-from ScoreDistributions.samplingUtils import getChampion, getRunnerUp
-from ScoreDistributions.samplingUtils import getChampionRegion, getRunnerUpRegion
+from ScoreDistributions.conditioningSamplingUtils import getE8SeedBottom, getE8SeedTop
+from ScoreDistributions.conditioningSamplingUtils import getF4SeedSplit, getF4SeedTogether, getAllF4Seeds
+from ScoreDistributions.conditioningSamplingUtils import getChampionInfo, getRunnerUpInfo
 
 from scoringUtils import getActualBracketVector
 from scoringUtils import scoreBracket
@@ -230,22 +229,24 @@ def generateBracket(model, year):
 
     f4Seeds = []
     if endModel == 'F4_1':
-        f4Seeds = getAllF4Seeds(year, getF4SeedTogether)
+        f4Seeds = getAllF4Seeds(year, getF4SeedTogether, NC_info=None, RU_info=None)
     elif endModel == 'F4_2':
-        f4Seeds = getAllF4Seeds(year, getF4SeedSplit)
+        f4Seeds = getAllF4Seeds(year, getF4SeedSplit, NC_info=None, RU_info=None)
     else:
         f4Seeds = [-1, -1, -1, -1]
 
     ncgSeeds = [-1, -1]
     if 'Rev' in endModel:
-        champion = getChampion(year, model.get('forceCorrect'))
-        runnerUp = getRunnerUp(year, model.get('forceCorrect'))
-        champRegion = getChampionRegion(year, model.get('forceCorrect'))
+        champion, champRegion = getChampionInfo(year, model)
+        runnerUp, ruRegion = getRunnerUpInfo(year, model, (champion, champRegion))
         champHalf = champRegion / 2
-        ruRegion = getRunnerUpRegion(year, model.get('forceCorrect'))
-        f4Seeds = getAllF4Seeds(year, getF4SeedTogether, model.get('forceCorrect'),
-                                RU=(ruRegion, runnerUp),
-                                NC=(champRegion, champion))
+        f4Seeds = getAllF4Seeds(year, getF4SeedTogether, model,
+                                RU_info=(runnerUp, ruRegion),
+                                NC_info=(champion, champRegion))
+        # print(runnerUp, ruRegion)
+        ruRegion = ruRegion % 2
+        # print(champion, champRegion)
+        # print(runnerUp, ruRegion)
 
         if champHalf == 0:
             ncgSeeds = [champion, runnerUp]
@@ -260,9 +261,6 @@ def generateBracket(model, year):
             ffcRegion = 1 - champRegion
         else:
             ffcRegion = 5 - champRegion
-
-        f4Seeds[champRegion] = champion
-        f4Seeds[ruRegion] = runnerUp
 
     if endModel == 'Rev_4':
         f4Seeds[ffcRegion] = getF4SeedTogether(year)
@@ -331,9 +329,9 @@ def generateBracket(model, year):
 
     if 'Rev' in endModel:
         if champHalf == 0:
-            p = 1 if not model.get('forceCorrect', {}).get('RU_Wins', False) else 0
+            p = 1 if not model['conditions'].get('RU_wins', False) else 0
         else:
-            p = 0 if not model.get('forceCorrect', {}).get('RU_Wins', False) else 1
+            p = 0 if not model['conditions'].get('RU_wins', False) else 1
     else:
         p = getP(s1, s2, model, year, 6)
 
@@ -341,6 +339,7 @@ def generateBracket(model, year):
         bracket.append(1)
     else:
         bracket.append(0)
+    # print(f4Seeds)
 
     # if year == 2016:
     #     truth = [1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1]
@@ -487,24 +486,27 @@ def performExperiments(numTrials, year, batchNumber, model):
         newBracketVector = generateBracket(model, year)
         newBracketScore = scoreBracket(newBracketVector, correctVector)
 
-        if model['modelName'] == 'conditioning_NC_noRU':
+        if model['modelName'] == 'NC_correct_noRU':
             assert(newBracketScore[-1] == 320)
             assert(newBracketScore[-2] == 160)
             assert(newBracketScore[-3] >= 80)
-        elif model['modelName'] == 'conditioning_NC':
+        elif model['modelName'] == 'NC_correct':
             try:
                 assert (newBracketScore[-1] == 320)
                 assert (newBracketScore[-2] >= 160)
             except:
                 import pdb; pdb.set_trace()
-        elif model['modelName'] == 'conditioning_NC_RU':
+        elif model['modelName'] == 'NC_RU_correct':
             assert (newBracketScore[-1] == 320)
             assert (newBracketScore[-2] == 320)
-        elif model['modelName'] == 'conditioning_NC_RU_swapped':
+        elif model['modelName'] == 'NC_RU_swapped':
             assert (newBracketScore[-1] == 0)
             assert (newBracketScore[-2] == 320)
-        elif model['modelName'] == 'conditioning_RU_noNC':
-            assert (newBracketScore[-1] >= 0)
+            assert (newBracketScore[0] <= 1920 - 320)
+        elif model['modelName'] == 'RU_correct_noNC':
+            assert (newBracketScore[-1] == 0)
+            assert (newBracketScore[-2] >= 160)
+        elif model['modelName'] == 'RU_correct':
             assert (newBracketScore[-2] >= 160)
         # numCorrectPicks = calcCorrectPicks(newBracketScore)
 
@@ -518,9 +520,9 @@ def performExperiments(numTrials, year, batchNumber, model):
         str(bit) for bit in correctVector), 'brackets': brackets}
 
     if numTrials < 1000:
-        folderName = 'Experiments/{0}Trials'.format(numTrials)
+        folderName = 'Experiments/Conditioning/{0}Trials'.format(numTrials)
     else:
-        folderName = 'Experiments/{0}kTrials'.format(int(numTrials / 1000))
+        folderName = 'Experiments/Conditioning/{0}kTrials'.format(int(numTrials / 1000))
     batchFolderName = '{0}/Batch{1:02d}'.format(folderName, batchNumber)
 
     outputFilename = '{2}/generatedBrackets_{0}_{1}.json'.format(
@@ -561,9 +563,9 @@ for modelDict in modelsList:
 
     for batchNumber in range(numBatches):
         if numTrials < 1000:
-            folderName = 'Experiments/{0}Trials'.format(numTrials)
+            folderName = 'Experiments/Conditioning/{0}Trials'.format(numTrials)
         else:
-            folderName = 'Experiments/{0}kTrials'.format(int(numTrials / 1000))
+            folderName = 'Experiments/Conditioning/{0}kTrials'.format(int(numTrials / 1000))
 
         if not os.path.exists(folderName):
             os.makedirs(folderName)
@@ -572,7 +574,7 @@ for modelDict in modelsList:
         if not os.path.exists(batchFolderName):
             os.makedirs(batchFolderName)
 
-        for year in range(2017, 2018):
+        for year in range(2013, 2014):
             performExperiments(numTrials, year, batchNumber, modelDict)
 
 #
