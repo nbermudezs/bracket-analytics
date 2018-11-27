@@ -1,0 +1,79 @@
+{
+  "models": [
+    {
+      "modelDesc": "RU correct, free other",
+      "modelName": "RU_correct",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": "*",
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "RU correct, NC incorrect, free other",
+      "modelName": "RU_correct_noNC",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": 0,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    },
+
+
+    {
+      "modelDesc": "Both RU correct, wrong NC, free other",
+      "modelName": "NC_RU_swapped",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": 1,
+        "RU_correct": 1,
+        "E8_correct": "*",
+        "RU_wins": true
+      }
+    },
+    {
+      "modelDesc": "NC correct, RU incorrect, free other",
+      "modelName": "NC_correct_noRU",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": 1,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },{
+      "modelDesc": "NC correct, free other",
+      "modelName": "NC_correct",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": 1,
+        "RU_correct": "*",
+        "E8_correct": "*"
+      }
+    },
+
+    {
+      "modelDesc": "NC and RU correct, free other",
+      "modelName": "NC_RU_correct",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": 1,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    }
+  ]
+}
