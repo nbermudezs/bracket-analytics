@@ -2,7 +2,7 @@
   "models": [
     {
       "modelDesc": "F4 none correct",
-      "modelName": "F4_none_correct",
+      "modelName": "F4_none_correct-F4_1",
       "isR1Grouped": "False",
       "endModel": "F4_1",
       "conditions": {
@@ -14,7 +14,7 @@
     },
     {
       "modelDesc": "F4 one correct",
-      "modelName": "F4_one_correct",
+      "modelName": "F4_one_correct-F4_1",
       "isR1Grouped": "False",
       "endModel": "F4_1",
       "conditions": {
@@ -26,7 +26,7 @@
     },
     {
       "modelDesc": "F4 two correct",
-      "modelName": "F4_two_correct",
+      "modelName": "F4_two_correct-F4_1",
       "isR1Grouped": "False",
       "endModel": "F4_1",
       "conditions": {
@@ -38,7 +38,7 @@
     },
     {
       "modelDesc": "F4 none correct",
-      "modelName": "F4_none_correct",
+      "modelName": "F4_none_correct-F4_2",
       "isR1Grouped": "False",
       "endModel": "F4_2",
       "conditions": {
@@ -50,7 +50,7 @@
     },
     {
       "modelDesc": "F4 one correct",
-      "modelName": "F4_one_correct",
+      "modelName": "F4_one_correct-F4_2",
       "isR1Grouped": "False",
       "endModel": "F4_2",
       "conditions": {
@@ -62,7 +62,7 @@
     },
     {
       "modelDesc": "F4 two correct",
-      "modelName": "F4_two_correct",
+      "modelName": "F4_two_correct-F4_2",
       "isR1Grouped": "False",
       "endModel": "F4_2",
       "conditions": {

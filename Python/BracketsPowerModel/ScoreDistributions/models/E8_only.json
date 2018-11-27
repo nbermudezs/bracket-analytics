@@ -1,0 +1,64 @@
+{
+  "models": [
+    {
+      "modelDesc": "E8 none correct",
+      "modelName": "E8_none_correct",
+      "isR1Grouped": "False",
+      "endModel": "E8",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": "*",
+        "RU_correct": "*",
+        "E8_correct": 0
+      }
+    },
+    {
+      "modelDesc": "E8 one correct",
+      "modelName": "E8_one_correct",
+      "isR1Grouped": "False",
+      "endModel": "E8",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": "*",
+        "RU_correct": "*",
+        "E8_correct": 1
+      }
+    },
+    {
+      "modelDesc": "E8 two correct",
+      "modelName": "E8_two_correct",
+      "isR1Grouped": "False",
+      "endModel": "E8",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": "*",
+        "RU_correct": "*",
+        "E8_correct": 2
+      }
+    },
+    {
+      "modelDesc": "E8 three correct",
+      "modelName": "E8_three_correct",
+      "isR1Grouped": "False",
+      "endModel": "E8",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": "*",
+        "RU_correct": "*",
+        "E8_correct": 3
+      }
+    },
+    {
+      "modelDesc": "E8 four correct",
+      "modelName": "E8_four_correct",
+      "isR1Grouped": "False",
+      "endModel": "E8",
+      "conditions": {
+        "F4_correct": "*",
+        "NC_correct": "*",
+        "RU_correct": "*",
+        "E8_correct": 4
+      }
+    }
+  ]
+}
