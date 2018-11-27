@@ -9,7 +9,7 @@ import sys
 from math import log, ceil, floor
 
 from collections import defaultdict
-from ScoreDistributions.conditioningSamplingUtils import getE8SeedBottom, getE8SeedTop
+from ScoreDistributions.conditioningSamplingUtils import getAllE8Seeds
 from ScoreDistributions.conditioningSamplingUtils import getF4SeedSplit, getF4SeedTogether, getAllF4Seeds
 from ScoreDistributions.conditioningSamplingUtils import getChampionInfo, getRunnerUpInfo
 
@@ -221,17 +221,15 @@ def generateBracket(model, year):
 
     e8Seeds = []
     if endModel == 'E8':
-        for i in range(4):
-            e8Seeds.append(getE8SeedTop(year))
-            e8Seeds.append(getE8SeedBottom(year))
+        e8Seeds = getAllE8Seeds(year, model)
     else:
         e8Seeds = [-1, -1, -1, -1, -1, -1, -1, -1]
 
     f4Seeds = []
     if endModel == 'F4_1':
-        f4Seeds = getAllF4Seeds(year, getF4SeedTogether, NC_info=None, RU_info=None)
+        f4Seeds = getAllF4Seeds(year, getF4SeedTogether, model, NC_info=None, RU_info=None)
     elif endModel == 'F4_2':
-        f4Seeds = getAllF4Seeds(year, getF4SeedSplit, NC_info=None, RU_info=None)
+        f4Seeds = getAllF4Seeds(year, getF4SeedSplit, model, NC_info=None, RU_info=None)
     else:
         f4Seeds = [-1, -1, -1, -1]
 
@@ -243,10 +241,9 @@ def generateBracket(model, year):
         f4Seeds = getAllF4Seeds(year, getF4SeedTogether, model,
                                 RU_info=(runnerUp, ruRegion),
                                 NC_info=(champion, champRegion))
-        # print(runnerUp, ruRegion)
+        # print('NC', champion, champRegion)
+        # print('RU', runnerUp, ruRegion)
         ruRegion = ruRegion % 2
-        # print(champion, champRegion)
-        # print(runnerUp, ruRegion)
 
         if champHalf == 0:
             ncgSeeds = [champion, runnerUp]
@@ -508,6 +505,13 @@ def performExperiments(numTrials, year, batchNumber, model):
             assert (newBracketScore[-2] >= 160)
         elif model['modelName'] == 'RU_correct':
             assert (newBracketScore[-2] >= 160)
+        elif 'F4' in model['modelName'] and type(model['conditions'].get('F4_correct')) == int:
+            count = model['conditions'].get('F4_correct')
+            assert (newBracketScore[-3] == 80 * count)
+        elif 'E8' in model['modelName'] and type(model['conditions'].get('E8_correct')) == int:
+            count = model['conditions'].get('E8_correct')
+            assert (newBracketScore[-4] == 40 * count)
+
         # numCorrectPicks = calcCorrectPicks(newBracketScore)
 
         newBracketString = ''.join(str(bit) for bit in newBracketVector)
