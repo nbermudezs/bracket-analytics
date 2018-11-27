@@ -75,6 +75,14 @@ sF4 = [
     [7, 1, 3, 1],
     [11, 3, 1, 1]
 ]
+sE8 = [
+    [1, 2, 9, 2, 4, 3, 4, 3],
+    [1, 11, 4, 7, 1, 2, 8, 2],
+    [1, 3, 1, 2, 4, 7, 1, 2],
+    [1, 2, 1, 2, 1, 6, 1, 10],
+    [4, 7, 1, 11, 1, 3, 1, 2],
+    [9, 11, 9, 3, 1, 3, 1, 2]
+]
 sRU = [4, 8, 1, 1, 1, 3]
 sNCG = [1, 7, 1, 2, 1, 1]
 rNC = [0, 1, 3, 0, 3, 2]
@@ -189,7 +197,7 @@ def getAllF4Seeds(year, fn, model, NC_info, RU_info):
 
     correct = model['conditions'].get('F4_correct')
     for _ in range(correct):
-        region = np.random.choice(regions, 1)
+        region = np.random.choice(regions, 1)[0]
         f4Seeds[region] = sF4[year - 2013][region]
         regions.remove(region)
     for region in regions:
@@ -278,6 +286,32 @@ def getE8SeedBottom(year):
         seed = bottomSeeds[index]
 
     return seed
+
+
+def getAllE8Seeds(year, model, top_fn=getE8SeedTop, bottom_fn=getE8SeedBottom):
+    seeds = []
+    for _ in range(4):
+        seeds.append(top_fn(year))
+        seeds.append(bottom_fn(year))
+
+    if model['conditions'].get('E8_correct') == '*':
+        return seeds
+
+    count = model['conditions'].get('E8_correct')
+    positions = list(range(8))
+    for i in range(count):
+        pos = np.random.choice(positions)
+        seeds[pos] = sE8[year - 2013][pos]
+        positions.remove(pos)
+
+    for pos in positions:
+        fn = top_fn if pos % 2 == 0 else bottom_fn
+        while True:
+            seed = fn(year)
+            if seed != sE8[year - 2013][pos]:
+                seeds[pos] = seed
+                break
+    return seeds
 
 
 def toDistribution(x):
