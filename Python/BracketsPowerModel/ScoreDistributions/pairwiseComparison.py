@@ -19,10 +19,8 @@ sns.set(style="white", color_codes=True)
 num_trials = int(sys.argv[1])
 num_replications = int(sys.argv[2])
 models_file = sys.argv[3]
+year = int(sys.argv[4])
 output_dir = 'ScoreDistributions/newCode/'
-
-if not os.path.exists(output_dir + '/pairwise-2013'):
-    os.makedirs(output_dir + '/pairwise-2013')
 
 with open(models_file) as f:
     models = json.load(f)['models']
@@ -90,7 +88,7 @@ def plot_it(data_a, data_b, name, legend=None):
     plt.hist(data_b, bins=bins, alpha=0.5, range=(l, u))
     if legend:
         plt.legend(legend)
-    plt.savefig('{}/pairwise-2013/hist-{}.png'.format(output_dir, name))
+    plt.savefig('{}/pairwise-{}/hist-{}.png'.format(output_dir, year, name))
     plt.clf()
     # plt.show()
 
@@ -131,13 +129,12 @@ def clustermap(matrix):
     plt.title('Probability of score from X less than score from Y')
     plt.xlabel('Y')
     plt.ylabel('X', rotation='horizontal')
-    plt.savefig(output_dir + 'comparisonHeatmap-2013.png')
+    plt.savefig(output_dir + 'comparisonHeatmap-{}.png'.format(year))
     plt.cla()
     # plt.show()
 
 
-def run_all():
-    year = 2013
+def run_all(year):
     matrix = np.zeros((len(selected_models), len(selected_models)))
     entries = []
     for i in range(len(selected_models)):
@@ -156,9 +153,11 @@ def run_all():
 
 
 if __name__ == '__main__':
-    data_a, _, _, _ = get_scores('NC_RU_correct', 2013)
-    data_b, _, _, _ = get_scores('NC_RU_swapped', 2013)
-    import pdb; pdb.set_trace()
+    if not os.path.exists(output_dir + '/pairwise-{}'.format(year)):
+        os.makedirs(output_dir + '/pairwise-{}'.format(year))
+    # data_a, _, _, _ = get_scores('NC_RU_correct', 2013)
+    # data_b, _, _, _ = get_scores('NC_RU_swapped', 2013)
+    # import pdb; pdb.set_trace()
     """
     data_a, _, _, _ = get_scores('conditioning_NC_noRU', 2013)
     data_b, _, _, _ = get_scores('conditioning_NC', 2013, tmp=True)
@@ -170,4 +169,4 @@ if __name__ == '__main__':
             legend=['Cond. NC_noRU', 'Cond. NC (filter RU)'])
     # import pdb; pdb.set_trace()
     """
-    run_all()
+    run_all(year)
