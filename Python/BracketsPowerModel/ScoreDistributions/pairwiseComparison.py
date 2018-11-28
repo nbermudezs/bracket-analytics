@@ -116,8 +116,9 @@ def clustermap(matrix):
     cols = [x.replace('conditioning_', '') for x in selected_models]
     tmp = np.concatenate((np.array(cols)[:, np.newaxis], matrix), axis=1)
     df = pd.DataFrame(tmp, columns=['model'] + cols).set_index('model').astype(float)
+    sns.set(font_scale=0.7)
     # sns.heatmap(df, center=0, annot=True, cmap="YlGnBu")
-    sns.clustermap(df, cmap="YlGnBu")
+    sns.clustermap(df, cmap="YlGnBu", center=0, annot=True)
     # plt.xticks(rotation='horizontal', fontsize=8)
     # plt.yticks(rotation='horizontal', fontsize=8)
     # plt.title('Probability of score from X less than score from Y')
