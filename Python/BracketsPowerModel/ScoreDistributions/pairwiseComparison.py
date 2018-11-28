@@ -72,10 +72,10 @@ def plot_it(data_a, data_b, name, legend=None):
     u = max(data_a.max(), data_b.max())
     n_bins = (u - l) // 10
     marginal_kws = dict(bins=n_bins, rug=True)
-    sns.jointplot(data_a, data_b, kind="hex", color="#4CB391",
-                  marginal_kws=marginal_kws)
-    plt.savefig('{}/pairwise-{}/jointplot-{}.png'.format(output_dir, year, name))
-    plt.cla()
+    # sns.jointplot(data_a, data_b, kind="hex", color="#4CB391",
+    #               marginal_kws=marginal_kws)
+    # plt.savefig('{}/pairwise-{}/jointplot-{}.png'.format(output_dir, year, name))
+    # plt.clf()
 
     _, bins, _ = plt.hist(data_a, n_bins, range=(l, u))
     plt.hist(data_b, bins=bins, alpha=0.5, range=(l, u))
@@ -134,7 +134,7 @@ def run_all(year):
         data_a, _, _, _ = get_scores(selected_models[i], year)
         for j in range(len(selected_models)):
             data_b, _, _, _ = get_scores(selected_models[j], year)
-            # plot_it(data_a, data_b, name='{}-v-{}'.format(selected_models[i], selected_models[j]), legend=[selected_models[i], selected_models[j]])
+            plot_it(data_a, data_b, name='{}-v-{}'.format(selected_models[i], selected_models[j]), legend=[selected_models[i], selected_models[j]])
             p = calculations(data_a, data_b, selected_models[i], selected_models[j])
             matrix[j, i] = p
             entries.append(['P({} <= {})'.format(selected_models[j], selected_models[i]), p])
