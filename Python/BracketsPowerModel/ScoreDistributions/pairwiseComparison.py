@@ -40,14 +40,7 @@ else:
 #     'conditioning_RU_noNC',
 # ]
 
-selected_models = [
-    'NC_RU_correct',
-    'NC_correct',
-    'NC_correct_noRU',
-    'NC_RU_swapped',
-    'RU_correct',
-    'RU_correct_noNC'
-]
+selected_models = [model['modelName'] for model in models]
 
 
 cache = {}
@@ -79,10 +72,10 @@ def plot_it(data_a, data_b, name, legend=None):
     u = max(data_a.max(), data_b.max())
     n_bins = (u - l) // 10
     marginal_kws = dict(bins=n_bins, rug=True)
-    # sns.jointplot(data_a, data_b, kind="hex", color="#4CB391",
-    #               marginal_kws=marginal_kws)
-    # plt.savefig('{}/pairwise-2013/{}.png'.format(output_dir, name))
-    # plt.cla()
+    sns.jointplot(data_a, data_b, kind="hex", color="#4CB391",
+                  marginal_kws=marginal_kws)
+    plt.savefig('{}/pairwise-{}/jointplot-{}.png'.format(output_dir, year, name))
+    plt.cla()
 
     _, bins, _ = plt.hist(data_a, n_bins, range=(l, u))
     plt.hist(data_b, bins=bins, alpha=0.5, range=(l, u))
