@@ -148,7 +148,7 @@ def to_dot_graph(matrix, names):
                 lines.append('{} -> {} [label="{}"];'.format(names[row], names[col], matrix[row, col].round(2)))
 
     graph_str = graph_str.format('\n\t'.join(lines))
-    with open('graph.dot', 'w') as f:
+    with open(output_dir + '/graph.dot', 'w') as f:
         f.write(graph_str)
     return graph_str
 
@@ -168,7 +168,7 @@ def to_latex(matrix, names):
     latex_str += "\t\\end{tabular}\n"
     latex_str += "\\end{table}"
 
-    with open('comparisonTable-{}.tex'.format(year or 'avg'), 'w') as f:
+    with open(output_dir + '/comparisonTable-{}.tex'.format(year or 'avg'), 'w') as f:
         f.write(latex_str)
 
     return latex_str
