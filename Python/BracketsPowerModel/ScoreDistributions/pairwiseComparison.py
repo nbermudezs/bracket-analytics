@@ -34,7 +34,7 @@ if num_trials < 1000:
 else:
     folderName = 'Experiments/Conditioning/{0}kTrials'.format(int(num_trials / 1000))
 
-#
+
 # selected_models = [
 #     'NC_RU_correct',
 #     'NC_correct',
@@ -42,6 +42,7 @@ else:
 #     'NC_RU_swapped',
 #     'RU_correct_noNC',
 # ]
+# selected_models = np.random.permutation(selected_models)
 
 selected_models = [model['modelName'] for model in models]
 
@@ -121,14 +122,15 @@ def clustermap(matrix):
     df = pd.DataFrame(tmp, columns=['model'] + cols).set_index('model').astype(float)
     sns.set(font_scale=0.7)
     sns.set_palette('colorblind')
-    # sns.heatmap(df, center=0, annot=True, cmap="YlGnBu")
-    sns.clustermap(df, cmap="YlGnBu", center=0, annot=True)
-    # plt.xticks(rotation='horizontal', fontsize=8)
-    # plt.yticks(rotation='horizontal', fontsize=8)
-    # plt.title('Probability of score from X less than score from Y')
-    # plt.xlabel('Y')
-    # plt.ylabel('X', rotation='horizontal')
-    plt.savefig(output_dir + 'comparisonClustermap-{}.png'.format(year or 'avg'))
+    sns.heatmap(df, center=0, annot=True, cmap="YlGnBu")
+    # sns.clustermap(df, cmap="YlGnBu", center=0, annot=True)
+    plt.xticks(rotation='horizontal', fontsize=8)
+    plt.yticks(rotation='horizontal', fontsize=8)
+    plt.title('Probability of score from X less than or equal to score from Y')
+    plt.xlabel('Y')
+    plt.ylabel('X', rotation='horizontal')
+    plt.savefig(output_dir + 'comparisonHeatmap-{}.png'.format(year or 'avg'))
+    # plt.savefig(output_dir + 'comparisonClustermap-{}.png'.format(year or 'avg'))
     plt.cla()
     # plt.show()
 
@@ -149,6 +151,20 @@ def to_dot_graph(matrix, names):
     return graph_str
 
 
+def to_latex(matrix, names):
+    pass
+
+
+def order_matrix(matrix, names):
+    indicator_matrix = matrix > 0.5
+    counts = np.sum(indicator_matrix, axis=0)
+    sorter = np.argsort(counts)[::-1]
+    matrix = matrix[:, sorter]
+    matrix = matrix[sorter, :]
+    new_names = [names[i] for i in sorter]
+    return matrix, new_names
+
+
 def run_all(year, outputs=False):
     matrix = np.zeros((len(selected_models), len(selected_models)))
     entries = []
@@ -162,8 +178,10 @@ def run_all(year, outputs=False):
             entries.append(['P({} <= {})'.format(selected_models[j], selected_models[i]), p])
 
     if outputs:
+        matrix, new_names = order_matrix(matrix, selected_models)
         clustermap(matrix)
-        to_dot_graph(matrix, selected_models)
+        to_dot_graph(matrix, new_names)
+        to_latex(matrix, new_names)
     entries = np.array(entries)
     entries = entries[np.argsort(entries[:, -1])[::-1], :]
     print(entries)
@@ -171,7 +189,7 @@ def run_all(year, outputs=False):
 
 
 if __name__ == '__main__':
-    if not os.path.exists(output_dir + '/pairwise-{}'.format(year)):
+    if not os.path.exists(output_dir + '/pairwise-{}'.format(year)) and year:
         os.makedirs(output_dir + '/pairwise-{}'.format(year))
     # data_a, _, _, _ = get_scores('NC_RU_correct', 2013)
     # data_b, _, _, _ = get_scores('NC_RU_swapped', 2013)
@@ -193,7 +211,8 @@ if __name__ == '__main__':
             matrix = run_all(y)
             matrices.append(matrix)
         avg_matrix = np.mean(matrices, axis=0)
+        avg_matrix, names = order_matrix(avg_matrix, selected_models)
         clustermap(avg_matrix)
-        to_dot_graph(avg_matrix, selected_models)
+        to_dot_graph(avg_matrix, names)
     else:
         run_all(year, outputs=True)
