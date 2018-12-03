@@ -91,7 +91,7 @@ def P_x(scores, counts, x):
 
 
 def P_y_leq_x(scores, counts, x):
-    return 1. * counts[scores < x].sum() / counts.sum()
+    return 1. * counts[scores <= x].sum() / counts.sum()
 
 
 def calculations(data_a, data_b, name_a, name_b):
