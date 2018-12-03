@@ -25,6 +25,8 @@ else:
     year = None
 output_dir = 'ScoreDistributions/newCode/'
 
+N_DECIMALS = 2
+
 with open(models_file) as f:
     models = json.load(f)['models']
 
@@ -127,8 +129,8 @@ def clustermap(matrix):
     plt.xticks(rotation='horizontal', fontsize=8)
     plt.yticks(rotation='horizontal', fontsize=8)
     plt.title('Probability of score from X less than or equal to score from Y')
-    plt.xlabel('Y')
-    plt.ylabel('X', rotation='horizontal')
+    plt.xlabel('X')
+    plt.ylabel('Y', rotation='horizontal')
     plt.savefig(output_dir + 'comparisonHeatmap-{}.png'.format(year or 'avg'))
     # plt.savefig(output_dir + 'comparisonClustermap-{}.png'.format(year or 'avg'))
     plt.cla()
@@ -152,13 +154,30 @@ def to_dot_graph(matrix, names):
 
 
 def to_latex(matrix, names):
-    pass
+    names = [name.replace('_', '\\_') for name in names]
+    align = "r" * (len(names) + 1)
+    latex_str = ""
+    latex_str += "\\begin{table}[]\n"
+    latex_str += "\t\\begin{tabular}{" + align + "}\n"
+    latex_str += "\t\t" + (" & {}" * len(names)).format(*names) + "\\\\\\hline\n"
+
+    row_str = "\t\t{}" + (" & {}" * len(names)) + "\\\\\n"
+    for i, row in enumerate(matrix.round(N_DECIMALS)):
+        latex_str += row_str.format(names[i], *row)
+
+    latex_str += "\t\\end{tabular}\n"
+    latex_str += "\\end{table}"
+
+    with open('comparisonTable-{}.tex'.format(year or 'avg'), 'w') as f:
+        f.write(latex_str)
+
+    return latex_str
 
 
 def order_matrix(matrix, names):
     indicator_matrix = matrix > 0.5
     counts = np.sum(indicator_matrix, axis=0)
-    sorter = np.argsort(counts)
+    sorter = np.argsort(counts)[::-1]
     matrix = matrix[:, sorter]
     matrix = matrix[sorter, :]
     new_names = [names[i] for i in sorter]
