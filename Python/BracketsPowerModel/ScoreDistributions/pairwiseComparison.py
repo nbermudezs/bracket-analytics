@@ -158,7 +158,7 @@ def to_latex(matrix, names):
 def order_matrix(matrix, names):
     indicator_matrix = matrix > 0.5
     counts = np.sum(indicator_matrix, axis=0)
-    sorter = np.argsort(counts)[::-1]
+    sorter = np.argsort(counts)
     matrix = matrix[:, sorter]
     matrix = matrix[sorter, :]
     new_names = [names[i] for i in sorter]
