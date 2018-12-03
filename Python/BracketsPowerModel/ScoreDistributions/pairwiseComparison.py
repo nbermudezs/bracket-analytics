@@ -138,6 +138,8 @@ def to_dot_graph(matrix, names):
     lines = []
     for row in range(matrix.shape[0]):
         for col in range(matrix.shape[0]):
+            if row == col:
+                continue
             if matrix[row, col] > 0.5:
                 lines.append('{} -> {} [label="{}"];'.format(names[row], names[col], matrix[row, col].round(2)))
 
