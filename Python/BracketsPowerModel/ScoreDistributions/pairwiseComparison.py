@@ -19,7 +19,10 @@ sns.set(style="white", color_codes=True)
 num_trials = int(sys.argv[1])
 num_replications = int(sys.argv[2])
 models_file = sys.argv[3]
-year = int(sys.argv[4])
+if len(sys.argv) == 5:
+    year = int(sys.argv[4])
+else:
+    year = None
 output_dir = 'ScoreDistributions/newCode/'
 
 with open(models_file) as f:
@@ -81,7 +84,7 @@ def plot_it(data_a, data_b, name, legend=None):
     plt.hist(data_b, bins=bins, alpha=0.5, range=(l, u))
     if legend:
         plt.legend(legend)
-    plt.savefig('{}/pairwise-{}/hist-{}.png'.format(output_dir, year, name))
+    plt.savefig('{}/pairwise-{}/hist-{}.png'.format(output_dir, year or 'avg', name))
     plt.clf()
     # plt.show()
 
@@ -125,7 +128,7 @@ def clustermap(matrix):
     # plt.title('Probability of score from X less than score from Y')
     # plt.xlabel('Y')
     # plt.ylabel('X', rotation='horizontal')
-    plt.savefig(output_dir + 'comparisonClustermap-{}.png'.format(year))
+    plt.savefig(output_dir + 'comparisonClustermap-{}.png'.format(year or 'avg'))
     plt.cla()
     # plt.show()
 
@@ -144,7 +147,7 @@ def to_dot_graph(matrix, names):
     return graph_str
 
 
-def run_all(year):
+def run_all(year, outputs=False):
     matrix = np.zeros((len(selected_models), len(selected_models)))
     entries = []
     for i in range(len(selected_models)):
@@ -156,11 +159,13 @@ def run_all(year):
             matrix[j, i] = p
             entries.append(['P({} <= {})'.format(selected_models[j], selected_models[i]), p])
 
-    clustermap(matrix)
-    to_dot_graph(matrix, selected_models)
+    if outputs:
+        clustermap(matrix)
+        to_dot_graph(matrix, selected_models)
     entries = np.array(entries)
     entries = entries[np.argsort(entries[:, -1])[::-1], :]
     print(entries)
+    return matrix
 
 
 if __name__ == '__main__':
@@ -180,4 +185,13 @@ if __name__ == '__main__':
             legend=['Cond. NC_noRU', 'Cond. NC (filter RU)'])
     # import pdb; pdb.set_trace()
     """
-    run_all(year)
+    if year is None:
+        matrices = []
+        for y in range(2013, 2019):
+            matrix = run_all(y)
+            matrices.append(matrix)
+        avg_matrix = np.mean(matrices, axis=0)
+        clustermap(avg_matrix)
+        to_dot_graph(avg_matrix, selected_models)
+    else:
+        run_all(year, outputs=True)
