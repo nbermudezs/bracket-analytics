@@ -33,11 +33,11 @@ else:
 
 #
 # selected_models = [
-#     'conditioning_NC_RU',
-#     'conditioning_NC',
-#     'conditioning_NC_noRU',
-#     'conditioning_NC_RU_swapped',
-#     'conditioning_RU_noNC',
+#     'NC_RU_correct',
+#     'NC_correct',
+#     'NC_correct_noRU',
+#     'NC_RU_swapped',
+#     'RU_correct_noNC',
 # ]
 
 selected_models = [model['modelName'] for model in models]
@@ -117,6 +117,7 @@ def clustermap(matrix):
     tmp = np.concatenate((np.array(cols)[:, np.newaxis], matrix), axis=1)
     df = pd.DataFrame(tmp, columns=['model'] + cols).set_index('model').astype(float)
     sns.set(font_scale=0.7)
+    sns.set_palette('colorblind')
     # sns.heatmap(df, center=0, annot=True, cmap="YlGnBu")
     sns.clustermap(df, cmap="YlGnBu", center=0, annot=True)
     # plt.xticks(rotation='horizontal', fontsize=8)
@@ -129,6 +130,20 @@ def clustermap(matrix):
     # plt.show()
 
 
+def to_dot_graph(matrix, names):
+    graph_str = 'digraph hierarchy {{ \n\t{0} \n}}'
+    lines = []
+    for row in range(matrix.shape[0]):
+        for col in range(matrix.shape[0]):
+            if matrix[row, col] > 0.5:
+                lines.append('{} -> {};'.format(names[row], names[col]))
+
+    graph_str = graph_str.format('\n\t'.join(lines))
+    with open('graph.dot', 'w') as f:
+        f.write(graph_str)
+    return graph_str
+
+
 def run_all(year):
     matrix = np.zeros((len(selected_models), len(selected_models)))
     entries = []
@@ -136,12 +151,13 @@ def run_all(year):
         data_a, _, _, _ = get_scores(selected_models[i], year)
         for j in range(len(selected_models)):
             data_b, _, _, _ = get_scores(selected_models[j], year)
-            plot_it(data_a, data_b, name='{}-v-{}'.format(selected_models[i], selected_models[j]), legend=[selected_models[i], selected_models[j]])
+            # plot_it(data_a, data_b, name='{}-v-{}'.format(selected_models[i], selected_models[j]), legend=[selected_models[i], selected_models[j]])
             p = calculations(data_a, data_b, selected_models[i], selected_models[j])
             matrix[j, i] = p
             entries.append(['P({} <= {})'.format(selected_models[j], selected_models[i]), p])
 
     clustermap(matrix)
+    to_dot_graph(matrix, selected_models)
     entries = np.array(entries)
     entries = entries[np.argsort(entries[:, -1])[::-1], :]
     print(entries)
