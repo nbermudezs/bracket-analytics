@@ -23,7 +23,7 @@ if len(sys.argv) == 5:
     year = int(sys.argv[4])
 else:
     year = None
-output_dir = 'ScoreDistributions/newCode/'
+output_dir = 'ScoreDistributions/tmp/'
 
 N_DECIMALS = 2
 
@@ -119,16 +119,23 @@ def calculations(data_a, data_b, name_a, name_b):
 def clustermap(matrix):
     plt.rcParams["figure.figsize"] = (20, 20)
 
+    mask = np.zeros_like(matrix, dtype=np.bool)
+    mask[np.triu_indices_from(mask, k=1)] = True
+
     cols = [x.replace('conditioning_', '') for x in selected_models]
     tmp = np.concatenate((np.array(cols)[:, np.newaxis], matrix), axis=1)
     df = pd.DataFrame(tmp, columns=['model'] + cols).set_index('model').astype(float)
     sns.set(font_scale=0.7)
     sns.set_palette('colorblind')
-    sns.heatmap(df, center=0, annot=True, cmap="YlGnBu")
+    with sns.axes_style("white"):
+        sns.heatmap(df, center=0, annot=True, cmap="YlGnBu",
+                    mask=mask, square=True,
+                    cbar_kws={"shrink": .78})
     # sns.clustermap(df, cmap="YlGnBu", center=0, annot=True)
     plt.xticks(rotation='horizontal', fontsize=8)
     plt.yticks(rotation='horizontal', fontsize=8)
-    plt.title('Probability of score from X less than or equal to score from Y')
+    plt.title('Probability of score from X less than or equal to score from Y',
+              fontsize=16)
     plt.xlabel('X')
     plt.ylabel('Y', rotation='horizontal')
     plt.savefig(output_dir + 'comparisonHeatmap-{}.png'.format(year or 'avg'))
@@ -197,10 +204,10 @@ def run_all(year, outputs=False):
             entries.append(['P({} <= {})'.format(selected_models[j], selected_models[i]), p])
 
     matrix, new_names = order_matrix(matrix, selected_models)
-    clustermap(matrix)
-    to_dot_graph(matrix, new_names)
-    to_latex(matrix, new_names)
-    
+    if outputs:
+        clustermap(matrix)
+        to_dot_graph(matrix, new_names)
+        to_latex(matrix, new_names)
     entries = np.array(entries)
     entries = entries[np.argsort(entries[:, -1])[::-1], :]
     print(entries)
