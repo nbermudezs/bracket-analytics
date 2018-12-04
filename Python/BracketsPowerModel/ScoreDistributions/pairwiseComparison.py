@@ -196,11 +196,11 @@ def run_all(year, outputs=False):
             matrix[j, i] = p
             entries.append(['P({} <= {})'.format(selected_models[j], selected_models[i]), p])
 
-    if outputs:
-        matrix, new_names = order_matrix(matrix, selected_models)
-        clustermap(matrix)
-        to_dot_graph(matrix, new_names)
-        to_latex(matrix, new_names)
+    matrix, new_names = order_matrix(matrix, selected_models)
+    clustermap(matrix)
+    to_dot_graph(matrix, new_names)
+    to_latex(matrix, new_names)
+    
     entries = np.array(entries)
     entries = entries[np.argsort(entries[:, -1])[::-1], :]
     print(entries)
