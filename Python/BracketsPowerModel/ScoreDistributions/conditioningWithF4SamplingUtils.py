@@ -113,6 +113,7 @@ def getChampion(year, model):
 
 
 def getChampionInfo(year, model):
+    # print('getChampionInfo', model['F4_correct_counter'])
     seed = getChampion(year, model)
     regions = [0, 1, 2, 3]
     if model['conditions'].get('RU_correct') == 1:
@@ -136,6 +137,13 @@ def getChampionInfo(year, model):
                     return seed, region
             seed = getChampion(year, model)
             region = np.random.choice(regions)
+    elif model['F4_correct_counter'] == 1:
+        if model['conditions'].get('RU_correct') == 1:
+            # ensure champ is wrong
+            while seed == sF4[year - 2013][region]:
+                seed = getChampion(year, model)
+                region = np.random.choice(regions)
+
     elif model['F4_correct_counter'] == 3:
         while (model['conditions'].get('NC_correct') == 0 and (seed == sNCG[year - 2013] or region == rNC[year - 2013])) or \
                 (model['conditions'].get('NC_correct') == 1 and (seed != sNCG[year - 2013] or region != rNC[year - 2013])):
@@ -206,6 +214,7 @@ def getRunnerUp(year, model):
 
 
 def getRunnerUpInfo(year, model, NC_info):
+    # print('getRunnerUp', model['F4_correct_counter'])
     regions = [0, 1, 2, 3]
     NC_seed, NC_region = NC_info
 
@@ -256,6 +265,7 @@ def getRunnerUpInfo(year, model, NC_info):
 
 
 def getAllF4Seeds(year, fn, model, NC_info, RU_info):
+    # print('getAllF4Seeds')
     f4Seeds = [fn(year) for _ in range(4)]
     regions = [0, 1, 2, 3]
 

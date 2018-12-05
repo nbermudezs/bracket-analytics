@@ -497,7 +497,10 @@ def performExperiments(numTrials, year, batchNumber, model):
                 assert (newBracketScore[-1] == 0)
                 assert (newBracketScore[-2] == 0)
         if model['conditions'].get('NC_correct') == 1:
-            assert (newBracketScore[-1] == 320)
+            if model['conditions'].get('RU_wins'):
+                assert (newBracketScore[-1] == 0)
+            else:
+                assert (newBracketScore[-1] == 320)
         elif model['conditions'].get('NC_correct') == 0:
             assert (newBracketScore[-1] == 0)
         if model['conditions'].get('RU_correct') == 1:
@@ -582,8 +585,8 @@ numBatches = int(sys.argv[2])
 
 for modelDict in modelsList:
     modelName = modelDict['modelName']
-    if 'NC_RU_correct_F4' not in modelName:
-        continue
+    # if not modelName.startswith('NC_RU_swapped'):
+    #     continue
 
     print('{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M")))
 
