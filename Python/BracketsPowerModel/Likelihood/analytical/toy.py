@@ -15,6 +15,24 @@ import numpy as np
 import sympy as sp
 
 reference_truth = {
+    2013: [
+        1, 1, 0, 1, 1, 1, 1, 1,
+        1, 0, 0, 0, 1, 0, 0, 1,
+        1, 1, 1, 1, 0, 1, 1, 0,
+        1, 0, 0, 1, 1, 1, 1, 1,
+    ],
+    2014: [
+        1, 0, 0, 1, 0, 1, 0, 1,
+        1, 1, 0, 1, 1, 1, 1, 1,
+        1, 1, 0, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 0, 0, 1, 1,
+    ],
+    2015: [
+        1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 0, 0, 1,
+        1, 1, 1, 1, 0, 1, 1, 1,
+        1, 1, 1, 1, 0, 0, 1, 1,
+    ],
     2016: [
         1, 0, 1, 0, 0, 1, 1, 1,
         1, 1, 0, 1, 0, 1, 0, 1,
@@ -171,8 +189,24 @@ def test_newtons_method():
     import pdb; pdb.set_trace()
 
 
+def print_data():
+    import json
+    with open('allBracketsTTT.json') as f:
+        data = json.load(f)
+    brackets = data['brackets']
+    for bracket in brackets:
+        if int(bracket['bracket']['year']) > 2000:
+            print('{}: ['.format(bracket['bracket']['year']))
+            for region in bracket['bracket']['regions']:
+                items = np.array(list(region['vector']), dtype=int)
+                print('    ' + ', '.join(items[:8].astype(str)) + ',')
+            print('],')
+
+
 if __name__ == '__main__':
-    print('Usage: python toy.py <gamma> <output_dir> <operator>')
+    # print_data()
+
+    print('Usage: python toy.py <gamma> <output_dir> <operator> <n_games>')
     import json
     import os
     import sys
@@ -200,6 +234,16 @@ if __name__ == '__main__':
 
         # omega = np.random.rand(n_games)
         omega = mle_probs(gt_data)
+        # omega = np.array([
+        #     0.9290947860521462,
+        #     0.4148407514762941,
+        #     0.7835543597528226,
+        #     0.7124084891990096,
+        #     0.3865346828316431,
+        #     0.9142934443896051,
+        #     0.6662363366625533,
+        #     0.9935732653416738
+        # ])
         # print('Objective: ', full_form_objective_fn(break_region=True))
         omega_symbols = {
             'p_0': sp.Symbol('p_0'),
@@ -223,6 +267,7 @@ if __name__ == '__main__':
         print('Objective: ', objective_31)
         print('MLE probs: ', mle_probs(gt_data))
         print('P(M_y >= {} | MLE) = {}'.format(n_games - 1, objective_31.subs(get_subs(symbols, mle_probs(gt_data), n_games))))
+        # print('P(M_y >= {} | omega) = {}'.format(n_games - 1, objective_31.subs(get_subs(symbols, omega, n_games))))
         # import pdb; pdb.set_trace()
         H = hessian(objective_31, list(symbols.values()))
         grad = [sp.diff(objective_31, p_i) for p_i in symbols.values()]
