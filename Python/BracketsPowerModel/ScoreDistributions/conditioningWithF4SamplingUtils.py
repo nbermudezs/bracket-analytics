@@ -135,22 +135,59 @@ def getChampionInfo(year, model):
                 if sF4[year - 2013][region] != seed:
                     return seed, region
             seed = getChampion(year, model)
+            region = np.random.choice(regions)
+    elif model['F4_correct_counter'] == 3:
+        while (model['conditions'].get('NC_correct') == 0 and (seed == sNCG[year - 2013] or region == rNC[year - 2013])) or \
+                (model['conditions'].get('NC_correct') == 1 and (seed != sNCG[year - 2013] or region != rNC[year - 2013])):
+            seed = getChampion(year, model)
+            region = np.random.choice(regions)
+        if seed == sF4[year - 2013][region]:
+            model['F4_correct_counter'] -= 1
+            model['F4_correct_regions'].append(region)
+        return seed, region
+    elif model['F4_correct_counter'] == 4:
+        if model['conditions'].get('NC_correct') == 0 and model['conditions'].get('RU_correct') == 1:
+            regions.remove(rNC[year - 2013])
+            region = regions[0]
+            seed = sF4[year - 2013][region]
+            model['F4_correct_counter'] -= 1
+            model['F4_correct_regions'].append(region)
+
+            return seed, region
+        while seed != sF4[year - 2013][region] or \
+                (model['conditions'].get('NC_correct') == 0 and seed == sNCG[year - 2013] and region == rNC[year - 2013]) or \
+                (model['conditions'].get('NC_correct') == 1 and (seed != sNCG[year - 2013] and region != rNC[year - 2013])):
+            if np.random.rand() < 0.5:
+                seed = getChampion(year, model)
+            else:
+                region = np.random.choice(regions)
+        if seed == sF4[year - 2013][region]:
+            model['F4_correct_counter'] -= 1
+            model['F4_correct_regions'].append(region)
+        return seed, region
 
     if model['conditions'].get('NC_correct') == 1:
         model['F4_correct_counter'] -= 1
+        model['F4_correct_regions'].append(rNC[year - 2013])
         return seed, rNC[year - 2013]
     elif model['conditions'].get('NC_correct') == 0:
         if region == rNC[year - 2013] and seed == sNCG[year - 2013]:
             while True:
                 seed = getChampion(year, model)
                 if seed != sNCG[year - 2013]:
+                    if sF4[year - 2013][region] == seed:
+                        model['F4_correct_counter'] -= 1
+                        model['F4_correct_regions'].append(region)
                     return seed, region
         else:
-            region = np.random.choice(regions, 1)[0]
+            if sF4[year - 2013][region] == seed:
+                model['F4_correct_counter'] -= 1
+                model['F4_correct_regions'].append(region)
             return seed, region
     elif model['conditions'].get('NC_correct') == '*':
-        if seed == sNCG[year - 2013] and region == rNC[year - 2013]:
+        if seed == sF4[year - 2013][region]:
             model['F4_correct_counter'] -= 1
+            model['F4_correct_regions'].append(region)
         return seed, region
 
 
@@ -177,25 +214,44 @@ def getRunnerUpInfo(year, model, NC_info):
     regions.remove(half * 2)
     regions.remove(half * 2 + 1)
 
-    seed = getRunnerUp(year, model)
     region = np.random.choice(regions)
+    seed = getRunnerUp(year, model)
 
     if model['F4_correct_counter'] == 0:
-        while seed == sF4[year - 2013][regions[0]] or seed == sF4[year - 2013][regions[1]]:
+        while seed == sF4[year - 2013][region]:
             seed = getRunnerUp(year, model)
+            region = np.random.choice(regions)
+        return seed, region
+    elif model['F4_correct_counter'] == 3:
+        while seed != sF4[year - 2013][region] or (model['conditions'].get('RU_correct') == 0 and seed == sRU[year - 2013] and region == rRU[year - 2013]) or \
+                (model['conditions'].get('RU_correct') == 1 and (seed != sRU[year - 2013] or region != rRU[year - 2013])):
+            seed = getRunnerUp(year, model)
+            region = np.random.choice(regions)
+        return seed, region
 
     if model['conditions'].get('RU_correct') == 1:
         model['F4_correct_counter'] -= 1
+        model['F4_correct_regions'].append(rRU[year - 2013])
         return seed, rRU[year - 2013]
     elif model['conditions'].get('RU_correct') == 0:
         if seed == sRU[year - 2013]:
             while True:
                 if region != rRU[year - 2013]:
+                    if sF4[year - 2013][region] == seed:
+                        model['F4_correct_counter'] -= 1
+                        model['F4_correct_regions'].append(region)
                     return seed, region
+                region = np.random.choice(regions)
         else:
+            if sF4[year - 2013][region] == seed:
+                model['F4_correct_counter'] -= 1
+                model['F4_correct_regions'].append(region)
             return seed, region
     elif model['conditions'].get('RU_correct') == '*':
         region = np.random.choice(regions, 1)[0]
+        if sF4[year - 2013][region] == seed:
+            model['F4_correct_counter'] -= 1
+            model['F4_correct_regions'].append(region)
         return seed, region
 
 
@@ -219,11 +275,12 @@ def getAllF4Seeds(year, fn, model, NC_info, RU_info):
     if model['conditions'].get('F4_correct') == '*':
         return f4Seeds
 
-    correct = model['conditions'].get('F4_correct')
-    for _ in range(correct):
-        region = np.random.choice(regions, 1)[0]
+    while model['F4_correct_counter'] > 0 and len(regions) > 0:
+        region = np.random.choice(regions)
         f4Seeds[region] = sF4[year - 2013][region]
         regions.remove(region)
+        model['F4_correct_counter'] -= 1
+        model['F4_correct_regions'].append(region)
     for region in regions:
         # in this configuration we ensure that EXACTLY the number of F4_correct
         # games are indeed correct, forcing the others to be incorrect

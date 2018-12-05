@@ -1,3 +1,4 @@
+from __future__ import print_function
 #!/usr/bin/env python
 import time
 import json
@@ -212,6 +213,7 @@ def getP(s1, s2, model, year, roundNum):
 # which alpha value(s) to use for each round.
 def generateBracket(model, year):
     model['F4_correct_counter'] = model['conditions'].get('F4_correct')
+    model['F4_correct_regions'] = []
     bracket = []
 
     random.seed()
@@ -481,15 +483,25 @@ def performExperiments(numTrials, year, batchNumber, model):
 
     brackets = []
     for n in range(numTrials):
+        print('Generating bracket {} of {}'.format(n, numTrials), end='\r')
         newBracketVector = generateBracket(model, year)
         newBracketScore = scoreBracket(newBracketVector, correctVector)
 
         if model['conditions'].get('F4_correct') != '*':
             f4_correct = model['conditions'].get('F4_correct')
+            # print('scores', newBracketScore)
+            # print('regions', model['F4_correct_regions'])
+            # print('counter', model['F4_correct_counter'])
             assert(newBracketScore[-3] == 80 * f4_correct)
             if f4_correct == 0:
                 assert (newBracketScore[-1] == 0)
                 assert (newBracketScore[-2] == 0)
+        if model['conditions'].get('NC_correct') == 1:
+            assert (newBracketScore[-1] == 320)
+        elif model['conditions'].get('NC_correct') == 0:
+            assert (newBracketScore[-1] == 0)
+        if model['conditions'].get('RU_correct') == 1:
+            assert (newBracketScore[-2] >= 160)
 
         if model['modelName'] == 'NC_correct_noRU':
             assert(newBracketScore[-1] == 320)
@@ -570,8 +582,10 @@ numBatches = int(sys.argv[2])
 
 for modelDict in modelsList:
     modelName = modelDict['modelName']
+    if 'NC_RU_correct_F4' not in modelName:
+        continue
 
-    print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
+    print('{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M")))
 
     for batchNumber in range(numBatches):
         if numTrials < 1000:

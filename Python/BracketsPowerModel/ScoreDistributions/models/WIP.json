@@ -1,0 +1,196 @@
+{
+  "models": [
+    {
+      "modelDesc": "NC and RU incorrect, F4 x0 correct",
+      "modelName": "NC_RU_incorrect_F4x0",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 0,
+        "NC_correct": 0,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC and RU incorrect, F4 x1 correct",
+      "modelName": "NC_RU_incorrect_F4x1",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 1,
+        "NC_correct": 0,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC and RU incorrect, F4 x2 correct",
+      "modelName": "NC_RU_incorrect_F4x2",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 2,
+        "NC_correct": 0,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC and RU incorrect, F4 x3 correct",
+      "modelName": "NC_RU_incorrect_F4x3",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 3,
+        "NC_correct": 0,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC and RU incorrect, F4 x4 correct",
+      "modelName": "NC_RU_incorrect_F4x4",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 4,
+        "NC_correct": 0,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC correct and RU incorrect, F4 x1 correct",
+      "modelName": "NC_correct_noRU_F4x1",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 1,
+        "NC_correct": 1,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC correct and RU incorrect, F4 x2 correct",
+      "modelName": "NC_correct_noRU_F4x2",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 2,
+        "NC_correct": 1,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC correct and RU incorrect, F4 x3 correct",
+      "modelName": "NC_correct_noRU_F4x3",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 3,
+        "NC_correct": 1,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC correct and RU incorrect, F4 x4 correct",
+      "modelName": "NC_correct_noRU_F4x4",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 4,
+        "NC_correct": 1,
+        "RU_correct": 0,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC incorrect and RU correct, F4 x1 correct",
+      "modelName": "RU_correct_noNC_F4x1",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 1,
+        "NC_correct": 0,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC incorrect and RU correct, F4 x2 correct",
+      "modelName": "RU_correct_noNC_F4x2",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 2,
+        "NC_correct": 0,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC incorrect and RU correct, F4 x3 correct",
+      "modelName": "RU_correct_noNC_F4x3",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 3,
+        "NC_correct": 0,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC incorrect and RU correct, F4 x4 correct",
+      "modelName": "RU_correct_noNC_F4x4",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 4,
+        "NC_correct": 0,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC and RU correct, F4 x2 correct",
+      "modelName": "NC_RU_correct_F4x2",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 2,
+        "NC_correct": 1,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC and RU correct, F4 x3 correct",
+      "modelName": "NC_RU_correct_F4x3",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 3,
+        "NC_correct": 1,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    },
+    {
+      "modelDesc": "NC and RU correct, F4 x4 correct",
+      "modelName": "NC_RU_correct_F4x4",
+      "isR1Grouped": "False",
+      "endModel": "Rev_2",
+      "conditions": {
+        "F4_correct": 4,
+        "NC_correct": 1,
+        "RU_correct": 1,
+        "E8_correct": "*"
+      }
+    }
+  ]
+}
