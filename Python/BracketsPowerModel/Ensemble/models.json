@@ -2,10 +2,20 @@
     "models": [
         {
             "modelDesc": "Ensemble of Power models",
-            "modelName": "powerEnsemble",
+            "modelName": "powerEnsemble_at5",
             "isR1Grouped": "False",
             "ensemble": {
                 "window": 5,
+                "weight": "uniform",
+                "allowShortWindow": true
+            }
+        },
+        {
+            "modelDesc": "Ensemble of Power models",
+            "modelName": "powerEnsemble_at10",
+            "isR1Grouped": "False",
+            "ensemble": {
+                "window": 10,
                 "weight": "uniform",
                 "allowShortWindow": true
             }
