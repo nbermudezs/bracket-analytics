@@ -1,0 +1,14 @@
+{
+    "models": [
+        {
+            "modelDesc": "Ensemble of Power models",
+            "modelName": "powerEnsemble",
+            "isR1Grouped": "False",
+            "ensemble": {
+                "window": 5,
+                "weight": "uniform",
+                "allowShortWindow": true
+            }
+        }
+    ]
+}
