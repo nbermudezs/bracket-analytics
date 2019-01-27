@@ -1,0 +1,38 @@
+{
+    "models": [
+        {
+            "modelDesc": "",
+            "modelName": "SA_power",
+            "isR1Grouped": "False",
+            "annealing_model": "30_2002"
+        },
+        {
+            "modelDesc": "",
+            "modelName": "SA_E8",
+            "isR1Grouped": "False",
+            "endModel": "E8",
+            "annealing_model": "30_2002"
+        },
+        {
+            "modelDesc": "",
+            "modelName": "SA_NCG",
+            "isR1Grouped": "False",
+            "endModel": "Rev_2",
+            "annealing_model": "30_2002"
+        },
+        {
+            "modelDesc": "",
+            "modelName": "SA_F4_A",
+            "isR1Grouped": "False",
+            "endModel": "F4_1",
+            "annealing_model": "30_2002"
+        },
+        {
+            "modelDesc": "",
+            "modelName": "SA_F4_B",
+            "isR1Grouped": "False",
+            "endModel": "F4_2",
+            "annealing_model": "30_2002"
+        }
+    ]
+}
