@@ -108,7 +108,7 @@ def load_ref_brackets():
 
 def compute_all_alphas(brackets):
     counts = aggregate(brackets)
-
+    import pdb; pdb.set_trace()
     result = {}
     for round in range(1, 7):
         result[round] = {}
@@ -140,5 +140,5 @@ def compute_all_alphas(brackets):
 
 
 if __name__ == '__main__':
-    result = compute_all_alphas([b for x, b in load_ref_brackets().items() if x < 2015])
+    result = compute_all_alphas([b for x, b in load_ref_brackets().items() if x < 2020])
     import pdb; pdb.set_trace()
