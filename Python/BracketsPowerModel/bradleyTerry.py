@@ -55,7 +55,7 @@ def fit(limit_year):
     while True:
         beta = optimize(W, beta)
         ll = log_likelihood(W, beta)
-        print('iter={}, ll={}'.format(iteration, ll))
+        # print('iter={}, ll={}'.format(iteration, ll))
         iteration += 1
         if np.abs(prev - ll) < 1e-10:
             break
@@ -69,7 +69,20 @@ def fit(limit_year):
             p[i, j] = beta[i] / (beta[i] + beta[j])
     np.set_printoptions(linewidth=300)
     print(p)
+    return p
 
 
 if __name__ == '__main__':
-    fit(limit_year=2018)
+    import os
+    if not os.path.exists('bradleyTerry'):
+        os.makedirs('bradleyTerry')
+
+    for year in range(2013, 2020):
+        p = fit(limit_year=year)
+        with open('bradleyTerry/probs-{}.csv'.format(year), 'w') as f:
+            f.write('"","component","player1","player2","prob1wins","prob2wins"' + '\n')
+            for i in range(16):
+                for j in range(16):
+                    f.write('"1","full_dataset","s{}","s{}",{},{}'.format(
+                        i + 1, j + 1, p[i, j], 1 - p[i, j]
+                    ) + '\n')
