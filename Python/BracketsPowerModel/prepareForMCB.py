@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import csv
+import numpy as np
 import os.path
 import sys
 
@@ -33,8 +34,7 @@ for year in range(2013, 2019):
 	print 'Batch,'
 
 	for batchNum in range(minBatchNum, maxBatchNum + 1):
-		batchFilename = '{0}/exp_{1}_batch_{2:02d}.csv'.format(
-			summaries_root, trialsString, batchNum)
+		batchFilename = '{2}/exp_{0}_batch_{1:02d}.csv'.format(trialsString, batchNum, summaries_root)
 
 		with open(batchFilename, 'rb') as csvfile:
 			reader = csv.reader(csvfile)
@@ -50,5 +50,3 @@ for year in range(2013, 2019):
 					sys.stdout.write(', , '.join(row[1:]))
 					print ''
 					break
-
-	print ''
