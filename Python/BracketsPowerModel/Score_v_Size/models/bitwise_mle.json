@@ -1,0 +1,32 @@
+{
+    "models": [
+        {
+            "modelDesc": "Exact MLE",
+            "modelName": "bitwise_mle"
+        },
+        {
+            "modelDesc": "MLE perturbation + 10% fixed perturbation",
+            "modelName": "bitwise_mle_fixed10",
+            "perturbation": 0.1,
+            "perturbationType": "fixed"
+        },
+        {
+            "modelDesc": "MLE perturbation + 20% fixed",
+            "modelName": "bitwise_mle_fixed20",
+            "perturbation": 0.2,
+            "perturbationType": "fixed"
+        },
+        {
+            "modelDesc": "MLE perturbation + 10% proportional perturbation",
+            "modelName": "bitwise_mle_percent10",
+            "perturbation": 0.1,
+            "perturbationType": "proportional"
+        },
+        {
+            "modelDesc": "MLE perturbation + 20% proportional perturbation",
+            "modelName": "bitwise_mle_percent20",
+            "perturbation": 0.2,
+            "perturbationType": "proportional"
+        }
+    ]
+}
