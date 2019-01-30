@@ -1,0 +1,24 @@
+{
+    "models": [
+        {
+            "modelDesc": "Power",
+            "modelName": "power",
+            "isR1Grouped": "False",
+            "ref": "ludden"
+        },
+        {
+            "modelDesc": "SA power",
+            "modelName": "SA_power",
+            "isR1Grouped": "False",
+            "annealing_model": "30_2002",
+            "ref": "bermudez"
+        },
+        {
+            "modelDesc": "BT power",
+            "modelName": "bradley-terry",
+            "isR1Grouped": "False",
+            "bradleyTerry": true,
+            "ref": "bradley-terry"
+        }
+    ]
+}

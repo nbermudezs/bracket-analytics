@@ -1,0 +1,26 @@
+{
+    "models": [
+        {
+            "modelDesc": "",
+            "modelName": "E8",
+            "isR1Grouped": "False",
+            "endModel": "E8",
+            "ref": "ludden"
+        },
+        {
+            "modelDesc": "",
+            "modelName": "F4_B",
+            "isR1Grouped": "False",
+            "endModel": "F4_2",
+            "ref": "ludden"
+        },
+        {
+            "modelDesc": "F4 Model 1, R1 separate",
+            "modelName": "bradley-terry-F4_A",
+            "isR1Grouped": "False",
+            "endModel": "F4_1",
+            "bradleyTerry": true,
+            "ref": "bradley-terry"
+        }
+    ]
+}
