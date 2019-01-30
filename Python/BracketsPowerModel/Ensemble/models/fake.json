@@ -1,0 +1,16 @@
+{
+    "models": [
+        {
+            "modelDesc": "Power",
+            "modelName": "test_model_1"
+        },
+        {
+            "modelDesc": "SA power",
+            "modelName": "test_model_2"
+        },
+        {
+            "modelDesc": "BT power",
+            "modelName": "test_model_3"
+        }
+    ]
+}
