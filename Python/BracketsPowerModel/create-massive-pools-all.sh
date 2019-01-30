@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-POOL_SIZE=100000000
+POOL_SIZE=10000000
 BATCHES=100
 
 PYTHONPATH=. python ludden_generator.py $POOL_SIZE $BATCHES Ensemble/models/ludden_models.json
@@ -19,3 +19,7 @@ PYTHONPATH=. python prepareForMCB.py $POOL_SIZE "Max score" 0 $((BATCHES-1)) Sum
 
 PYTHONPATH=. python prepareForMCB.py $POOL_SIZE ESPN 0 $((BATCHES-1)) Summary_nbermudez_models > Summary_ludden_models/forMCB_bermudez_count.csv
 PYTHONPATH=. python prepareForMCB.py $POOL_SIZE "Max score" 0 $((BATCHES-1)) Summary_nbermudez_models > Summary_ludden_models/forMCB_bermudez_score.csv
+
+PYTHONPATH=. python utils/scoresHistogram.py $POOL_SIZE $BATCHES Ensemble/models/ludden_models.json Summary_ludden_models
+PYTHONPATH=. python utils/scoresHistogram.py $POOL_SIZE $BATCHES Ensemble/models/bradley-terry_models.json Summary_bradley-terry_models
+PYTHONPATH=. python utils/scoresHistogram.py $POOL_SIZE $BATCHES Ensemble/models/SA_models.json Summary_nbermudez_models
