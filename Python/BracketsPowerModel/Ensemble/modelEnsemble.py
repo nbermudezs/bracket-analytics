@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
     out = modelFilename.split('/')[-1].replace('.json', '')
 
-    for year in [2013, 2014, 2017]:
+    for year in range(2013, 2019):
         for batchNumber in range(numBatches):
             if numTrials < 1000:
                 folderName = 'Experiments/{0}Trials'.format(numTrials)
@@ -67,6 +67,6 @@ if __name__ == '__main__':
                 models_scores.append(scores)
 
             result = sample(1000, models_scores)
-            outputFilepath = '{2}/generatedEnsembleScores-{0}_{1}.json'.format(out, year, batchFolderName)
+            outputFilepath = '{2}/generatedScores_{0}_{1}.json'.format(out, year, batchFolderName)
             with open(outputFilepath, 'w') as f:
                 json.dump({'scores': result.tolist(), 'actualBracket': actual_bracket}, f)

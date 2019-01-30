@@ -18,7 +18,7 @@ import numpy as np
 # Modified: 16 Apr 2018
 
 def summarizeBatch(numTrials, batchNumber, modelsFilename, outputFile):
-    for year in [2013, 2014, 2017]:#range(2013, 2019):
+    for year in range(2013, 2019):
         outputFile.write('{0} Tournament:,'.format(year))
 
         numModels = 1
@@ -43,7 +43,7 @@ def summarizeBatch(numTrials, batchNumber, modelsFilename, outputFile):
                 int(numTrials / 1000))
 
         batchFolderName = '{0}/Batch{1:02d}'.format(folderName, batchNumber)
-        inputFilename = '{2}/generatedEnsembleScores-{0}_{1}.json'.format(
+        inputFilename = '{2}/generatedScores_{0}_{1}.json'.format(
             modelsFilename, year, batchFolderName)
 
         with open(inputFilename, 'r') as inputFile:
