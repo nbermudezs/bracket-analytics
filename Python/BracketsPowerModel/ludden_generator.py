@@ -493,10 +493,7 @@ def performExperiments(numTrials, year, batchNumber, model):
 ######################################################################
 
 # Load models
-if len(sys.argv) > 3:
-    modelFilename = sys.argv[3]
-else:
-    modelFilename = 'models.json'
+modelFilename = sys.argv[3]
 with open(modelFilename, 'r') as modelFile:
     modelsDataJson = modelFile.read().replace('\n', '')
 
@@ -505,13 +502,17 @@ modelsList = modelsDict['models']
 
 numTrials = int(sys.argv[1])
 numBatches = int(sys.argv[2])
+if len(sys.argv) == 5:
+    years = [int(sys.argv[4])]
+else:
+    years = range(2013, 2019)
 
 for modelDict in modelsList:
     modelName = modelDict['modelName']
 
     print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
 
-    for year in range(2013, 2019):
+    for year in years:
         print '\t {0}: {1}'.format(year, time.strftime("%Y-%m-%d %H:%M"))
         for batchNumber in range(numBatches):
             print '\t\t {0}: {1}'.format(batchNumber, time.strftime("%Y-%m-%d %H:%M"))
