@@ -797,16 +797,15 @@ def getAlpha(s1, s2, model, year, roundNum):
 def performExperiments(numTrials, year, batchNumber, model):
     correctVector = getActualBracketVector(year)
 
-    scores = []
+    scores = [None] * numTrials
     for n in range(numTrials):
         newBracketVector = generateBracket(model, year)
         newBracketScore = scoreBracket(newBracketVector, correctVector)
         # numCorrectPicks = calcCorrectPicks(newBracketScore)
+        scores[n] = newBracketScore[0]
 
-        newBracketString = ''.join(str(bit) for bit in newBracketVector)
-        scores.append(newBracketScore[0])
-
-    bracketListDict = {'year': year, 'actualBracket': ''.join(str(bit) for bit in correctVector), 'scores': scores}
+    bracketListDict = {'year': year, 'actualBracket': ''.join(str(bit) for bit in correctVector),
+                       'scores': scores}
 
     if numTrials < 1000:
         folderName = 'Experiments/{0}Trials'.format(numTrials)
