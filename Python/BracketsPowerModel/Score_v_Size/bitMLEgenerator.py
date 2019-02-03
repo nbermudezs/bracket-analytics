@@ -9,8 +9,8 @@ from scoringUtils import getActualBracketVector
 from scoringUtils import scoreBracket
 
 
-def load_ref_brackets():
-    with open("allBracketsTTT.json") as f:
+def load_ref_brackets(fmt='TTT'):
+    with open("allBrackets{}.json".format(fmt)) as f:
         data = json.load(f)
         vectors = {
             int(bracket['bracket']['year']):
@@ -18,12 +18,7 @@ def load_ref_brackets():
             for bracket in data['brackets']}
     return vectors
 
-all_brackets = load_ref_brackets()
 probs = {}
-for year in range(2013, 2019):
-    vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
-    probs[year] = np.mean(vectors, axis=0)
-
 
 def getP(model, year, bit_id):
     base_p = probs[year][bit_id]
@@ -38,21 +33,20 @@ def getP(model, year, bit_id):
 
 
 def generateBracket(model, year):
-    bracket = np.zeros(63)
-    for i in range(63):
-        bracket[i] = 1 if np.random.rand() <= getP(model, year, i) else 0
-    return bracket.tolist()
+    n = np.random.rand(63)
+    p = [getP(model, year, i) for i in range(63)]
+    return (n < p).astype(int).tolist()
 
 
 def performExperiments(numTrials, year, batchNumber, model):
     correctVector = getActualBracketVector(year)
 
-    scores = []
+    scores = [None] * numTrials
 
     for n in range(numTrials):
         newBracketVector = generateBracket(model, year)
         newBracketScore = scoreBracket(newBracketVector, correctVector)
-        scores.append(newBracketScore[0])
+        scores[n] = newBracketScore[0]
 
     bracketListDict = {'year': year, 'actualBracket': ''.join(str(bit) for bit in correctVector), 'scores': scores}
 
@@ -88,6 +82,11 @@ numBatches = int(sys.argv[2])
 
 for modelDict in modelsList:
     modelName = modelDict['modelName']
+
+    all_brackets = load_ref_brackets(modelDict.get('format', 'TTT'))
+    for year in range(2013, 2019):
+        vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
+        probs[year] = np.mean(vectors, axis=0)
 
     print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
 

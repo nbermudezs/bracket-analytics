@@ -30,21 +30,20 @@ def getP(model, year, bit_id):
 
 
 def generateBracket(model, year):
-    bracket = np.zeros(63)
-    for i in range(63):
-        bracket[i] = 1 if np.random.rand() <= getP(model, year, i) else 0
-    return bracket.tolist()
+    n = np.random.rand(63)
+    p = [getP(model, year, i) for i in range(63)]
+    return (n < p).astype(int).tolist()
 
 
 def performExperiments(numTrials, year, batchNumber, model):
     correctVector = getActualBracketVector(year)
 
-    scores = []
+    scores = [None] * numTrials
 
     for n in range(numTrials):
         newBracketVector = generateBracket(model, year)
         newBracketScore = scoreBracket(newBracketVector, correctVector)
-        scores.append(newBracketScore[0])
+        scores[n] = newBracketScore[0]
 
     bracketListDict = {'year': year, 'actualBracket': ''.join(str(bit) for bit in correctVector), 'scores': scores}
 
