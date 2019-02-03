@@ -5,24 +5,14 @@ import numpy as np
 import os.path
 import random
 import sys
-from math import log, ceil, floor
+from math import floor
 
-from samplingUtils import getTruncGeom
 from samplingUtils import getE8SeedBottom, getE8SeedTop
 from samplingUtils import getF4SeedSplit, getF4SeedTogether
 from samplingUtils import getChampion, getRunnerUp
 
-from scoringUtils import applyRoundResults
 from scoringUtils import getActualBracketVector
 from scoringUtils import scoreBracket
-from triplets.Constant import DEFAULT_FORMAT
-
-import triplets.generators.AllTripletsRev as AllTripletsRev
-import triplets.generators.IID_AllTriplets as IID_AllTriplets
-import triplets.generators.IID_2TripletsPerRegion as IID_2TripletsPerRegion
-import triplets.generators.IID_2TripletsPerRegion_F4Triplet as IID_2TripletsPerRegion_F4Triplet
-import triplets.generators.E8With5TripletsPerRegion as E8With5TripletsPerRegion
-import triplets.generators.E8With2TripletsPerRegion as E8With2TripletsPerRegion
 
 ######################################################################
 # Author:
@@ -67,341 +57,8 @@ import triplets.generators.E8With2TripletsPerRegion as E8With2TripletsPerRegion
 # (with optional grouping), and Rounds 2-6 always use a
 # weighted average.
 ######################################################################
-
-uniform_eta_5 = {
-    'model10': [ # 25_1985
-        1.0,
-        0.577924,
-        0.738162,
-        1.,
-        0.750773,
-        1.0,
-        0.789084,
-        1.0
-    ],
-    'model11': [ # 26_1985
-        1.,
-        0.492703,
-        0.865210,
-        1.,
-        0.792790,
-        1.,
-        0.735384,
-        1.
-    ],
-    'model12': [ # 27_1985
-        1.,
-        0.515851,
-        0.767134,
-        1.,
-        0.659071,
-        1.,
-        0.624253,
-        1.
-    ],
-    'model13': [ # 28_1985
-        1.,
-        0.503742,
-        0.744503,
-        0.985903,
-        0.589451,
-        0.983175,
-        0.629174,
-        1.
-    ],
-    'model1': [ # 29_1985
-        1.,
-        0.549093,
-        0.750055,
-        0.934562,
-        0.667669,
-        0.979045,
-        0.654386,
-        1.
-    ],
-    'model14': [ # 30_1985
-        1.,
-        0.702520,
-        0.607727,
-        0.955776,
-        0.527676,
-        0.914587,
-        0.731135,
-        1.
-    ],
-    'model15': [ # 31_1985
-        0.979950,
-        0.522624,
-        0.608672,
-        0.954450,
-        0.815560,
-        0.859511,
-        0.544364,
-        0.986404
-    ],
-    'model21': [ # 28_2002
-        1,
-        0.571343,
-        0.717079,
-        0.951833,
-        0.608841,
-        1.,
-        0.719049,
-        1.
-    ],
-    'model20': [ # 29_2002
-        1.0,
-        0.642990,
-        0.715042,
-        0.785525,
-        0.673557,
-        1.,
-        0.829395,
-        1.
-    ],
-    'model23': [ # 30_2002
-        1.0,
-        0.5160255517843886,
-        0.7835308548717009,
-        0.8281494585145786,
-        0.5682714030506578,
-        0.8851682475462623,
-        0.5408879753527419,
-        0.969572984028147
-    ],
-    '30_2002': [
-        0.999171,
-        0.642037,
-        0.364341,
-        0.932316,
-        0.380420,
-        1.,
-        0.727067,
-        1.
-    ],
-    '31_1985': [
-        0.979950,
-        0.522624,
-        0.608672,
-        0.954450,
-        0.815560,
-        0.859511,
-        0.544364,
-        0.986404
-    ],
-    '30_1985': [
-        0,0,0,0,0,0,0,0        
-    ]
-}
-
-uniform_eta_10 = {
-    '25_1985': [ # 25_1985
-        1.0,
-        0.595991,
-        0.759279,
-        1.,
-        0.885420,
-        0.973687,
-        0.741745,
-        1.0
-    ],
-    '26_1985': [ # 26_1985
-        1.,
-        0.477338,
-        0.766769,
-        1.,
-        0.711925,
-        1.,
-        0.721954,
-        1.
-    ],
-    '27_1985': [ # 27_1985
-        1.,
-        0.507764,
-        0.768398,
-        1.,
-        0.725525,
-        1.,
-        0.624253,
-        1.
-    ],
-    '28_1985': [ # 28_1985
-        1.,
-        0.477274,
-        0.750879,
-        0.968292,
-        0.724144,
-        1.,
-        0.659825,
-        1.
-    ],
-    '29_1985': [ # 29_1985
-        1.,
-        0.546215,
-        0.733021,
-        0.976692,
-        0.760416,
-        1.,
-        0.753702,
-        1.
-    ],
-    '30_1985': [ # 30_1985
-        1.,
-        0.562306,
-        0.577391,
-        0.855698,
-        0.610075,
-        1.,
-        0.657067,
-        1.
-    ],
-    '31_1985': [ # 31_1985
-        1.,
-        0.401421,
-        0.606490,
-        0.627246,
-        0.782481,
-        0.893240,
-        0.502449,
-        1.
-    ],
-    '28_2002': [ # 28_2002
-        1.,
-        0.588995,
-        0.659077,
-        0.996761,
-        0.659077,
-        1.,
-        0.656639,
-        1.
-    ],
-    '29_2002': [ # 29_2002
-        1.,
-        0.685912,
-        0.631746,
-        0.966294,
-        0.508074,
-        1.,
-        0.661963,
-        1.
-    ],
-    '30_2002': [ # 30_2002
-        0.999475,
-        0.589207,
-        0.921580,
-        0.963287,
-        0.590622,
-        1.,
-        0.566511,
-        1.
-    ]
-}
-
-uniform_eta_20 = {
-    '25_1985': [ # 25_1985
-        1.,
-        0.415157,
-        0.814192,
-        1.,
-        0.789125,
-        1.,
-        0.756526,
-        1.
-    ],
-    '26_1985': [ # 26_1985
-        1.,
-        0.441784,
-        0.799078,
-        1.,
-        0.791546,
-        1.,
-        0.697350,
-        1.
-    ],
-    '27_1985': [ # 27_1985
-        1.,
-        0.527814,
-        0.722126,
-        1.,
-        0.762280,
-        1.,
-        0.689283,
-        1.
-    ],
-    '28_1985': [ # 28_1985
-        1.,
-        0.503551,
-        0.755157,
-        0.971340,
-        0.682175,
-        0.989434,
-        0.611461,
-        1.
-    ],
-    '29_1985': [ # 29_1985
-        1.,
-        0.562951,
-        0.654723,
-        0.949107,
-        0.534530,
-        0.825406,
-        0.709000,
-        0.995290
-    ],
-    '30_1985': [ # 30_1985
-        1.,
-        0.3502384133386571,
-        0.6133525242201664,
-        0.9633198561262579,
-        0.6423723569935303,
-        0.9954766492459859,
-        0.715826397189987,
-        1.
-    ],
-    '31_1985': [ # 31_1985
-        0.992647,
-        0.500000,
-        0.757265,
-        0.794118,
-        0.614272,
-        0.845588,
-        0.605541,
-        1.
-    ],
-    '28_2002': [ # 28_2002
-        1.,
-        0.641224,
-        0.644819,
-        0.827174,
-        0.623167,
-        1.,
-        0.511112,
-        0.995914,
-    ],
-    '29_2002': [ # 29_2002
-        1.,
-        0.664883,
-        0.651188,
-        0.884696,
-        0.629961,
-        0.952321,
-        0.772527,
-        1.
-    ],
-    '30_2002': [ # 30_2002
-        1.,
-        0.41937166219285094,
-        0.7470747930028194,
-        0.783221067033738,
-        0.6609135273067605,
-        1.,
-        0.8016305717092117,
-        1.
-    ]
-}
-
 perturbed_ps = {
-    'model10': [
+    '25_1985': [
         1.0,
         0.4229103348680731,
         0.8686253918935398,
@@ -411,7 +68,7 @@ perturbed_ps = {
         0.7077991428824237,
         1.0,
     ],
-    'model11': [
+    '26_1985': [
         1.0,
         0.426407803982116,
         0.8185896601561352,
@@ -421,7 +78,7 @@ perturbed_ps = {
         0.6732989797077819,
         1.0,
     ],
-    'model12': [
+    '27_1985': [
         1.0,
         0.40952672906312887,
         0.7854648378949232,
@@ -431,7 +88,7 @@ perturbed_ps = {
         0.6539118110780404,
         1.0,
     ],
-    'model13': [
+    '28_1985': [
         1.0,
         0.47544408691902595,
         0.7559601878920554,
@@ -441,7 +98,7 @@ perturbed_ps = {
         0.6877373278227099,
         1.0,
     ],
-    'model14': [
+    '30_1985': [
         1.0,
         0.6897381544845143,
         0.6574444680210119,
@@ -451,7 +108,7 @@ perturbed_ps = {
         0.8727621098790732,
         1.0,
     ],
-    'model15': [
+    '31_1985': [
         0.9926470588235294,
         0.5,
         0.6544117647058824,
@@ -461,7 +118,7 @@ perturbed_ps = {
         0.5069725126093771,
         0.9411764705882353,
     ],
-    'model20': [
+    '29_2002': [
         1.0,
         0.7294731173878907,
         0.6258223531539129,
@@ -471,7 +128,7 @@ perturbed_ps = {
         0.7069538395226441,
         1.0,
     ],
-    'model21': [
+    '28_2002': [
         1.0,
         0.6810812994722260,
         0.6782287991306060,
@@ -481,7 +138,7 @@ perturbed_ps = {
         0.6102388677298300,
         1.0
     ],
-    'model22': [
+    '30_2002': [
         1.0,
         0.7074624431810751,
         0.7470166821001302,
@@ -490,29 +147,19 @@ perturbed_ps = {
         0.9691087987086129,
         0.8588856269144272,
         1.0
-    ],
-    'model30': [
-        1.0,
-        0.0,
-        0.15639768832340517,
-        1.0,
-        1.0,
-        0.823616960019198,
-        0.5363817471415633,
-        1.0,
     ]
 }
 
 newone = {}
-for key in uniform_eta_5.keys():
-    sorted_p = np.array(uniform_eta_5[key])[[0, 7, 5, 3, 2, 4, 6, 1]]
+for key in perturbed_ps.keys():
+    sorted_p = np.array(perturbed_ps[key])[[0, 7, 5, 3, 2, 4, 6, 1]]
     newone[key] = [None] + sorted_p.tolist()
-uniform_eta_5 = newone
+perturbed_ps = newone
 
 # Returns the estimated probability that s1 beats s2
 def getP(s1, s2, model, year, roundNum):
     if model.get('annealing_model') is not None and roundNum == 1:
-        return uniform_eta_5[model.get('annealing_model')][min(s1, s2)]
+        return perturbed_ps[model.get('annealing_model')][min(s1, s2)]
     alpha = getAlpha(s1, s2, model, year, roundNum)
     s1a = (s1 * 1.0) ** alpha
     s2a = (s2 * 1.0) ** alpha
@@ -523,17 +170,7 @@ def getP(s1, s2, model, year, roundNum):
 # to represent game outcomes in a bracket. The model specifies
 # which alpha value(s) to use for each round.
 def generateBracket(model, year):
-    pooled = model.get('pooled', False)
-    generator = model.get('generator', None)
     fmt = model.get('format', 'TTT')
-    override_f4 = model.get('overrideF4', DEFAULT_FORMAT)
-
-    if generator == 'IID_AllTriplets':
-        return IID_AllTriplets.generateSingleBracket(year, is_pooled=pooled, model=model)
-    elif generator == 'IID_2TripletsPerRegion':
-        return IID_2TripletsPerRegion.generateSingleBracket(year, is_pooled=pooled, model=model)
-    elif generator == 'IID_2TripletsPerRegion_F4Triplet':
-        return IID_2TripletsPerRegion_F4Triplet.generateSingleBracket(year, is_pooled=pooled, model=model)
 
     bracket = []
 
@@ -593,63 +230,36 @@ def generateBracket(model, year):
         f4Seeds[ffcRegion] = getF4SeedTogether(year)
         f4Seeds[ffrRegion] = getF4SeedTogether(year)
 
-    if not generator:
-        # Loop through regional rounds R64, R32, and S16
-        for region in range(4):
-            seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
-            for roundNum in range(1, 5):
-                numGames = int(len(seeds) / 2)
-                newSeeds = []
-                for gameNum in range(numGames):
-                    s1 = seeds[2 * gameNum]
-                    s2 = seeds[2 * gameNum + 1]
+    # Loop through regional rounds R64, R32, and S16
+    for region in range(4):
+        seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
+        for roundNum in range(1, 5):
+            numGames = int(len(seeds) / 2)
+            newSeeds = []
+            for gameNum in range(numGames):
+                s1 = seeds[2 * gameNum]
+                s2 = seeds[2 * gameNum + 1]
 
-                    # Force any fixed F4/E8 seeds to make it through
-                    s1Wins = (s1 == f4Seeds[region]) or ((roundNum < 4) and ((s1 == e8Seeds[2*region]) or (s1 == e8Seeds[2*region + 1])))
-                    s2Wins = (s2 == f4Seeds[region]) or ((roundNum < 4) and ((s2 == e8Seeds[2*region]) or (s2 == e8Seeds[2*region + 1])))
+                # Force any fixed F4/E8 seeds to make it through
+                s1Wins = (s1 == f4Seeds[region]) or ((roundNum < 4) and ((s1 == e8Seeds[2*region]) or (s1 == e8Seeds[2*region + 1])))
+                s2Wins = (s2 == f4Seeds[region]) or ((roundNum < 4) and ((s2 == e8Seeds[2*region]) or (s2 == e8Seeds[2*region + 1])))
 
-                    if s1Wins:
-                        p = 1
-                    elif s2Wins:
-                        p = 0
-                    else:
-                        p = getP(s1, s2, model, year, roundNum)
+                if s1Wins:
+                    p = 1
+                elif s2Wins:
+                    p = 0
+                else:
+                    p = getP(s1, s2, model, year, roundNum)
 
-                    if random.random() <= p:
-                        bracket.append(1 if fmt == 'TTT' else (1 if s1 < s2 else 0))
-                        newSeeds.append(s1)
-                    else:
-                        bracket.append(0 if fmt == 'TTT' else (1 if s2 < s1 else 0))
-                        newSeeds.append(s2)
-                seeds = newSeeds
-            f4Seeds[region] = seeds[0]
-        bracket = bracket + [-1, -1, -1]
-    elif generator == 'AllTripletsRev':
-        bracket = AllTripletsRev.generateSingleBracket(
-            year,
-            f4Seeds,
-            champRegion,
-            ruRegion,
-            is_pooled=pooled,
-            model=model)
-        if override_f4:
-            return bracket
-    elif generator == 'E8With2TripletsPerRegion' and endModel == 'E8':
-        bracket, f4Seeds = E8With2TripletsPerRegion.generateSingleBracket(
-            year,
-            e8Seeds,
-            is_pooled=pooled,
-            model=model)
-        if override_f4:
-            return bracket
-    elif generator == 'E8With5TripletsPerRegion' and endModel == 'E8':
-        bracket, f4Seeds = E8With5TripletsPerRegion.generateSingleBracket(
-            year,
-            e8Seeds,
-            is_pooled=pooled,
-            model=model)
-        if override_f4:
-            return bracket
+                if random.random() <= p:
+                    bracket.append(1 if fmt == 'TTT' else (1 if s1 < s2 else 0))
+                    newSeeds.append(s1)
+                else:
+                    bracket.append(0 if fmt == 'TTT' else (1 if s2 < s1 else 0))
+                    newSeeds.append(s2)
+            seeds = newSeeds
+        f4Seeds[region] = seeds[0]
+    bracket = bracket + [-1, -1, -1]
 
     # Round 5:
     for gameNum in range(2):
@@ -848,20 +458,22 @@ for modelDict in modelsList:
 
     print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
 
-    for batchNumber in range(numBatches):
-        if numTrials < 1000:
-            folderName = 'Experiments/{0}Trials'.format(numTrials)
-        else:
-            folderName = 'Experiments/{0}kTrials'.format(int(numTrials / 1000))
+    for year in years:
+        print '\t {0}: {1}'.format(year, time.strftime("%Y-%m-%d %H:%M"))
+        for batchNumber in range(numBatches):
+            print '\t\t {0}: {1}'.format(batchNumber, time.strftime("%Y-%m-%d %H:%M"))
+            if numTrials < 1000:
+                folderName = 'Experiments/{0}Trials'.format(numTrials)
+            else:
+                folderName = 'Experiments/{0}kTrials'.format(int(numTrials / 1000))
 
-        if not os.path.exists(folderName):
-            os.makedirs(folderName)
+            if not os.path.exists(folderName):
+                os.makedirs(folderName)
 
-        batchFolderName = '{0}/Batch{1:02d}'.format(folderName, batchNumber)
-        if not os.path.exists(batchFolderName):
-            os.makedirs(batchFolderName)
+            batchFolderName = '{0}/Batch{1:02d}'.format(folderName, batchNumber)
+            if not os.path.exists(batchFolderName):
+                os.makedirs(batchFolderName)
 
-        for year in years:
             performExperiments(numTrials, year, batchNumber, modelDict)
 
 #

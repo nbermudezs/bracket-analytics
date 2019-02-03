@@ -61,120 +61,6 @@ from scoringUtils import scoreBracket
 # weighted average.
 ######################################################################
 
-# the None at the beginning is to deal with the fact that seeds are 1-indexed
-annealing_probs_normal = {
-    '25_1985': [  # 25_1985
-        None,
-        1.,
-        1.,
-        1.,
-        1.,
-        0.814192,
-        0.789125,
-        0.756526,
-        0.415157
-    ],
-    '26_1985': [  # 26_1985
-        None,
-        1.,
-        1.,
-        1.,
-        1.,
-        0.799078,
-        0.791546,
-        0.697350,
-        0.441784
-    ],
-    '27_1985': [  # 27_1985
-        None,
-        1.,
-        1.,
-        1.,
-        1.,
-        0.722126,
-        0.762280,
-        0.689283,
-        0.527814
-    ],
-    '28_1985': [  # 28_1985
-        None,
-        1.,
-        1.,
-        0.989434,
-        0.971340,
-        0.755157,
-        0.682175,
-        0.611461,
-        0.503551
-    ],
-    '29_1985': [  # 29_1985
-        None,
-        1.,
-        0.995290,
-        0.825406,
-        0.949107,
-        0.654723,
-        0.534530,
-        0.709000,
-        0.562951
-    ],
-    '30_1985': [  # 30_1985
-        None,
-        1.,
-        1.,
-        0.995477,
-        0.963320,
-        0.613353,
-        0.642372,
-        0.715826,
-        0.350238
-    ],
-    '31_1985': [  # 31_1985
-        None,
-        0.992647,
-        1.000000,
-        0.845588,
-        0.794118,
-        0.757265,
-        0.614272,
-        0.605541,
-        0.500000
-    ],
-    '28_2002': [  # 28_2002
-        None,
-        1.,
-        0.995914,
-        1.,
-        0.827174,
-        0.644819,
-        0.623167,
-        0.511112,
-        0.641224
-    ],
-    '29_2002': [  # 29_2002
-        None,
-        1.,
-        1.,
-        0.952321,
-        0.884696,
-        0.651188,
-        0.629961,
-        0.772527,
-        0.664883
-    ],
-    '30_2002': [  # 30_2002
-        None,
-        1.,
-        1.,
-        1.,
-        0.783221,
-        0.747075,
-        0.660914,
-        0.801631,
-        0.419372
-    ]
-}
-
 BT_probs = {}
 def load_BT_probs():
     global BT_probs
@@ -189,22 +75,12 @@ def load_BT_probs():
             year_dist[(s2, s1)] = 1. - p
         BT_probs[year] = year_dist
 
-annealing_probs_normal = {k: np.array(omega)
-                          for k, omega in annealing_probs_normal.items()}
-
 
 # Returns the estimated probability that s1 beats s2
 def getP(s1, s2, model, year, roundNum):
-    if model.get('annealing_model') is not None and roundNum == 1:
-        return annealing_probs_normal[model.get('annealing_model')][min(s1, s2)]
-    if model.get('bradleyTerry'):
-        if s1 == s2:
-            return 0.5
-        return BT_probs[year][(s1, s2)]
-    alpha = getAlpha(s1, s2, model, year, roundNum)
-    s1a = (s1 * 1.0) ** alpha
-    s2a = (s2 * 1.0) ** alpha
-    return s2a / (s1a + s2a)
+    if s1 == s2:
+        return 0.5
+    return BT_probs[year][(s1, s2)]
 
 
 # This function generates a 63-element list of 0s and 1s
@@ -213,7 +89,7 @@ def getP(s1, s2, model, year, roundNum):
 def generateBracket(model, year):
     bracket = []
 
-    random.seed()
+    # random.seed()
 
     endModel = 'None'
     if 'endModel' in model:
@@ -527,20 +403,22 @@ for modelDict in modelsList:
 
     print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
 
-    for batchNumber in range(numBatches):
-        if numTrials < 1000:
-            folderName = 'Experiments/{0}Trials'.format(numTrials)
-        else:
-            folderName = 'Experiments/{0}kTrials'.format(int(numTrials / 1000))
+    for year in years:
+        print '\t {0}: {1}'.format(year, time.strftime("%Y-%m-%d %H:%M"))
+        for batchNumber in range(numBatches):
+            print '\t\t {0}: {1}'.format(batchNumber, time.strftime("%Y-%m-%d %H:%M"))
+            if numTrials < 1000:
+                folderName = 'Experiments/{0}Trials'.format(numTrials)
+            else:
+                folderName = 'Experiments/{0}kTrials'.format(int(numTrials / 1000))
 
-        if not os.path.exists(folderName):
-            os.makedirs(folderName)
+            if not os.path.exists(folderName):
+                os.makedirs(folderName)
 
-        batchFolderName = '{0}/Batch{1:02d}'.format(folderName, batchNumber)
-        if not os.path.exists(batchFolderName):
-            os.makedirs(batchFolderName)
+            batchFolderName = '{0}/Batch{1:02d}'.format(folderName, batchNumber)
+            if not os.path.exists(batchFolderName):
+                os.makedirs(batchFolderName)
 
-        for year in years:
             performExperiments(numTrials, year, batchNumber, modelDict)
 
 #

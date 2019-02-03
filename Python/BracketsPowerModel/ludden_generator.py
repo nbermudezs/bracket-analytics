@@ -527,4 +527,4 @@ for modelDict in modelsList:
                 os.makedirs(batchFolderName)
 
             performExperiments(numTrials, year, batchNumber, modelDict)
-
+        break
