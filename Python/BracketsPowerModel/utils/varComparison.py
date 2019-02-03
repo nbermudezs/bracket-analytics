@@ -10,51 +10,18 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+from utils.summaries import summaries
 
 plt.style.use('seaborn-white')
 sns.set_palette('dark')
 
-summary = [
-    {
-        'modelName': 'power',
-        'ref': 'ludden',
-        'refType': 'models'
-    },
-    {
-        'modelName': 'F4_A',
-        'ref': 'ludden',
-        'refType': 'models'
-    },
-    {
-        'modelName': 'F4_B',
-        'ref': 'ludden',
-        'refType': 'models'
-    },
-    {
-        'modelName': 'NCG',
-        'ref': 'ludden',
-        'refType': 'models'
-    },
-    {
-        'modelName': 'E8',
-        'ref': 'ludden',
-        'refType': 'models'
-    },
-    {
-        'modelName': 'ludden_models',
-        'ref': 'ludden',
-        'refType': 'ensemble',
-        'label': 'Ludden et. al'
-    }
-]
 
-
-def batch_variance(num_trials, num_batches, prefix):
+def batch_variance(num_trials, num_batches, prefix, key):
     for year in range(2013, 2019):
         for batch_num in range(num_batches):
             variances = []
             labels = []
-            for setup in summary:
+            for setup in summaries[key]:
                 path = 'Experiments/{0}Trials/Batch{1:02d}/generatedScores_{2}_{3}.json'.format(
                     num_trials if num_trials < 1000 else str(int(num_trials / 1000)) + 'k',
                     batch_num,
@@ -72,13 +39,13 @@ def batch_variance(num_trials, num_batches, prefix):
             plt.clf()
 
 
-def max_score_variance(num_trials, num_batches, prefix):
+def max_score_variance(num_trials, num_batches, prefix, key):
     for year in range(2013, 2019):
         variances = []
         labels = []
-        for setup in summary:
+        for setup in summaries[key]:
             max_scores = []
-            for batch_num in range(num_batches):
+            for batch_num in range(10):
                 path = 'Experiments/{0}Trials/Batch{1:02d}/generatedScores_{2}_{3}.json'.format(
                     num_trials if num_trials < 1000 else str(int(num_trials / 1000)) + 'k',
                     batch_num,
@@ -96,6 +63,31 @@ def max_score_variance(num_trials, num_batches, prefix):
         plt.clf()
 
 
+def pooled_batches_variance(num_trials, num_batches, prefix, key):
+    for year in range(2013, 2019):
+        variances = []
+        labels = []
+        for setup in summaries[key]:
+            all_scores = []
+            for batch_num in range(num_batches):
+                path = 'Experiments/{0}Trials/Batch{1:02d}/generatedScores_{2}_{3}.json'.format(
+                    num_trials if num_trials < 1000 else str(int(num_trials / 1000)) + 'k',
+                    batch_num,
+                    setup['modelName'],
+                    year
+                )
+                with open(path) as f:
+                    scores = json.load(f)['scores']
+                    all_scores = all_scores + scores
+            var = np.var(all_scores)
+            variances.append(var)
+            labels.append(setup.get('label', setup['modelName']))
+        sns.barplot(labels, variances, order=labels, color='black')
+        plt.savefig(prefix + '{}_pooled_score_variance.png'.format(year))
+        plt.cla()
+        plt.clf()
+
+
 if __name__ == '__main__':
     import os
     import sys
@@ -109,5 +101,8 @@ if __name__ == '__main__':
     if not os.path.exists(prefix):
         os.makedirs(prefix)
 
-    batch_variance(num_trials, num_batches, prefix)
-    max_score_variance(num_trials, num_batches, prefix)
+    key = models_path.split('/')[-1].replace('_models.json', '')
+
+    pooled_batches_variance(num_trials, num_batches, prefix, key)
+    batch_variance(num_trials, num_batches, prefix, key)
+    max_score_variance(num_trials, num_batches, prefix, key)
