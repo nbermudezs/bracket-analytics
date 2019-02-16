@@ -1,0 +1,1468 @@
+{
+    "models": [
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1", 
+            "format": "FFF", 
+            "modelName": "model0", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2", 
+            "format": "FFF", 
+            "modelName": "model1", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3", 
+            "format": "FFF", 
+            "modelName": "model2", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_4", 
+            "format": "FFF", 
+            "modelName": "model3", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets E8_F4", 
+            "format": "FFF", 
+            "modelName": "model4", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model5", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model6", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2", 
+            "format": "FFF", 
+            "modelName": "model7", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3", 
+            "format": "FFF", 
+            "modelName": "model8", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_4", 
+            "format": "FFF", 
+            "modelName": "model9", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model10", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model11", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model12", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3", 
+            "format": "FFF", 
+            "modelName": "model13", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_4", 
+            "format": "FFF", 
+            "modelName": "model14", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model15", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model16", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model17", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,R1_R2_4", 
+            "format": "FFF", 
+            "modelName": "model18", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "R1_R2_4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model19", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model20", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model21", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_4,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model22", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_4", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model23", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model24", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model25", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model26", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model27", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3", 
+            "format": "FFF", 
+            "modelName": "model28", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_4", 
+            "format": "FFF", 
+            "modelName": "model29", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model30", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model31", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model32", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,R1_R2_4", 
+            "format": "FFF", 
+            "modelName": "model33", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "R1_R2_4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model34", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model35", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model36", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_4,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model37", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_4", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model38", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model39", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model40", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model41", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model42", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,R1_R2_4", 
+            "format": "FFF", 
+            "modelName": "model43", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model44", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model45", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model46", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_4,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model47", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model48", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model49", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model50", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model51", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model52", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,R1_R2_4,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model53", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,R1_R2_4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model54", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,R1_R2_4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model55", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model56", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model57", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model58", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_4,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model59", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_4,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model60", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model61", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model62", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,R1_R2_4", 
+            "format": "FFF", 
+            "modelName": "model63", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model64", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model65", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model66", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_4,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model67", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model68", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model69", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model70", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model71", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model72", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,R1_R2_4,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model73", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,R1_R2_4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model74", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,R1_R2_4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model75", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model76", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model77", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model78", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_4,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model79", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_4,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model80", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model81", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model82", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,R1_R2_4,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model83", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,R1_R2_4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model84", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,R1_R2_4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model85", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model86", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model87", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model88", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_4,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model89", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_4,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model90", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model91", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model92", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,R1_R2_4,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model93", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,R1_R2_4,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model94", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,R1_R2_4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model95", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model96", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_4,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model97", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,R1_R2_4,E8_F4", 
+            "format": "FFF", 
+            "modelName": "model98", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,R1_R2_4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model99", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,R1_R2_4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model100", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model101", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model102", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model103", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_4,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model104", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_4,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model105", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model106", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model107", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,R1_R2_4,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model108", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,R1_R2_4,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model109", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,R1_R2_4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model110", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model111", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_4,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model112", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,R1_R2_4,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model113", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,R1_R2_4,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model114", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,R1_R2_4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model115", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model116", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_4,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model117", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_3,R1_R2_4,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model118", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,R1_R2_4,E8_F4,S16_E8_2", 
+            "format": "FFF", 
+            "modelName": "model119", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,R1_R2_4,E8_F4,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model120", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,R1_R2_4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model121", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model122", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_4,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model123", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_3,R1_R2_4,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model124", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_2,R1_R2_3,R1_R2_4,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model125", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }, 
+        {
+            "modelDesc": "bitwise + triplets R1_R2_1,R1_R2_2,R1_R2_3,R1_R2_4,E8_F4,S16_E8_2,S16_E8_1", 
+            "format": "FFF", 
+            "modelName": "model126", 
+            "gen": "bitwise_triplet_generator", 
+            "triplets": [
+                "R1_R2_1", 
+                "R1_R2_2", 
+                "R1_R2_3", 
+                "R1_R2_4", 
+                "E8_F4", 
+                "S16_E8_2", 
+                "S16_E8_1"
+            ]
+        }
+    ]
+}
