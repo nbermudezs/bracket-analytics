@@ -6,7 +6,7 @@ import os.path
 import sys
 
 from scoringUtils import getActualBracketVector
-from scoringUtils import scoreBracket
+from scoringUtils import scoreFFFBracket, scoreBracket
 from utils.runtimeSummary import RuntimeSummary
 
 
@@ -95,11 +95,13 @@ def performExperiments(numTrials, year, batchNumber, model):
     correctVector = getActualBracketVector(year)
 
     scores = [None] * numTrials
+    scoreMethod = scoreFFFBracket if model.get('format') == 'FFF' else scoreBracket
+    import pdb; pdb.set_trace()
 
     for n in range(numTrials):
         newBracketVector = generateBracket(model, year)
         summarizer.analyze_bracket(newBracketVector)
-        newBracketScore = scoreBracket(newBracketVector, correctVector)
+        newBracketScore = scoreMethod(newBracketVector, correctVector)
         scores[n] = newBracketScore[0]
 
     bracketListDict = {'year': year, 'actualBracket': ''.join(str(bit) for bit in correctVector), 'scores': scores}
@@ -146,7 +148,7 @@ for modelId, modelDict in enumerate(modelsList):
         continue
     modelName = modelDict['modelName']
 
-    all_brackets = load_ref_brackets(modelDict.get('format', 'TTT'))
+    all_brackets = load_ref_brackets(modelDict.get('format', 'FFF'))
     # calculate bitwise MLE probs
     for year in range(2013, 2019):
         vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
