@@ -96,7 +96,6 @@ def performExperiments(numTrials, year, batchNumber, model):
 
     scores = [None] * numTrials
     scoreMethod = scoreFFFBracket if model.get('format') == 'FFF' else scoreBracket
-    import pdb; pdb.set_trace()
 
     for n in range(numTrials):
         newBracketVector = generateBracket(model, year)
@@ -148,7 +147,7 @@ for modelId, modelDict in enumerate(modelsList):
         continue
     modelName = modelDict['modelName']
 
-    all_brackets = load_ref_brackets(modelDict.get('format', 'FFF'))
+    all_brackets = load_ref_brackets(modelDict.get('format', 'TTT'))
     # calculate bitwise MLE probs
     for year in range(2013, 2019):
         vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
