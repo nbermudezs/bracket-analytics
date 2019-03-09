@@ -1,0 +1,137 @@
+{
+    "models": [
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets NCG", 
+            "modelName": "modelComplete7", 
+            "non-regional-triplets": [
+                "NCG"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets R4_R5_1", 
+            "modelName": "modelComplete8", 
+            "non-regional-triplets": [
+                "R4_R5_1"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets R4_R5_2", 
+            "modelName": "modelComplete9", 
+            "non-regional-triplets": [
+                "R4_R5_2"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets P_R4_R6_1", 
+            "modelName": "modelComplete22", 
+            "non-regional-paths": [
+                "P_R4_R6_1"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets P_R4_R6_2", 
+            "modelName": "modelComplete23", 
+            "non-regional-paths": [
+                "P_R4_R6_2"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets P_R4_R6_3", 
+            "modelName": "modelComplete24", 
+            "non-regional-paths": [
+                "P_R4_R6_3"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets P_R4_R6_4", 
+            "modelName": "modelComplete25", 
+            "non-regional-paths": [
+                "P_R4_R6_4"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets R4_R5_1,R4_R5_2", 
+            "modelName": "modelComplete198", 
+            "non-regional-triplets": [
+                "R4_R5_1", 
+                "R4_R5_2"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets R4_R5_1,P_R4_R6_3", 
+            "modelName": "modelComplete213", 
+            "non-regional-paths": [
+                "P_R4_R6_3"
+            ], 
+            "non-regional-triplets": [
+                "R4_R5_1"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets R4_R5_1,P_R4_R6_4", 
+            "modelName": "modelComplete214", 
+            "non-regional-paths": [
+                "P_R4_R6_4"
+            ], 
+            "non-regional-triplets": [
+                "R4_R5_1"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets R4_R5_2,P_R4_R6_1", 
+            "modelName": "modelComplete227", 
+            "non-regional-paths": [
+                "P_R4_R6_1"
+            ], 
+            "non-regional-triplets": [
+                "R4_R5_2"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }, 
+        {
+            "gen": "bitwise_path_generator", 
+            "modelDesc": "bitwise + triplets R4_R5_2,P_R4_R6_2", 
+            "modelName": "modelComplete228", 
+            "non-regional-paths": [
+                "P_R4_R6_2"
+            ], 
+            "non-regional-triplets": [
+                "R4_R5_2"
+            ], 
+            "paths": [], 
+            "triplets": []
+        }
+    ]
+}
