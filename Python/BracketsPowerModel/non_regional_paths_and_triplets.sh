@@ -1,0 +1,12 @@
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 0
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 1
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 2
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 3
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 4
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 5
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 6
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 7
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 8
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 9
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 10
+python bitwise_complete_generator.py 50000 10 Ensemble/models/patterns/non_regional_paths_and_triplets.json 11
