@@ -3,6 +3,12 @@
         {
             "endModel": "NCG", 
             "gen": "conditional_generator", 
+            "modelDesc": "bitwise + NCG", 
+            "modelName": "modelNCG_bitwise"
+        }, 
+        {
+            "endModel": "NCG", 
+            "gen": "conditional_generator", 
             "modelDesc": "bitwise + triplets S16_E8_1", 
             "modelName": "modelNCG_0", 
             "triplets": [

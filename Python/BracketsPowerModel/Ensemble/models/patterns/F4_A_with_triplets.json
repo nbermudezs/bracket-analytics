@@ -3,6 +3,12 @@
         {
             "endModel": "F4_A", 
             "gen": "conditional_generator", 
+            "modelDesc": "bitwise + F4_A", 
+            "modelName": "modelF4_A_bitwise"
+        }, 
+        {
+            "endModel": "F4_A", 
+            "gen": "conditional_generator", 
             "modelDesc": "bitwise + triplets S16_E8_1", 
             "modelName": "modelF4_A_0", 
             "triplets": [

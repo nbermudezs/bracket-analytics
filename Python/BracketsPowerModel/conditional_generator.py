@@ -9,6 +9,7 @@ from scoringUtils import getActualBracketVector
 from scoringUtils import scoreFFFBracket, scoreBracket
 from utils.runtimeSummary import RuntimeSummary
 from samplingUtils import getChampion, getRunnerUp
+from samplingUtils import getE8SeedBottom, getE8SeedTop
 from samplingUtils import getF4SeedSplit, getF4SeedTogether
 
 
@@ -450,8 +451,14 @@ def fill_all_pattern_probs():
                         'triplets': triplets
                     }
 
-    combs = [[1, 2], [2]]
-    all_values = [[[0, 0], [0, 1], [1, 0], [1, 1]], [[0], [1]]]
+    combs = [[0, 1], [1, 2], [0], [1], [2]]
+    all_values = [
+        [[0, 0], [0, 1], [1, 0], [1, 1]],
+        [[0, 0], [0, 1], [1, 0], [1, 1]],
+        [[0], [1]],
+        [[0], [1]],
+        [[0], [1]]
+    ]
     for comb, values in zip(combs, all_values):
         for val in values:
             key = tuple(zip(comb, val))
@@ -562,15 +569,32 @@ def getP(model, year, bit_id):
 
 def getValues(bracket, year, pattern_key):
     n = np.random.rand()
-    if year not in all_patterns[pattern_key]:
-        pass
     for i in range(8):
         if n > all_patterns[pattern_key][year]['p'][i] and n < all_patterns[pattern_key][year]['p'][i + 1]:
-            return all_triplets[pattern_key][year]['triplets'][i]
+            return all_patterns[pattern_key][year]['triplets'][i]
 
 
 def fixRegionalBits(winner):
     return REGIONAL_FIXED_BITS[winner]
+
+
+def testRegionalBits():
+    for expected, bits in REGIONAL_FIXED_BITS.items():
+        seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
+        while len(seeds) > 1:
+            n_games = len(seeds) // 2
+            new_seeds = []
+            for g in range(n_games):
+                if bits[g] == -1:
+                    new_seeds.append(-1)
+                elif bits[g] == 1:
+                    new_seeds.append(seeds[g * 2])
+                else:
+                    new_seeds.append(seeds[g * 2 + 1])
+            seeds = new_seeds
+            bits = bits[n_games:]
+        winner = seeds[0]
+        assert winner == expected
 
 
 def fixBitsFromNCG(bracket, champion, runnerUp):
@@ -641,6 +665,18 @@ def genBracketWithoutEndModel(model, year):
     return bracket
 
 
+def getE8Bracket(model, year):
+    bracket = np.repeat(-1, 63)
+    for region in range(4):
+        s1 = getE8SeedBottom(year)
+        s2 = getE8SeedTop(year)
+        region_bracket = fixRegionalBits(s1)
+        region_bracket_2 = fixRegionalBits(s2)
+        region_bracket[region_bracket_2 != -1] = region_bracket_2[region_bracket_2 != -1]
+        region_bracket[-1] = -1
+        bracket[region * 15:region * 15 + 15] = region_bracket
+    return fillEmptySpaces(bracket, model, year)
+
 def getF4ABracket(model, year):
     bracket = np.repeat(-1, 63)
     for region in range(4):
@@ -670,13 +706,22 @@ def fillEmptySpaces(bracket, model, year):
         for t in model.get(key, []):
             n = np.random.rand()
             selector = all_patterns[t]['bits']
-            if np.all(bracket[all_patterns[t]['bits']] == -1):
+            if np.all(bracket[selector] == -1):
                 for i in range(8):
                     if n > all_patterns[t][year]['p'][i] and n < all_patterns[t][year]['p'][i + 1]:
                         bracket[selector] = all_patterns[t][year]['triplets'][i]
                         break
+            elif np.all(bracket[selector] != -1):
+                continue
             else:
-                pass
+                bits = np.array([0, 1, 2])[bracket[selector] != -1]
+                pending = np.array([0, 1, 2])[bracket[selector] == -1]
+                values = bracket[selector][bits]
+                cond_table_key = tuple(zip(bits, values))
+                cdf = CONDITIONALS[cond_table_key][year][t]
+                for i in range(len(cdf)):
+                    if n > cdf['p'][i] and n < cdf['p'][i + 1]:
+                        bracket[pending] = cdf['triplets'][i]
 
     for key in ['paths', 'triplets']:
         for t in model.get(key, []):
@@ -716,6 +761,8 @@ def generateBracket(model, year):
         return getF4ABracket(model, year)
     elif model['endModel'] == 'F4_B':
         return getF4BBracket(model, year)
+    elif model['endModel'] == 'E8':
+        return getE8Bracket(model, year)
     else:
         raise Exception('Not implemented yet')
 
@@ -771,6 +818,8 @@ if len(sys.argv) == 5:
     modelIndex = int(sys.argv[4])
 else:
     modelIndex = -1
+
+testRegionalBits()
 
 for modelId, modelDict in enumerate(modelsList):
     if modelIndex != -1 and modelIndex != modelId:
