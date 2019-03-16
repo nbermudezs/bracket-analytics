@@ -417,7 +417,7 @@ def fill_all_pattern_probs():
             }
 
     names = list(all_patterns.keys())
-    combs = [[0, 2], [1, 2]]
+    combs = [[0, 1], [0, 2], [1, 2]]
     values = [[0, 0], [0, 1], [1, 0], [1, 1]]
 
     from itertools import product
@@ -432,8 +432,6 @@ def fill_all_pattern_probs():
                 region_vectors = vectors[:, :60].reshape(-1, 15)
                 for name in names:
                     triplet = all_patterns[name]['bits']
-                    if name.startswith('P_'):
-                        continue
                     # its a triplet
                     if all_patterns[name]['section'].startswith('non-regional'):
                         data = vectors[:, triplet]
@@ -718,7 +716,10 @@ def fillEmptySpaces(bracket, model, year):
                 pending = np.array([0, 1, 2])[bracket[selector] == -1]
                 values = bracket[selector][bits]
                 cond_table_key = tuple(zip(bits, values))
-                cdf = CONDITIONALS[cond_table_key][year][t]
+                try:
+                    cdf = CONDITIONALS[cond_table_key][year][t]
+                except:
+                    import pdb; pdb.set_trace()
                 for i in range(len(cdf)):
                     if n > cdf['p'][i] and n < cdf['p'][i + 1]:
                         bracket[pending] = cdf['triplets'][i]
