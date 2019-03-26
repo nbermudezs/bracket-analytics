@@ -616,6 +616,7 @@ def fixBitsFromNCG(bracket, champion, runnerUp):
             ruRegion = 1
     championOffset = championRegion * 15
     ruOffset = ruRegion * 15
+    assert ruRegion != championRegion
     bracket[championOffset:championOffset + 15] = fixRegionalBits(champion)
     bracket[ruOffset:ruOffset + 15] = fixRegionalBits(runnerUp)
     return bracket
@@ -699,6 +700,22 @@ def genNCGBracket(model, year):
     return fillEmptySpaces(bracket, model, year)
 
 
+def getCombinedEndModelBracket(model, year):
+    bracket = np.repeat(-1, 63)
+    champion = getChampion(year)
+    runnerUp = getRunnerUp(year)
+    ncg_triplet = getValues(bracket, year, 'NCG')
+    bracket[[60, 61, 62]] = ncg_triplet
+    bracket = fixBitsFromNCG(bracket, champion, runnerUp)
+
+    f4_seeds = [getF4SeedSplit(year) for _ in range(4)]
+    for region in range(4):
+        if bracket[region * 15 + 14] == -1:
+            bracket[region * 15:region * 15 + 15] = fixRegionalBits(f4_seeds[region])
+    assert np.all(bracket[[14, 29, 44, 59]] != -1)
+    return fillEmptySpaces(bracket, model, year)
+
+
 def fillEmptySpaces(bracket, model, year):
     for key in ['non-regional-paths', 'non-regional-triplets']:
         for t in model.get(key, []):
@@ -746,7 +763,7 @@ def fillEmptySpaces(bracket, model, year):
                         if n > cdf['p'][i] and n < cdf['p'][i + 1]:
                             bracket[pending] = cdf['triplets'][i]
 
-    for bit in range(60):
+    for bit in range(63):
         if bracket[bit] == -1:
             n = np.random.rand()
             bracket[bit] = 1 if n < getP(model, year, bit) else 0
@@ -764,6 +781,8 @@ def generateBracket(model, year):
         return getF4BBracket(model, year)
     elif model['endModel'] == 'E8':
         return getE8Bracket(model, year)
+    elif model['endModel'] == 'combined':
+        return getCombinedEndModelBracket(model, year)
     else:
         raise Exception('Not implemented yet')
 
