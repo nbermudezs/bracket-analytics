@@ -46,7 +46,8 @@ class RuntimeSummary:
                 'E8': defaultdict(int),
                 'F4': defaultdict(int),
                 'NCG': defaultdict(int),
-                'Champ': defaultdict(int)
+                'Champ': defaultdict(int),
+                'R1': defaultdict(int)
             }
         }
 
@@ -63,6 +64,8 @@ class RuntimeSummary:
         for region in range(4):
             seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
             bits = bracket[region * 15:region * 15 + 15]
+            for i, bit in enumerate(bits):
+                self.stats['seed_dist']['R1'][seeds[i * 2 + (1 - bit)]] += 1
             while len(seeds) > 1:
                 new_seeds = []
                 n_games = len(seeds) // 2
@@ -94,6 +97,7 @@ class RuntimeSummary:
             self.stats['seed_dist']['NCG'][f4[3]] += 1
             ncg.append(f4[3])
         champ = ncg[1 - bracket[-1]]
+
         self.stats['seed_dist']['Champ'][champ] += 1
 
     def to_json(self, filepath):
