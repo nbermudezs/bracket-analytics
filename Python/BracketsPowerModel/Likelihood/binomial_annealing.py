@@ -16,6 +16,8 @@ import time
 from collections import defaultdict
 from itertools import combinations
 from triplets.priors.PriorDistributions import read_data
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 
