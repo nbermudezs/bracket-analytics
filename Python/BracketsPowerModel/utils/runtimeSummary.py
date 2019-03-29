@@ -64,7 +64,7 @@ class RuntimeSummary:
         for region in range(4):
             seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
             bits = bracket[region * 15:region * 15 + 15]
-            for i, bit in enumerate(bits):
+            for i, bit in enumerate(bits[:8]):
                 self.stats['seed_dist']['R1'][seeds[i * 2 + (1 - bit)]] += 1
             while len(seeds) > 1:
                 new_seeds = []
