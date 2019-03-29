@@ -66,13 +66,14 @@ POOLED = 1
 data_cache = {}
 
 
-def read_data(fmt, limit=0):
-    key = hash((fmt, limit))
+def read_data(fmt, limit=0, start=1985):
+    key = hash((fmt, limit, start))
     if key not in data_cache:
         with open(dirname + '/../../allBrackets%s.json' % fmt) as f:
             vectors = [a['bracket']['fullvector']
                        for a in json.load(f)['brackets']
-                       if limit == 0 or int(a['bracket']['year']) < limit]
+                       if (limit == 0 or int(a['bracket']['year']) < limit) and
+                       int(a['bracket']['year']) >= start]
 
         unpooled = pd.DataFrame([list(a) for a in vectors])
 
