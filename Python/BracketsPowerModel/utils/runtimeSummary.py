@@ -47,7 +47,9 @@ class RuntimeSummary:
                 'F4': defaultdict(int),
                 'NCG': defaultdict(int),
                 'Champ': defaultdict(int),
-                'R1': defaultdict(int)
+                'R1': defaultdict(int),
+                'R2': defaultdict(int),
+                'R3': defaultdict(int)
             }
         }
 
@@ -62,6 +64,7 @@ class RuntimeSummary:
 
         f4 = []
         for region in range(4):
+            round_id = 1
             seeds = [1, 16, 8, 9, 5, 12, 4, 13, 6, 11, 3, 14, 7, 10, 2, 15]
             bits = bracket[region * 15:region * 15 + 15]
             for i, bit in enumerate(bits[:8]):
@@ -80,6 +83,13 @@ class RuntimeSummary:
                 elif len(seeds) == 2:
                     self.stats['seed_dist']['E8'][seeds[0]] += 1
                     self.stats['seed_dist']['E8'][seeds[1]] += 1
+                elif len(seeds) == 4:
+                    for seed in seeds:
+                        self.stats['seed_dist']['R3'][seed] += 1
+                elif len(seeds) == 8:
+                    for seed in seeds:
+                        self.stats['seed_dist']['R2'][seed] += 1
+
             f4.append(seeds[0])
 
         ncg = []
