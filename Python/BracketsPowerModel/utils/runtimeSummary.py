@@ -6,8 +6,15 @@ __status__ = "Development"
 
 
 import json
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+import seaborn as sns
 from collections import defaultdict
+
+
+plt.style.use('seaborn-white')
+sns.set_style('white')
 
 
 all_triplets = {
@@ -78,6 +85,7 @@ class RuntimeSummary:
                     else:
                         new_seeds.append(seeds[game * 2 + 1])
                 seeds = new_seeds
+                bits = bits[n_games:]
                 if len(seeds) == 1:
                     self.stats['seed_dist']['F4'][seeds[0]] += 1
                 elif len(seeds) == 2:
@@ -91,6 +99,8 @@ class RuntimeSummary:
                         self.stats['seed_dist']['R2'][seed] += 1
 
             f4.append(seeds[0])
+
+        # print(f4)
 
         ncg = []
         if bracket[-3] == 1:
@@ -115,3 +125,67 @@ class RuntimeSummary:
             stats = self.stats
             stats['bit_count'] = self.stats['bit_count'].tolist()
             json.dump(stats, f)
+
+    @staticmethod
+    def from_file(model, filepath):
+        instance = RuntimeSummary(model)
+        with open(filepath) as f:
+            instance.stats = json.load(f)
+            instance.stats['bit_count'] = np.array(instance.stats['bit_count'])
+        return instance
+
+    def plot_seed_count(self):
+        df = pd.DataFrame.from_dict(self.stats['seed_dist'])
+        df = df[['R1', 'R2', 'R3', 'E8', 'F4', 'NCG', 'Champ']]
+        df.index = df.index.astype(int)
+        df = df.sort_index()
+        df = df.fillna(0).astype(int)
+        n = df['Champ'].sum()
+        df = df / [4 * n, 4 * n, 4 * n, 4 * n, 4 * n, 2 * n, n]
+        df.plot(kind='bar', stacked=True, rot=0)
+        plt.tight_layout()
+        plt.show()
+
+
+def aggregate_summaries(summaries, model):
+    result = {
+        'R1': defaultdict(int),
+        'R2': defaultdict(int),
+        'R3': defaultdict(int),
+        'E8': defaultdict(int),
+        'F4': defaultdict(int),
+        'NCG': defaultdict(int),
+        'Champ': defaultdict(int)
+    }
+    for key in result.keys():
+        for seed in range(1, 17):
+            values = [summary.stats['seed_dist'][key].get(str(seed), 0) for summary in summaries]
+            result[key][seed] = np.mean(values)
+    df = pd.DataFrame.from_dict(result)
+
+    df = df[['R2', 'R3', 'E8', 'F4', 'NCG', 'Champ']]
+    df.index = df.index.astype(int)
+    df = df.sort_index()
+    df = df.fillna(0).astype(int)
+    n = df['Champ'].sum()
+    df = df / [4 * n, 4 * n, 4 * n, 4 * n, 2 * n, n]
+    df.plot(kind='bar', stacked=True, rot=0)
+    plt.tight_layout()
+    plt.savefig('plots/' + model + '-seeds_per_round.png')
+    # plt.show()
+
+
+if __name__ == '__main__':
+    import sys
+
+    n_trials = int(sys.argv[1])
+    n_batch = int(sys.argv[2])
+    model = sys.argv[3]
+
+    summaries = []
+    for i in range(n_batch):
+        path = 'Experiments/50kTrials/Batch{0:02d}/vectorStats_{1}_2013.json'.format(i, model)
+        summary = RuntimeSummary.from_file(model, path)
+        # summary.plot_seed_count()
+        summaries.append(summary)
+    aggregate_summaries(summaries, model)
