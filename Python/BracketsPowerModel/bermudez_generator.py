@@ -10,6 +10,7 @@ from math import floor
 from samplingUtils import getE8SeedBottom, getE8SeedTop
 from samplingUtils import getF4SeedSplit, getF4SeedTogether
 from samplingUtils import getChampion, getRunnerUp
+from utils.runtimeSummary import RuntimeSummary
 
 from scoringUtils import getActualBracketVector
 from scoringUtils import scoreBracket
@@ -405,12 +406,15 @@ def getAlpha(s1, s2, model, year, roundNum):
 # for the given year using the given model.
 # It prints the results in JSON format.
 def performExperiments(numTrials, year, batchNumber, model):
+    summarizer = RuntimeSummary(model)
     correctVector = getActualBracketVector(year)
 
     scores = [None] * numTrials
     for n in range(numTrials):
         newBracketVector = generateBracket(model, year)
+        summarizer.analyze_bracket(np.array(newBracketVector))
         newBracketScore = scoreBracket(newBracketVector, correctVector)
+        # sys.stdout.write(''.join(str(bit) for bit in newBracketVector) + '\n')
         # numCorrectPicks = calcCorrectPicks(newBracketScore)
         scores[n] = newBracketScore[0]
 
@@ -424,8 +428,10 @@ def performExperiments(numTrials, year, batchNumber, model):
     batchFolderName = '{0}/Batch{1:02d}'.format(folderName, batchNumber)
 
     outputFilename = '{2}/generatedScores_{0}_{1}.json'.format(model['modelName'], year, batchFolderName)
-    with open(outputFilename, 'w') as outputFile:
-        outputFile.write(json.dumps(bracketListDict))
+    summaryFilename = '{2}/vectorStats_{0}_{1}.json'.format(model['modelName'], year, batchFolderName)
+    # with open(outputFilename, 'w') as outputFile:
+    #     outputFile.write(json.dumps(bracketListDict))
+    summarizer.to_json(summaryFilename)
 
 
 ######################################################################
@@ -456,12 +462,12 @@ else:
 for modelDict in modelsList:
     modelName = modelDict['modelName']
 
-    print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
+    # print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
 
     for year in years:
-        print '\t {0}: {1}'.format(year, time.strftime("%Y-%m-%d %H:%M"))
+        # print '\t {0}: {1}'.format(year, time.strftime("%Y-%m-%d %H:%M"))
         for batchNumber in range(numBatches):
-            print '\t\t {0}: {1}'.format(batchNumber, time.strftime("%Y-%m-%d %H:%M"))
+            # print '\t\t {0}: {1}'.format(batchNumber, time.strftime("%Y-%m-%d %H:%M"))
             if numTrials < 1000:
                 folderName = 'Experiments/{0}Trials'.format(numTrials)
             else:
