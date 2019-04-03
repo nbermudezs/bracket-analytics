@@ -16,6 +16,7 @@ from scoringUtils import applyRoundResults
 from scoringUtils import getActualBracketVector
 from scoringUtils import scoreBracket
 from triplets.Constant import DEFAULT_FORMAT
+from utils.runtimeSummary import RuntimeSummary
 
 import triplets.generators.AllTripletsRev as AllTripletsRev
 import triplets.generators.IID_AllTriplets as IID_AllTriplets
@@ -463,11 +464,13 @@ def getAlpha(s1, s2, model, year, roundNum):
 # for the given year using the given model.
 # It prints the results in JSON format.
 def performExperiments(numTrials, year, batchNumber, model):
+    summarizer = RuntimeSummary(model)
     correctVector = getActualBracketVector(year)
 
     scores = [None] * numTrials
     for n in range(numTrials):
         newBracketVector = generateBracket(model, year)
+        summarizer.analyze_bracket(np.array(newBracketVector))
         newBracketScore = scoreBracket(newBracketVector, correctVector)
         # numCorrectPicks = calcCorrectPicks(newBracketScore)
         scores[n] = newBracketScore[0]
@@ -481,8 +484,10 @@ def performExperiments(numTrials, year, batchNumber, model):
     batchFolderName = '{0}/Batch{1:02d}'.format(folderName, batchNumber)
 
     outputFilename = '{2}/generatedScores_{0}_{1}.json'.format(model['modelName'], year, batchFolderName)
+    summaryFilename = '{2}/vectorStats_{0}_{1}.json'.format(model['modelName'], year, batchFolderName)
     with open(outputFilename, 'w') as outputFile:
         outputFile.write(json.dumps(bracketListDict))
+    summarizer.to_json(summaryFilename)
 
 
 ######################################################################
