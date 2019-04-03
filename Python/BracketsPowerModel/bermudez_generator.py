@@ -462,12 +462,12 @@ else:
 for modelDict in modelsList:
     modelName = modelDict['modelName']
 
-    # print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
+    print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
 
     for year in years:
-        # print '\t {0}: {1}'.format(year, time.strftime("%Y-%m-%d %H:%M"))
+        print '\t {0}: {1}'.format(year, time.strftime("%Y-%m-%d %H:%M"))
         for batchNumber in range(numBatches):
-            # print '\t\t {0}: {1}'.format(batchNumber, time.strftime("%Y-%m-%d %H:%M"))
+            print '\t\t {0}: {1}'.format(batchNumber, time.strftime("%Y-%m-%d %H:%M"))
             if numTrials < 1000:
                 folderName = 'Experiments/{0}Trials'.format(numTrials)
             else:
