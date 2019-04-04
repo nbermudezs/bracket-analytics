@@ -151,15 +151,42 @@ perturbed_ps = {
     ]
 }
 
-newone = {}
-for key in perturbed_ps.keys():
-    sorted_p = np.array(perturbed_ps[key])[[0, 7, 5, 3, 2, 4, 6, 1]]
-    newone[key] = [None] + sorted_p.tolist()
-perturbed_ps = newone
+binomial_probs = {
+    '30_1985': [
+        1.0,
+        0.5322717800519731,
+        0.746207686435048,
+        0.963730682948293,
+        0.7244782027182342,
+        1.0,
+        0.7641884437092471,
+        1.0
+    ],
+    '30_2002': [
+        1.0,
+        0.4133109896318541,
+        0.5222401783792519,
+        0.8347687486669643,
+        0.5440938849420445,
+        0.9792751595560159,
+        0.8002286003742298,
+        0.9981721200376673
+    ]
+}
+
+
+def sort_probs(probs):
+    return {key: [None] + np.array(vals)[[0, 7, 5, 3, 2, 4, 6, 1]].tolist()
+            for key, vals in probs.items()}
+
+perturbed_ps = sort_probs(perturbed_ps)
+binomial_probs = sort_probs(binomial_probs)
 
 # Returns the estimated probability that s1 beats s2
 def getP(s1, s2, model, year, roundNum):
     if model.get('annealing_model') is not None and roundNum == 1:
+        if model.get('binomial'):
+            return binomial_probs[model.get('annealing_model')][min(s1, s2)]
         return perturbed_ps[model.get('annealing_model')][min(s1, s2)]
     alpha = getAlpha(s1, s2, model, year, roundNum)
     s1a = (s1 * 1.0) ** alpha
