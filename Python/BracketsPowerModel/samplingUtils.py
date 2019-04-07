@@ -66,21 +66,30 @@ pE8Choose11 = [0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.04]
 
 # Returns a sample of a truncated geometric r.v.
 # with parameter p and probabilities that add to pSum.
-def getTruncGeom(p, pSum):
+last_u = None
+def getTruncGeom(p, pSum, crn=False):
+    global last_u
     u = random.random() * pSum
+    if crn and last_u is not None:
+        u = last_u
+        last_u = None
+    elif crn:
+        last_u = u
     return int(ceil(log(1 - u) / log(1 - p)))
 
 
 # Returns a seed for the National Champion.
-def getChampion(year):
-    pC = pChamp[year - 2013]
+def getChampion(year, model=None):
+    pC = pChamp[year - 2013] + (np.random.uniform(high=pChamp[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
+    pC = np.clip(pC, 0, 1.)
     cSum = champSum[year - 2013]
     return getTruncGeom(pC, cSum)
 
 
 # Returns a seed for the National Runner-Up.
-def getRunnerUp(year):
-    pR = pRU[year - 2013]
+def getRunnerUp(year, model=None):
+    pR = pRU[year - 2013] + (np.random.uniform(high=pRU[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
+    pR = np.clip(pR, 0, 1.)
     rSum = ruSum[year - 2013]
     return getTruncGeom(pR, rSum)
 
@@ -89,8 +98,9 @@ def getRunnerUp(year):
 # according to a truncated geometric distribution 
 # with additional probability of choosing an 11 seed.
 # This is also referred to as Model1.
-def getF4SeedTogether(year):
-    p = pF4[year - 2013]
+def getF4SeedTogether(year, model=None):
+    p = pF4[year - 2013] + (np.random.uniform(high=pF4[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
+    p = np.clip(p, 0, 1.)
     pSum = pF4Sum[year - 2013]
 
     seed = -1
@@ -109,7 +119,7 @@ def getF4SeedTogether(year):
 # The 7-12 distribution weights 9, 10, and 12 evenly 
 # and gives 7, 8, and 11 double that weight. 
 # This is also referred to as Model2.
-def getF4SeedSplit(year):
+def getF4SeedSplit(year, model=None):
     nTopHalf = nTop[year - 2013]
     nBottomHalf = nBottom[year - 2013]
     nTotal = nTopHalf + nBottomHalf
@@ -117,7 +127,8 @@ def getF4SeedSplit(year):
     pUseTop = nTopHalf * 1.0 / nTotal
 
     if random.random() <= pUseTop:
-        p = pF4Top[year - 2013]
+        p = pF4Top[year - 2013]+ (np.random.uniform(high=pF4Top[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
+        p = np.clip(p, 0, 1.)
         pSum = pF4TopSum[year - 2013]
         seed = getTruncGeom(p, pSum)
     else:
@@ -131,13 +142,14 @@ def getF4SeedSplit(year):
 # Returns a seed for the "top half" of the Elite Eight, sampled
 # according to a modified truncated geometric distribution. 
 # The top half is the seeds 1, 4, 5, 8, 9, 12, 13, 16.
-def getE8SeedTop(year):
+def getE8SeedTop(year, model=None):
     pChoose1 = pE8Choose1[year - 2013]
 
     if random.random() <= pChoose1:
         seed = 1
     else:
-        p = pE8Top[year - 2013]
+        p = pE8Top[year - 2013] + (np.random.uniform(high=pE8Top[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
+        p = np.clip(p, 0, 1.)
         pSum = pE8TopSum[year - 2013]
         index = getTruncGeom(p, pSum)
         seed = topSeeds[index]
@@ -148,13 +160,14 @@ def getE8SeedTop(year):
 # Returns a seed for the "bottom half" of the Elite Eight, sampled
 # according to a modified truncated geometric distribution. 
 # The bottom half is the seeds 2, 3, 6, 7, 10, 11, 14, 15.
-def getE8SeedBottom(year):
+def getE8SeedBottom(year, model=None):
     pChoose11 = pE8Choose11[year - 2013]
 
     if random.random() <= pChoose11:
         seed = 11
     else:
-        p = pE8Bottom[year - 2013]
+        p = pE8Bottom[year - 2013] + (np.random.uniform(high=pE8Bottom[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
+        p = np.clip(p, 0, 1.)
         pSum = pE8BottomSum[year - 2013]
         index = getTruncGeom(p, pSum)
         seed = bottomSeeds[index]
@@ -187,3 +200,12 @@ def addNoiseToCdf(cdf):
     dist = dist / dist.sum()
     cdf[:, -1] = [np.sum(dist[:i + 1]) for i in range(len(dist))]
     return cdf
+
+
+if __name__ == '__main__':
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    champs = [getChampion(2019) for _ in range(10000)]
+    sns.distplot(champs, bins=np.max(champs) - np.min(champs), kde=False)
+    plt.show()
+
