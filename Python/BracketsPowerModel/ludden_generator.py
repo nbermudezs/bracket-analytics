@@ -215,25 +215,25 @@ def generateBracket(model, year):
     e8Seeds = []
     if endModel == 'E8':
         for i in range(4):
-            e8Seeds.append(getE8SeedTop(year))
-            e8Seeds.append(getE8SeedBottom(year))
+            e8Seeds.append(getE8SeedTop(year, model))
+            e8Seeds.append(getE8SeedBottom(year, model))
     else:
         e8Seeds = [-1, -1, -1, -1, -1, -1, -1, -1]
 
     f4Seeds = []
     if endModel == 'F4_1':
         for i in range(4):
-            f4Seeds.append(getF4SeedTogether(year))
+            f4Seeds.append(getF4SeedTogether(year, model))
     elif endModel == 'F4_2':
         for i in range(4):
-            f4Seeds.append(getF4SeedSplit(year))
+            f4Seeds.append(getF4SeedSplit(year, model))
     else:
         f4Seeds = [-1, -1, -1, -1]
 
     ncgSeeds = [-1, -1]
     if 'Rev' in endModel:
-        champion = getChampion(year)
-        runnerUp = getRunnerUp(year)
+        champion = getChampion(year, model)
+        runnerUp = getRunnerUp(year, model)
         champRegion = int(floor(random.random() * 4))
         champHalf = champRegion / 2
         ruRegion = int(floor(random.random() * 2))
@@ -259,8 +259,8 @@ def generateBracket(model, year):
         ruRegion = -1
 
     if endModel == 'Rev_4':
-        f4Seeds[ffcRegion] = getF4SeedTogether(year)
-        f4Seeds[ffrRegion] = getF4SeedTogether(year)
+        f4Seeds[ffcRegion] = getF4SeedTogether(year, model)
+        f4Seeds[ffrRegion] = getF4SeedTogether(year, model)
 
     if not generator:
         # Loop through regional rounds R64, R32, and S16
@@ -364,6 +364,36 @@ def generateBracket(model, year):
     return bracket
 
 
+otherAlphas = {
+    'fixed10': [
+        [2.0, 1.4108692733407024, 2.0, 1.3196474396785278, 1.3038570916197816,
+         1.390660212727737, 1.2877841487352095],
+        [1.0095261202192172, 1.042433554665708, 1.1252835165072113,
+         1.0127669975888731, 2.0, 1.0915569133849663, 1.0108415509280697],
+        [0.49348535996812848, 0.34455488639172854, 0.32896149660506729,
+         0.24482951533228789, 0.25371038128353141, 0.29243699166273351,
+         0.23378870332685775],
+        [0.78668980967436719, 0.82717191347865293, 0.72955875777125934,
+         0.71960083188622204, 0.7732117800073226, 0.76785259241699599,
+         0.83093577802955143],
+        [1.6307769609703682, 1.8506689881586398, 1.4998981924422568,
+         1.7433925119535418, 1.3095428779096656, 1.3653554797198355,
+         1.4778725904750136]
+    ],
+    'fixed20': [
+        [2.0, 1.4474409352158495, 2.0, 2.0, 2.0, 2.0, 1.7032657440713581],
+        [2.0, 2.0, 2.0, 2.0, 2.0, 1.258704146604319, 1.3271005026998224],
+        [0.63660689580180285, 0.53208204238264734, 0.40456592054926921,
+         0.38572619897984284, 0.31335311265081839, 0.46398743518041724,
+         0.3146818626821023],
+        [1.0042354049979449, 0.962953595740205, 0.78284871486288732,
+         0.91410068283166412, 0.8465148485943953, 0.92865493168788427,
+         0.92176087078518831],
+        [2.0, 1.7081225333343879, 1.6702825615437937, 1.7035751769754379, 1.8592131117797068, 1.3220711049812315, 1.8027503009550137]
+    ]
+}
+
+
 # This function returns the alpha value to use for
 # predicting the outcome of a game in the given round
 # between the given seeds s1, s2.
@@ -444,8 +474,13 @@ def getAlpha(s1, s2, model, year, roundNum):
         if isSeedWeighted:
             alpha = r2to6AlphasSeedWeighted[roundNum - 2][year - 2013]
         else:
-            alpha = r2to6Alphas[roundNum - 2][year - 2013]
-
+            if model.get('perturbation'):
+                if roundNum in model['perturbation'].get('rounds', []):
+                    alpha = otherAlphas[model['perturbation']['alphaMLEprobs']][roundNum - 2][year - 2013]
+                else:
+                    alpha = r2to6Alphas[roundNum - 2][year - 2013]
+            else:
+                alpha = r2to6Alphas[roundNum - 2][year - 2013]
     return alpha
 
 

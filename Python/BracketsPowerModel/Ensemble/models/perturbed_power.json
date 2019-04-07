@@ -1,0 +1,88 @@
+{
+  "models": [
+    {
+      "modelName": "powerPerturbedAlpha0",
+      "perturbation": {
+        "alphaMLEprobs": "fixed10",
+        "rounds": [2, 3, 4, 5, 6]
+      }
+    },
+    {
+      "modelName": "powerPerturbedAlpha1",
+      "perturbation": {
+        "alphaMLEprobs": "fixed20",
+        "rounds": [2, 3, 4, 5, 6]
+      }
+    },
+    {
+      "modelName": "powerPerturbedAlpha2",
+      "perturbation": {
+        "alphaMLEprobs": "fixed10",
+        "rounds": [6]
+      }
+    },
+    {
+      "modelName": "powerPerturbedAlpha3",
+      "perturbation": {
+        "alphaMLEprobs": "fixed20",
+        "rounds": [5]
+      }
+    },
+    {
+      "modelName": "powerPerturbedAlpha4",
+      "perturbation": {
+        "alphaMLEprobs": "fixed10",
+        "rounds": [5, 6]
+      }
+    },
+    {
+      "modelName": "powerPerturbedAlpha5",
+      "perturbation": {
+        "alphaMLEprobs": "fixed20",
+        "rounds": [6]
+      }
+    },
+    {
+      "modelName": "powerPerturbedAlpha6",
+      "perturbation": {
+        "alphaMLEprobs": "fixed10",
+        "rounds": [5]
+      }
+    },
+    {
+      "modelName": "powerPerturbedAlpha7",
+      "perturbation": {
+        "alphaMLEprobs": "fixed20",
+        "rounds": [5, 6]
+      }
+    },
+    {
+      "modelName": "F4_A_perturbed0",
+      "perturbation": {
+        "trunc": true
+      },
+      "endModel": "F4_1"
+    },
+    {
+      "modelName": "F4_B_perturbed0",
+      "perturbation": {
+        "trunc": true
+      },
+      "endModel": "F4_2"
+    },
+    {
+      "modelName": "NCG_perturbed0",
+      "perturbation": {
+        "trunc": true
+      },
+      "endModel": "Rev_2"
+    },
+    {
+      "modelName": "E8_perturbed0",
+      "perturbation": {
+        "trunc": true
+      },
+      "endModel": "E8"
+    }
+  ]
+}
