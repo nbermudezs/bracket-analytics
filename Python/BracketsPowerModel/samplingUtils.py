@@ -78,18 +78,28 @@ def getTruncGeom(p, pSum, crn=False):
     return int(ceil(log(1 - u) / log(1 - p)))
 
 
+def perturb_prob(prob, model):
+    if model and model.get('perturbation'):
+        if model['perturbation'].get('type', 'rv') == 'rv':
+            percent = model['perturbation'].get('percent', 0.1)
+            return np.clip(
+                prob + np.random.uniform(low=0, high=prob * percent), 0., 1.)
+        elif model['perturbation'].get('type', 'rv') == 'fixed':
+            percent = model['perturbation'].get('percent', 0.1)
+            return np.clip(prob + percent, 0., 1.)
+    return prob
+
+
 # Returns a seed for the National Champion.
 def getChampion(year, model=None):
-    pC = pChamp[year - 2013] + (np.random.uniform(high=pChamp[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
-    pC = np.clip(pC, 0, 1.)
+    pC = perturb_prob(pChamp[year - 2013], model)
     cSum = champSum[year - 2013]
     return getTruncGeom(pC, cSum)
 
 
 # Returns a seed for the National Runner-Up.
 def getRunnerUp(year, model=None):
-    pR = pRU[year - 2013] + (np.random.uniform(high=pRU[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
-    pR = np.clip(pR, 0, 1.)
+    pR = perturb_prob(pRU[year - 2013], model)
     rSum = ruSum[year - 2013]
     return getTruncGeom(pR, rSum)
 
@@ -99,8 +109,7 @@ def getRunnerUp(year, model=None):
 # with additional probability of choosing an 11 seed.
 # This is also referred to as Model1.
 def getF4SeedTogether(year, model=None):
-    p = pF4[year - 2013] + (np.random.uniform(high=pF4[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
-    p = np.clip(p, 0, 1.)
+    p = perturb_prob(pF4[year - 2013], model)
     pSum = pF4Sum[year - 2013]
 
     seed = -1
@@ -127,8 +136,7 @@ def getF4SeedSplit(year, model=None):
     pUseTop = nTopHalf * 1.0 / nTotal
 
     if random.random() <= pUseTop:
-        p = pF4Top[year - 2013]+ (np.random.uniform(high=pF4Top[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
-        p = np.clip(p, 0, 1.)
+        p = perturb_prob(pF4Top[year - 2013], model)
         pSum = pF4TopSum[year - 2013]
         seed = getTruncGeom(p, pSum)
     else:
@@ -148,8 +156,7 @@ def getE8SeedTop(year, model=None):
     if random.random() <= pChoose1:
         seed = 1
     else:
-        p = pE8Top[year - 2013] + (np.random.uniform(high=pE8Top[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
-        p = np.clip(p, 0, 1.)
+        p = perturb_prob(pE8Top[year - 2013], model)
         pSum = pE8TopSum[year - 2013]
         index = getTruncGeom(p, pSum)
         seed = topSeeds[index]
@@ -166,8 +173,7 @@ def getE8SeedBottom(year, model=None):
     if random.random() <= pChoose11:
         seed = 11
     else:
-        p = pE8Bottom[year - 2013] + (np.random.uniform(high=pE8Bottom[year - 2013] * 0.1) if model and model.get('perturbation', {}).get('trunc') else 0)
-        p = np.clip(p, 0, 1.)
+        p = perturb_prob(pE8Bottom[year - 2013], model)
         pSum = pE8BottomSum[year - 2013]
         index = getTruncGeom(p, pSum)
         seed = bottomSeeds[index]

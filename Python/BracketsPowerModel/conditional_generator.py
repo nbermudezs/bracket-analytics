@@ -11,6 +11,7 @@ from utils.runtimeSummary import RuntimeSummary
 from samplingUtils import getChampion, getRunnerUp
 from samplingUtils import getE8SeedBottom, getE8SeedTop
 from samplingUtils import getF4SeedSplit, getF4SeedTogether
+from numbers import Number
 
 
 def load_ref_brackets(fmt='TTT'):
@@ -555,7 +556,7 @@ def getP(model, year, bit_id):
     if model.get('annealing_model') is not None and bit_id < 60 and (bit_id % 15) < 8:
         return perturbed_ps[model.get('annealing_model')][bit_id % 15]
     base_p = probs[year][bit_id]
-    if model.get('perturbation'):
+    if model.get('perturbation') and isinstance(model['perturbation'], Number):
         if model.get('perturbationType') == 'fixed':
             p = base_p + np.random.uniform(-model['perturbation'], model['perturbation'])
         else:
@@ -667,8 +668,8 @@ def genBracketWithoutEndModel(model, year):
 def getE8Bracket(model, year):
     bracket = np.repeat(-1, 63)
     for region in range(4):
-        s1 = getE8SeedBottom(year)
-        s2 = getE8SeedTop(year)
+        s1 = getE8SeedBottom(year, model)
+        s2 = getE8SeedTop(year, model)
         region_bracket = fixRegionalBits(s1)
         region_bracket_2 = fixRegionalBits(s2)
         region_bracket[region_bracket_2 != -1] = region_bracket_2[region_bracket_2 != -1]
@@ -679,21 +680,22 @@ def getE8Bracket(model, year):
 def getF4ABracket(model, year):
     bracket = np.repeat(-1, 63)
     for region in range(4):
-        winner = getF4SeedTogether(year)
+        winner = getF4SeedTogether(year, model)
         bracket[region * 15:region * 15 + 15] = fixRegionalBits(winner)
     return fillEmptySpaces(bracket, model, year)
 
 def getF4BBracket(model, year):
     bracket = np.repeat(-1, 63)
     for region in range(4):
-        winner = getF4SeedSplit(year)
+        winner = getF4SeedSplit(year, model)
         bracket[region * 15:region * 15 + 15] = fixRegionalBits(winner)
     return fillEmptySpaces(bracket, model, year)
 
 def genNCGBracket(model, year):
     bracket = np.repeat(-1, 63)
-    champion = getChampion(year)
-    runnerUp = getRunnerUp(year)
+    champion = getChampion(year, model)
+    runnerUp = getRunnerUp(year, model)
+    print(champion, runnerUp)
     ncg_triplet = getValues(bracket, year, 'NCG')
     bracket[[60, 61, 62]] = ncg_triplet
     bracket = fixBitsFromNCG(bracket, champion, runnerUp)
@@ -702,18 +704,22 @@ def genNCGBracket(model, year):
 
 def getCombinedEndModelBracket(model, year):
     bracket = np.repeat(-1, 63)
-    champion = getChampion(year)
-    runnerUp = getRunnerUp(year)
+    champion = getChampion(year, model)
+    runnerUp = getRunnerUp(year, model)
     ncg_triplet = getValues(bracket, year, 'NCG')
     bracket[[60, 61, 62]] = ncg_triplet
     bracket = fixBitsFromNCG(bracket, champion, runnerUp)
 
-    f4_seeds = [getF4SeedSplit(year) for _ in range(4)]
+    f4_seeds = [getF4SeedSplit(year, model) for _ in range(4)]
     for region in range(4):
         if bracket[region * 15 + 14] == -1:
             bracket[region * 15:region * 15 + 15] = fixRegionalBits(f4_seeds[region])
     assert np.all(bracket[[14, 29, 44, 59]] != -1)
     return fillEmptySpaces(bracket, model, year)
+
+
+def fillWithPowerModel(bracket, model, year):
+    return bracket
 
 
 def fillEmptySpaces(bracket, model, year):
@@ -763,6 +769,8 @@ def fillEmptySpaces(bracket, model, year):
                         if n > cdf['p'][i] and n < cdf['p'][i + 1]:
                             bracket[pending] = cdf['triplets'][i]
 
+    if model.get('filler') == 'power':
+        return fillWithPowerModel(bracket, model, year)
     for bit in range(63):
         if bracket[bit] == -1:
             n = np.random.rand()
