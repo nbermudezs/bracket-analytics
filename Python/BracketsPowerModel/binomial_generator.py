@@ -363,6 +363,29 @@ perturbed_ps = {
     ]
 }
 
+binomial_probs = {
+    '30_1985': [
+        1.0,
+        0.5322717800519731,
+        0.746207686435048,
+        0.963730682948293,
+        0.7244782027182342,
+        1.0,
+        0.7641884437092471,
+        1.0
+    ],
+    '30_2002': [
+        1.0,
+        0.4133109896318541,
+        0.5222401783792519,
+        0.8347687486669643,
+        0.5440938849420445,
+        0.9792751595560159,
+        0.8002286003742298,
+        0.9981721200376673
+    ]
+}
+
 REGIONAL_FIXED_BITS = {
     1: np.array([1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1]),
     2: np.array([-1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, 0, -1, 0, 0]),
@@ -553,6 +576,8 @@ def fill_path_probs():
 
 def getP(model, year, bit_id):
     if model.get('annealing_model') is not None and bit_id < 60 and (bit_id % 15) < 8:
+        if model.get('binomial'):
+            return binomial_probs[model.get('annealing_model')][bit_id % 15]
         return perturbed_ps[model.get('annealing_model')][bit_id % 15]
     base_p = probs[year][bit_id]
     if model.get('perturbation'):
@@ -686,8 +711,8 @@ def genBracketWithoutEndModel(model, year):
 def getE8Bracket(model, year):
     bracket = np.repeat(-1, 63)
     for region in range(4):
-        s1 = getE8SeedBottom(year)
-        s2 = getE8SeedTop(year)
+        s1 = getE8SeedBottom(year, model)
+        s2 = getE8SeedTop(year, model)
         region_bracket = fixRegionalBits(s1)
         region_bracket_2 = fixRegionalBits(s2)
         region_bracket[region_bracket_2 != -1] = region_bracket_2[region_bracket_2 != -1]
@@ -713,7 +738,7 @@ def getE8Bracket(model, year):
 def getF4ABracket(model, year):
     bracket = np.repeat(-1, 63)
     for region in range(4):
-        winner = getF4SeedTogether(year)
+        winner = getF4SeedTogether(year, model)
         bracket[region * 15:region * 15 + 15] = fixRegionalBits(winner)
 
     # ...
@@ -735,7 +760,7 @@ def getF4ABracket(model, year):
 def getF4BBracket(model, year):
     bracket = np.repeat(-1, 63)
     for region in range(4):
-        winner = getF4SeedSplit(year)
+        winner = getF4SeedSplit(year, model)
         bracket[region * 15:region * 15 + 15] = fixRegionalBits(winner)
 
     # ...
@@ -757,8 +782,8 @@ def getF4BBracket(model, year):
 
 def genNCGBracket(model, year):
     bracket = np.repeat(-1, 63)
-    champion = getChampion(year)
-    runnerUp = getRunnerUp(year)
+    champion = getChampion(year, model)
+    runnerUp = getRunnerUp(year, model)
     ncg_triplet = getValues(bracket, year, 'NCG')
     bracket[[60, 61, 62]] = ncg_triplet
     bracket = fixBitsFromNCG(bracket, champion, runnerUp)
@@ -784,8 +809,8 @@ def genNCGBracket(model, year):
 
 def getCombinedEndModelBracket(model, year):
     bracket = np.repeat(-1, 63)
-    champion = getChampion(year)
-    runnerUp = getRunnerUp(year)
+    champion = getChampion(year, model)
+    runnerUp = getRunnerUp(year, model)
     ncg_triplet = getValues(bracket, year, 'NCG')
     bracket[[60, 61, 62]] = ncg_triplet
     bracket = fixBitsFromNCG(bracket, champion, runnerUp)
@@ -805,7 +830,7 @@ def getCombinedEndModelBracket(model, year):
             else:
                 bracket[region * 15 + bit] = 0
 
-    f4_seeds = [getF4SeedSplit(year) for _ in range(4)]
+    f4_seeds = [getF4SeedSplit(year, model) for _ in range(4)]
     for region in range(4):
         if bracket[region * 15 + 14] == -1:
             bracket[region * 15:region * 15 + 15] = fixRegionalBits(f4_seeds[region])
