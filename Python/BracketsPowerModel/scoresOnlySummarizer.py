@@ -118,34 +118,34 @@ def summarizeBatch(numTrials, batchNumber, modelsList, outputFile):
         outputFile.write('\n')
 
         outputFile.write('Max score,')
-        for i in range(numModels):
-            outputFile.write('{0},'.format(maxScores[i]))
+        for maxScore in maxScores:
+            outputFile.write('{0},'.format(maxScore))
         outputFile.write('\n')
         outputFile.write('Min score,')
-        for i in range(numModels):
-            outputFile.write('{0},'.format(minScores[i]))
+        for minScore in minScores:
+            outputFile.write('{0},'.format(minScore))
         outputFile.write('\n')
 
         if numTrials < MEAN_MEDIAN_VAR_CUTOFF:
             outputFile.write('Median score,')
-            for i in range(numModels):
-                outputFile.write('{0},'.format(medianScores[i]))
+            for score in medianScores:
+                outputFile.write('{0},'.format(score))
             outputFile.write('\n')
 
             outputFile.write('Mean score,')
-            for i in range(numModels):
-                outputFile.write('{0},'.format(meanScores[i]))
+            for score in meanScores:
+                outputFile.write('{0},'.format(score))
             outputFile.write('')
             outputFile.write('\n')
 
             outputFile.write('Var(scores),')
-            for i in range(numModels):
-                outputFile.write('{0},'.format(varianceScores[i]))
+            for score in varianceScores:
+                outputFile.write('{0},'.format(score))
             outputFile.write('\n')
 
         outputFile.write('No. in ESPN top 100,')
-        for i in range(numModels):
-            outputFile.write('{0},'.format(countAboveEspnMin[i]))
+        for score in countAboveEspnMin:
+            outputFile.write('{0},'.format(score))
         outputFile.write('\n')
 
         # outputFile.write('Max correct picks,')
@@ -154,18 +154,18 @@ def summarizeBatch(numTrials, batchNumber, modelsList, outputFile):
         # outputFile.write('\n')
 
         outputFile.write('95th percentile,')
-        for i in range(numModels):
-            outputFile.write('{0},'.format(percentile95[i]))
+        for val in percentile95:
+            outputFile.write('{0},'.format(val))
         outputFile.write('\n')
 
         outputFile.write('99th percentile,')
-        for i in range(numModels):
-            outputFile.write('{0},'.format(percentile99[i]))
+        for val in percentile99:
+            outputFile.write('{0},'.format(val))
         outputFile.write('\n')
 
         outputFile.write('Proportion >= PF ({0}),'.format(pfTotalScore))
-        for i in range(numModels):
-            outputFile.write('{0:10.4f},'.format(proportionsAbovePF[i]))
+        for val in proportionsAbovePF:
+            outputFile.write('{0:10.4f},'.format(val))
         outputFile.write('\n')
         outputFile.write('\n')
 
