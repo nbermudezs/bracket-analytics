@@ -298,30 +298,40 @@ def generateBracket(model, year):
 
     # random.seed()
 
+    NCG_E8 = 'NCG_E8'
     endModel = 'None'
     if 'endModel' in model:
         endModel = model['endModel']
 
     e8Seeds = []
-    if endModel == 'E8':
+    if endModel == 'E8' or endModel == NCG_E8:
         for i in range(4):
             e8Seeds.append(getE8SeedTop(year, model))
             e8Seeds.append(getE8SeedBottom(year, model))
     else:
         e8Seeds = [-1, -1, -1, -1, -1, -1, -1, -1]
+    # print('E8', e8Seeds)
 
     f4Seeds = []
-    if endModel == 'F4_1':
+    if endModel == 'F4_1' or endModel == NCG_E8:
         for i in range(4):
-            f4Seeds.append(getF4SeedTogether(year, model))
+            seed = getF4SeedTogether(year, model)
+            f4Seeds.append(seed)
+            if endModel == NCG_E8:
+                if seed in [1, 16, 8, 9, 5, 12, 4, 13]:
+                    e8Seeds[i * 2] = seed
+                else:
+                    e8Seeds[i * 2 + 1] = seed
     elif endModel == 'F4_2':
         for i in range(4):
             f4Seeds.append(getF4SeedSplit(year, model))
     else:
         f4Seeds = [-1, -1, -1, -1]
+    # print('F4', f4Seeds)
+    # print('E8 replaced', e8Seeds)
 
     ncgSeeds = [-1, -1]
-    if 'Rev' in endModel:
+    if 'Rev' in endModel or endModel == NCG_E8:
         champion = getChampion(year, model)
         runnerUp = getRunnerUp(year, model)
         champRegion = int(floor(random.random() * 4))
@@ -344,9 +354,25 @@ def generateBracket(model, year):
 
         f4Seeds[champRegion] = champion
         f4Seeds[ruRegion] = runnerUp
+
+        if endModel == NCG_E8:
+            if champion in [1, 16, 8, 9, 5, 12, 4, 13]:
+                e8Seeds[champRegion * 2] = champion
+            else:
+                e8Seeds[champRegion * 2 + 1] = champion
+            if runnerUp in [1, 16, 8, 9, 5, 12, 4, 13]:
+                e8Seeds[ruRegion * 2] = runnerUp
+            else:
+                e8Seeds[ruRegion * 2 + 1] = runnerUp
     else:
         champRegion = -1
         ruRegion = -1
+
+    # print('champ', champion, champRegion)
+    # print('rU', runnerUp, ruRegion)
+    # print('F4 replaced', f4Seeds)
+    # print('E8 replaced', e8Seeds)
+    # import pdb; pdb.set_trace()
 
     if endModel == 'Rev_4':
         f4Seeds[ffcRegion] = getF4SeedTogether(year, model)
@@ -633,7 +659,7 @@ numBatches = int(sys.argv[2])
 if len(sys.argv) == 5:
     years = [int(sys.argv[4])]
 else:
-    years = range(2013, 2019)
+    years = range(2013, 2020)
 
 for modelDict in modelsList:
     modelName = modelDict['modelName']
