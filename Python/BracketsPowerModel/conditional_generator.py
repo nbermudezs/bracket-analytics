@@ -387,10 +387,12 @@ CONDITIONALS = {
     # ((bit1, val1), (bit2, val2)): P(bit3=1|bit1=val1, bit2=val2)
 }
 
+TOP_SEEDS = [1, 16, 8, 9, 5, 12, 4, 13]
+
 def fill_all_pattern_probs():
     global all_patterns, CONDITIONALS
     names = list(all_patterns.keys())
-    for year in range(2013, 2019):
+    for year in range(2013, 2020):
         vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
         vectors = vectors[:, :60].reshape(-1, 15)
         for name in names:
@@ -427,7 +429,7 @@ def fill_all_pattern_probs():
         for val in values:
             key = tuple(zip(comb, val))
             CONDITIONALS[key] = {}
-            for year in range(2013, 2019):
+            for year in range(2013, 2020):
                 CONDITIONALS[key][year] = {}
                 vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
                 region_vectors = vectors[:, :60].reshape(-1, 15)
@@ -463,7 +465,7 @@ def fill_all_pattern_probs():
             key = tuple(zip(comb, val))
             if key not in CONDITIONALS:
                 CONDITIONALS[key] = {}
-            for year in range(2013, 2019):
+            for year in range(2013, 2020):
                 if year not in CONDITIONALS[key]:
                     CONDITIONALS[key][year] = {}
                 vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
@@ -493,7 +495,7 @@ def fill_all_pattern_probs():
 def fill_triplet_probs():
     global all_triplets
     names = list(all_triplets.keys())
-    for year in range(2013, 2019):
+    for year in range(2013, 2020):
         vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
         vectors = vectors[:, :60].reshape(-1, 15)
         for name in names:
@@ -524,7 +526,7 @@ def fill_triplet_probs():
 def fill_path_probs():
     global all_paths
     names = list(all_paths.keys())
-    for year in range(2013, 2019):
+    for year in range(2013, 2020):
         vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
         vectors = vectors[:, :60].reshape(-1, 15)
         for name in names:
@@ -574,7 +576,7 @@ def getValues(bracket, year, pattern_key):
 
 
 def fixRegionalBits(winner):
-    return REGIONAL_FIXED_BITS[winner]
+    return REGIONAL_FIXED_BITS[winner].copy()
 
 
 def testRegionalBits():
@@ -620,7 +622,7 @@ def fixBitsFromNCG(bracket, champion, runnerUp):
     assert ruRegion != championRegion
     bracket[championOffset:championOffset + 15] = fixRegionalBits(champion)
     bracket[ruOffset:ruOffset + 15] = fixRegionalBits(runnerUp)
-    return bracket
+    return bracket, championRegion, ruRegion
 
 def genBracketWithoutEndModel(model, year):
     n = np.random.rand(63)
@@ -698,7 +700,7 @@ def genNCGBracket(model, year):
     print(champion, runnerUp)
     ncg_triplet = getValues(bracket, year, 'NCG')
     bracket[[60, 61, 62]] = ncg_triplet
-    bracket = fixBitsFromNCG(bracket, champion, runnerUp)
+    bracket, _, _ = fixBitsFromNCG(bracket, champion, runnerUp)
     return fillEmptySpaces(bracket, model, year)
 
 
@@ -708,13 +710,53 @@ def getCombinedEndModelBracket(model, year):
     runnerUp = getRunnerUp(year, model)
     ncg_triplet = getValues(bracket, year, 'NCG')
     bracket[[60, 61, 62]] = ncg_triplet
-    bracket = fixBitsFromNCG(bracket, champion, runnerUp)
+    bracket, _, _ = fixBitsFromNCG(bracket, champion, runnerUp)
 
     f4_seeds = [getF4SeedSplit(year, model) for _ in range(4)]
     for region in range(4):
         if bracket[region * 15 + 14] == -1:
             bracket[region * 15:region * 15 + 15] = fixRegionalBits(f4_seeds[region])
     assert np.all(bracket[[14, 29, 44, 59]] != -1)
+    return fillEmptySpaces(bracket, model, year)
+
+
+def getNCG_E8ModelBracket(model, year):
+    bracket = np.repeat(-1, 63)
+    champion = getChampion(year, model)
+    runnerUp = getRunnerUp(year, model)
+    ncg_triplet = getValues(bracket, year, 'NCG')
+    bracket[[60, 61, 62]] = ncg_triplet
+    bracket, championRegion, ruRegion = fixBitsFromNCG(bracket, champion, runnerUp)
+
+    f4_seeds = [getF4SeedSplit(year, model) for _ in range(4)]
+    for region in range(4):
+        if bracket[region * 15 + 14] == -1:
+            bits = fixRegionalBits(f4_seeds[region])
+            if f4_seeds[region] in TOP_SEEDS:
+                other_seed = getE8SeedBottom(year, model)
+            else:
+                other_seed = getE8SeedTop(year, model)
+            bits[bits == -1] = fixRegionalBits(other_seed)[bits == -1]
+            bracket[region * 15:region * 15 + 15] = bits
+        else:
+            bits = bracket[region * 15:region * 15 + 15]
+            if region == championRegion:
+                if champion in TOP_SEEDS:
+                    other_seed = getE8SeedBottom(year, model)
+                else:
+                    other_seed = getE8SeedTop(year, model)
+            elif region == ruRegion:
+                if runnerUp in TOP_SEEDS:
+                    other_seed = getE8SeedBottom(year, model)
+                else:
+                    other_seed = getE8SeedTop(year, model)
+            bits[bits == -1] = fixRegionalBits(other_seed)[bits == -1]
+            bracket[region * 15:region * 15 + 15] = bits
+
+    assert np.all(bracket[[60, 61, 62]] != -1)
+    assert np.all(bracket[[14, 29, 44, 59]] != -1)
+    assert np.all(bracket[[12, 13, 27, 28, 42, 43, 57, 58]] != -1)
+    assert np.count_nonzero(bracket != -1) == 31
     return fillEmptySpaces(bracket, model, year)
 
 
@@ -791,6 +833,8 @@ def generateBracket(model, year):
         return getE8Bracket(model, year)
     elif model['endModel'] == 'combined':
         return getCombinedEndModelBracket(model, year)
+    elif model['endModel'] == 'NCG_E8':
+        return getNCG_E8ModelBracket(model, year)
     else:
         raise Exception('Not implemented yet')
 
@@ -854,9 +898,12 @@ for modelId, modelDict in enumerate(modelsList):
         continue
     modelName = modelDict['modelName']
 
+    if modelDict.get('generator') != 'conditional_generator':
+        continue
+
     all_brackets = load_ref_brackets(modelDict.get('format', 'TTT'))
     # calculate bitwise MLE probs
-    for year in range(2013, 2019):
+    for year in range(2013, 2020):
         vectors = np.vstack([v for y, v in all_brackets.items() if y < year])
         probs[year] = np.mean(vectors, axis=0)
 
@@ -866,7 +913,7 @@ for modelId, modelDict in enumerate(modelsList):
 
     print '{0:<8s}: {1}'.format(modelName, time.strftime("%Y-%m-%d %H:%M"))
 
-    for year in range(2013, 2019):
+    for year in range(2013, 2020):
         print '\t {0}: {1}'.format(year, time.strftime("%Y-%m-%d %H:%M"))
         for batchNumber in range(numBatches):
             print '\t\t {0}: {1}'.format(batchNumber, time.strftime("%Y-%m-%d %H:%M"))
